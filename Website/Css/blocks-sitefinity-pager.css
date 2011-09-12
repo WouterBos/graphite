@@ -1,0 +1,54 @@
+﻿div.pagerContainer {
+	min-height: 0;
+}
+
+div.pager {
+	float: right;
+}
+
+div.pager a.pagingArrowBack {
+	background: url(/images/sprite.png) no-repeat -800px -50px;
+}
+div.pager a.pagingArrowBack.de-activated {
+	background: url(/images/sprite.png) no-repeat -800px -100px;
+}
+
+div.pager a.pagingArrowForward {
+	background: url(/images/sprite.png) no-repeat -850px -50px;
+}
+div.pager a.pagingArrowForward.de-activated {
+	background: url(/images/sprite.png) no-repeat -850px -100px;
+}
+
+div.pager a {
+	display: block;
+	float: left;
+	margin-left: 5px;
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	color: #2A287F;
+	text-decoration: none;
+	background: url(/images/sprite.png) no-repeat -750px -50px;
+}
+
+div.pager a.active {
+	color: #ffffff;
+	background: url(/images/sprite.png) no-repeat -700px -50px;
+}
+
+div.pager a.active {
+	background: url(/images/sprite.png) no-repeat -700px -50px;
+}
+
+div.pager a span {
+	display: block;
+	padding-top: 5px;
+	text-align: center;
+}
+
+div.pager a.pagingArrowBack span,
+div.pager a.pagingArrowForward span {
+	position: absolute;
+	left: -9999em
+}

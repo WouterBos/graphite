@@ -1,0 +1,8 @@
+﻿div.formsSimpleControl div.success {
+}
+
+div.formsSimpleControl div.fail {
+	border: 2px solid #ff0000;
+	color: #ffffff;
+	background: #ff6565 !important;
+}

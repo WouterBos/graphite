@@ -1,0 +1,26 @@
+﻿div.RadWindow ul.rwControlButtons li {
+	background: none !important;
+}
+
+.cms_feedback {
+	padding: 10px;
+}
+
+.cms_feedback li {
+	background: none;
+}
+
+.cms_warning {
+	color: #ff0000;
+	font-weight: bold;
+}
+
+
+
+/* UNCOMMENT THIS TO FIX STYLING PROBLEMS IN WEB PAGES DURING EDIT MODE
+
+div.theWrapper div.containerMain {
+	
+}
+
+*/
