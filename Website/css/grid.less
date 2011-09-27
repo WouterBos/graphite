@@ -1,0 +1,130 @@
+﻿/* Configuration variables */
+@headerHeight: 100px;
+@blockSpacing: 10px;
+
+
+
+
+
+/* Main container for website */
+div.gp_main {
+	position: relative;
+	margin: 0 auto 0 auto;
+	width: 960px;
+	min-height: 0;
+}
+div.gp_main:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+
+
+
+/* Header */
+div.gp_header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: @headerHeight;
+}
+div.gp_headerSpacer {
+	height: @headerHeight + @blockSpacing;
+}
+
+
+
+/* Content block */
+div.gp_content {
+	margin-bottom: @blockSpacing;
+	min-height: 0;
+}
+div.gp_content:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+
+
+
+/* Columns basic style */
+div.gp_columns {
+	display: table;
+	
+	div.gp_innerColumns {
+		display: table-row;
+	}
+
+	div.gp_column {
+		display: table-cell;
+	}
+	body.ie7 div.gp_column {
+		float: left;
+	}
+
+	div.gp_column1 {
+		div.gp_block {
+			margin-left: 0;
+		}
+	}
+	
+	div.gp_column.gp_column_solidbg {
+		background: #eee;
+		div.gp_block {
+			margin: @blockSpacing;
+		}
+	}
+}
+
+div.gp_columns + div.gp_columns {
+	margin-top: @blockSpacing;
+}
+
+
+/* 2 column style */
+div.gp_columns_2 {
+	div.gp_column1 {
+		width: 30%;
+	}
+
+	div.gp_column2 {
+		width: 70%;
+		div.gp_block {
+			margin-right: 0;
+		}
+	}
+}
+
+
+
+/* 3 column style */
+div.gp_columns_3 {
+	div.gp_column1 {
+		width: 30%;
+	}
+
+	div.gp_column2 {
+		width: 50%;
+	}
+
+	div.gp_column3 {
+		width: 20%;
+		div.gp_block {
+			margin-right: 0;
+		}
+	}
+}
+
+
+
+/* Block basic style */
+div.gp_block {
+	margin: 0 @blockSpacing;
+}
+
+
+/* Footer */
+div.gp_footer {
+	padding: @blockSpacing;
+}
