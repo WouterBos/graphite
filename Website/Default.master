@@ -1,7 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Default.master.cs" Inherits="App_Master_Default" %>
 
 <!DOCTYPE html>
-
 <html lang="nl">
 	<head runat="server">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -38,11 +37,15 @@
 		    h1.gp_title {
 		        clear: both;
 		        padding: 5px 5px 5px 5px;
-		        color: #000000;
+		        color: #333333;
 		        font-family: Consolas;
 		        font-size: 20px;
 		        font-weight: normal;
 		        background: #ddd;
+		    }
+		    h1.gp_title strong {
+		        margin-right: 0.8em;
+		        color: #000000;
 		    }
 		</style>
 		
@@ -51,54 +54,80 @@
 	
 	<body id="MasterPageBody" runat="server">
 		<form id="form1" runat="server">
-		    <h1 class="gp_title"><asp:ContentPlaceHolder ID="Title" runat="server"></asp:ContentPlaceHolder></h1>
-		    
-			<a href="#content" class="skipLink">
-				<asp:Literal ID="Literal1" runat="server" Text="Skip menu"></asp:Literal>
-			</a>
-			
-			<div id="DesignTester" class="gp_main">
-				<div class="gp_headerSpacer"></div>
-			
-				<div class="gp_content" id="content">
-				    <div class="gp_columns gp_columns_2">
-				        <div class="gp_innerColumns">
-					        <div class="gp_column gp_column1">
-					            <asp:ContentPlaceHolder ID="Column2_1" runat="server"></asp:ContentPlaceHolder>
-					        </div>
-					        <div class="gp_column gp_column2">
-					            <asp:ContentPlaceHolder ID="Column2_2" runat="server"></asp:ContentPlaceHolder>
-					        </div>
-					    </div>
-					</div>
-
-				    <div class="gp_columns gp_columns_3">
-				        <div class="gp_innerColumns">
-					        <div class="gp_column gp_column1 gp_column_solidbg">
-					            <asp:ContentPlaceHolder ID="Column3_1" runat="server"></asp:ContentPlaceHolder>
-					        </div>
-					        <div class="gp_column gp_column2">
-					            <asp:ContentPlaceHolder ID="Column3_2" runat="server"></asp:ContentPlaceHolder>
-					        </div>
-					        <div class="gp_column gp_column3">
-					            <asp:ContentPlaceHolder ID="Column3_3" runat="server"></asp:ContentPlaceHolder>
+    	    <h1 class="gp_title"><asp:ContentPlaceHolder ID="Title" runat="server"></asp:ContentPlaceHolder></h1>
+    	    
+    	    <div class="gp_root">
+			    <!--<div class="gp_headerSpacer">-->
+			        <div id="DesignTester" class="gp_main">
+		                <a href="/" class="gp_logo" title="naar homepage"><img src="/images/logo.png" alt="GP_TODO: name organisation" /></a>
+				    </div>
+		        <!--</div>-->
+    			
+			    <div class="gp_content">
+			        <div class="gp_main">
+				        <div class="gp_columns gp_columns_2">
+				            <div class="gp_innerColumns">
+					            <div class="gp_column gp_column1">
+					                <asp:ContentPlaceHolder ID="Column2_1" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					            <div class="gp_column gp_column2">
+					                <asp:ContentPlaceHolder ID="Column2_2" runat="server"></asp:ContentPlaceHolder>
+					            </div>
 					        </div>
 					    </div>
-					</div>
-				</div>
 
-				<div class="gp_header">
-					<a href="/" title="Terug naar homepage" class="logo"><img src="/Images/logo.png" alt="" /></a>
-					<nav>
-						<asp:ContentPlaceHolder ID="Header" runat="server"></asp:ContentPlaceHolder>
-					</nav>
-				</div>
-				
-				<div class="gp_footer">
-					<footer>
-						<asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
-					</footer>
-				</div>
+				        <div class="gp_columns gp_columns_3">
+				            <div class="gp_innerColumns">
+					            <div class="gp_column gp_column1 gp_solidbg">
+					                <asp:ContentPlaceHolder ID="Column3_1" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					            <div class="gp_column gp_column2">
+					                <asp:ContentPlaceHolder ID="Column3_2" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					            <div class="gp_column gp_column3">
+					                <asp:ContentPlaceHolder ID="Column3_3" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					        </div>
+					    </div>
+
+				        <div class="gp_columns gp_columns_4">
+				            <div class="gp_innerColumns">
+					            <div class="gp_column gp_column1 gp_solidbg">
+					                <asp:ContentPlaceHolder ID="Column4_1" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					            <div class="gp_column gp_column2">
+					                <asp:ContentPlaceHolder ID="Column4_2" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					            <div class="gp_column gp_column3">
+					                <asp:ContentPlaceHolder ID="Column4_3" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					            <div class="gp_column gp_column4">
+					                <asp:ContentPlaceHolder ID="Column4_4" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					        </div>
+					    </div>
+				    </div>
+			    </div>
+                
+			    <div class="gp_header">
+			        <div class="gp_main">
+				        <nav>
+					        <asp:ContentPlaceHolder ID="Header" runat="server"></asp:ContentPlaceHolder>
+				        </nav>
+				    </div>
+			    </div>
+    			
+			    <div class="gp_footer">
+				    <footer>
+    				    <div class="gp_main">
+					        <div class="gp_columns gp_columns_1">
+					            <div class="gp_column gp_column1">
+						            <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
+						        </div>
+						    </div>
+				        </div>
+				    </footer>
+			    </div>
 			</div>
 		</form>
 	</body>
