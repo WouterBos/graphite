@@ -1,8 +1,31 @@
-.gp_nav_menu.gp_type1 {
+@navMenu_background: #000000;
+
+.gp_nav_menu.gp_horizontal {
+	min-height: 0;
+	background: @navMenu_background;
+	
+	&:after {
+		.clear;
+	}
+	
+	a {
+		float: left;
+		border-left: 1px solid #ffffff;
+		color: #ffffff;
+		text-decoration: none;
+		padding: @gridFlex_blockSpacing / 4 @gridFlex_blockSpacing / 2;
+	}
+	a:hover {
+		background: @navMenu_background + #444;
+	}
+	> li:first-child > a {
+		border-left-width: 0;
+	}
+	
 	ul, li {
 		display: inline;
 	}
-
+	
 	ul ul {
 		display: none;
 	}

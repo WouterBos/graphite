@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content8" ContentPlaceHolderID="DemoStage" Runat="Server">
     <div class="graphite_demoStage">
-        <div class="gp_nav_menu gp_type1">
+        <div class="gp_nav_menu gp_horizontal">
             <ul>
                 <li><a href="#">Short</a>
                     <ul>
@@ -57,8 +57,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" Runat="Server">
-    <link rel="stylesheet" media="all" href="/CSS/blocks-nav-menu.less" />
-    <link rel="stylesheet" media="all" href="/CSS/blocks-nav-menu-type1.less" />
+    <link rel="stylesheet" media="all" href="all.less" />
 </asp:Content>
 
 
@@ -71,7 +70,7 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Intro" Runat="Server">
     <div class="gp_block gp_text">
-        <p>Generates a list of links to all available pages in a website.</p>
+        <p>The menu is used as the main navigation for the website.</p>
     </div>
 </asp:Content>
 
