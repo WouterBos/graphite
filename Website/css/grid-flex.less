@@ -1,23 +1,15 @@
-﻿/* Configuration variables */
-@headerHeight: 100px;
-@blockSpacing: 20px;
-
-
-
-
-
 /* Main container for website */
-div.gp_root {
+*.gp_root {
 	position: relative;
 }
 
-div.gp_main {
+*.gp_main {
 	position: relative;
 	margin: 0 auto 0 auto;
 	width: 960px;
 	min-height: 0;
 }
-div.gp_main:after {
+*.gp_main:after {
 	content:"";
 	display:block;
 	clear:both;
@@ -29,8 +21,8 @@ div.gp_main:after {
 *.gp_logo {
 	display: block;
 	position: absolute;
-	top: @blockSpacing;
-	left: @blockSpacing;
+	top: @gridFlex_blockSpacing;
+	left: @gridFlex_blockSpacing;
 	z-index: 10;
 }
 
@@ -41,26 +33,26 @@ div.gp_main:after {
 
 
 /* Header */
-div.gp_header {
+*.gp_header {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 }
 
-div.gp_header div.gp_main {
-	height: @headerHeight;
+*.gp_header *.gp_main {
+	height: @gridFlex_headerHeight;
 }
 
 
 
 /* Content block */
-div.gp_content {
-	border-top: @headerHeight solid transparent;
-	padding: @blockSpacing 0;
+*.gp_content {
+	border-top: @gridFlex_headerHeight solid transparent;
+	padding: @gridFlex_blockSpacing 0;
 	min-height: 0;
 }
-div.gp_content:after {
+*.gp_content:after {
 	content:"";
 	display:block;
 	clear:both;
@@ -69,55 +61,55 @@ div.gp_content:after {
 
 
 /* Columns basic style */
-div.gp_columns {
+*.gp_columns {
 	display: table;
 	
-	div.gp_innerColumns {
+	*.gp_innerColumns {
 		display: table-row;
 	}
 
-	div.gp_column {
+	*.gp_column {
 		display: table-cell;
 		vertical-align: top;
 	}
 
-	div.gp_column:first-child {
-		div.gp_block {
+	*.gp_column:first-child {
+		*.gp_block {
 			margin-left: 0;
 		}
 	}
 	
-	div.gp_column.gp_solidbg {
+	*.gp_column.gp_*.bg {
 		background: #eee;
-		div.gp_block {
-			margin: @blockSpacing;
+		*.gp_block {
+			margin: @gridFlex_blockSpacing;
 		}
 	}
 }
-body.ie7 div.gp_columns {
+body.ie7 *.gp_columns {
 	min-height: 0;
 	
-	div.gp_column {
+	*.gp_column {
 		display: block;
 		float: left;
 	}
 }
 
 
-div.gp_columns + div.gp_columns {
-	margin-top: @blockSpacing;
+*.gp_columns + *.gp_columns {
+	margin-top: @gridFlex_blockSpacing;
 }
 
 
 /* 2 column style */
-div.gp_columns_2 {
-	div.gp_column1 {
+*.gp_columns_2 {
+	*.gp_column1 {
 		width: 30%;
 	}
 
-	div.gp_column2 {
+	*.gp_column2 {
 		width: 70%;
-		div.gp_block {
+		*.gp_block {
 			margin-right: 0;
 		}
 	}
@@ -126,18 +118,18 @@ div.gp_columns_2 {
 
 
 /* 3 column style */
-div.gp_columns_3 {
-	div.gp_column1 {
+*.gp_columns_3 {
+	*.gp_column1 {
 		width: 33.3%;
 	}
 
-	div.gp_column2 {
+	*.gp_column2 {
 		width: 33.3%;
 	}
 
-	div.gp_column3 {
+	*.gp_column3 {
 		width: 33.3%;
-		div.gp_block {
+		*.gp_block {
 			margin-right: 0;
 		}
 	}
@@ -146,22 +138,22 @@ div.gp_columns_3 {
 
 
 /* 4 column style */
-div.gp_columns_4 {
-	div.gp_column1 {
+*.gp_columns_4 {
+	*.gp_column1 {
 		width: 30%;
 	}
 
-	div.gp_column2 {
+	*.gp_column2 {
 		width: 25%;
 	}
 
-	div.gp_column3 {
+	*.gp_column3 {
 		width: 25%;
 	}
 
-	div.gp_column4 {
+	*.gp_column4 {
 		width: 20%;
-		div.gp_block {
+		*.gp_block {
 			margin-right: 0;
 		}
 	}
@@ -170,12 +162,12 @@ div.gp_columns_4 {
 
 
 /* Block basic style */
-div.gp_block {
-	margin: 0 @blockSpacing;
+*.gp_block {
+	margin: 0 @gridFlex_blockSpacing;
 }
 
 
 /* Footer */
-div.gp_footer div.gp_main {
+*.gp_footer *.gp_main {
 	
 }

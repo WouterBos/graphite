@@ -1,7 +1,7 @@
-﻿<%@ Page Title="Start page" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Start page" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
-    <link rel="stylesheet" media="all" href="/CSS/all.less" />
+    <link rel="stylesheet" media="all" href="/CSS/all-graphite-demo.less" />
 </asp:Content>
 
 
@@ -57,6 +57,12 @@
                         <li>Div popup</li>
                         <li>Div popup movie</li>
                         <li>Google maps</li>
+                        <li>Navigation lists
+                            <ul>
+                                <li class="graphite_inDevelopment"><a href="/blocks/nav/menu.aspx">Menu</a></li>
+                                <li>Sitemap</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>

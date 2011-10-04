@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Default.master.cs" Inherits="App_Master_Default" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="default.master.cs" Inherits="App_Master_Default" %>
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -41,6 +41,8 @@
 		<form id="form1" runat="server">
     	    <h1 class="graphite_title"><asp:ContentPlaceHolder ID="Title" runat="server"></asp:ContentPlaceHolder></h1>
     	    
+    	    <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
+    	    
     	    <div class="gp_root">
     	        <!-- Start | Logo organisation -->
 		        <div id="DesignTester" class="gp_main">
@@ -56,10 +58,17 @@
 				        <div class="gp_columns gp_columns_2">
 				            <div class="gp_innerColumns">
 					            <div class="gp_column gp_column1">
-					                <asp:ContentPlaceHolder ID="Column2_1" runat="server"></asp:ContentPlaceHolder>
+					                    <div class="gp_block gp_text">
+                                            <p><strong>RTE block in 1st of 2 columns</strong></p>
+                                            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam posuere lorem sed libero rutrum aliquam. Ut consequat bibendum urna, id ultrices velit volutpat a. Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit.</p>
+                                        </div>
 					            </div>
 					            <div class="gp_column gp_column2">
-					                <asp:ContentPlaceHolder ID="Column2_2" runat="server"></asp:ContentPlaceHolder>
+                                    <div class="gp_block gp_text">
+                                        <p><strong>RTE block in 2nd of 2 columns</strong></p>
+                                        <p>Fusce sagittis eros vel tellus varius adipiscing. Donec at mauris tellus. Quisque varius viverra urna, nec commodo sem lacinia quis. Sed varius luctus massa, quis malesuada ipsum ornare non.</p>
+                                        <p>Eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
 					            </div>
 					        </div>
 					    </div>
@@ -70,13 +79,22 @@
 				        <div class="gp_columns gp_columns_3">
 				            <div class="gp_innerColumns">
 					            <div class="gp_column gp_column1 gp_solidbg">
-					                <asp:ContentPlaceHolder ID="Column3_1" runat="server"></asp:ContentPlaceHolder>
+                                    <div class="gp_block gp_text">
+                                        <p><strong>RTE block in 1st of 3 columns</strong></p>
+                                        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
 					            </div>
 					            <div class="gp_column gp_column2">
-					                <asp:ContentPlaceHolder ID="Column3_2" runat="server"></asp:ContentPlaceHolder>
+                                    <div class="gp_block gp_text">
+                                        <p><strong>RTE block in 2nd of 3 columns</strong></p>
+                                        <p>Aliquam posuere lorem sed libero rutrum aliquam. Ut consequat bibendum urna, id ultrices velit volutpat a. Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
 					            </div>
 					            <div class="gp_column gp_column3">
-					                <asp:ContentPlaceHolder ID="Column3_3" runat="server"></asp:ContentPlaceHolder>
+                                    <div class="gp_block gp_text">
+                                        <p><strong>RTE block in 3rd of 3 columns</strong></p>
+                                        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
 					            </div>
 					        </div>
 					    </div>
@@ -87,16 +105,28 @@
 				        <div class="gp_columns gp_columns_4">
 				            <div class="gp_innerColumns">
 					            <div class="gp_column gp_column1 gp_solidbg">
-					                <asp:ContentPlaceHolder ID="Column4_1" runat="server"></asp:ContentPlaceHolder>
+                                    <div class="gp_block gp_text">
+                                        <p><strong>RTE block in 1st of 4 columns</strong></p>
+                                        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
 					            </div>
 					            <div class="gp_column gp_column2">
-					                <asp:ContentPlaceHolder ID="Column4_2" runat="server"></asp:ContentPlaceHolder>
+                                    <div class="gp_block gp_text">
+                                        <p><strong>RTE block in 2nd of 4 columns</strong></p>
+                                        <p>Aliquam posuere lorem sed libero rutrum aliquam. Ut consequat bibendum urna, id ultrices velit volutpat a. Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
 					            </div>
 					            <div class="gp_column gp_column3">
-					                <asp:ContentPlaceHolder ID="Column4_3" runat="server"></asp:ContentPlaceHolder>
+                                    <div class="gp_block gp_text">
+                                        <p><strong>RTE block in 3rd of 4 columns</strong></p>
+                                        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
 					            </div>
 					            <div class="gp_column gp_column4">
-					                <asp:ContentPlaceHolder ID="Column4_4" runat="server"></asp:ContentPlaceHolder>
+                                    <div class="gp_block gp_text">
+                                        <p><strong>RTE block in 4th of 4 columns</strong></p>
+                                        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
 					            </div>
 					        </div>
 					    </div>
@@ -110,7 +140,9 @@
 			    <div class="gp_header">
 			        <div class="gp_main">
 				        <nav>
-					        <asp:ContentPlaceHolder ID="Header" runat="server"></asp:ContentPlaceHolder>
+                            <div class="gp_block gp_text">
+                                <!-- Put content here -->
+                            </div>
 				        </nav>
 				    </div>
 			    </div>
@@ -123,7 +155,9 @@
     				    <div class="gp_main">
 					        <div class="gp_columns gp_columns_1">
 					            <div class="gp_column gp_column1">
-						            <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
+                                    <div class="gp_block gp_text">
+                                        <p>This is a footer</p>
+                                    </div>
 						        </div>
 						    </div>
 				        </div>

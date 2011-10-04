@@ -1,11 +1,12 @@
-﻿h1.graphite_title {
+*.graphite_title {
+	.gp_gradient(#ffffff, #eeeeee);
 	clear: both;
+	border-bottom: 1px solid #dddddd;
 	padding: 5px 5px 5px 5px;
 	color: #333333;
 	font-family: Consolas;
 	font-size: 20px;
 	font-weight: normal;
-	background: #ddd;
 
 	strong {
 		margin-right: 0.8em;
@@ -14,16 +15,26 @@
 }
 
 
-div.gp_header {
-	height: auto !important;
+
+*.gp_footer {
+	border-top: 1px solid #dddddd;
+	padding: @gridFlex_blockSpacing / 2;
+	.gp_gradient(#eeeeee, #ffffff);
 }
 
-div.gp_content {
-	border-top-width: 0 !important;
+
+
+/* Graphite demo */
+.graphite_demoStage {
+	border: 1px solid #aaa;
+	padding: @gridFlex_blockSpacing;
+	background: #eee;
+	.gp_shadow(3px, 3px, 5px, #999999);
 }
 
 
 
+/* Text styling */
 .graphite_inDevelopment a {
 	color: #ff0000;
 }

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Default.master.cs" Inherits="App_Master_Default" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="default.master.cs" Inherits="App_Master_Default" %>
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -33,7 +33,6 @@
 		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
 		
 		<asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
-        <link rel="stylesheet" media="all" href="/CSS/graphite.less" />
 	</head>
 	
 	<body id="MasterPageBody" runat="server">
@@ -44,6 +43,8 @@
     			<!-- Start | Page content -->
 			    <div class="gp_content">
 			        <div class="gp_main">
+			            <asp:ContentPlaceHolder ID="DemoStage" runat="server"></asp:ContentPlaceHolder>
+			            
                         <!-- Start | 3 Columns -->
 				        <div class="gp_columns gp_columns_1">
 				            <div class="gp_innerColumns">
@@ -86,14 +87,12 @@
     			<!-- Start | Footer -->
 			    <div class="gp_footer">
 				    <footer>
-    				    <div class="gp_main">
-					        <div class="gp_columns gp_columns_1">
-					            <div class="gp_column gp_column1">
-					                <div class="gp_block gp_text">
-                                        <p><a href="https://github.com/WouterBos/graphite">Download Graphite</a></p>
-                                    </div>
-						        </div>
-						    </div>
+				        <div class="gp_columns gp_columns_1">
+				            <div class="gp_column gp_column1">
+				                <div class="gp_block gp_text">
+                                    <p><a href="https://github.com/WouterBos/graphite">Download Graphite</a></p>
+                                </div>
+					        </div>
 				        </div>
 				    </footer>
 			    </div>
