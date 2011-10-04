@@ -27,6 +27,7 @@
 		
 		<meta name="author" content="Estate Internet, www.estate.nl" />
 		<meta name="robots" content="noodp" />
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
 
 		<link href="/favicon.ico" rel="icon" />
 		<link href="/favicon.ico" rel="shortcut icon" />
@@ -41,21 +42,34 @@
     	    <h1 class="graphite_title"><asp:ContentPlaceHolder ID="Title" runat="server"></asp:ContentPlaceHolder></h1>
     	    
     	    <div class="gp_root">
+    	        <!-- Start | Logo organisation -->
+		        <div id="DesignTester" class="gp_main">
+	                <a href="/" class="gp_logo" title="naar homepage"><img src="/images/logo.png" alt="GP_TODO: name organisation" /></a>
+			    </div>
+			    <!-- End | Logo organisation -->
+    			
+    			
     			<!-- Start | Page content -->
 			    <div class="gp_content">
 			        <div class="gp_main">
-                        <!-- Start | 3 Columns -->
-				        <div class="gp_columns gp_columns_1">
+			            <!-- Start | 2 Columns -->
+				        <div class="gp_columns gp_columns_2">
 				            <div class="gp_innerColumns">
-					            <div class="gp_column">
-					                <asp:ContentPlaceHolder ID="Intro" runat="server"></asp:ContentPlaceHolder>
+					            <div class="gp_column gp_column1">
+					                <asp:ContentPlaceHolder ID="Column2_1" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					            <div class="gp_column gp_column2">
+					                <asp:ContentPlaceHolder ID="Column2_2" runat="server"></asp:ContentPlaceHolder>
 					            </div>
 					        </div>
 					    </div>
-
+                        <!-- End | 2 Columns -->
+                        
+                        
+                        <!-- Start | 3 Columns -->
 				        <div class="gp_columns gp_columns_3">
 				            <div class="gp_innerColumns">
-					            <div class="gp_column gp_column1">
+					            <div class="gp_column gp_column1 gp_solidbg">
 					                <asp:ContentPlaceHolder ID="Column3_1" runat="server"></asp:ContentPlaceHolder>
 					            </div>
 					            <div class="gp_column gp_column2">
@@ -67,6 +81,26 @@
 					        </div>
 					    </div>
 					    <!-- End | 3 Columns -->
+                        
+                        
+                        <!-- Start | 4 Columns -->
+				        <div class="gp_columns gp_columns_4">
+				            <div class="gp_innerColumns">
+					            <div class="gp_column gp_column1 gp_solidbg">
+					                <asp:ContentPlaceHolder ID="Column4_1" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					            <div class="gp_column gp_column2">
+					                <asp:ContentPlaceHolder ID="Column4_2" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					            <div class="gp_column gp_column3">
+					                <asp:ContentPlaceHolder ID="Column4_3" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					            <div class="gp_column gp_column4">
+					                <asp:ContentPlaceHolder ID="Column4_4" runat="server"></asp:ContentPlaceHolder>
+					            </div>
+					        </div>
+					    </div>
+					    <!-- End | 4 Columns -->
 				    </div>
 			    </div>
 			    <!-- End | Page content -->
@@ -89,9 +123,7 @@
     				    <div class="gp_main">
 					        <div class="gp_columns gp_columns_1">
 					            <div class="gp_column gp_column1">
-					                <div class="gp_block gp_text">
-                                        <p><a href="https://github.com/WouterBos/graphite">Download Graphite</a></p>
-                                    </div>
+						            <asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
 						        </div>
 						    </div>
 				        </div>

@@ -1,0 +1,10 @@
+#gp_gradient(@start) {
+	background-color: @start;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#444444), to(#999999)); 
+	background-image: -webkit-linear-gradient(top, #444444, #999999); 
+	background-image:    -moz-linear-gradient(top, @start, #999999); 
+	background-image:     -ms-linear-gradient(top, #444444, #999999); 
+	background-image:      -o-linear-gradient(top, #444444, #999999); 
+	background-image:         linear-gradient(top, @start, #999999);
+	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#444444', EndColorStr='#999999');*/ 
+}

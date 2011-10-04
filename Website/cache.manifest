@@ -1,0 +1,11 @@
+CACHE MANIFEST
+
+FALLBACK:
+/ /offline.html
+
+NETWORK:
+*
+
+CACHE:
+/css/all.less
+/js/all.min.js

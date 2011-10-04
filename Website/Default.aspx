@@ -1,39 +1,7 @@
-﻿<%@ Page Title="Grid &amp; Basic Page" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Start page" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
-    <!--<link rel="stylesheet" media="all" href="/CSS/reset.less" />
-    <link rel="stylesheet" media="all" href="/CSS/font.less" />
-    <link rel="stylesheet" media="all" href="/CSS/font-textBlock.less" />
-    <link rel="stylesheet" media="all" href="/CSS/grid.less" />
-    <link rel="stylesheet" media="all" href="/CSS/grid-print.less" />-->
     <link rel="stylesheet" media="all" href="/CSS/all.less" />
-    
-    <style>
-        div.gp_header div.gp_main {
-            background: #C8C7E5;
-        }
- 
-        div.gp_content div.gp_main {
-            background: #C97CE2;
-        }
-
-        div.gp_column1 {
-            background: #eee;
-        }
-        div.gp_column2 {
-            background: #ddd;
-        }
-        div.gp_column3 {
-            background: #ccc;
-        }
-        div.gp_column4 {
-            background: #bbb;
-        }
-        
-        div.gp_footer div.gp_main {
-            background: #BAEAB8;
-        }
-    </style>
 </asp:Content>
 
 
@@ -49,90 +17,72 @@
 
 
 
-<asp:Content ID="Column2_1" ContentPlaceHolderID="Column2_1" Runat="Server">
+<asp:Content ID="Intro" ContentPlaceHolderID="Intro" Runat="Server">
     <div class="gp_block gp_text">
-        <p><strong>RTE block in 1st of 2 columns</strong></p>
-        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam posuere lorem sed libero rutrum aliquam. Ut consequat bibendum urna, id ultrices velit volutpat a. Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit.</p>
-    </div>
-</asp:Content>
-
-
-
-<asp:Content ID="Column2_2" ContentPlaceHolderID="Column2_2" Runat="Server">
-    <div class="gp_block gp_text">
-        <p><strong>RTE block in 2nd of 2 columns</strong></p>
-        <p>Fusce sagittis eros vel tellus varius adipiscing. Donec at mauris tellus. Quisque varius viverra urna, nec commodo sem lacinia quis. Sed varius luctus massa, quis malesuada ipsum ornare non.</p>
-        <p>Eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+        <article>
+            <h1>Welcome to Graphite</h1>
+            <p><big>Graphite is a codebase for frontend development on the ASP.NET platform. It will help kickstart your web project. It contains code templates with HTML, CSS and JavaScript. It also has some templates for the popular CMS systems Sitefinity and Sitecore.</big></p>
+            
+            <h2>About this web page</h2>
+            <p>This website contains many working code snippets ready to be copy-pasted into your own project.</p>
+        </article>
     </div>
 </asp:Content>
 
 
 
 <asp:Content ID="Column3_1" ContentPlaceHolderID="Column3_1" Runat="Server">
-    <div class="gp_block gp_text">
-        <p><strong>RTE block in 1st of 2 columns</strong></p>
-        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+    <div class="gp_block">
+        <div class="gp_sitemap">
+            <ul>
+                <li><a href="/grids">Grids</a>
+                    <ul>
+                        <li class="graphite_inDevelopment"><a href="/grids/flex">Flex</a></li>
+                        <li>16 grid system</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </asp:Content>
 
 
 
 <asp:Content ID="Column3_2" ContentPlaceHolderID="Column3_2" Runat="Server">
-    <div class="gp_block gp_text">
-        <p><strong>RTE block in 2nd of 2 columns</strong></p>
-        <p>Aliquam posuere lorem sed libero rutrum aliquam. Ut consequat bibendum urna, id ultrices velit volutpat a. Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+    <div class="gp_block">
+        <div class="gp_sitemap">
+            <ul>
+                <li><a href="/grids">Blocks</a>
+                    <ul>
+                        <li>Div popup</li>
+                        <li>Div popup movie</li>
+                        <li>Google maps</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </asp:Content>
 
 
 
 <asp:Content ID="Column3_3" ContentPlaceHolderID="Column3_3" Runat="Server">
-    <div class="gp_block gp_text">
-        <p><strong>RTE block in 3rd of 3 columns</strong></p>
-        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
-    </div>
-</asp:Content>
-
-
-
-<asp:Content ID="Content1" ContentPlaceHolderID="Column4_1" Runat="Server">
-    <div class="gp_block gp_text">
-        <p><strong>RTE block in 1st of 4 columns</strong></p>
-        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
-    </div>
-</asp:Content>
-
-
-
-<asp:Content ID="Content2" ContentPlaceHolderID="Column4_2" Runat="Server">
-    <div class="gp_block gp_text">
-        <p><strong>RTE block in 2nd of 4 columns</strong></p>
-        <p>Aliquam posuere lorem sed libero rutrum aliquam. Ut consequat bibendum urna, id ultrices velit volutpat a. Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
-    </div>
-</asp:Content>
-
-
-
-<asp:Content ID="Content3" ContentPlaceHolderID="Column4_3" Runat="Server">
-    <div class="gp_block gp_text">
-        <p><strong>RTE block in 3rd of 4 columns</strong></p>
-        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
-    </div>
-</asp:Content>
-
-
-
-<asp:Content ID="Content4" ContentPlaceHolderID="Column4_4" Runat="Server">
-    <div class="gp_block gp_text">
-        <p><strong>RTE block in 4th of 4 columns</strong></p>
-        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
-    </div>
-</asp:Content>
-
-
-
-<asp:Content ID="Footer" ContentPlaceHolderID="Footer" Runat="Server">
-    <div class="gp_block gp_text">
-        <p>This is a footer</p>
+    <div class="gp_block">
+        <div class="gp_sitemap">
+            <ul>
+                <li><a href="/grids">CMS</a>
+                    <ul>
+                        <li>Sitefinity
+                            <ul>
+                                <li>Pager</li>
+                                <li>Captcha</li>
+                                <li>Forms</li>
+                                <li>CMS edit mode</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </asp:Content>
