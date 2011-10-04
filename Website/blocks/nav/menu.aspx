@@ -4,20 +4,51 @@
 
 <asp:Content ID="Content8" ContentPlaceHolderID="DemoStage" Runat="Server">
     <div class="graphite_demoStage">
-        <div class="gp_sitemap">
+        <div class="gp_nav_menu gp_type1">
             <ul>
-                <li><a href="/grids">Lorem ipsum dolor sit amet</a>
+                <li><a href="#">Short</a>
                     <ul>
-                        <li>Div popup</li>
-                        <li>Div popup movie</li>
-                        <li>Google maps</li>
-                        <li>Navigation lists
+                        <li><a href="#">Dolor</a></li>
+                        <li><a href="#">Consectetur</a></li>
+                        <li><a href="#">Adipiscing</a></li>
+                        <li><a href="#">Suspendisse</a>
                             <ul>
-                                <li class="graphite_inDevelopment"><a href="/blocks/nav/sitemap.aspx">Sitemap</a></li>
+                                <li><a href="#">Ipsum</a></li>
+                                <li><a href="#">Placerat</a></li>
+                                <li><a href="#">Porta</a></li>
+                                <li><a href="#">Imperdiet</a></li>
+                                <li><a href="#">Vestibulum</a></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
+                <li><a href="#">Long</a>
+                    <ul>
+                        <li><a href="#">Vestibulum imperdiet, felis eu ultricies facilisis</a></li>
+                        <li><a href="#">Aliquam eu odio arcu, quis scelerisque nulla</a></li>
+                        <li><a href="#">Porta</a></li>
+                        <li><a href="#">Aliquam porttitor neque</a>
+							<ul>
+								<li><a href="#">Felis eu ultricies facilisis</a></li>
+								<li><a href="#">Aliquam eu odio arcu, quis scelerisque nulla</a>
+									<ul>
+										<li><a href="#">Ipsum</a></li>
+										<li><a href="#">Placerat</a></li>
+										<li><a href="#">Porta</a></li>
+										<li><a href="#">Imperdiet</a></li>
+										<li><a href="#">Vestibulum</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Porta</a></li>
+							</ul>
+                        </li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Dolor</a></li>
+                <li><a href="#">Consectetur</a></li>
+                <li><a href="#">Adipiscing</a></li>
+                <li><a href="#">Suspendisse</a></li>
             </ul>
         </div>
     </div>
@@ -26,7 +57,8 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" Runat="Server">
-    <link rel="stylesheet" media="all" href="/CSS/all-graphite-demo.less" />
+    <link rel="stylesheet" media="all" href="/CSS/blocks-nav-menu.less" />
+    <link rel="stylesheet" media="all" href="/CSS/blocks-nav-menu-type1.less" />
 </asp:Content>
 
 
