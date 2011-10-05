@@ -27,10 +27,10 @@
 	content: "";
 }
 
-.transition {
-	-webkit-transition: all 0.3s ease-out;  
-	-moz-transition: all 0.3s ease-out;  
-	-ms-transition: all 0.3s ease-out;  
-	-o-transition: all 0.3s ease-out;  
-	transition: all 0.3s ease-out;  
+.transition(@type: all, @time: @easing, @easing: ease-out) {
+	-webkit-transition: @type @time @easing;  
+	-moz-transition: @type @time @easing;  
+	-ms-transition: @type @time @easing;  
+	-o-transition: @type @time @easing;  
+	transition: @type @time @easing;  
 }

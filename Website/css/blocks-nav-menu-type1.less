@@ -10,12 +10,14 @@
 	
 	a {
 		float: left;
+		.transition(all, 1s, ease-out);
 		border-left: 1px solid #ffffff;
 		color: #ffffff;
 		text-decoration: none;
 		padding: @gridFlex_blockSpacing / 4 @gridFlex_blockSpacing / 2;
 	}
 	a:hover {
+		.transition(all, 0.1s, ease-out);
 		background: @navMenu_background + #444;
 	}
 	> li:first-child > a {
