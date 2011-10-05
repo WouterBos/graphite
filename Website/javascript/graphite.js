@@ -22,7 +22,21 @@ var graphite = {};
  *
  * @param {Object} root The demo container.
  */
-graphite.demo = function(root) {
+graphite.demo = function(arg_root) {
+  var root = arg_root;
+  var htmlRoot = arg_root.querySelector('div.graphite_demoStage_html');
+  
+  
+  // Gets HTML from demo and presents it as copy/paste code.
+  function showHTML() {
+    console.log(root, htmlRoot.innerHTML)
+  }
+  
+  function prepareCodeBox() {
+    var codeBox = document.createElement('div');
+    codeBox.className = 'codeBox';
+    codeBox.innerHTML = '';
+  }
 	
 	// HTML
 	// If demo HTML is found
@@ -47,4 +61,15 @@ graphite.demo = function(root) {
 	// Add references to JavaScript libraries below textarea
 	
 	// Setup copy links for each textarea
+	
+	this.extractCode = function() {
+	  // Setup cut 'n paste containers
+	  prepareCodeBox();
+	  
+	  showHTML();
+	}
 }
+
+
+
+
