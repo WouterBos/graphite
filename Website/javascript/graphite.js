@@ -25,17 +25,38 @@ var graphite = {};
 graphite.demo = function(arg_root) {
   var root = arg_root;
   var htmlRoot = arg_root.querySelector('div.graphite_demoStage_html');
+  var codeBox;
   
   
   // Gets HTML from demo and presents it as copy/paste code.
   function showHTML() {
-    console.log(root, htmlRoot.innerHTML)
+    var pre = codeBox.querySelector('.html pre');
+    console.log(pre)
+    var demoHTML = htmlRoot.innerHTML;
+    demoHTML = demoHTML.replace(/</g, "&lt");
+    pre.innerHTML = demoHTML;
   }
   
   function prepareCodeBox() {
-    var codeBox = document.createElement('div');
+    codeBox = document.createElement('div');
     codeBox.className = 'codeBox';
-    codeBox.innerHTML = '';
+    codeBox.innerHTML =
+      '<ul>' +
+      ' <li class="html">' +
+      '   <strong class="localHeading">HTML</strong>' +
+      '   <pre></pre>' +
+      ' </li>' +
+      ' <li class="css">' +
+      '   <strong class="localHeading">CSS</strong>' +
+      '   <pre></pre>' +
+      ' </li>' +
+      ' <li class="javascript">' +
+      '   <strong class="localHeading">JavaScript</strong>' +
+      '   <pre></pre>' +
+      ' </li>' +
+      '</ul>';
+      
+      root.parentNode.insertBefore(codeBox, root.nextSibling);
   }
 	
 	// HTML

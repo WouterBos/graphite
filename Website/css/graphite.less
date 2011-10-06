@@ -1,4 +1,4 @@
-*.graphite_title {
+.graphite_title {
 	.gp_gradient(#ffffff, #eeeeee);
 	clear: both;
 	border-bottom: 1px solid #dddddd;
@@ -16,7 +16,7 @@
 
 
 
-*.gp_footer {
+.gp_footer {
 	border-top: 1px solid #dddddd;
 	padding: @gridFlex_blockSpacing / 2;
 	.gp_gradient(#eeeeee, #ffffff);
@@ -31,6 +31,27 @@
 	padding: @gridFlex_blockSpacing;
 	background: #eee;
 	.gp_shadow(3px, 3px, 5px, #999999);
+	
+	*.localHeading {
+		font-size: @h3;
+		font-weight: bold;
+	}
+}
+
+
+.codeBox {
+	li {
+		float: left;
+		margin-bottom: @gridFlex_blockSpacing;
+		width: 33.3%;
+		min-height: 1px;
+	}
+	
+	pre {
+		background: #eee;
+		width: 100%;
+		overflow: hidden;
+	}
 }
 
 
