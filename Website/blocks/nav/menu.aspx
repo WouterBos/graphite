@@ -29,19 +29,19 @@
                             <li><a href="#">Aliquam eu odio arcu, quis scelerisque nulla</a></li>
                             <li><a href="#">Porta</a></li>
                             <li><a href="#">Aliquam porttitor neque</a>
-							    <ul>
-								    <li><a href="#">Felis eu ultricies facilisis</a></li>
-								    <li><a href="#">Aliquam eu odio arcu, quis scelerisque nulla</a>
-									    <ul>
-										    <li><a href="#">Ipsum</a></li>
-										    <li><a href="#">Placerat</a></li>
-										    <li><a href="#">Porta</a></li>
-										    <li><a href="#">Imperdiet</a></li>
-										    <li><a href="#">Vestibulum</a></li>
-									    </ul>
-								    </li>
-								    <li><a href="#">Porta</a></li>
-							    </ul>
+                                <ul>
+                                    <li><a href="#">Felis eu ultricies facilisis</a></li>
+                                    <li><a href="#">Aliquam eu odio arcu, quis scelerisque nulla</a>
+                                        <ul>
+                                            <li><a href="#">Ipsum</a></li>
+                                            <li><a href="#">Placerat</a></li>
+                                            <li><a href="#">Porta</a></li>
+                                            <li><a href="#">Imperdiet</a></li>
+                                            <li><a href="#">Vestibulum</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Porta</a></li>
+                                </ul>
                             </li>
                             <li><a href="#">Contact</a></li>
                         </ul>
@@ -57,7 +57,12 @@
     
     <script>
         (function() {
-            var demo = new graphite.demo(document.getElementById('graphite_demoStage'));
+            var demo = new graphite.demo(
+                {
+                    root: document.getElementById('graphite_demoStage'),
+                    css: ["/css/blocks-nav-menu.less", "/css/blocks-nav-menu-type1.less"]
+                }
+            );
             demo.extractCode();
         })()
     </script>

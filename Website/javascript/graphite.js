@@ -22,18 +22,29 @@ var graphite = {};
  *
  * @param {Object} root The demo container.
  */
-graphite.demo = function(arg_root) {
-  var root = arg_root;
-  var htmlRoot = arg_root.querySelector('div.graphite_demoStage_html');
+graphite.demo = function(arg_config) {
+  var config = {
+    root: arg_config.root,
+    cssFiles: []
+  }
+  
+  if (typeof(arg_config.cssFiles) == 'object') {
+    for (var i = 0; i < arg_config.cssFiles.length; i++){
+    	config.cssFiles.push(arg_config.cssFiles[i]);
+    };
+  }
+  
+  var htmlRoot = config.root.querySelector('div.graphite_demoStage_html');
   var codeBox;
   
   
   // Gets HTML from demo and presents it as copy/paste code.
   function showHTML() {
     var pre = codeBox.querySelector('.html pre');
-    console.log(pre)
+
     var demoHTML = htmlRoot.innerHTML;
-    demoHTML = demoHTML.replace(/</g, "&lt");
+    demoHTML = demoHTML.replace(/</g, "&lt;");
+    demoHTML = demoHTML.replace(/>/g, "&gt;");
     pre.innerHTML = demoHTML;
   }
   
@@ -55,8 +66,8 @@ graphite.demo = function(arg_root) {
       '   <pre></pre>' +
       ' </li>' +
       '</ul>';
-      
-      root.parentNode.insertBefore(codeBox, root.nextSibling);
+
+      config.root.parentNode.insertBefore(codeBox, config.root.nextSibling);
   }
 	
 	// HTML
