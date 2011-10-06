@@ -60,7 +60,7 @@
             var demo = new graphite.demo(
                 {
                     root: document.getElementById('graphite_demoStage'),
-                    css: ["/css/blocks-nav-menu.less", "/css/blocks-nav-menu-type1.less"]
+                    cssFiles: document.querySelector("link.graphite_demoStage_html")
                 }
             );
             demo.extractCode();
@@ -71,7 +71,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" Runat="Server">
-    <link rel="stylesheet" media="all" href="all.less" />
+    <link rel="stylesheet" media="all" href="all.less" class="graphite_demoStage_html" />
 </asp:Content>
 
 

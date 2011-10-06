@@ -25,15 +25,9 @@ var graphite = {};
 graphite.demo = function(arg_config) {
   var config = {
     root: arg_config.root,
-    cssFiles: []
+    cssFiles: arg_config.cssFiles
   }
-  
-  if (typeof(arg_config.cssFiles) == 'object') {
-    for (var i = 0; i < arg_config.cssFiles.length; i++){
-    	config.cssFiles.push(arg_config.cssFiles[i]);
-    };
-  }
-  
+    
   var htmlRoot = config.root.querySelector('div.graphite_demoStage_html');
   var codeBox;
   
@@ -43,40 +37,65 @@ graphite.demo = function(arg_config) {
     var pre = codeBox.querySelector('.html pre');
 
     var demoHTML = htmlRoot.innerHTML;
-    demoHTML = demoHTML.replace(/</g, "&lt;");
-    demoHTML = demoHTML.replace(/>/g, "&gt;");
+    if (demoHTML.match(/[\d\w]/) == null) {
+      demoHTML = "No demo code found";
+    } else {
+      demoHTML = demoHTML.replace(/</g, "&lt;");
+      demoHTML = demoHTML.replace(/>/g, "&gt;");
+    }
     pre.innerHTML = demoHTML;
+  }
+  
+  function showCSS() {
+    if (typeof(config.cssFiles) == "object") {
+      var path = document.location.pathname;
+      removeIndex = path.lastIndexOf('/');
+      path = path.substring(0, removeIndex + 1);
+      var fileName = config.cssFiles.getAttribute('href').replace('.less', '');
+      loadXMLDoc(path + fileName);
+    };
+
+      function loadXMLDoc(lessLocation) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var pre = codeBox.querySelector('.css pre');
+            pre.innerHTML = xmlhttp.responseText;
+          }
+        }
+        xmlhttp.open('GET', '/getless.aspx?less=' + lessLocation, true);
+        xmlhttp.send();
+      }
   }
   
   function prepareCodeBox() {
     codeBox = document.createElement('div');
-    codeBox.className = 'codeBox';
+    codeBox.className = 'codeBox gp_columns gp_columns_3';
     codeBox.innerHTML =
-      '<ul>' +
-      ' <li class="html">' +
-      '   <strong class="localHeading">HTML</strong>' +
-      '   <pre></pre>' +
+      '<ul class="gp_innerColumns">' +
+      ' <li class="html gp_column gp_column1">' +
+      '   <div class="gp_block">' +
+      '     <strong class="localHeading">HTML</strong>' +
+      '     <pre></pre>' +
+      '   </div>' +
       ' </li>' +
-      ' <li class="css">' +
-      '   <strong class="localHeading">CSS</strong>' +
-      '   <pre></pre>' +
+      ' <li class="css gp_column gp_column2">' +
+      '   <div class="gp_block">' +
+      '     <strong class="localHeading">CSS</strong>' +
+      '     <pre></pre>' +
+      '   </div>' +
       ' </li>' +
-      ' <li class="javascript">' +
-      '   <strong class="localHeading">JavaScript</strong>' +
-      '   <pre></pre>' +
+      ' <li class="javascript gp_column gp_column3">' +
+      '   <div class="gp_block">' +
+      '     <strong class="localHeading">JavaScript</strong>' +
+      '     <pre></pre>' +
+      '   </div>' +
       ' </li>' +
       '</ul>';
 
       config.root.parentNode.insertBefore(codeBox, config.root.nextSibling);
   }
-	
-	// HTML
-	// If demo HTML is found
-		// Get HTML source from DOM
-		// Present HTML in textarea
-	// If no demo HTML was found
-		// Show text: "No HTML used"
-	
+		
 	// CSS
 	// If CSS is used
 		// Get CSS files that have been used  from DOM
@@ -99,6 +118,7 @@ graphite.demo = function(arg_config) {
 	  prepareCodeBox();
 	  
 	  showHTML();
+	  showCSS();
 	}
 }
 
