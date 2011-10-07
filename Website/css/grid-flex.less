@@ -62,16 +62,10 @@
 
 /* Columns basic style */
 *.gp_columns {
-	display: table;
 	width: 100%;
 	
-	*.gp_innerColumns {
-		display: table-row;
-	}
-
 	*.gp_column {
-		display: table-cell;
-		vertical-align: top;
+		float: left;
 	}
 
 	*.gp_column:first-child {
@@ -87,19 +81,11 @@
 		}
 	}
 }
-body.ie7 *.gp_columns {
-	min-height: 0;
-	
-	*.gp_column {
-		display: block;
-		float: left;
-	}
-}
-
 
 *.gp_columns + *.gp_columns {
 	margin-top: @gridFlex_blockSpacing;
 }
+
 
 
 /* 2 column style */

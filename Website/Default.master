@@ -13,9 +13,17 @@
 		<link href="/favicon.ico" rel="shortcut icon" />
 		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
 		
-		<link rel="stylesheet" media="all" href="/css/all-graphite-demo.less" />
+		<link href="/css/all-graphite-demo.less" rel="stylesheet" media="all" />
 		<asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
 		
+        <script src="/javascript/syntaxhiglighter/shCore.js"></script>
+        <script src="/javascript/syntaxhiglighter/shBrushCss.js"></script>
+        <script src="/javascript/syntaxhiglighter/shBrushJScript.js"></script>
+        <script src="/javascript/syntaxhiglighter/shBrushXml.js"></script>
+        
+		<link href="/css/syntaxhighlighter/shCore.css" rel="stylesheet" />
+		<link href="/css/syntaxhighlighter/shThemeDefault.css" rel="stylesheet" />
+        
 		<script src="/javascript/graphite.js"></script>
 	</head>
 	
@@ -31,25 +39,21 @@
 			            
                         <!-- Start | 3 Columns -->
 				        <div class="gp_columns gp_columns_1">
-				            <div class="gp_innerColumns">
-					            <div class="gp_column">
-					                <asp:ContentPlaceHolder ID="Intro" runat="server"></asp:ContentPlaceHolder>
-					            </div>
-					        </div>
+				            <div class="gp_column">
+				                <asp:ContentPlaceHolder ID="Intro" runat="server"></asp:ContentPlaceHolder>
+				            </div>
 					    </div>
 
 				        <div class="gp_columns gp_columns_3">
-				            <div class="gp_innerColumns">
-					            <div class="gp_column gp_column1">
-					                <asp:ContentPlaceHolder ID="Column3_1" runat="server"></asp:ContentPlaceHolder>
-					            </div>
-					            <div class="gp_column gp_column2">
-					                <asp:ContentPlaceHolder ID="Column3_2" runat="server"></asp:ContentPlaceHolder>
-					            </div>
-					            <div class="gp_column gp_column3">
-					                <asp:ContentPlaceHolder ID="Column3_3" runat="server"></asp:ContentPlaceHolder>
-					            </div>
-					        </div>
+				            <div class="gp_column gp_column1">
+				                <asp:ContentPlaceHolder ID="Column3_1" runat="server"></asp:ContentPlaceHolder>
+				            </div>
+				            <div class="gp_column gp_column2">
+				                <asp:ContentPlaceHolder ID="Column3_2" runat="server"></asp:ContentPlaceHolder>
+				            </div>
+				            <div class="gp_column gp_column3">
+				                <asp:ContentPlaceHolder ID="Column3_3" runat="server"></asp:ContentPlaceHolder>
+				            </div>
 					    </div>
 					    <!-- End | 3 Columns -->
 				    </div>
@@ -83,5 +87,10 @@
 			    <!-- End | Header -->
 			</div>
 		</form>
+		
+
+		<script>
+		    SyntaxHighlighter.all();
+		</script>
 	</body>
 </html>

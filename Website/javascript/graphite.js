@@ -46,26 +46,47 @@ graphite.demo = function(arg_config) {
     pre.innerHTML = demoHTML;
   }
   
+  // Gets Less code from demo and presents it as copy/paste code.
   function showCSS() {
     if (typeof(config.cssFiles) == "object") {
       var path = document.location.pathname;
       removeIndex = path.lastIndexOf('/');
       path = path.substring(0, removeIndex + 1);
       var fileName = config.cssFiles.getAttribute('href').replace('.less', '');
-      loadXMLDoc(path + fileName);
+      getLessCode(path + fileName);
+      
+      // Also show plain CSS code
+      var link = document.createElement('a');
+      link.innerHTML = 'Get plain CSS';
+      link.href = config.cssFiles.href;
+      link.className = 'preLink';
+      var title = codeBox.querySelector('.css pre');
+      title.parentNode.insertBefore(link, title);
     };
 
-      function loadXMLDoc(lessLocation) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var pre = codeBox.querySelector('.css pre');
-            pre.innerHTML = xmlhttp.responseText;
-          }
+    function getLessCode(lessLocation) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          var pre = codeBox.querySelector('.css pre');
+          pre.innerHTML = xmlhttp.responseText;
         }
-        xmlhttp.open('GET', '/getless.aspx?less=' + lessLocation, true);
-        xmlhttp.send();
       }
+      xmlhttp.open('GET', '/getless.aspx?less=' + lessLocation, true);
+      xmlhttp.send();
+    }
+  }
+  
+  // Gets JavaScript code from demo and presents it as copy/paste code
+  function getJavaScript() {
+    var pre = codeBox.querySelector('.javascript pre');
+    var script = config.root.querySelector('script');
+    
+    if (script == null) {
+      pre.innerHTML = '//No JavaScript used.';
+    } else {
+      pre.innerHTML = script.innerHTML;
+    }
   }
   
   function prepareCodeBox() {
@@ -76,19 +97,19 @@ graphite.demo = function(arg_config) {
       ' <li class="html gp_column gp_column1">' +
       '   <div class="gp_block">' +
       '     <strong class="localHeading">HTML</strong>' +
-      '     <pre></pre>' +
+      '     <pre class="brush: xml"></pre>' +
       '   </div>' +
       ' </li>' +
       ' <li class="css gp_column gp_column2">' +
       '   <div class="gp_block">' +
       '     <strong class="localHeading">CSS</strong>' +
-      '     <pre></pre>' +
+      '     <pre class="brush: css"></pre>' +
       '   </div>' +
       ' </li>' +
       ' <li class="javascript gp_column gp_column3">' +
       '   <div class="gp_block">' +
       '     <strong class="localHeading">JavaScript</strong>' +
-      '     <pre></pre>' +
+      '     <pre class="brush: js"></pre>' +
       '   </div>' +
       ' </li>' +
       '</ul>';
@@ -96,15 +117,6 @@ graphite.demo = function(arg_config) {
       config.root.parentNode.insertBefore(codeBox, config.root.nextSibling);
   }
 		
-	// CSS
-	// If CSS is used
-		// Get CSS files that have been used  from DOM
-		// Make CSS readable
-		// Present CSS in textarea
-		// Add references to .less files below textarea
-	// If no CSS is used
-		// Show text: "No CSS used"
-	
 	// JAVASCRIPT
 	// Get JavaScript files that have been used from DOM
 	// Get JavaScript code that has been used in the demo page
@@ -119,6 +131,7 @@ graphite.demo = function(arg_config) {
 	  
 	  showHTML();
 	  showCSS();
+	  getJavaScript();
 	}
 }
 

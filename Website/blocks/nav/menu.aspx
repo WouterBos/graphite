@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Blocks › Navigation › Menu" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="menu.aspx.cs" Inherits="blocks_nav_menu" %>
+﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="menu.aspx.cs" Inherits="blocks_nav_menu" %>
 
 
 
@@ -53,6 +53,10 @@
                 </ul>
             </div>
         </div>
+        
+        <!--<script>
+            // Lorem ipsum dolor
+        </script>-->
     </div>
     
     <script>
@@ -77,7 +81,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Title" Runat="Server">
-    <strong runat="server" id="PageTitle"></strong> Graphite
+    <strong runat="server" id="PageTitle"></strong> ‹ <a href="/blocks/nav">Navigation</a> ‹ <a href="/blocks">Blocks</a> ‹ <a href="/">Graphite</a>
 </asp:Content>
 
 

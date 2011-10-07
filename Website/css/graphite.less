@@ -1,17 +1,37 @@
+html {
+	background: #f9f9f9;
+}
+
+
+
 .graphite_title {
-	.gp_gradient(#ffffff, #eeeeee);
+	.gp_gradient(#f9f9f9, #e5e5e5);
 	clear: both;
 	border-bottom: 1px solid #dddddd;
-	padding: 5px 5px 5px 5px;
+	padding: @gridFlex_blockSpacing / 2;
 	color: #333333;
 	font-family: Consolas;
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: normal;
 
 	strong {
-		margin-right: 0.8em;
 		color: #000000;
+		font-size: 24px;
 	}
+	
+	a {
+		color: #333333;
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+}
+
+
+
+.gp_content {
+	background: #ffffff;
 }
 
 
@@ -19,7 +39,7 @@
 .gp_footer {
 	border-top: 1px solid #dddddd;
 	padding: @gridFlex_blockSpacing / 2;
-	.gp_gradient(#eeeeee, #ffffff);
+	.gp_gradient(#e5e5e5, #f9f9f9);
 }
 
 
@@ -44,6 +64,10 @@
 		height: 200px;
 		overflow: auto;
 		background: #eee;
+	}
+	
+	.preLink {
+		float: right;
 	}
 }
 
