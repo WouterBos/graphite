@@ -1,64 +1,45 @@
 ﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="menu.aspx.cs" Inherits="blocks_nav_menu" %>
-
+<%@ Register TagPrefix="UserControl" TagName="DemoHTML" Src="html.ascx" %>
 
 
 <asp:Content ID="Content8" ContentPlaceHolderID="DemoStage" Runat="Server">
-    <div class="graphite_demoStage" id="graphite_demoStage">
-        <div class="graphite_demoStage_html">
-            <div class="gp_nav_menu gp_horizontal">
-                <ul>
-                    <li><a href="#">Short</a>
-                        <ul>
-                            <li><a href="#">Dolor</a></li>
-                            <li><a href="#">Consectetur</a></li>
-                            <li><a href="#">Adipiscing</a></li>
-                            <li><a href="#">Suspendisse</a>
-                                <ul>
-                                    <li><a href="#">Ipsum</a></li>
-                                    <li><a href="#">Placerat</a></li>
-                                    <li><a href="#">Porta</a></li>
-                                    <li><a href="#">Imperdiet</a></li>
-                                    <li><a href="#">Vestibulum</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Long</a>
-                        <ul>
-                            <li><a href="#">Vestibulum imperdiet, felis eu ultricies facilisis</a></li>
-                            <li><a href="#">Aliquam eu odio arcu, quis scelerisque nulla</a></li>
-                            <li><a href="#">Porta</a></li>
-                            <li><a href="#">Aliquam porttitor neque</a>
-                                <ul>
-                                    <li><a href="#">Felis eu ultricies facilisis</a></li>
-                                    <li><a href="#">Aliquam eu odio arcu, quis scelerisque nulla</a>
-                                        <ul>
-                                            <li><a href="#">Ipsum</a></li>
-                                            <li><a href="#">Placerat</a></li>
-                                            <li><a href="#">Porta</a></li>
-                                            <li><a href="#">Imperdiet</a></li>
-                                            <li><a href="#">Vestibulum</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Porta</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Dolor</a></li>
-                    <li><a href="#">Consectetur</a></li>
-                    <li><a href="#">Adipiscing</a></li>
-                    <li><a href="#">Suspendisse</a></li>
-                </ul>
+    <div id="graphite_demoStage">
+        <asp:Panel ID="Types" runat="server"></asp:Panel>
+        
+        <div class="graphite_demoStage">
+            <div class="graphite_demoStage_html">
+<UserControl:DemoHTML runat="server" ID="DemoHTML1" />
             </div>
+
+            <!--<script>
+                // Lorem ipsum dolor
+            </script>-->
         </div>
         
-        <!--<script>
-            // Lorem ipsum dolor
-        </script>-->
-    </div>
-    
+        <div class="codeBox js_codeBox gp_columns gp_columns_3">
+            <ul class="gp_innerColumns">
+                <li class="html gp_column gp_column1">
+                    <div class="gp_block">
+                        <strong class="localHeading">HTML</strong>
+                        <pre class="brush: xml"><UserControl:DemoHTML runat="server" ID="DemoHTML2" /></pre>
+                    </div>
+                </li>
+                <li class="css gp_column gp_column2">
+                    <div class="gp_block">
+                        <strong class="localHeading">CSS</strong>
+                        <pre class="brush: css"></pre>
+                    </div>
+                </li>
+                <li class="javascript gp_column gp_column3">
+                    <div class="gp_block">
+                        <strong class="localHeading">JavaScript</strong>
+                        <pre class="brush: js"></pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+   </div>
+
     <script>
         (function() {
             var demo = new graphite.demo(

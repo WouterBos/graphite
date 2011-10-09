@@ -27,7 +27,7 @@
 
 .syntaxhighlighter
 {
-	background-color: #E7E5DC;
+	background-color: #F8F8F8;
 }
 
 /* Highlighed line number */
@@ -76,7 +76,7 @@
 
 .syntaxhighlighter .line .content .block
 {
-	background: url(wrapping.png) 0 1.1em no-repeat;
+	/*background: url(wrapping.png) 0 1.1em no-repeat;*/
 }
 
 .syntaxhighlighter .ruler
@@ -95,6 +95,7 @@
 {
 	background-color: #F8F8F8;
 	border: #E7E5DC solid 1px;
+	white-space: nowrap;
 }
 
 .syntaxhighlighter .toolbar a

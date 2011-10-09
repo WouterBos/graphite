@@ -29,7 +29,7 @@ graphite.demo = function(arg_config) {
   }
     
   var htmlRoot = config.root.querySelector('div.graphite_demoStage_html');
-  var codeBox;
+  var codeBox = config.root.querySelector('.js_codeBox');
   
   
   // Gets HTML from demo and presents it as copy/paste code.
@@ -70,6 +70,9 @@ graphite.demo = function(arg_config) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
           var pre = codeBox.querySelector('.css pre');
           pre.innerHTML = xmlhttp.responseText;
+          
+          SyntaxHighlighter.defaults['gutter'] = false;
+          SyntaxHighlighter.all();
         }
       }
       xmlhttp.open('GET', '/getless.aspx?less=' + lessLocation, true);
@@ -88,35 +91,7 @@ graphite.demo = function(arg_config) {
       pre.innerHTML = script.innerHTML;
     }
   }
-  
-  function prepareCodeBox() {
-    codeBox = document.createElement('div');
-    codeBox.className = 'codeBox gp_columns gp_columns_3';
-    codeBox.innerHTML =
-      '<ul class="gp_innerColumns">' +
-      ' <li class="html gp_column gp_column1">' +
-      '   <div class="gp_block">' +
-      '     <strong class="localHeading">HTML</strong>' +
-      '     <pre class="brush: xml"></pre>' +
-      '   </div>' +
-      ' </li>' +
-      ' <li class="css gp_column gp_column2">' +
-      '   <div class="gp_block">' +
-      '     <strong class="localHeading">CSS</strong>' +
-      '     <pre class="brush: css"></pre>' +
-      '   </div>' +
-      ' </li>' +
-      ' <li class="javascript gp_column gp_column3">' +
-      '   <div class="gp_block">' +
-      '     <strong class="localHeading">JavaScript</strong>' +
-      '     <pre class="brush: js"></pre>' +
-      '   </div>' +
-      ' </li>' +
-      '</ul>';
-
-      config.root.parentNode.insertBefore(codeBox, config.root.nextSibling);
-  }
-		
+  		
 	// JAVASCRIPT
 	// Get JavaScript files that have been used from DOM
 	// Get JavaScript code that has been used in the demo page
@@ -127,11 +102,10 @@ graphite.demo = function(arg_config) {
 	
 	this.extractCode = function() {
 	  // Setup cut 'n paste containers
-	  prepareCodeBox();
 	  
 	  showHTML();
-	  showCSS();
 	  getJavaScript();
+	  showCSS();
 	}
 }
 

@@ -87,10 +87,5 @@
 			    <!-- End | Header -->
 			</div>
 		</form>
-		
-
-		<script>
-		    SyntaxHighlighter.all();
-		</script>
 	</body>
 </html>
