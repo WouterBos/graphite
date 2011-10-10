@@ -31,6 +31,22 @@
 
 
 
+<asp:Content ID="Content1" ContentPlaceHolderID="Todo" Runat="Server">
+    <div class="gp_block gp_text">
+        <article>
+            <h1 class="heading2">Todo</h1>
+            <ul>
+                <li><strong>Themes</strong> managed with just a few Less variables</li>
+                <li><strong>Generic blocks</strong> multi-purpose elements like for example a list with just title, sub title and a short text</li>
+                <li><strong>Fine-grained spacing</strong> different values for horizontal and vertical spacing</li>
+                <li><strong>5 column option</strong> for flexgrid</li>
+            </ul>
+        </article>
+    </div>
+</asp:Content>
+
+
+
 <asp:Content ID="Column3_1" ContentPlaceHolderID="Column3_1" Runat="Server">
     <div class="gp_block">
         <div class="gp_sitemap">

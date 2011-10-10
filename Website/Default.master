@@ -38,9 +38,12 @@
 			            <asp:ContentPlaceHolder ID="DemoStage" runat="server"></asp:ContentPlaceHolder>
 			            
                         <!-- Start | 3 Columns -->
-				        <div class="gp_columns gp_columns_1">
-				            <div class="gp_column">
+				        <div class="gp_columns gp_columns_2">
+				            <div class="gp_column gp_column1">
 				                <asp:ContentPlaceHolder ID="Intro" runat="server"></asp:ContentPlaceHolder>
+				            </div>
+				            <div class="gp_column gp_column2">
+				                <asp:ContentPlaceHolder ID="Todo" runat="server"></asp:ContentPlaceHolder>
 				            </div>
 					    </div>
 

@@ -32,20 +32,6 @@ graphite.demo = function(arg_config) {
   var codeBox = config.root.querySelector('.js_codeBox');
   
   
-  // Gets HTML from demo and presents it as copy/paste code.
-  function showHTML() {
-    var pre = codeBox.querySelector('.html pre');
-
-    var demoHTML = htmlRoot.innerHTML;
-    if (demoHTML.match(/[\d\w]/) == null) {
-      demoHTML = "No demo code found";
-    } else {
-      demoHTML = demoHTML.replace(/</g, "&lt;");
-      demoHTML = demoHTML.replace(/>/g, "&gt;");
-    }
-    pre.innerHTML = demoHTML;
-  }
-  
   // Gets Less code from demo and presents it as copy/paste code.
   function showCSS() {
     if (typeof(config.cssFiles) == "object") {
@@ -103,7 +89,6 @@ graphite.demo = function(arg_config) {
 	this.extractCode = function() {
 	  // Setup cut 'n paste containers
 	  
-	  showHTML();
 	  getJavaScript();
 	  showCSS();
 	}

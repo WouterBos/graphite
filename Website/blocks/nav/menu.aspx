@@ -8,7 +8,7 @@
         
         <div class="graphite_demoStage">
             <div class="graphite_demoStage_html">
-<UserControl:DemoHTML runat="server" ID="DemoHTML1" />
+<UserControl:DemoHTML runat="server" ID="DemoHTML1" CssType="horizontal" />
             </div>
 
             <!--<script>
@@ -21,7 +21,7 @@
                 <li class="html gp_column gp_column1">
                     <div class="gp_block">
                         <strong class="localHeading">HTML</strong>
-                        <pre class="brush: xml"><UserControl:DemoHTML runat="server" ID="DemoHTML2" /></pre>
+                        <pre class="brush: xml"><UserControl:DemoHTML runat="server" ID="DemoHTML2" PrintAsCopyableCode="true" CssType="horizontal" /></pre>
                     </div>
                 </li>
                 <li class="css gp_column gp_column2">
@@ -38,7 +38,7 @@
                 </li>
             </ul>
         </div>
-   </div>
+    </div>
 
     <script>
         (function() {
@@ -50,6 +50,8 @@
             );
             demo.extractCode();
         })()
+        
+		SyntaxHighlighter.all();
     </script>
 </asp:Content>
 

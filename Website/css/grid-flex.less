@@ -51,11 +51,10 @@
 	border-top: @gridFlex_headerHeight solid transparent;
 	padding: @gridFlex_blockSpacing 0;
 	min-height: 0;
-}
-*.gp_content:after {
-	content:"";
-	display:block;
-	clear:both;
+	
+	&:after {
+	    .clear;
+	}
 }
 
 
@@ -63,6 +62,11 @@
 /* Columns basic style */
 *.gp_columns {
 	width: 100%;
+	min-height: 0;
+	
+	&:after {
+	    .clear;
+	}
 	
 	*.gp_column {
 		float: left;
@@ -91,11 +95,11 @@
 /* 2 column style */
 *.gp_columns_2 {
 	*.gp_column1 {
-		width: 30%;
+		width: 70%;
 	}
 
 	*.gp_column2 {
-		width: 70%;
+		width: 30%;
 		*.gp_block {
 			margin-right: 0;
 		}
