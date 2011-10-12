@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
@@ -85,6 +86,23 @@ public partial class blocks_nav_menu : System.Web.UI.Page
     private void GetLessSource()
     {
         int menuItemActive = GetActiveIndex();
-        CSSLink.Attributes["href"] = demos[menuItemActive].ToLower() + ".less";
+        string strCssLink = demos[menuItemActive].ToLower() + ".less";
+        CSSLink.Attributes["href"] = strCssLink;
+        aCssPlainLink.Attributes["href"] = strCssLink;
+        
+        string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
+        string less = demos[menuItemActive].ToLower();
+        less = less.Replace("/", "\\");
+        System.IO.StreamReader sr = new System.IO.StreamReader(root + less + ".less");
+        string line;
+        StringBuilder sbDemoCss = new StringBuilder();
+
+        while(sr.Peek() != -1)
+        {
+           line = sr.ReadLine();
+           sbDemoCss.AppendLine(line);
+        }
+
+        DemoCSS.Text = sbDemoCss.ToString();
     }
 }

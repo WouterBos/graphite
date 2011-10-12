@@ -27,6 +27,7 @@
                 <li class="css gp_column gp_column2">
                     <div class="gp_block">
                         <strong class="localHeading">CSS</strong>
+                        <a href="#" class="preLink" runat="server" ID="aCssPlainLink">Get plain CSS</a>
                         <pre class="brush: css"><asp:Literal ID="DemoCSS" runat="server"></asp:Literal></pre>
                     </div>
                 </li>

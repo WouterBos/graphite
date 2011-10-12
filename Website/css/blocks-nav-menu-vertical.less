@@ -1,0 +1,26 @@
+.gp_nav_menu.gp_vertical {
+	background: @gp_colorLow;
+	
+	li {
+		border-top: 1px solid @gp_colorHigh;
+	}
+	> li:first-child {
+		border-top-width: 0;
+	}
+
+	li + li {
+		padding-left: @gridFlex_blockSpacing
+	}
+	
+	a {
+		display: block;
+		.transition(all, 1s, ease-out);
+		color: @gp_colorHigh;
+		text-decoration: none;
+		padding: @gridFlex_blockSpacing / 4 @gridFlex_blockSpacing / 2;
+	}
+	a:hover {
+		.transition(all, 0.1s, ease-out);
+		background: @gp_colorLow + #444;
+	}
+}
