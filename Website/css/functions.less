@@ -21,6 +21,12 @@
   border-radius: @radius;
 }
 
+.rounded_corners_all(@topLeft: 5px, @topRight: 5px, @bottomRight: 5px, @bottomLeft: 5px) {
+  -moz-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
+  -webkit-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
+  border-radius: @topLeft @topRight @bottomRight @bottomLeft;
+}
+
 .clear {
 	display: block;
 	clear: both;

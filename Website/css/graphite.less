@@ -39,21 +39,55 @@ html {
 .gp_footer {
 	border-top: 1px solid #dddddd;
 	padding: @gridFlex_blockSpacing / 2;
-	.gp_gradient(#e5e5e5, #f9f9f9);
+	.gp_gradient(@gp_colorHigh - #1a1a1a, @gp_colorHigh - #060606);
 }
 
 
 
 /* Graphite demo */
 .graphite_demoStage {
+	position: relative;
 	margin-bottom: @gridFlex_blockSpacing;
 	border: 1px solid #aaa;
 	padding: @gridFlex_blockSpacing;
-	background: #eee;
-	.gp_shadow(3px, 3px, 5px, #999999);
-	
+	background: @gp_colorHigh - #111;
+	.gp_shadow(0, 0, 5px, #999999);
+		
 	*.localHeading {
 		font-size: @h3;
+		font-weight: bold;
+	}
+}
+
+
+.graphite_demoStage_menu {
+	position: relative;
+	top: 1px;
+	
+	a {
+		display: inline-block;
+		border: 1px solid #aaa;
+		border-bottom-width: 0;
+		.rounded_corners_all();
+		padding: @gridFlex_blockSpacing/5 @gridFlex_blockSpacing/3;
+		color: #333333;
+		font-size: 1.2em;
+		text-decoration: none;
+		background: @gp_colorHigh - #111;
+		.gp_shadow(0, 0, 5px, #999999);
+		.rounded_corners_all(3px, 3px, 0, 0);
+	}
+	a:hover {
+		color: @gp_colorLow;
+		background: @gp_colorHigh;
+		.gp_shadow(0, 0, 5px, #333333);
+	}
+	a + a {
+		margin-left: @gridFlex_blockSpacing/10;
+	}
+	
+	a.active {
+		color: @gp_colorLow;
 		font-weight: bold;
 	}
 }

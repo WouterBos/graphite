@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content8" ContentPlaceHolderID="DemoStage" Runat="Server">
     <div id="graphite_demoStage">
-        <asp:Panel ID="Types" runat="server"></asp:Panel>
+        <asp:Panel ID="Types" runat="server" CssClass="graphite_demoStage_menu"></asp:Panel>
         
         <div class="graphite_demoStage">
             <div class="graphite_demoStage_html">
@@ -27,7 +27,7 @@
                 <li class="css gp_column gp_column2">
                     <div class="gp_block">
                         <strong class="localHeading">CSS</strong>
-                        <pre class="brush: css"></pre>
+                        <pre class="brush: css"><asp:Literal ID="DemoCSS" runat="server"></asp:Literal></pre>
                     </div>
                 </li>
                 <li class="javascript gp_column gp_column3">
@@ -58,7 +58,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" Runat="Server">
-    <link rel="stylesheet" media="all" href="all.less" class="graphite_demoStage_html" />
+    <link rel="stylesheet" media="all" href="all.less" runat="server" id="CSSLink" />
 </asp:Content>
 
 

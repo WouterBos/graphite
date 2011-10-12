@@ -90,7 +90,7 @@ graphite.demo = function(arg_config) {
 	  // Setup cut 'n paste containers
 	  
 	  getJavaScript();
-	  showCSS();
+	  //showCSS();
 	}
 }
 
