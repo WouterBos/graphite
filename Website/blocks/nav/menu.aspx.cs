@@ -13,7 +13,14 @@ public partial class blocks_nav_menu : System.Web.UI.Page
     string[] demos = new string[]
     {
         "Horizontal",
-        "Vertical"
+        "Vertical",
+        "Collapse"
+    };
+    string[] demosClasses = new string[]
+    {
+        "gp_horizontal",
+        "gp_vertical",
+        "gp_horizontal gp_collapse"
     };
     
     
@@ -32,7 +39,7 @@ public partial class blocks_nav_menu : System.Web.UI.Page
     {
         CreateMenu();
         GetDemoHTML();
-        GetLessSource();
+        GetCssDemo();
     }
     
     private int GetActiveIndex()
@@ -68,7 +75,7 @@ public partial class blocks_nav_menu : System.Web.UI.Page
     private void GetDemoHTML()
     {
         // Set HTML CSS class
-        DemoHTML1.CssType = "gp_" + demos[0].ToLower();
+        DemoHTML1.CssType = demosClasses[0];
         if (String.IsNullOrEmpty(Request.QueryString["type"]) == false)
         {
             Regex regxNum = new Regex(@"^\d+$");
@@ -77,13 +84,13 @@ public partial class blocks_nav_menu : System.Web.UI.Page
             if (isNumeric == true)
             {
                 int type = Convert.ToInt32(Request.QueryString["type"]);
-                DemoHTML1.CssType = "gp_" + demos[type].ToLower();
+                DemoHTML1.CssType = demosClasses[type];
             }
         }
         DemoHTML2.CssType = DemoHTML1.CssType;
     }
     
-    private void GetLessSource()
+    private void GetCssDemo()
     {
         int menuItemActive = GetActiveIndex();
         string strCssLink = demos[menuItemActive].ToLower() + ".less";
@@ -93,16 +100,26 @@ public partial class blocks_nav_menu : System.Web.UI.Page
         string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
         string less = demos[menuItemActive].ToLower();
         less = less.Replace("/", "\\");
-        System.IO.StreamReader sr = new System.IO.StreamReader(root + less + ".less");
-        string line;
         StringBuilder sbDemoCss = new StringBuilder();
 
-        while(sr.Peek() != -1)
+        try
         {
-           line = sr.ReadLine();
-           sbDemoCss.AppendLine(line);
+            System.IO.StreamReader sr = new System.IO.StreamReader(root + less + ".less");
+            string line;
+            sbDemoCss.AppendLine("<pre class='brush: css'>");
+
+            while(sr.Peek() != -1)
+            {
+               line = sr.ReadLine();
+               sbDemoCss.AppendLine(line);
+            }
+            sbDemoCss.AppendLine("</pre>");
+        }
+        catch(Exception exp) {
+            sbDemoCss.AppendLine("<p>No CSS used</p>");
+            aCssPlainLink.Visible = false;
         }
 
-        DemoCSS.Text = sbDemoCss.ToString();
+        DemoCss.Text = sbDemoCss.ToString();
     }
 }
