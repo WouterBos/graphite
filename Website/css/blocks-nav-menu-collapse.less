@@ -1,9 +1,40 @@
-@navMenu_background: #000000;
+@navMenuCollapse_height: 28px;
 
 .gp_nav_menu.gp_horizontal.gp_collapse {
-	> ul > ul {
-		position: absolute
+	li {
+		position: relative;
 	}
 	
+	li li {
+		display: block;
+	}
+
+	li li a {
+		display: block;
+		float: none;
+	}
 	
+	li li a {
+		display: block;
+		border-top: 1px solid @gp_colorHigh;
+	}
+
+	li li:first-child a {
+		border-top-width: 0;
+	}
+	
+	> ul > li > ul {
+		position: absolute;
+		z-index: 100000;
+		top: @navMenuCollapse_height;
+		left: 0;
+	}
+	
+	li:hover > ul {
+		display: block
+	}
+
+	li li:hover > ul {
+		margin-left: 100%;
+	}
 }

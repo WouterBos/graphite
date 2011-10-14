@@ -15,6 +15,7 @@
 		color: #ffffff;
 		text-decoration: none;
 		padding: @gridFlex_blockSpacing / 4 @gridFlex_blockSpacing / 2;
+		background: @gp_colorLow;
 	}
 	a:hover {
 		.transition(all, 0.1s, ease-out);
@@ -24,8 +25,12 @@
 		border-left-width: 0;
 	}
 	
-	ul, li {
+	ul {
 		display: inline;
+	}
+
+	> li {
+		display: inline-block;
 	}
 	
 	ul ul {

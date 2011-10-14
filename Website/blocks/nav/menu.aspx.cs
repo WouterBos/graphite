@@ -39,8 +39,11 @@ public partial class blocks_nav_menu : System.Web.UI.Page
     {
         CreateMenu();
         GetDemoHTML();
-        GetCssDemo();
+        GetDemoCss();
+        GetDemoJavaScript();
     }
+
+
     
     private int GetActiveIndex()
     {
@@ -71,11 +74,13 @@ public partial class blocks_nav_menu : System.Web.UI.Page
             Types.Controls.Add(link);
         }
     }
+
+
     
     private void GetDemoHTML()
     {
         // Set HTML CSS class
-        DemoHTML1.CssType = demosClasses[0];
+        DemoHTMLCodeBlock.CssType = demosClasses[0];
         if (String.IsNullOrEmpty(Request.QueryString["type"]) == false)
         {
             Regex regxNum = new Regex(@"^\d+$");
@@ -84,13 +89,15 @@ public partial class blocks_nav_menu : System.Web.UI.Page
             if (isNumeric == true)
             {
                 int type = Convert.ToInt32(Request.QueryString["type"]);
-                DemoHTML1.CssType = demosClasses[type];
+                DemoHTMLCodeBlock.CssType = demosClasses[type];
             }
         }
-        DemoHTML2.CssType = DemoHTML1.CssType;
+        DemoHTML.CssType = DemoHTMLCodeBlock.CssType;
     }
+
+
     
-    private void GetCssDemo()
+    private void GetDemoCss()
     {
         int menuItemActive = GetActiveIndex();
         string strCssLink = demos[menuItemActive].ToLower() + ".less";
@@ -121,5 +128,39 @@ public partial class blocks_nav_menu : System.Web.UI.Page
         }
 
         DemoCss.Text = sbDemoCss.ToString();
+    }
+    
+
+
+    private void GetDemoJavaScript()
+    {
+        int menuItemActive = GetActiveIndex();
+        string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
+        string javaScript = demos[menuItemActive].ToLower();
+        javaScript = javaScript.Replace("/", "\\");
+        StringBuilder sbDemoJavaScript = new StringBuilder();
+
+        try
+        {
+            System.IO.StreamReader sr = new System.IO.StreamReader(root + javaScript + ".js");
+            string line;
+            sbDemoJavaScript.AppendLine("<pre class='brush: js'>");
+
+            while (sr.Peek() != -1)
+            {
+                line = sr.ReadLine();
+                sbDemoJavaScript.AppendLine(line);
+            }
+            sbDemoJavaScript.AppendLine("</pre>");
+        }
+        catch (Exception exp)
+        {
+            sbDemoJavaScript.AppendLine("<p>No JavaScript used</p>");
+            aCssPlainLink.Visible = false;
+        }
+
+        DemoJavaScript.Text = sbDemoJavaScript.ToString();
+        
+        DemoJavaScriptCodeBlock.Text = sbDemoJavaScript.ToString();
     }
 }

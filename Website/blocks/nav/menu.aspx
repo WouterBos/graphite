@@ -8,12 +8,10 @@
         
         <div class="graphite_demoStage">
             <div class="graphite_demoStage_html">
-<UserControl:DemoHTML runat="server" ID="DemoHTML1" CssType="horizontal" />
+<UserControl:DemoHTML runat="server" ID="DemoHTMLCodeBlock" CssType="horizontal" />
             </div>
 
-            <!--<script>
-                // Lorem ipsum dolor
-            </script>-->
+            <asp:Literal ID="DemoJavaScriptCodeBlock" runat="server"></asp:Literal>
         </div>
         
         <div class="codeBox js_codeBox gp_columns gp_columns_3">
@@ -21,7 +19,7 @@
                 <li class="html gp_column gp_column1">
                     <div class="gp_block">
                         <strong class="localHeading">HTML</strong>
-                        <pre class="brush: xml"><UserControl:DemoHTML runat="server" ID="DemoHTML2" PrintAsCopyableCode="true" CssType="horizontal" /></pre>
+                        <pre class="brush: xml"><UserControl:DemoHTML runat="server" ID="DemoHTML" PrintAsCopyableCode="true" CssType="horizontal" /></pre>
                     </div>
                 </li>
                 <li class="css gp_column gp_column2">
@@ -34,7 +32,7 @@
                 <li class="javascript gp_column gp_column3">
                     <div class="gp_block">
                         <strong class="localHeading">JavaScript</strong>
-                        <pre class="brush: js"></pre>
+                        <asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>
                     </div>
                 </li>
             </ul>
