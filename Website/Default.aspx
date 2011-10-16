@@ -40,6 +40,7 @@
                 <li><strong>Generic blocks</strong> multi-purpose elements like for example a list with just title, sub title and a short text</li>
                 <li><strong>Fine-grained spacing</strong> different values for horizontal and vertical spacing</li>
                 <li><strong>5 column option</strong> for flexgrid</li>
+                <li><strong>Export</strong> less import file (and possibly other stuff) by selecting graphite components</li>
             </ul>
         </article>
     </div>
