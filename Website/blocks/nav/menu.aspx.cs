@@ -166,11 +166,12 @@ public partial class blocks_nav_menu : System.Web.UI.Page
         }
         else
         {
-            demoStageCode = "<p>Ok</p>";
+            demoStageCode = sbDemoJavaScript.ToString();
         }
         demoStageCode = demoStageCode.Replace("<script", "&lt;script");
+        demoStageCode = demoStageCode.Replace("</script", "&lt;/script");
         demoStageCode = demoStageCode.Replace("script>", "script&gt;");
-        demoStageCode = "<pre class='brush: xml'>" + demoStageCode + "</pre>";
+        demoStageCode = "<pre class='brush: js'>" + demoStageCode + "</pre>";
         DemoJavaScript.Text = demoStageCode;
     }
 }
