@@ -19,7 +19,7 @@
                 <li class="html gp_column gp_column1">
                     <div class="gp_block">
                         <strong class="localHeading">HTML</strong>
-                        <pre class="brush: xml"><UserControl:DemoHTML runat="server" ID="DemoHTML" PrintAsCopyableCode="true" CssType="horizontal" /></pre>
+                        <pre name="code" class="brush: xml"><UserControl:DemoHTML runat="server" ID="DemoHTML" PrintAsCopyableCode="true" CssType="horizontal" /></pre>
                     </div>
                 </li>
                 <li class="css gp_column gp_column2">

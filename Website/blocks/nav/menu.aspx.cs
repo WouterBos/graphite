@@ -138,29 +138,39 @@ public partial class blocks_nav_menu : System.Web.UI.Page
         string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
         string javaScript = demos[menuItemActive].ToLower();
         javaScript = javaScript.Replace("/", "\\");
+        string demoStageCode = "";
         StringBuilder sbDemoJavaScript = new StringBuilder();
 
         try
         {
-            System.IO.StreamReader sr = new System.IO.StreamReader(root + javaScript + ".js");
+            System.IO.StreamReader sr = new System.IO.StreamReader(root + javaScript + ".js.html");
             string line;
-            sbDemoJavaScript.AppendLine("<pre class='brush: js'>");
 
             while (sr.Peek() != -1)
             {
                 line = sr.ReadLine();
                 sbDemoJavaScript.AppendLine(line);
             }
-            sbDemoJavaScript.AppendLine("</pre>");
         }
         catch (Exception exp)
         {
-            sbDemoJavaScript.AppendLine("<p>No JavaScript used</p>");
-            aCssPlainLink.Visible = false;
+            //
         }
 
-        DemoJavaScript.Text = sbDemoJavaScript.ToString();
-        
         DemoJavaScriptCodeBlock.Text = sbDemoJavaScript.ToString();
+
+        demoStageCode = sbDemoJavaScript.ToString();
+        if (demoStageCode == "")
+        {
+            demoStageCode = "<p>No JavaScript used</p>";
+        }
+        else
+        {
+            demoStageCode = "<p>Ok</p>";
+        }
+        demoStageCode = demoStageCode.Replace("<script", "&lt;script");
+        demoStageCode = demoStageCode.Replace("script>", "script&gt;");
+        demoStageCode = "<pre class='brush: xml'>" + demoStageCode + "</pre>";
+        DemoJavaScript.Text = demoStageCode;
     }
 }
