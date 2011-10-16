@@ -7,7 +7,7 @@ Frontend Grid system targeted to ASP.NET platform
 FOLDERS
 
 /Website             Demo website
-
+/tools               Contains the .Less compiler
 
 
 LICENSE
