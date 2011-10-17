@@ -7,7 +7,7 @@
         <asp:Panel ID="Types" runat="server" CssClass="graphite_demoStage_menu"></asp:Panel>
         
         <div class="graphite_demoStage">
-            <div class="graphite_demoStage_html">
+            <div class="graphite_demoStage_html" id="sourcecodeHTML">
 <UserControl:DemoHTML runat="server" ID="DemoHTMLCodeBlock" CssType="horizontal" />
             </div>
 
@@ -16,23 +16,34 @@
         
         <div class="codeBox js_codeBox gp_columns gp_columns_3">
             <ul class="gp_innerColumns">
-                <li class="html gp_column gp_column1">
+                <li class="gp_column gp_column1">
                     <div class="gp_block">
-                        <strong class="localHeading">HTML</strong>
-                        <pre name="code" class="brush: xml"><UserControl:DemoHTML runat="server" ID="DemoHTML" PrintAsCopyableCode="true" CssType="horizontal" /></pre>
+                        <section>
+                            <div class="gp_text">
+                                <h1 class="heading3">Copy to clipboard</h1>
+                            </div>
+                            
+                            <div class="getCode">
+                                <a href="#">.html</a>
+                                <asp:PlaceHolder ID="CodeLinksLess" runat="server">
+                                    <a href="#">.less</a>
+                                    <a href="#" runat="server" ID="aCssPlainLink">.css</a>
+                                </asp:PlaceHolder>
+                                <asp:PlaceHolder ID="CodeLinksCss" runat="server">
+                                    <a href="#">.js</a>
+                                </asp:PlaceHolder>
+                            </div>
+                        </section>
                     </div>
                 </li>
-                <li class="css gp_column gp_column2">
-                    <div class="gp_block">
-                        <strong class="localHeading">CSS</strong>
-                        <a href="#" class="preLink" runat="server" ID="aCssPlainLink">Get plain CSS</a>
-                        <asp:Literal ID="DemoCss" runat="server"></asp:Literal>
+                <li class="gp_column gp_column2">
+                    <div class="gp_block gp_text">
+                        <p>Browser compatibility.</p>
                     </div>
                 </li>
-                <li class="javascript gp_column gp_column3">
-                    <div class="gp_block">
-                        <strong class="localHeading">JavaScript</strong>
-                        <asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>
+                <li class="gp_column gp_column3">
+                    <div class="gp_block gp_text">
+                        <p>The menu is used as the main navigation for the website.</p>
                     </div>
                 </li>
             </ul>
@@ -40,6 +51,15 @@
     </div>
 
     <script>
+        var sourceCode = {
+            html: document.getElementById('sourcecodeHTML').innerHTML,
+            css: '<asp:Literal ID="DemoCss" runat="server"></asp:Literal>',
+            js: '<asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>'
+        }
+    </script>
+
+    <script>
+        /*
         (function() {
             var demo = new graphite.demo(
                 {
@@ -51,6 +71,7 @@
         })()
         
 		SyntaxHighlighter.all();
+		*/
     </script>
 </asp:Content>
 
@@ -69,9 +90,7 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Intro" Runat="Server">
-    <div class="gp_block gp_text">
-        <p>The menu is used as the main navigation for the website.</p>
-    </div>
+    
 </asp:Content>
 
 

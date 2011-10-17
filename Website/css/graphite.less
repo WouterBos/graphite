@@ -93,15 +93,27 @@ html {
 }
 
 
-.codeBox {
-	pre {
-		height: 200px;
-		overflow: auto;
-		background: #F8F8F8;
+div.getCode {
+	a {
+		display: inline-block;
+		border: 1px solid @gp_colorHigh;
+		.rounded_corners(@radius: 3px);
+		padding: 2px 4px 2px 2px;
+		color: @gp_colorHigh;
+		text-align: center;
+		font-family: "Consolas";
+		text-shadow: 1px 1px 0 @gp_colorLow;
+		text-decoration: none;
+		.gp_gradient(@start: @gp_colorLow + #777, @end: @gp_colorLow);
+		
+	}
+
+	a + a {
+		margin-left: 4px;
 	}
 	
-	.preLink {
-		float: right;
+	a:hover {
+		border: 1px solid @gp_colorLow;
 	}
 }
 

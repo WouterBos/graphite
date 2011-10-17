@@ -80,98 +80,61 @@ public partial class blocks_nav_menu : System.Web.UI.Page
     private void GetDemoHTML()
     {
         // Set HTML CSS class
-        DemoHTMLCodeBlock.CssType = demosClasses[0];
-        if (String.IsNullOrEmpty(Request.QueryString["type"]) == false)
-        {
-            Regex regxNum = new Regex(@"^\d+$");
-            bool isNumeric = regxNum.Match(Request.QueryString["type"].ToString()).Success;
-            
-            if (isNumeric == true)
-            {
-                int type = Convert.ToInt32(Request.QueryString["type"]);
-                DemoHTMLCodeBlock.CssType = demosClasses[type];
-            }
-        }
-        DemoHTML.CssType = DemoHTMLCodeBlock.CssType;
+        DemoHTMLCodeBlock.CssType = demosClasses[GetActiveIndex()];
     }
 
 
-    
-    private void GetDemoCss()
+
+    private string getSourceCode(string suffix)
     {
         int menuItemActive = GetActiveIndex();
-        string strCssLink = demos[menuItemActive].ToLower() + ".less";
-        CSSLink.Attributes["href"] = strCssLink;
-        aCssPlainLink.Attributes["href"] = strCssLink;
-        
         string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
         string less = demos[menuItemActive].ToLower();
         less = less.Replace("/", "\\");
-        StringBuilder sbDemoCss = new StringBuilder();
+        StringBuilder sbCode = new StringBuilder();
 
         try
         {
-            System.IO.StreamReader sr = new System.IO.StreamReader(root + less + ".less");
-            string line;
-            sbDemoCss.AppendLine("<pre class='brush: css'>");
-
-            while(sr.Peek() != -1)
-            {
-               line = sr.ReadLine();
-               sbDemoCss.AppendLine(line);
-            }
-            sbDemoCss.AppendLine("</pre>");
-        }
-        catch(Exception exp) {
-            sbDemoCss.AppendLine("<p>No CSS used</p>");
-            aCssPlainLink.Visible = false;
-        }
-
-        DemoCss.Text = sbDemoCss.ToString();
-    }
-    
-
-
-    private void GetDemoJavaScript()
-    {
-        int menuItemActive = GetActiveIndex();
-        string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
-        string javaScript = demos[menuItemActive].ToLower();
-        javaScript = javaScript.Replace("/", "\\");
-        string demoStageCode = "";
-        StringBuilder sbDemoJavaScript = new StringBuilder();
-
-        try
-        {
-            System.IO.StreamReader sr = new System.IO.StreamReader(root + javaScript + ".js.html");
+            System.IO.StreamReader sr = new System.IO.StreamReader(root + less + suffix);
             string line;
 
             while (sr.Peek() != -1)
             {
                 line = sr.ReadLine();
-                sbDemoJavaScript.AppendLine(line);
+                sbCode.AppendLine(line);
             }
         }
         catch (Exception exp)
         {
             //
         }
+        return sbCode.ToString();
+    }
 
-        DemoJavaScriptCodeBlock.Text = sbDemoJavaScript.ToString();
 
-        demoStageCode = sbDemoJavaScript.ToString();
-        if (demoStageCode == "")
-        {
-            demoStageCode = "<p>No JavaScript used</p>";
+    
+    private void GetDemoCss()
+    {
+        string CssCode = getSourceCode(".less");
+        
+        int menuItemActive = GetActiveIndex();
+        string strCssLink = demos[menuItemActive].ToLower() + ".less";
+        CSSLink.Attributes["href"] = strCssLink;
+        aCssPlainLink.Attributes["href"] = strCssLink;
+        
+        CssCode = CssCode.Replace("'", "\'");
+        
+        if (CssCode == "") {
+            CodeLinksLess.Visible = false;
         }
-        else
-        {
-            demoStageCode = sbDemoJavaScript.ToString();
-        }
-        demoStageCode = demoStageCode.Replace("<script", "&lt;script");
-        demoStageCode = demoStageCode.Replace("</script", "&lt;/script");
-        demoStageCode = demoStageCode.Replace("script>", "script&gt;");
-        demoStageCode = "<pre class='brush: js'>" + demoStageCode + "</pre>";
-        DemoJavaScript.Text = demoStageCode;
+        //DemoCss.Text = CssCode;
+    }
+    
+
+
+    private void GetDemoJavaScript()
+    {
+        string JsCode = getSourceCode(".js.html");
+        //DemoJavaScript.Text = JsCode.Replace("'", "\'");
     }
 }

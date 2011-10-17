@@ -25,6 +25,7 @@
 		<link href="/css/syntaxhighlighter/shThemeDefault.css" rel="stylesheet" />
         
 		<script src="/javascript/graphite.js"></script>
+		<script src="/javascript/live.js#css"></script>
 	</head>
 	
 	<body id="MasterPageBody" runat="server">
