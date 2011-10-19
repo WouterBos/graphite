@@ -25,7 +25,6 @@ var graphite = {};
 graphite.demo = function(arg_config) {
   var config = {
     root: arg_config.root,
-    cssFiles: arg_config.cssFiles
   }
     
   var htmlRoot = config.root.querySelector('div.graphite_demoStage_html');
@@ -77,6 +76,22 @@ graphite.demo = function(arg_config) {
       pre.innerHTML = script.innerHTML;
     }
   }
+  
+  function setEvents() {
+    var getHtml = config.root.querySelector('*.codeBoxHtml');
+    if (getHtml && sourceCode.html) {
+      clipHtml = new ZeroClipboard.Client();
+      
+      clipHtml.addEventListener('mouseOver', function (client) {
+        clipHtml.setText(sourceCode.html);
+        if (console && console.log) {
+          console.log('copied');
+        }
+      });
+
+      clipHtml.glue( config.root.querySelector('*.codeBoxHtml') );
+    }
+  }
   		
 	// JAVASCRIPT
 	// Get JavaScript files that have been used from DOM
@@ -91,9 +106,14 @@ graphite.demo = function(arg_config) {
 	  
 	  //getJavaScript();
 	  //showCSS();
+	  
+	  window.addEventListener('load', function() {
+	    setEvents();
+	  })
 	}
 }
 
 
 
 
+var clipHtml = null;

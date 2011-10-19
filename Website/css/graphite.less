@@ -95,6 +95,7 @@ html {
 
 div.getCode {
 	a {
+		position: relative;
 		display: inline-block;
 		border: 1px solid @gp_colorHigh;
 		.rounded_corners(@radius: 3px);
@@ -105,7 +106,6 @@ div.getCode {
 		text-shadow: 1px 1px 0 @gp_colorLow;
 		text-decoration: none;
 		.gp_gradient(@start: @gp_colorLow + #777, @end: @gp_colorLow);
-		
 	}
 
 	a + a {

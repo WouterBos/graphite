@@ -120,7 +120,6 @@ public partial class blocks_nav_menu : System.Web.UI.Page
         int menuItemActive = GetActiveIndex();
         string strCssLink = demos[menuItemActive].ToLower() + ".less";
         CSSLink.Attributes["href"] = strCssLink;
-        aCssPlainLink.Attributes["href"] = strCssLink;
         
         CssCode = CssCode.Replace("'", "\'");
         

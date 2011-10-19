@@ -16,13 +16,7 @@
 		<link href="/css/all-graphite-demo.less" rel="stylesheet" media="all" />
 		<asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
 		
-        <script src="/javascript/syntaxhiglighter/shCore.js"></script>
-        <script src="/javascript/syntaxhiglighter/shBrushCss.js"></script>
-        <script src="/javascript/syntaxhiglighter/shBrushJScript.js"></script>
-        <script src="/javascript/syntaxhiglighter/shBrushXml.js"></script>
-        
-		<link href="/css/syntaxhighlighter/shCore.css" rel="stylesheet" />
-		<link href="/css/syntaxhighlighter/shThemeDefault.css" rel="stylesheet" />
+        <script src="/external/zeroclipboard/ZeroClipboard.js"></script>
         
 		<script src="/javascript/graphite.js"></script>
 		<script src="/javascript/live.js#css"></script>

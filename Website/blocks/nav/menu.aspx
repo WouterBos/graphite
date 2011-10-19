@@ -24,13 +24,15 @@
                             </div>
                             
                             <div class="getCode">
-                                <a href="#">.html</a>
+                                <div id="d_clip_container" style="position:relative">
+                                   <div id="d_clip_button">Copy to Clipboard</div>
+                                </div>
+                                <a href="#" class="codeBoxHtml"><span>.html</span></a>
                                 <asp:PlaceHolder ID="CodeLinksLess" runat="server">
-                                    <a href="#">.less</a>
-                                    <a href="#" runat="server" ID="aCssPlainLink">.css</a>
+                                    <a href="#" class="codeBoxLess">.less</a>
                                 </asp:PlaceHolder>
                                 <asp:PlaceHolder ID="CodeLinksCss" runat="server">
-                                    <a href="#">.js</a>
+                                    <a href="#" id="getJsCode" class="codeBoxJs">.js</a>
                                 </asp:PlaceHolder>
                             </div>
                         </section>
@@ -56,22 +58,20 @@
             css: '<asp:Literal ID="DemoCss" runat="server"></asp:Literal>',
             js: '<asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>'
         }
+        
+        
     </script>
 
     <script>
-        /*
         (function() {
             var demo = new graphite.demo(
                 {
-                    root: document.getElementById('graphite_demoStage'),
-                    cssFiles: document.querySelector("link.graphite_demoStage_html")
+                    root: document.getElementById('graphite_demoStage')
                 }
             );
             demo.extractCode();
         })()
-        
-		SyntaxHighlighter.all();
-		*/
+
     </script>
 </asp:Content>
 
