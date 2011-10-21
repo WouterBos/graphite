@@ -10,6 +10,8 @@ using System.Text.RegularExpressions;
 public partial class blocks_nav_menu : System.Web.UI.Page
 {
     // Demo data
+
+    // ###ES_TODO: How can I put this in an interface of some sorts? I'd like to tie "demos", "demosClasses" and "supportedBrowsers" to each other
     string[] demos = new string[]
     {
         "Horizontal",
@@ -18,10 +20,11 @@ public partial class blocks_nav_menu : System.Web.UI.Page
     };
     string[] demosClasses = new string[]
     {
-        "gp_horizontal",
-        "gp_vertical",
-        "gp_horizontal gp_collapse"
+        "gp_menu_typeHorizontal",
+        "gp_menu_typeVertical",
+        "gp_menu_typeHorizontal gp_menu_typeCollapse"
     };
+    Dictionary<string, string> supportedBrowsers = new Dictionary<string, string>();
     
     
     
@@ -35,12 +38,18 @@ public partial class blocks_nav_menu : System.Web.UI.Page
 
 
 
+    // ###ES_TODO: All this logic must be tucheck away in a single ASCX
     private void CreateDemo()
     {
         CreateMenu();
         GetDemoHTML();
         GetDemoCss();
         GetDemoJavaScript();
+        GetDemoDescription();
+        
+        supportedBrowsers.Add("IE", "7+");
+        supportedBrowsers.Add("Firefox", "3.5");
+        CreateSupportedBrowsersList(supportedBrowsers);
     }
 
 
@@ -59,6 +68,8 @@ public partial class blocks_nav_menu : System.Web.UI.Page
         return menuItemActive;
     }
     
+    
+    
     private void CreateMenu()
     {
         int menuItemActive = GetActiveIndex();
@@ -74,8 +85,8 @@ public partial class blocks_nav_menu : System.Web.UI.Page
             Types.Controls.Add(link);
         }
     }
-
-
+    
+    
     
     private void GetDemoHTML()
     {
@@ -112,28 +123,92 @@ public partial class blocks_nav_menu : System.Web.UI.Page
     }
 
 
+
+    private void GetDemoDescription()
+    {
+        string Description = getSourceCode("-description.html");
+
+        if (Description == "")
+        {
+            litDescription.Text = "<p>There's no description available</p>";
+        }
+        litDescription.Text = Description;
+    }
+
+
     
     private void GetDemoCss()
     {
         string CssCode = getSourceCode(".less");
-        
         int menuItemActive = GetActiveIndex();
+
         string strCssLink = demos[menuItemActive].ToLower() + ".less";
         CSSLink.Attributes["href"] = strCssLink;
         
-        CssCode = CssCode.Replace("'", "\'");
+        CssCode = CssCode.Replace("'", "\\'");
+        CssCode = CssCode.Replace("\n", "\\n");
+        CssCode = CssCode.Replace("\r", "\\r");
         
         if (CssCode == "") {
             CodeLinksLess.Visible = false;
         }
-        //DemoCss.Text = CssCode;
+        DemoCss.Text = CssCode;
     }
     
 
 
     private void GetDemoJavaScript()
     {
-        string JsCode = getSourceCode(".js.html");
-        //DemoJavaScript.Text = JsCode.Replace("'", "\'");
+        string JsCode = getSourceCode("-js.html");
+        int menuItemActive = GetActiveIndex();
+
+        JsCode = JsCode.Replace("'", "\\'");
+        JsCode = JsCode.Replace("<script", "###GRAPHITE###SCRIPT");
+        JsCode = JsCode.Replace("</script", "###GRAPHITE###/SCRIPT");
+        JsCode = JsCode.Replace("\n", "\\n");
+        JsCode = JsCode.Replace("\r", "\\r");
+
+        if (JsCode == "")
+        {
+            CodeLinksJs.Visible = false;
+        }
+        DemoJavaScript.Text = JsCode;
+    }
+
+
+
+    private void CreateSupportedBrowsersList(IDictionary<string, string> supportedBrowsers)
+    {
+        string[] allBrowser = new string[] {
+            "IE",
+            "Firefox",
+            "Chrome",
+            "Safari",
+            "Opera"
+        };
+        StringBuilder sbBrowserList = new StringBuilder();
+        
+        sbBrowserList.AppendLine("<ul class='graphite_browser'>");
+        for (int i = 0; i <= allBrowser.GetUpperBound(0); i++)
+        {
+            string browserVersion = "";
+            string unsupported = " class='graphite_browserUnsupported'";
+            try
+            {
+                browserVersion = supportedBrowsers[allBrowser[i].ToString()];
+                unsupported = "";
+            }
+            catch (Exception exp)
+            {
+            
+            }
+            sbBrowserList.AppendLine("  <li" + unsupported + ">");
+            sbBrowserList.AppendLine("      <strong class='graphite_browserIcon graphite_browser" + allBrowser[i] + "'>" + allBrowser[i] + "</strong>");
+            sbBrowserList.AppendLine("      <span class='graphite_browserVersion'>" + browserVersion + "</span>");
+            sbBrowserList.AppendLine("  </li>");
+        }
+        sbBrowserList.AppendLine("</ul>");
+        
+        BrowserList.Text = sbBrowserList.ToString();
     }
 }

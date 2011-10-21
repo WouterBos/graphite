@@ -4,6 +4,20 @@ html {
 
 
 
+.gp_content {
+	background: #ffffff;
+}
+
+
+
+.gp_footer {
+	border-top: 1px solid #dddddd;
+	padding: @gridFlex_blockSpacing / 2;
+	.gp_gradient(@gp_colorHigh - #1a1a1a, @gp_colorHigh - #060606);
+}
+
+
+
 .graphite_title {
 	.gp_gradient(#f9f9f9, #e5e5e5);
 	clear: both;
@@ -26,20 +40,6 @@ html {
 	a:hover {
 		text-decoration: underline;
 	}
-}
-
-
-
-.gp_content {
-	background: #ffffff;
-}
-
-
-
-.gp_footer {
-	border-top: 1px solid #dddddd;
-	padding: @gridFlex_blockSpacing / 2;
-	.gp_gradient(@gp_colorHigh - #1a1a1a, @gp_colorHigh - #060606);
 }
 
 
@@ -93,7 +93,7 @@ html {
 }
 
 
-div.getCode {
+*.graphite_getCode {
 	a {
 		position: relative;
 		display: inline-block;
@@ -112,8 +112,37 @@ div.getCode {
 		margin-left: 4px;
 	}
 	
-	a:hover {
+	a.hover {
 		border: 1px solid @gp_colorLow;
+	}
+}
+
+
+
+*.graphite_browser {
+	float: left;
+	margin-left: -@gridFlex_blockSpacing/4;
+	
+	li {
+		float: left;
+		margin-left: @gridFlex_blockSpacing/4;
+		width: 30px;
+		overflow: hidden;
+	}
+	li.graphite_browserUnsupported {
+		opacity: 0.5;
+	}
+	
+	*.graphite_browserIcon {
+		display: block;
+		height: 30px;
+		background-color: #ff00ff;
+		text-indent: -9999em;
+	}
+	
+	*.graphite_browserVersion {
+		display: block;
+		text-align: center;
 	}
 }
 

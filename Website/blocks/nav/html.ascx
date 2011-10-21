@@ -2,7 +2,7 @@
 <asp:Literal ID="Code" runat="server"></asp:Literal>
 
 <asp:Literal ID="CodeHidden" runat="server">
-    <div class="gp_nav_menu ##CSS_TYPE##">
+    <div class="gp_menu ##CSS_TYPE##">
         <ul>
             <li><a href="#">Short words</a>
                 <ul>

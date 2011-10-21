@@ -1,8 +1,6 @@
-@navMenu_background: #000000;
-
-.gp_nav_menu.gp_horizontal {
+.gp_menu.gp_menu_typeHorizontal {
 	min-height: 0;
-	background: @navMenu_background;
+	background: @gp_colorLow;
 	
 	&:after {
 		.clear;
@@ -19,7 +17,7 @@
 	}
 	a:hover {
 		.transition(all, 0.1s, ease-out);
-		background: @navMenu_background + #444;
+		background: @gp_colorLow + #444;
 	}
 	> li:first-child > a {
 		border-left-width: 0;

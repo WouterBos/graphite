@@ -1,8 +1,11 @@
 ﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="menu.aspx.cs" Inherits="blocks_nav_menu" %>
 <%@ Register TagPrefix="UserControl" TagName="DemoHTML" Src="html.ascx" %>
+<%@ Register TagPrefix="Internal" TagName="BlockDemo" Src="/internal/usercontrols/blockdemo.ascx" %>
 
 
 <asp:Content ID="Content8" ContentPlaceHolderID="DemoStage" Runat="Server">
+    <Internal:BlockDemo runat="server" ID="BlockDemo" />
+
     <div id="graphite_demoStage">
         <asp:Panel ID="Types" runat="server" CssClass="graphite_demoStage_menu"></asp:Panel>
         
@@ -23,30 +26,59 @@
                                 <h1 class="heading3">Copy to clipboard</h1>
                             </div>
                             
-                            <div class="getCode">
-                                <div id="d_clip_container" style="position:relative">
-                                   <div id="d_clip_button">Copy to Clipboard</div>
-                                </div>
-                                <a href="#" class="codeBoxHtml"><span>.html</span></a>
+                            <div class="graphite_getCode">
+                                <a href="#" class="graphite_getCodeHtml">.html</a>
                                 <asp:PlaceHolder ID="CodeLinksLess" runat="server">
-                                    <a href="#" class="codeBoxLess">.less</a>
+                                    <a href="#" class="graphite_getCodeCss">.css</a>
                                 </asp:PlaceHolder>
-                                <asp:PlaceHolder ID="CodeLinksCss" runat="server">
-                                    <a href="#" id="getJsCode" class="codeBoxJs">.js</a>
+                                <asp:PlaceHolder ID="CodeLinksJs" runat="server">
+                                    <a href="#" id="getJsCode" class="graphite_getCodeJs">.js</a>
                                 </asp:PlaceHolder>
                             </div>
                         </section>
                     </div>
                 </li>
                 <li class="gp_column gp_column2">
-                    <div class="gp_block gp_text">
-                        <p>Browser compatibility.</p>
+                    <div class="gp_block">
+                        <section>
+                            <div class="gp_text">
+                                <h1 class="heading3">Browser compatibility</h1>
+                            </div>
+                            
+                            <asp:Literal ID="BrowserList" runat="server"></asp:Literal>
+                            
+                            <!--<ul class="graphite_browser">
+                                <li>
+                                    <strong class="graphite_browserIcon graphite_browserMsie">IE</strong>
+                                    <span class="graphite_browserVersion">7+</span>
+                                </li>
+                                <li>
+                                    <strong class="graphite_browserIcon graphite_browserFf">Firefox</strong>
+                                    <span class="graphite_browserVersion">3.5+</span>
+                                </li>
+                                <li>
+                                    <strong class="graphite_browserIcon graphite_browserChrome">Chrome</strong>
+                                    <span class="graphite_browserVersion">5+</span>
+                                </li>
+                                <li>
+                                    <strong class="graphite_browserIcon graphite_browserSafari">Safari</strong>
+                                    <span class="graphite_browserVersion">3+</span>
+                                </li>
+                                <li class="graphite_browserUnsupported">
+                                    <strong class="graphite_browserIcon graphite_browserOpera">Opera</strong>
+                                    <span class="graphite_browserVersion"></span>
+                                </li>
+                            </ul>-->
+                        </section>
                     </div>
                 </li>
                 <li class="gp_column gp_column3">
-                    <div class="gp_block gp_text">
-                        <p>The menu is used as the main navigation for the website.</p>
-                    </div>
+                    <section>
+                        <div class="gp_block gp_text">
+                            <h1 class="heading3">Description</h1>
+                            <asp:Literal ID="litDescription" runat="server"></asp:Literal>
+                        </div>
+                    </section>
                 </li>
             </ul>
         </div>
@@ -55,8 +87,8 @@
     <script>
         var sourceCode = {
             html: document.getElementById('sourcecodeHTML').innerHTML,
-            css: '<asp:Literal ID="DemoCss" runat="server"></asp:Literal>',
-            js: '<asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>'
+            js: '<asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>',
+            css: '<asp:Literal ID="DemoCss" runat="server"></asp:Literal>'
         }
         
         

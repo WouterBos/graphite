@@ -31,89 +31,46 @@ graphite.demo = function(arg_config) {
   var codeBox = config.root.querySelector('.js_codeBox');
   
   
-  // Gets Less code from demo and presents it as copy/paste code.
-  function showCSS() {
-    if (typeof(config.cssFiles) == "object") {
-      var path = document.location.pathname;
-      removeIndex = path.lastIndexOf('/');
-      path = path.substring(0, removeIndex + 1);
-      var fileName = config.cssFiles.getAttribute('href').replace('.less', '');
-      getLessCode(path + fileName);
-      
-      // Also show plain CSS code
-      var link = document.createElement('a');
-      link.innerHTML = 'Get plain CSS';
-      link.href = config.cssFiles.href;
-      link.className = 'preLink';
-      var title = codeBox.querySelector('.css pre');
-      title.parentNode.insertBefore(link, title);
-    };
-
-    function getLessCode(lessLocation) {
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-          var pre = codeBox.querySelector('.css pre');
-          pre.innerHTML = xmlhttp.responseText;
-          
-          SyntaxHighlighter.defaults['gutter'] = false;
-          SyntaxHighlighter.all();
-        }
-      }
-      xmlhttp.open('GET', '/getless.aspx?less=' + lessLocation, true);
-      xmlhttp.send();
-    }
-  }
-  
-  // Gets JavaScript code from demo and presents it as copy/paste code
-  function getJavaScript() {
-    var pre = codeBox.querySelector('.javascript pre');
-    var script = config.root.querySelector('script');
-    
-    if (script == null) {
-      pre.innerHTML = '//No JavaScript used.';
-    } else {
-      pre.innerHTML = script.innerHTML;
-    }
-  }
-  
   function setEvents() {
-    var getHtml = config.root.querySelector('*.codeBoxHtml');
-    if (getHtml && sourceCode.html) {
-      clipHtml = new ZeroClipboard.Client();
-      
-      clipHtml.addEventListener('mouseOver', function (client) {
-        clipHtml.setText(sourceCode.html);
-        if (console && console.log) {
-          console.log('copied');
-        }
-      });
-
-      clipHtml.glue( config.root.querySelector('*.codeBoxHtml') );
+    setEvent(
+      config.root.querySelector('*.graphite_getCodeHtml'),
+      sourceCode.html
+    );
+    
+    setEvent(
+      config.root.querySelector('*.graphite_getCodeCss'),
+      sourceCode.css
+    );
+    
+    sourceCode.js = sourceCode.js.replace(/\#\#\#GRAPHITE\#\#\#SCRIPT/g, '<script');
+    sourceCode.js = sourceCode.js.replace(/\#\#\#GRAPHITE\#\#\#\/SCRIPT/g, '</script');
+    setEvent(
+      config.root.querySelector('*.graphite_getCodeJs'),
+      sourceCode.js
+    );
+    
+    
+    function setEvent(copyLink, source) {
+      if (copyLink && source) {
+        var clipHtml = new ZeroClipboard.Client();
+        clipHtml.setHandCursor( true );
+        
+        clipHtml.addEventListener('mouseup', function (client) {
+          clipHtml.setText(source);
+          if (console && console.log) {
+            console.log('copied');
+          }
+        });
+  
+        clipHtml.glue( copyLink );
+      }
     }
   }
   		
-	// JAVASCRIPT
-	// Get JavaScript files that have been used from DOM
-	// Get JavaScript code that has been used in the demo page
-	// Present JavaScript in textarea
-	// Add references to JavaScript libraries below textarea
-	
-	// Setup copy links for each textarea
-	
 	this.extractCode = function() {
 	  // Setup cut 'n paste containers
-	  
-	  //getJavaScript();
-	  //showCSS();
-	  
 	  window.addEventListener('load', function() {
 	    setEvents();
 	  })
 	}
 }
-
-
-
-
-var clipHtml = null;
