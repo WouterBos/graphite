@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="menu.aspx.cs" Inherits="blocks_nav_menu" %>
 <%@ Register TagPrefix="UserControl" TagName="DemoHTML" Src="html.ascx" %>
-<%@ Register TagPrefix="Internal" TagName="BlockDemo" Src="/internal/usercontrols/blockdemo.ascx" %>
+<%@ Register TagPrefix="Internal" TagName="BlockDemo" Src="~/internal/usercontrols/blockdemo.ascx" %>
 
 
 <asp:Content ID="Content8" ContentPlaceHolderID="DemoStage" Runat="Server">

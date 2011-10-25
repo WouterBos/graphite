@@ -18,6 +18,12 @@ public partial class blocks_nav_menu : System.Web.UI.Page
         "Vertical",
         "Collapse"
     };
+    bool[,] defaultCode = new bool[,]
+    {
+        {false, true, false},
+        {false, true, false},
+        {false, false, false}
+    };
     string[] demosClasses = new string[]
     {
         "gp_menu_typeHorizontal",
@@ -34,6 +40,9 @@ public partial class blocks_nav_menu : System.Web.UI.Page
         PageTitle.InnerHtml = this.Title;
         
         CreateDemo();
+        
+        
+        BlockDemo.demos = demos;
     }
 
 
@@ -96,17 +105,21 @@ public partial class blocks_nav_menu : System.Web.UI.Page
 
 
 
-    private string getSourceCode(string suffix)
+    private string getSourceCode(string suffix, bool defaultCode)
     {
-        int menuItemActive = GetActiveIndex();
+        string fileName = "default";
+        if (defaultCode == false)
+        {
+            int menuItemActive = GetActiveIndex();
+            fileName = demos[menuItemActive].ToLower();
+        }
+        
         string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
-        string less = demos[menuItemActive].ToLower();
-        less = less.Replace("/", "\\");
         StringBuilder sbCode = new StringBuilder();
 
         try
         {
-            System.IO.StreamReader sr = new System.IO.StreamReader(root + less + suffix);
+            System.IO.StreamReader sr = new System.IO.StreamReader(root + fileName + suffix);
             string line;
 
             while (sr.Peek() != -1)
@@ -126,7 +139,7 @@ public partial class blocks_nav_menu : System.Web.UI.Page
 
     private void GetDemoDescription()
     {
-        string Description = getSourceCode("-description.html");
+        string Description = getSourceCode("-description.html", defaultCode[GetActiveIndex(),2]);
 
         if (Description == "")
         {
@@ -139,7 +152,7 @@ public partial class blocks_nav_menu : System.Web.UI.Page
     
     private void GetDemoCss()
     {
-        string CssCode = getSourceCode(".less");
+        string CssCode = getSourceCode(".less", defaultCode[GetActiveIndex(), 0]);
         int menuItemActive = GetActiveIndex();
 
         string strCssLink = demos[menuItemActive].ToLower() + ".less";
@@ -159,7 +172,7 @@ public partial class blocks_nav_menu : System.Web.UI.Page
 
     private void GetDemoJavaScript()
     {
-        string JsCode = getSourceCode("-js.html");
+        string JsCode = getSourceCode("-js.html", defaultCode[GetActiveIndex(), 1]);
         int menuItemActive = GetActiveIndex();
 
         JsCode = JsCode.Replace("'", "\\'");

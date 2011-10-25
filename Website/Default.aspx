@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="Start page" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
-    <link rel="stylesheet" media="all" href="/CSS/all-graphite-demo.less" />
 </asp:Content>
 
 
@@ -36,11 +35,20 @@
         <article>
             <h1 class="heading2">Todo</h1>
             <ul>
+                <li>
+                    Demo
+                    <ul>
+                        <li>Demo code must reside in one ASCX, configuration in ASPX</li>
+                        <li>Better structure for demo config</li>
+                    </ul>
+                </li>
                 <li><strong>Themes</strong> managed with just a few Less variables</li>
                 <li><strong>Generic blocks</strong> multi-purpose elements like for example a list with just title, sub title and a short text</li>
                 <li><strong>Fine-grained spacing</strong> different values for horizontal and vertical spacing</li>
                 <li><strong>5 column option</strong> for flexgrid</li>
                 <li><strong>Export</strong> less import file (and possibly other stuff) by selecting graphite components</li>
+                <li><strong>Locale</strong> How to create multilangual demo website</li>
+                <li><strong>Sections</strong> Graphite must be extendedable so that organisations can create their own modules without "polluting" Graphite with functionality that's too specific for the general user.</li>
             </ul>
         </article>
     </div>
@@ -80,6 +88,14 @@
                                 <li>Sitemap</li>
                             </ul>
                         </li>
+                        <li>Sitefinity
+                            <ul>
+                                <li>Pager</li>
+                                <li>Captcha</li>
+                                <li>Forms</li>
+                                <li>CMS edit mode</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -93,16 +109,9 @@
     <div class="gp_block">
         <div class="gp_sitemap">
             <ul>
-                <li><a href="/grids">CMS</a>
+                <li>Documentation
                     <ul>
-                        <li>Sitefinity
-                            <ul>
-                                <li>Pager</li>
-                                <li>Captcha</li>
-                                <li>Forms</li>
-                                <li>CMS edit mode</li>
-                            </ul>
-                        </li>
+                        <li><a href="/documentation/code-convention.aspx">Code convention</a></li>
                     </ul>
                 </li>
             </ul>
