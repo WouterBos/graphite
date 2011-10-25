@@ -6,7 +6,7 @@
 	background-image:     -ms-linear-gradient(top, @start, @end); 
 	background-image:      -o-linear-gradient(top, @start, @end); 
 	background-image:         linear-gradient(top, @start, @end);
-	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='@start', EndColorStr='@end');*/ 
+	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorStr='@{start}', EndColorStr='@{end}');" 
 }
 
 .gp_shadow(@xOffset: 5px, @yOffset: 5px, @shadowSize: 10px, @shadowColor: #000000) {

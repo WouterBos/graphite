@@ -31,6 +31,7 @@
 	}
 	/* End spacing between blocks */
 
+	
 	/* Start lists */
 	ul {
 		clear: both;
@@ -51,6 +52,7 @@
 		list-style-type: decimal;
 	}
 	/* End lists */
+	
 	
 	/* Start headings */
 	h1 {
@@ -76,54 +78,53 @@
 	h6 {
 		.heading6;
 	}
-
-	*.heading1 {
+	
+	/*
+	 * Use these classes to style something as a header which semantically isn't.
+	 */
+	*.gp_textHeading1 {
 		.heading1;
 	}
 	
-	*.heading2 {
+	*.gp_textHeading2 {
 		.heading2;
 	}
 	
-	*.heading3 {
+	*.gp_textHeading3 {
 		.heading3;
 	}
 	
-	*.heading4 {
+	*.gp_textHeading4 {
 		.heading4;
 	}
 	
-	*.heading5 {
+	*.gp_textHeading5 {
 		.heading5;
 	}
 	
-	*.heading6 {
+	*.gp_textHeading6 {
 		.heading6;
-	}
-		
-	*.heading2 em,
-	*.heading3 em,
-	*.heading4 em,
-	*.heading5 em,
-	*.heading6 em {
-		font-weight: bold;
 	}
 	/* End headings */
 
-	/* Set  basic image styling */	
-	img.Links,
-	img.links {
+	
+	/* Start basic image styling */	
+	/*
+	 * These classes are not prefixed with "gp_text" because the name of the
+	 * class is sometimes used in RTE editors.
+	 */
+	img.left {
 		margin: 0 10px 10px 0;
 		float: left;
 	}
 	
-	img.Rechts,
-	img.rechts {
+	img.right {
 		margin: 0 0 10px 10px;
 		float: right;
 	}
-	/* Set  basic image styling */
-		
+	/* End basic image styling */
+	
+	
 	/* Start table */
 	table {
 		th,
