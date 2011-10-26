@@ -109,9 +109,9 @@
     <div class="gp_block">
         <div class="gp_sitemap">
             <ul>
-                <li>Documentation
+                <li><span>Documentation</span>
                     <ul>
-                        <li><a href="/documentation/code-convention.aspx">Code convention</a></li>
+                        <li class="graphite_inDevelopment"><a href="/documentation/code-convention.aspx">Code convention</a></li>
                     </ul>
                 </li>
             </ul>

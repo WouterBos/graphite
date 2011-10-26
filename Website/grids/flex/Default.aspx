@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Grid &amp; Basic Page" Language="C#" MasterPageFile="~/grids/flex/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
-    <link rel="stylesheet" media="all" href="/css/all-graphite-demo-grid.less" />
+    <link rel="stylesheet" media="all" href="/css/gp_all-graphite-demo-grid.less" />
     
     <style>
         div.gp_header div.gp_main {
