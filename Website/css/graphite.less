@@ -126,7 +126,7 @@ html {
 	li {
 		float: left;
 		margin-left: @gridFlex_blockSpacing/4;
-		width: 30px;
+		width: 32px;
 		overflow: hidden;
 	}
 	li.graphite_browserUnsupported {
@@ -135,7 +135,7 @@ html {
 	
 	*.graphite_browserIcon {
 		display: block;
-		height: 30px;
+		height: 32px;
 		background-color: #ff00ff;
 		text-indent: -9999em;
 	}
@@ -145,24 +145,28 @@ html {
 		text-align: center;
 	}
 	
+	*.graphite_browserIcon {
+		background: url(/images/sprite.png) no-repeat -9999em -9999em;
+	}
+
 	*.graphite_browserIE {
-		background: url(/images/sprite.png) no-repeat -100px -850px;
+		background-position: -100px -850px;
 	}
 
 	*.graphite_browserFirefox {
-		background: url(/images/sprite.png) no-repeat -50px -900px;
+		background-position: -50px -900px;
 	}
 
 	*.graphite_browserChrome {
-		background: url(/images/sprite.png) no-repeat -150px -800px;
+		background-position: -150px -800px;
 	}
 
 	*.graphite_browserSafari {
-		background: url(/images/sprite.png) no-repeat -200px -750px;
+		background-position: -200px -750px;
 	}
 
 	*.graphite_browserOpera {
-		background: url(/images/sprite.png) no-repeat 0px -950px;
+		background-position: 0px -950px;
 	}
 }
 

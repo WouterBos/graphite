@@ -22,7 +22,7 @@
                 <div class="gp_block">
                     <section>
                         <div class="gp_text">
-                            <h1 class="heading3">Copy to clipboard</h1>
+                            <h1 class="gp_textHeading3">Copy to clipboard</h1>
                         </div>
                         
                         <div class="graphite_getCode">
@@ -41,7 +41,7 @@
                 <div class="gp_block">
                     <section>
                         <div class="gp_text">
-                            <h1 class="heading3">Browser compatibility</h1>
+                            <h1 class="gp_textHeading3">Browser compatibility</h1>
                         </div>
                         
                         <asp:Literal ID="BrowserList" runat="server"></asp:Literal>
@@ -74,7 +74,7 @@
             <li class="gp_column gp_column3">
                 <section>
                     <div class="gp_block gp_text">
-                        <h1 class="heading3">Description</h1>
+                        <h1 class="gp_textHeading3">Description</h1>
                         <asp:Literal ID="litDescription" runat="server"></asp:Literal>
                     </div>
                 </section>

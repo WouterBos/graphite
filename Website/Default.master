@@ -16,10 +16,10 @@
 		<link href="/css/gp_all-graphite-demo.less" rel="stylesheet" media="all" />
 		<asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
 		
-        <script src="/external/zeroclipboard/ZeroClipboard.js"></script>
+        <script src="/internal/javascript/zeroclipboard/ZeroClipboard.js"></script>
         
-		<script src="/javascript/graphite.js"></script>
-		<script src="/javascript/live.js#css"></script>
+		<script src="/internal/javascript/graphite.js"></script>
+		<script src="/internal/javascript/live.js#css"></script>
 	</head>
 	
 	<body id="MasterPageBody" runat="server">
