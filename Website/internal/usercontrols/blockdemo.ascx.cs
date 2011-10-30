@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Graphite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,20 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             _demos = value;
         }
     }
-    
+
+    private string _demoSelector;
+    public string demoSelector
+    {
+        get
+        {
+            return _demoSelector;
+        }
+        set
+        {
+            _demoSelector = value;
+        }
+    }
+
     private bool[,] _defaultCode;
     public bool[,] defaultCode
     {
@@ -67,10 +81,13 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     {
         CreateDemo();
     }
+    
+    private Graphite.Config config;
 
 
     private void CreateDemo()
     {
+        config = new Graphite.Config(_demoSelector);
         CreateMenu();
         GetDemoHTML();
         GetDemoCss();
@@ -103,10 +120,11 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     private void CreateMenu()
     {
         int menuItemActive = GetActiveIndex();
-        for (int i = 0; i <= demos.GetUpperBound(0); i++)
+        string[] types = config.Types();
+        for (int i = 0; i <= types.GetUpperBound(0); i++)
         {
             HyperLink link = new HyperLink();
-            link.Text = demos[i];
+            link.Text = types[i];
             link.NavigateUrl = Request.ServerVariables["SCRIPT_NAME"] + "?type=" + i;
             if (i == menuItemActive)
             {

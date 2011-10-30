@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="blockdemo.ascx.cs" Inherits="internal_usercontrols_blockdemo" %>
-<%@ Register TagPrefix="UserControl" TagName="DemoHTML" Src="~/blocks/nav/html.ascx" %>
+<%@ Register TagPrefix="UserControl" TagName="DemoHTML" Src="~/blocks/navigation/html.ascx" %>
 
 
 
@@ -84,17 +84,13 @@
 </div>
 
 <script>
-    var sourceCode = {
-        html: document.getElementById('sourcecodeHTML').innerHTML,
-        js: '<asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>',
-        css: '<asp:Literal ID="DemoCss" runat="server"></asp:Literal>'
-    }
-    
-    
-</script>
-
-<script>
     (function() {
+        graphite.demo.data.sourceCode = {
+            html: document.getElementById('sourcecodeHTML').innerHTML,
+            js: '<asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>',
+            css: '<asp:Literal ID="DemoCss" runat="server"></asp:Literal>'
+        }
+
         var demo = new graphite.demo(
             {
                 root: document.getElementById('graphite_demoStage')

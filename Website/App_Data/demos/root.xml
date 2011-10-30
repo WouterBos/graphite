@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<demos>
+    <blocks>
+        <navigation>
+            <menu>
+                <demo>
+                    <horizontal cssclass="gp_menu_typeHorizontal">
+                        <files>
+                            <css />
+                            <description />
+                        </files>
+                        <browsers>
+                            <msie supports="7+" />
+                            <firefox supports="3.5" />
+                        </browsers>
+                    </horizontal>
+
+                    <vertical cssclass="gp_menu_typeVertical">
+                        <files>
+                            <css />
+                            <description />
+                        </files>
+                        <browsers>
+                            <msie supports="7+" />
+                        </browsers>
+                    </vertical>
+
+                    <collapse cssclass="gp_menu_typeVertical">
+                        <files>
+                            <css />
+                            <javascript />
+                            <description />
+                        </files>
+                        <browsers>
+                            <msie supports="7+" />
+                        </browsers>
+                    </collapse>
+                </demo>
+            </menu>
+        </navigation>
+    </blocks>
+</demos>

@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 public partial class blocks_nav_menu : System.Web.UI.Page
 {
     // Demo data
+    
+    string demoSelector = "/demos/blocks/navigation/menu/demo";
 
     // ###ES_TODO: How can I put this in an interface of some sorts? I'd like to tie "demos", "demosClasses" and "supportedBrowsers" to each other
     string[] demos = new string[]
@@ -37,6 +39,7 @@ public partial class blocks_nav_menu : System.Web.UI.Page
         // Set page title
         PageTitle.InnerHtml = this.Title;
         
+        BlockDemo.demoSelector = demoSelector;
         BlockDemo.demos = demos;
         BlockDemo.defaultCode = defaultCode;
         BlockDemo.demosClasses = demosClasses;

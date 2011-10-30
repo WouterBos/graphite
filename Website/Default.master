@@ -15,8 +15,6 @@
 		
 		<link href="/css/gp_all-graphite-demo.less" rel="stylesheet" media="all" />
 		<asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
-		
-        <script src="/internal/javascript/zeroclipboard/ZeroClipboard.js"></script>
         
 		<script src="/internal/javascript/graphite.js"></script>
 		<script src="/internal/javascript/live.js#css"></script>
@@ -84,6 +82,8 @@
 			    </div>
 			    <!-- End | Header -->
 			</div>
+			
+			<script src="/internal/javascript/zeroclipboard/ZeroClipboard.js"></script>
 		</form>
 	</body>
 </html>

@@ -26,10 +26,8 @@ graphite.demo = function(arg_config) {
   var config = {
     root: arg_config.root,
   }
-    
-  var htmlRoot = config.root.querySelector('div.graphite_demoStage_html');
-  var codeBox = config.root.querySelector('.js_codeBox');
   
+  sourceCode = graphite.demo.data.sourceCode;
   
   function setEvents() {
     setEvent(
@@ -74,3 +72,7 @@ graphite.demo = function(arg_config) {
 	  })
 	}
 }
+
+
+
+graphite.demo.data = {};
