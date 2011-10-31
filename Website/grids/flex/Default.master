@@ -34,7 +34,7 @@
 		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
 		
 		<asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
-        <link rel="stylesheet" media="all" href="/CSS/graphite.less" />
+        <link rel="stylesheet" media="all" href="/internal/css/graphite.less" />
 	</head>
 	
 	<body id="MasterPageBody" runat="server">

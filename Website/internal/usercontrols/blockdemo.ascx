@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="blockdemo.ascx.cs" Inherits="internal_usercontrols_blockdemo" %>
-<%@ Register TagPrefix="UserControl" TagName="DemoHTML" Src="~/blocks/navigation/html.ascx" %>
 
 
 
@@ -9,9 +8,7 @@
     <asp:Panel ID="Types" runat="server" CssClass="graphite_demoStage_menu"></asp:Panel>
     
     <div class="graphite_demoStage">
-        <div class="graphite_demoStage_html" id="sourcecodeHTML">
-<UserControl:DemoHTML runat="server" ID="DemoHTMLCodeBlock" CssType="horizontal" />
-        </div>
+        <div class="graphite_demoStage_html" id="sourcecodeHTML"><asp:Literal ID="DemoHTMLCodeBlock" runat="server"></asp:Literal></div>
 
         <asp:Literal ID="DemoJavaScriptCodeBlock" runat="server"></asp:Literal>
     </div>

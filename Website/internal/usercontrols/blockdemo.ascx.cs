@@ -1,4 +1,5 @@
 ﻿using Graphite;
+using System.Globalization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +12,6 @@ using System.Text.RegularExpressions;
 public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
 {
     // Demo data
-
-    private string[] _demos;
-    public string[] demos
-    {
-        get
-        {
-            return _demos;
-        }
-        set
-        {
-            _demos = value;
-        }
-    }
-
     private string _demoSelector;
     public string demoSelector
     {
@@ -37,69 +24,28 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             _demoSelector = value;
         }
     }
+    private Graphite.Config config;
+    Dictionary<string, Boolean> defaultCode;
 
-    private bool[,] _defaultCode;
-    public bool[,] defaultCode
-    {
-        get
-        {
-            return _defaultCode;
-        }
-        set
-        {
-            _defaultCode = value;
-        }
-    }
 
-    private string[] _demosClasses;
-    public string[] demosClasses
-    {
-        get
-        {
-            return _demosClasses;
-        }
-        set
-        {
-            _demosClasses = value;
-        }
-    }
-
-    private Dictionary<string, string> _supportedBrowsers;
-    public Dictionary<string, string> supportedBrowsers
-    {
-        get
-        {
-            return _supportedBrowsers;
-        }
-        set
-        {
-            _supportedBrowsers = value;
-        }
-    }
 
     protected void Page_Load(object sender, EventArgs e)
     {
         CreateDemo();
     }
-    
-    private Graphite.Config config;
-
 
     private void CreateDemo()
     {
         config = new Graphite.Config(_demoSelector);
+        defaultCode = config.DefaultCode(GetActiveIndex()); 
+        
         CreateMenu();
         GetDemoHTML();
         GetDemoCss();
         GetDemoJavaScript();
         GetDemoDescription();
-
-        supportedBrowsers.Add("IE", "7+");
-        supportedBrowsers.Add("Firefox", "3.5");
-        CreateSupportedBrowsersList(supportedBrowsers);
+        CreateSupportedBrowsersList();
     }
-
-
 
     private int GetActiveIndex()
     {
@@ -115,8 +61,6 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         return menuItemActive;
     }
 
-
-
     private void CreateMenu()
     {
         int menuItemActive = GetActiveIndex();
@@ -124,7 +68,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         for (int i = 0; i <= types.GetUpperBound(0); i++)
         {
             HyperLink link = new HyperLink();
-            link.Text = types[i];
+            link.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(types[i]);
             link.NavigateUrl = Request.ServerVariables["SCRIPT_NAME"] + "?type=" + i;
             if (i == menuItemActive)
             {
@@ -134,23 +78,13 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         }
     }
 
-
-
-    private void GetDemoHTML()
-    {
-        // Set HTML CSS class
-        DemoHTMLCodeBlock.CssType = demosClasses[GetActiveIndex()];
-    }
-
-
-
     private string getSourceCode(string suffix, bool defaultCode)
     {
         string fileName = "default";
         if (defaultCode == false)
         {
             int menuItemActive = GetActiveIndex();
-            fileName = demos[menuItemActive].ToLower();
+            fileName = config.Type(menuItemActive);
         }
 
         string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
@@ -174,11 +108,9 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         return sbCode.ToString();
     }
 
-
-
     private void GetDemoDescription()
     {
-        string Description = getSourceCode("-description.html", defaultCode[GetActiveIndex(), 2]);
+        string Description = getSourceCode("-description.html", defaultCode["description"]);
 
         if (Description == "")
         {
@@ -187,14 +119,21 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         litDescription.Text = Description;
     }
 
-
+    private void GetDemoHTML()
+    {
+        // Set HTML CSS class
+        // string HtmlCode = getSourceCode(".html", defaultCode["html"]); ES_TODO: fix this and remove line below
+        string HtmlCode = getSourceCode(".html", true);
+        HtmlCode = HtmlCode.Replace("##GP_BLOCK_TYPE##", config.CssClass(GetActiveIndex()));
+        DemoHTMLCodeBlock.Text = HtmlCode;
+    }
 
     private void GetDemoCss()
     {
-        string CssCode = getSourceCode(".less", defaultCode[GetActiveIndex(), 0]);
+        string CssCode = getSourceCode(".less", defaultCode["css"]);
         int menuItemActive = GetActiveIndex();
 
-        string strCssLink = demos[menuItemActive].ToLower() + ".less";
+        string strCssLink = config.Type(menuItemActive) +".less";
         CSSLink.Attributes["href"] = strCssLink;
 
         CssCode = CssCode.Replace("'", "\\'");
@@ -208,11 +147,15 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         DemoCss.Text = CssCode;
     }
 
-
-
     private void GetDemoJavaScript()
     {
-        string JsCode = getSourceCode("-js.html", defaultCode[GetActiveIndex(), 1]);
+        bool defaultJavaScriptCode = false;
+        // ES_TODO: check if dictionary item exists. Also deplay check in other "Get" methods.
+        //if (Boolean.TryParse(defaultCode["javascript"] == true)
+        //{
+        //    defaultJavaScriptCode = defaultCode["javascript"];
+        //}
+        string JsCode = getSourceCode("-js.html", defaultJavaScriptCode);
         int menuItemActive = GetActiveIndex();
 
         JsCode = JsCode.Replace("'", "\\'");
@@ -228,35 +171,37 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         DemoJavaScript.Text = JsCode;
     }
 
-
-
-    private void CreateSupportedBrowsersList(IDictionary<string, string> supportedBrowsers)
+    private void CreateSupportedBrowsersList()
     {
-        string[] allBrowser = new string[] {
-            "IE",
-            "Firefox",
-            "Chrome",
-            "Safari",
-            "Opera"
+        Dictionary<string, string> supportedBrowsers = config.SupportedBrowsers(GetActiveIndex()); 
+        string[] allBrowsers = new string[] {
+            "msie",
+            "firefox",
+            "chrome",
+            "safari",
+            "opera"
         };
         StringBuilder sbBrowserList = new StringBuilder();
 
         sbBrowserList.AppendLine("<ul class='graphite_browser'>");
-        for (int i = 0; i <= allBrowser.GetUpperBound(0); i++)
+        for (int i = 0; i <= allBrowsers.GetUpperBound(0); i++)
         {
             string browserVersion = "";
             string unsupported = " class='graphite_browserUnsupported'";
+            
+            // ES_TODO: Remove this ugly "try"
             try
             {
-                browserVersion = supportedBrowsers[allBrowser[i].ToString()];
+                browserVersion = supportedBrowsers[allBrowsers[i].ToString()];
                 unsupported = "";
             }
             catch (Exception exp)
             {
 
             }
+            string browserName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(allBrowsers[i]);
             sbBrowserList.AppendLine("  <li" + unsupported + ">");
-            sbBrowserList.AppendLine("      <strong class='graphite_browserIcon graphite_browser" + allBrowser[i] + "'>" + allBrowser[i] + "</strong>");
+            sbBrowserList.AppendLine("      <strong class='graphite_browserIcon graphite_browser" + browserName + "'>" + browserName + "</strong>");
             sbBrowserList.AppendLine("      <span class='graphite_browserVersion'>" + browserVersion + "</span>");
             sbBrowserList.AppendLine("  </li>");
         }
@@ -264,5 +209,4 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
 
         BrowserList.Text = sbBrowserList.ToString();
     }
-
 }

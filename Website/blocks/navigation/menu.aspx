@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="menu.aspx.cs" Inherits="blocks_nav_menu" %>
 <%@ Register TagPrefix="Internal" TagName="BlockDemo" Src="~/internal/usercontrols/blockdemo.ascx" %>
+<%@ Register TagPrefix="Internal" TagName="BreadCrumb" Src="~/internal/usercontrols/breadcrumb.ascx" %>
 
 
 
@@ -15,7 +16,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Title" Runat="Server">
-    <strong runat="server" id="PageTitle"></strong> ‹ <a href="/blocks/nav">Navigation</a> ‹ <a href="/blocks">Blocks</a> ‹ <a href="/">Graphite</a>
+    <Internal:Breadcrumb runat="server" ID="Breadcrumb" />
 </asp:Content>
 
 

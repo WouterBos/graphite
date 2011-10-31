@@ -32,5 +32,45 @@ namespace Graphite
             }
             return types;
 	    }
+
+        public Dictionary<string, Boolean> DefaultCode(int index)
+        {
+            Dictionary<string, Boolean> defaultCode = new Dictionary<string, Boolean>();
+            foreach (XmlElement node in demo[0].ChildNodes[index].SelectSingleNode("files"))
+            {
+                bool defaultBool = false;
+                if (node.HasAttribute("defaultCode"))
+                {
+                    defaultBool = Convert.ToBoolean(node.Attributes["defaultCode"].Value);
+                }
+                defaultCode.Add(node.Name, defaultBool);
+            }
+            return defaultCode;
+        }
+
+        public Dictionary<string, string> SupportedBrowsers(int index)
+        {
+            Dictionary<string, string> supportedBrowsers = new Dictionary<string, string>();
+            foreach (XmlElement node in demo[0].ChildNodes[index].SelectSingleNode("browsers"))
+            {
+                string browserVersion = "";
+                if (node.HasAttribute("supports"))
+                {
+                    browserVersion = node.Attributes["supports"].Value;
+                }
+                supportedBrowsers.Add(node.Name, browserVersion);
+            }
+            return supportedBrowsers;
+        }
+
+        public string Type(int index)
+        {
+            return demo[0].ChildNodes[index].Name;
+        }
+
+        public string CssClass(int index)
+        {
+            return demo[0].ChildNodes[index].Attributes["cssclass"].Value;
+        }
     }
 }

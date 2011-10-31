@@ -25,7 +25,7 @@
                         </browsers>
                     </vertical>
 
-                    <collapse cssclass="gp_menu_typeVertical">
+                    <collapse cssclass="gp_menu_typeHorizontal gp_menu_typeCollapse">
                         <files>
                             <css />
                             <javascript />

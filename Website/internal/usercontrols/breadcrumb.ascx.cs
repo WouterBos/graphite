@@ -5,11 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class blocks_nav_menu : System.Web.UI.Page
+public partial class internal_usercontrols_breadcrumb : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Set demo
-        BlockDemo.demoSelector = "/demos/blocks/navigation/menu/demo";
+
     }
 }
