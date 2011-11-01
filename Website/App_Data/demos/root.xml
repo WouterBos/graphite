@@ -6,8 +6,8 @@
                 <demo>
                     <horizontal cssclass="gp_menu_typeHorizontal">
                         <files>
+							<html use_default_code="true" />
                             <css />
-                            <description />
                         </files>
                         <browsers>
                             <msie supports="7+" />
@@ -17,8 +17,8 @@
 
                     <vertical cssclass="gp_menu_typeVertical">
                         <files>
+							<html use_default_code="true" />
                             <css />
-                            <description />
                         </files>
                         <browsers>
                             <msie supports="7+" />
@@ -27,6 +27,7 @@
 
                     <collapse cssclass="gp_menu_typeHorizontal gp_menu_typeCollapse">
                         <files>
+							<html use_default_code="true" />
                             <css />
                             <javascript />
                             <description />

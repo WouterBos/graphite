@@ -25,7 +25,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         }
     }
     private Graphite.Config config;
-    Dictionary<string, Boolean> defaultCode;
+    Dictionary<string, Boolean> dicFiles;
 
 
 
@@ -37,7 +37,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     private void CreateDemo()
     {
         config = new Graphite.Config(_demoSelector);
-        defaultCode = config.DefaultCode(GetActiveIndex()); 
+        dicFiles = config.Files(GetActiveIndex()); 
         
         CreateMenu();
         GetDemoHTML();
@@ -50,14 +50,29 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     private int GetActiveIndex()
     {
         int menuItemActive = 0;
+        string menuItemName = "";
+        
         if (String.IsNullOrEmpty(Request.QueryString["type"]) == false)
         {
-            Regex regxNum = new Regex(@"^\d+$");
-            if (regxNum.Match(Request.QueryString["type"].ToString()).Success)
+            menuItemName = Request.QueryString["type"].ToString();
+            menuItemActive = config.Index(menuItemName.ToLower());
+        }
+        
+        if (menuItemActive == -1)
+        {
+            menuItemActive = 0;
+            if (menuItemName.Length > 0)
             {
-                menuItemActive = Convert.ToInt32(Request.QueryString["type"]);
+            litMessage.Text = @"<div class='gp_text'><span class='gp_textAlert'>" +
+                @"Cannot find a type called  &ldquo;" + menuItemName + @"&rdquo;, showing default type instead." + 
+                @"</span></div>";
             }
         }
+        else
+        {
+            litMessage.Text = "";
+        }
+        
         return menuItemActive;
     }
 
@@ -69,7 +84,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         {
             HyperLink link = new HyperLink();
             link.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(types[i]);
-            link.NavigateUrl = Request.ServerVariables["SCRIPT_NAME"] + "?type=" + i;
+            link.NavigateUrl = Request.ServerVariables["SCRIPT_NAME"] + "?type=" + Server.HtmlEncode(types[i]);
             if (i == menuItemActive)
             {
                 link.CssClass = "active";
@@ -78,10 +93,10 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         }
     }
 
-    private string getSourceCode(string suffix, bool defaultCode)
+    private string getSourceCode(string suffix, bool dicFiles)
     {
         string fileName = "default";
-        if (defaultCode == false)
+        if (dicFiles == false)
         {
             int menuItemActive = GetActiveIndex();
             fileName = config.Type(menuItemActive);
@@ -110,65 +125,69 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
 
     private void GetDemoDescription()
     {
-        string Description = getSourceCode("-description.html", defaultCode["description"]);
-
-        if (Description == "")
+        if (dicFiles.ContainsKey("description") == true)
         {
-            litDescription.Text = "<p>There's no description available</p>";
+            string Description = getSourceCode("-description.html", dicFiles["description"]);
+            litDescription.Text = Description;
         }
-        litDescription.Text = Description;
+        else
+        {
+            litDescription.Text = "<p>No description available.</p>";
+        }
     }
 
     private void GetDemoHTML()
     {
-        // Set HTML CSS class
-        // string HtmlCode = getSourceCode(".html", defaultCode["html"]); ES_TODO: fix this and remove line below
-        string HtmlCode = getSourceCode(".html", true);
-        HtmlCode = HtmlCode.Replace("##GP_BLOCK_TYPE##", config.CssClass(GetActiveIndex()));
-        DemoHTMLCodeBlock.Text = HtmlCode;
+        if (dicFiles.ContainsKey("html") == true)
+        {
+            string HtmlCode = getSourceCode(".html", dicFiles["html"]);
+            HtmlCode = HtmlCode.Replace("###GP_BLOCK_TYPE###", config.CssClass(GetActiveIndex())); // Set HTML CSS class
+            DemoHTMLCodeBlock.Text = HtmlCode;
+        }
+        else
+        {
+            CodeLinksHtml.Visible = false;
+        }
     }
 
     private void GetDemoCss()
     {
-        string CssCode = getSourceCode(".less", defaultCode["css"]);
-        int menuItemActive = GetActiveIndex();
+        if (dicFiles.ContainsKey("css") == true)
+        {
+            string CssCode = getSourceCode(".less", dicFiles["css"]);
+            string strCssLink = config.Type(GetActiveIndex()) + ".less";
+            CSSLink.Attributes["href"] = strCssLink;
 
-        string strCssLink = config.Type(menuItemActive) +".less";
-        CSSLink.Attributes["href"] = strCssLink;
+            CssCode = CssCode.Replace("'", "\\'");
+            CssCode = CssCode.Replace("\n", "\\n");
+            CssCode = CssCode.Replace("\r", "\\r");
 
-        CssCode = CssCode.Replace("'", "\\'");
-        CssCode = CssCode.Replace("\n", "\\n");
-        CssCode = CssCode.Replace("\r", "\\r");
-
-        if (CssCode == "")
+            DemoCss.Text = CssCode;
+        }
+        else
         {
             CodeLinksLess.Visible = false;
         }
-        DemoCss.Text = CssCode;
     }
 
     private void GetDemoJavaScript()
     {
-        bool defaultJavaScriptCode = false;
-        // ES_TODO: check if dictionary item exists. Also deplay check in other "Get" methods.
-        //if (Boolean.TryParse(defaultCode["javascript"] == true)
-        //{
-        //    defaultJavaScriptCode = defaultCode["javascript"];
-        //}
-        string JsCode = getSourceCode("-js.html", defaultJavaScriptCode);
-        int menuItemActive = GetActiveIndex();
+        if (dicFiles.ContainsKey("javascript") == true)
+        {
+            string JsCode = getSourceCode("-js.html", dicFiles["javascript"]);
 
-        JsCode = JsCode.Replace("'", "\\'");
-        JsCode = JsCode.Replace("<script", "###GRAPHITE###SCRIPT");
-        JsCode = JsCode.Replace("</script", "###GRAPHITE###/SCRIPT");
-        JsCode = JsCode.Replace("\n", "\\n");
-        JsCode = JsCode.Replace("\r", "\\r");
+            JsCode = JsCode.Replace("'", "\\'");
+            JsCode = JsCode.Replace("<script", "###GRAPHITE###SCRIPT");
+            JsCode = JsCode.Replace("</script", "###GRAPHITE###/SCRIPT");
+            JsCode = JsCode.Replace("\n", "\\n");
+            JsCode = JsCode.Replace("\r", "\\r");
 
-        if (JsCode == "")
+            DemoJavaScript.Text = JsCode;
+        }
+        else
         {
             CodeLinksJs.Visible = false;
         }
-        DemoJavaScript.Text = JsCode;
     }
 
     private void CreateSupportedBrowsersList()

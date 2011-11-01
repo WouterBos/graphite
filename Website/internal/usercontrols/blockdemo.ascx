@@ -5,6 +5,8 @@
 <link rel="stylesheet" media="all" href="" runat="server" id="CSSLink" />
 
 <div id="graphite_demoStage">
+    <asp:Literal ID="litMessage" runat="server"></asp:Literal>
+    
     <asp:Panel ID="Types" runat="server" CssClass="graphite_demoStage_menu"></asp:Panel>
     
     <div class="graphite_demoStage">
@@ -23,7 +25,9 @@
                         </div>
                         
                         <div class="graphite_getCode">
-                            <a href="#" class="graphite_getCodeHtml">.html</a>
+                            <asp:PlaceHolder ID="CodeLinksHtml" runat="server">
+                                <a href="#" class="graphite_getCodeHtml">.html</a>
+                            </asp:PlaceHolder>
                             <asp:PlaceHolder ID="CodeLinksLess" runat="server">
                                 <a href="#" class="graphite_getCodeCss">.css</a>
                             </asp:PlaceHolder>
@@ -42,29 +46,6 @@
                         </div>
                         
                         <asp:Literal ID="BrowserList" runat="server"></asp:Literal>
-                        
-                        <!--<ul class="graphite_browser">
-                            <li>
-                                <strong class="graphite_browserIcon graphite_browserMsie">IE</strong>
-                                <span class="graphite_browserVersion">7+</span>
-                            </li>
-                            <li>
-                                <strong class="graphite_browserIcon graphite_browserFf">Firefox</strong>
-                                <span class="graphite_browserVersion">3.5+</span>
-                            </li>
-                            <li>
-                                <strong class="graphite_browserIcon graphite_browserChrome">Chrome</strong>
-                                <span class="graphite_browserVersion">5+</span>
-                            </li>
-                            <li>
-                                <strong class="graphite_browserIcon graphite_browserSafari">Safari</strong>
-                                <span class="graphite_browserVersion">3+</span>
-                            </li>
-                            <li class="graphite_browserUnsupported">
-                                <strong class="graphite_browserIcon graphite_browserOpera">Opera</strong>
-                                <span class="graphite_browserVersion"></span>
-                            </li>
-                        </ul>-->
                     </section>
                 </div>
             </li>

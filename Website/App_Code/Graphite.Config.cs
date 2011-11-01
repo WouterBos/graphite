@@ -20,8 +20,23 @@ namespace Graphite
             demos.Load(HttpContext.Current.Server.MapPath(@"~\App_Data\demos\root.xml"));
             demo = demos.SelectNodes(demosClasses);
         }
-	    
-	    public string[] Types()
+
+        public int Index(string name)
+        {
+            int index = -1;
+            int count = 0;
+            foreach (XmlNode node in demo[0].ChildNodes)
+            {
+                if (name == node.Name)
+                {
+                    index = count;
+                }
+                count++;
+            }
+            return index;
+        }
+        
+        public string[] Types()
 	    {
 	        string[] types = new string[demo[0].ChildNodes.Count];
 	        int count = 0;
@@ -33,15 +48,15 @@ namespace Graphite
             return types;
 	    }
 
-        public Dictionary<string, Boolean> DefaultCode(int index)
+        public Dictionary<string, Boolean> Files(int index)
         {
             Dictionary<string, Boolean> defaultCode = new Dictionary<string, Boolean>();
             foreach (XmlElement node in demo[0].ChildNodes[index].SelectSingleNode("files"))
             {
                 bool defaultBool = false;
-                if (node.HasAttribute("defaultCode"))
+                if (node.HasAttribute("use_default_code"))
                 {
-                    defaultBool = Convert.ToBoolean(node.Attributes["defaultCode"].Value);
+                    defaultBool = true;
                 }
                 defaultCode.Add(node.Name, defaultBool);
             }
