@@ -9,7 +9,5 @@ public partial class blocks_nav_menu : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // Set demo
-        BlockDemo.demoSelector = "/demos/blocks/navigation/menu/demo";
     }
 }

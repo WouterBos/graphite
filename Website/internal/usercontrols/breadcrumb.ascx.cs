@@ -9,6 +9,8 @@ public partial class internal_usercontrols_breadcrumb : System.Web.UI.UserContro
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        string physicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
+        //string[] tree = physicalPath.Split(["/"]);
+        litBreadcrumb.Text = physicalPath;
     }
 }

@@ -11,19 +11,6 @@ using System.Text.RegularExpressions;
 
 public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
 {
-    // Demo data
-    private string _demoSelector;
-    public string demoSelector
-    {
-        get
-        {
-            return _demoSelector;
-        }
-        set
-        {
-            _demoSelector = value;
-        }
-    }
     private Graphite.Config config;
     Dictionary<string, Boolean> dicFiles;
 
@@ -36,7 +23,10 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
 
     private void CreateDemo()
     {
-        config = new Graphite.Config(_demoSelector);
+        string physicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
+        string xmlPath = "/demos" + physicalPath + "demo";
+        //Response.Write(xmlPath);
+        config = new Graphite.Config(xmlPath);
         dicFiles = config.Files(GetActiveIndex()); 
         
         CreateMenu();

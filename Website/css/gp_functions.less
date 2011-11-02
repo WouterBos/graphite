@@ -15,6 +15,11 @@
 	box-shadow: @xOffset @yOffset @shadowSize @shadowColor; 
 }
 
+.gp_opacity(@opacity: 0.5) {
+	opacity: @opacity;
+	filter: ~"alpha(opacity=@{opacity});"
+}
+
 .rounded_corners(@radius: 5px) {
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
