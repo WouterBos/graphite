@@ -13,7 +13,7 @@
 /**
  * @namespace Root namespace for graphite
  */
-var graphite = {};
+graphite.internal = {};
 
 
 
@@ -22,12 +22,12 @@ var graphite = {};
  *
  * @param {Object} root The demo container.
  */
-graphite.demo = function(arg_config) {
+graphite.internal.demo = function(arg_config) {
   var config = {
     root: arg_config.root,
   }
   
-  sourceCode = graphite.demo.data.sourceCode;
+  sourceCode = graphite.internal.demo.data.sourceCode;
   
   function setEvents() {
     setEvent(
@@ -60,7 +60,7 @@ graphite.demo = function(arg_config) {
           }
         });
   
-        clipHtml.glue( copyLink );
+        clipHtml.glue(copyLink);
       }
     }
   }
@@ -75,4 +75,4 @@ graphite.demo = function(arg_config) {
 
 
 
-graphite.demo.data = {};
+graphite.internal.demo.data = {};

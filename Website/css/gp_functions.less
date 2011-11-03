@@ -17,6 +17,7 @@
 
 .gp_opacity(@opacity: 0.5) {
 	opacity: @opacity;
+	/* -ms-filter: ~"'progid:DXImageTransform.Microsoft.Alpha(Opacity=@{opacity})';" */
 	filter: ~"alpha(opacity=@{opacity});"
 }
 

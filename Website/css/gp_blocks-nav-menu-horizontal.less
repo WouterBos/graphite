@@ -7,19 +7,21 @@
 	}
 	
 	a {
-		float: left;
 		.transition(all, 1s, ease-out);
-		border-left: 1px solid #ffffff;
 		color: #ffffff;
 		text-decoration: none;
 		padding: @gridFlex_blockSpacing / 4 @gridFlex_blockSpacing / 2;
 		background: @gp_colorLow;
 	}
+	> ul > li > a {
+		float: left;
+		border-left: 1px solid #ffffff;
+	}
 	a:hover {
 		.transition(all, 0.1s, ease-out);
 		background: @gp_colorLow + #444;
 	}
-	> li:first-child > a {
+	> ul > li:first-child > a {
 		border-left-width: 0;
 	}
 	

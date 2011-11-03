@@ -63,18 +63,17 @@
 
 <script>
     (function() {
-        graphite.demo.data.sourceCode = {
+        graphite.internal.demo.data.sourceCode = {
             html: document.getElementById('sourcecodeHTML').innerHTML,
             js: '<asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>',
             css: '<asp:Literal ID="DemoCss" runat="server"></asp:Literal>'
         }
 
-        var demo = new graphite.demo(
+        var demo = new graphite.internal.demo(
             {
                 root: document.getElementById('graphite_demoStage')
             }
         );
         demo.extractCode();
     })()
-
 </script>

@@ -1,4 +1,6 @@
 @navMenuCollapse_height: 28px;
+@navMenuCollapse_Width: 200px;
+@navMenuCollapse_border: 1px;
 
 .gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse {
 	li {
@@ -16,18 +18,21 @@
 	
 	li li a {
 		display: block;
-		border-top: 1px solid @gp_colorHigh;
+		border-top: @navMenuCollapse_border solid @gp_colorHigh;
 	}
 
-	li li:first-child a {
+	li li:first-child > a {
 		border-top-width: 0;
+	}
+
+	ul ul {
+		width: @navMenuCollapse_Width;
 	}
 	
 	> ul > li > ul {
 		position: absolute;
 		z-index: 100000;
 		top: @navMenuCollapse_height;
-		left: 0;
 	}
 	
 	li:hover > ul {
@@ -35,6 +40,12 @@
 	}
 
 	li li:hover > ul {
-		margin-left: 100%;
+		position: absolute;
+		top: @navMenuCollapse_border;
+		left: 100%;
+		z-index: 100000;
+	}
+	li li:hover:first-child > ul {
+		top: 0;
 	}
 }
