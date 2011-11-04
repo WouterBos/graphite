@@ -86,7 +86,7 @@
 			
 			<script src="/internal/javascript/zeroclipboard/ZeroClipboard.js"></script>
 			<script>
-			    graphite.css.cssDelay();
+			    //graphite.css.cssDelay();
 			</script>
 		</form>
 	</body>

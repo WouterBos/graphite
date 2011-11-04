@@ -1,3 +1,20 @@
 <script>
-    console.log('ok');
+  graphite.css.cssDelay(
+    [
+      {
+        element: document.querySelectorAll('*.gp_menu_typeCollapse li'),
+        cssclass: 'hover',
+        eventType: 'mouseover',
+        action: 'add',
+        time: 0
+      },
+      {
+        element: document.querySelectorAll('*.gp_menu_typeCollapse li'),
+        cssclass: 'hover',
+        eventType: 'mouseout',
+        action: 'remove',
+        time: 500
+      }
+    ]
+  );
 </script>

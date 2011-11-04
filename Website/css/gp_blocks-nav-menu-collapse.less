@@ -35,17 +35,20 @@
 		top: @navMenuCollapse_height;
 	}
 	
-	li:hover > ul {
+	li:hover > ul,
+	li.gp_hover > ul {
 		display: block
 	}
 
-	li li:hover > ul {
+	li li:hover > ul,
+	li li.gp_hover > ul {
 		position: absolute;
 		top: @navMenuCollapse_border;
 		left: 100%;
 		z-index: 100000;
 	}
-	li li:hover:first-child > ul {
+	li li:hover:first-child > ul,
+	li li.gp_hover:first-child > ul {
 		top: 0;
 	}
 }

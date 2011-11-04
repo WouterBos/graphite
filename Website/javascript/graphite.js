@@ -105,7 +105,7 @@ graphite.css = ( function() {
      * @version 1.0 - 2011-11-03
      */
     cssDelay: function(arr) {
-      arrTemp = [
+      /*arrTemp = [
         {
           element: document.querySelector('*.gp_textHeading3'),
           cssclass: 'hover',
@@ -117,24 +117,51 @@ graphite.css = ( function() {
           element: document.querySelector('*.gp_textHeading3'),
           cssclass: 'hover',
           eventType: 'mouseout',
-          action: 'add',
+          action: 'remove',
           time: 500
         },
-      ];
+      ];*/
       
-      for (var i = 0; i < arrTemp.length; i++) {
+      for (var i = 0; i < arr.length; i++) {
         graphite.events.addEvent(
-          arrTemp.element,
-          function() {toggleClass(toggleClass)},
-          arrTemp[i].eventType,
+          arr[i].element,
+          (function(arr) {
+            return function() {
+                toggleClass(arr);
+            }
+          })(arr[i]),
+          arr[i].eventType,
           true
         );
         //function(element, eventFunction, eventType, legacy)
       }
       
-      function toggleClass(item) {
-        console.log(item);
+      function toggleClass(arr) {
+        if (typeof(arr.element.gp_timeout) == 'undefined') {
+          arr.element.gp_timeout = {};
+        }
+        
+        if (typeof(arr.element.gp_timeout[arr.action + '_' + arr.cssclass]) != 'undefined') {
+          if (arr.action == 'remove') {
+            clearTimeout(arr.element.gp_timeout[arr.action + '_' + arr.cssclass]);
+          }
+        }
+        
+        
+        arr.element.gp_timeout[arr.action + '_' + arr.cssclass] = setTimeout(
+          function() {
+            if (arr.action == "add") {
+              arr.element.className += ' ' + arr.cssclass;
+            }
+            if (arr.action == "remove") {
+              arr.element.className = arr.element.className.replace(arr.cssclass, '');
+            }
+          },
+          arr.time
+        );
       }
+      
+      
     }
   }
   /* End public */
