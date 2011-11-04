@@ -49,6 +49,12 @@
                 <li><strong>Export</strong> less import file (and possibly other stuff) by selecting graphite components</li>
                 <li><strong>Locale</strong> How to create multilangual demo website</li>
                 <li><strong>Sections</strong> Graphite must be extendedable so that organisations can create their own modules without "polluting" Graphite with functionality that's too specific for the general user.</li>
+                <li><strong>dev/publish toggle</strong> Based on web.config's "default=true" some stuff is toggled on or of like:
+                    <ul>
+                        <li>index/follow</li>
+                        <li>dynamic or static css generation</li>
+                    </ul>
+                </li>
             </ul>
         </article>
     </div>
