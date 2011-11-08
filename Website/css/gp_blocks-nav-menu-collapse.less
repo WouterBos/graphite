@@ -1,5 +1,5 @@
 @navMenuCollapse_height: 28px;
-@navMenuCollapse_Width: 200px;
+@navMenuCollapse_width: 200px;
 @navMenuCollapse_border: 1px;
 
 .gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse {
@@ -26,13 +26,14 @@
 	}
 
 	ul ul {
-		width: @navMenuCollapse_Width;
+		width: @navMenuCollapse_width;
 	}
 	
 	> ul > li > ul {
 		position: absolute;
 		z-index: 100000;
 		top: @navMenuCollapse_height;
+		left: inherit;
 	}
 	
 	li:hover > ul,

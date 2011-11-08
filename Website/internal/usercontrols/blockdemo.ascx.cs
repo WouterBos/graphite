@@ -165,14 +165,16 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         if (dicFiles.ContainsKey("javascript") == true)
         {
             string JsCode = getSourceCode("-js.html", dicFiles["javascript"]);
+            string JsCodeCopyString = JsCode;
+            
+            JsCodeCopyString = JsCodeCopyString.Replace("'", "\\'");
+            JsCodeCopyString = JsCodeCopyString.Replace("<script", "###GRAPHITE###SCRIPT");
+            JsCodeCopyString = JsCodeCopyString.Replace("</script", "###GRAPHITE###/SCRIPT");
+            JsCodeCopyString = JsCodeCopyString.Replace("\n", "\\n");
+            JsCodeCopyString = JsCodeCopyString.Replace("\r", "\\r");
 
-            JsCode = JsCode.Replace("'", "\\'");
-            JsCode = JsCode.Replace("<script", "###GRAPHITE###SCRIPT");
-            JsCode = JsCode.Replace("</script", "###GRAPHITE###/SCRIPT");
-            JsCode = JsCode.Replace("\n", "\\n");
-            JsCode = JsCode.Replace("\r", "\\r");
-
-            DemoJavaScript.Text = JsCode;
+            DemoJavaScriptCodeBlock.Text = JsCode;
+            DemoJavaScript.Text = JsCodeCopyString;
         }
         else
         {

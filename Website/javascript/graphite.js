@@ -154,6 +154,7 @@ graphite.css = ( function() {
               arr.element.className += ' ' + arr.cssclass;
             }
             if (arr.action == "remove") {
+              console.log(arr.element.className.indexOf(arr.cssclass));
               arr.element.className = arr.element.className.replace(arr.cssclass, '');
             }
           },
