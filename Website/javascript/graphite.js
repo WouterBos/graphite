@@ -88,6 +88,11 @@ graphite.events = ( function() {
 
 
 
+graphite.css = {};
+
+
+
+
 
 /**
  * @namespace ...
@@ -95,75 +100,62 @@ graphite.events = ( function() {
  * @since 1.0 - 2010-02-23
  * @version 1.0 - 2010-02-23
  */
-graphite.css = ( function() {
+graphite.css.cssDelay = function() {
+  var _arr = new Array();
   /* Start public */
-  return {
-    /**
-     * Adds and removes class with delay
-     *
-     * @since 1.0 - 2011-11-03
-     * @version 1.0 - 2011-11-03
-     */
-    cssDelay: function(arr) {
-      /*arrTemp = [
-        {
-          element: document.querySelector('*.gp_textHeading3'),
-          cssclass: 'hover',
-          eventType: 'mouseover',
-          action: 'add',
-          time: 0
-        },
-        {
-          element: document.querySelector('*.gp_textHeading3'),
-          cssclass: 'hover',
-          eventType: 'mouseout',
-          action: 'remove',
-          time: 500
-        },
-      ];*/
-      
-      for (var i = 0; i < arr.length; i++) {
-        graphite.events.addEvent(
-          arr[i].element,
-          (function(arr) {
-            return function() {
-                toggleClass(arr);
-            }
-          })(arr[i]),
-          arr[i].eventType,
-          true
-        );
-        //function(element, eventFunction, eventType, legacy)
-      }
-      
-      function toggleClass(arr) {
-        if (typeof(arr.element.gp_timeout) == 'undefined') {
-          arr.element.gp_timeout = {};
-        }
-        
-        if (typeof(arr.element.gp_timeout[arr.action + '_' + arr.cssclass]) != 'undefined') {
-          if (arr.action == 'remove') {
-            clearTimeout(arr.element.gp_timeout[arr.action + '_' + arr.cssclass]);
+  /**
+   * Adds and removes class with delay
+   *
+   * @since 1.0 - 2011-11-03
+   * @version 1.0 - 2011-11-03
+   */
+  this.addItem = function(arrItem) {
+    _arr.push(arrItem);
+  }
+
+  this.createEvents = function(arr) {
+    for (var i = 0; i < arr.length; i++) {
+      graphite.events.addEvent(
+        arr[i].element,
+        (function(arrItem) {
+          return function() {
+              toggleClass(arrItem, arr);
           }
-        }
-        
-        
-        arr.element.gp_timeout[arr.action + '_' + arr.cssclass] = setTimeout(
-          function() {
-            if (arr.action == "add") {
-              arr.element.className += ' ' + arr.cssclass;
-            }
-            if (arr.action == "remove") {
-              console.log(arr.element.className.indexOf(arr.cssclass));
-              arr.element.className = arr.element.className.replace(arr.cssclass, '');
-            }
-          },
-          arr.time
-        );
+        })(arr[i], arr),
+        arr[i].eventType,
+        true
+      );
+    }
+    
+    function toggleClass(arrItem, arr) {
+      // Create timeout object on element
+      if (typeof(arrItem.element.gp_timeout) == 'undefined') {
+        arrItem.element.gp_timeout = {};
       }
       
+      // Clear possible existing timeouts when removing classes
+      if (typeof(arrItem.element.gp_timeout[arrItem.action + '_' + arrItem.cssclass]) != 'undefined') {
+        if (arrItem.action == 'remove') {
+          clearTimeout(arrItem.element.gp_timeout[arrItem.action + '_' + arrItem.cssclass]);
+        }
+      }
       
+      // The actual adding or removing of classes
+      arrItem.element.gp_timeout[arrItem.action + '_' + arrItem.cssclass] = setTimeout(
+        function() {
+          // Add class
+          if (arrItem.action == 'add', arr) {
+            arrItem.element.className += ' ' + arrItem.cssclass;
+          }
+          // Remove class
+          if (arrItem.action == "remove") {
+            var classNameRegEx = new RegExp(arrItem.cssclass, 'g');
+            arrItem.element.className = arrItem.element.className.replace(classNameRegEx, '');
+          }
+        },
+        arrItem.time
+      );
     }
   }
   /* End public */
-})();
+};
