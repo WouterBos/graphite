@@ -100,8 +100,12 @@ graphite.css = {};
  * @since 1.0 - 2010-02-23
  * @version 1.0 - 2010-02-23
  */
-graphite.css.cssDelay = function() {
+graphite.css.cssDelay = function(arg_singleSibling) {
   var _arr = new Array();
+  var _singleSibling = arg_singleSibling || false;
+  
+  
+  
   /* Start public */
   /**
    * Adds and removes class with delay
@@ -113,21 +117,21 @@ graphite.css.cssDelay = function() {
     _arr.push(arrItem);
   }
 
-  this.createEvents = function(arr) {
-    for (var i = 0; i < arr.length; i++) {
+  this.createEvents = function() {
+    for (var i = 0; i < _arr.length; i++) {
       graphite.events.addEvent(
-        arr[i].element,
+        _arr[i].element,
         (function(arrItem) {
           return function() {
-              toggleClass(arrItem, arr);
+              toggleClass(arrItem);
           }
-        })(arr[i], arr),
-        arr[i].eventType,
+        })(_arr[i]),
+        _arr[i].eventType,
         true
       );
     }
     
-    function toggleClass(arrItem, arr) {
+    function toggleClass(arrItem) {
       // Create timeout object on element
       if (typeof(arrItem.element.gp_timeout) == 'undefined') {
         arrItem.element.gp_timeout = {};
@@ -144,8 +148,26 @@ graphite.css.cssDelay = function() {
       arrItem.element.gp_timeout[arrItem.action + '_' + arrItem.cssclass] = setTimeout(
         function() {
           // Add class
-          if (arrItem.action == 'add', arr) {
-            arrItem.element.className += ' ' + arrItem.cssclass;
+          if (arrItem.action == 'add') {
+            // Remove all other elements with classes
+            /*for (var i = 0; i < _arr.length; i++) {
+              if (_arr[i].cssclass == arrItem.cssclass) {
+                var classNameRegEx = new RegExp(arrItem.cssclass, 'g');
+                _arr[i].element.className = _arr[i].element.className.replace(classNameRegEx, '');
+              }
+            }*/
+            if (arrItem.element.className.indexOf(arrItem.cssclass) == -1) {
+              arrItem.element.className += ' ' + arrItem.cssclass;
+            }
+            if (_singleSibling == true) {
+              //document.getElementById('foo').childNodes.length
+              var parent = arrItem.element.parentElement;
+              for (var i = 0; i < parent.childNodes.length; i++) {
+                //var classNameRegEx = new RegExp(arrItem.cssclass, 'g');
+                //arrItem.element.className = arrItem.element.className.replace(classNameRegEx, '');
+                parent.childNodes[i].className
+              }
+            }
           }
           // Remove class
           if (arrItem.action == "remove") {

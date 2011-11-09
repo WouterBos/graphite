@@ -1,29 +1,28 @@
 <script>
   // Get the menu root element. We'll use jQuery for brevity
   var menuListItems = jQuery('.gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse li');
-  var cssDelay = new graphite.css.cssDelay();
-  //console.log(cssDelay._arr);
+  var cssDelay = new graphite.css.cssDelay(true);
   
   menuListItems.each(function() {
     cssDelay.addItem(
-      [
-        {
-          element: jQuery(this)[0],
-          cssclass: 'gp_hover',
-          eventType: 'mouseover',
-          action: 'add',
-          time: 0
-        },
-        {
-          element: jQuery(this)[0],
-          cssclass: 'gp_hover',
-          eventType: 'mouseout',
-          action: 'remove',
-          time: 500
-        }
-      ]
+      {
+        element: jQuery(this)[0],
+        cssclass: 'gp_hover',
+        eventType: 'mousemove',
+        action: 'add',
+        time: 0
+      }
     );
-    
-    //graphite.css.createEvents();
+    cssDelay.addItem(
+      {
+        element: jQuery(this)[0],
+        cssclass: 'gp_hover',
+        eventType: 'mouseout',
+        action: 'remove',
+        time: 500
+      }
+    );
   });
+  
+  cssDelay.createEvents();
 </script>

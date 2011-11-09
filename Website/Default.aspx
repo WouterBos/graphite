@@ -21,6 +21,7 @@
         <article>
             <h1>Welcome to Graphite</h1>
             <p><big>Graphite is a codebase for frontend development on the ASP.NET platform. It will help kickstart your web project. It contains code templates with HTML, CSS and JavaScript. It also has some templates for the popular CMS systems Sitefinity and Sitecore.</big></p>
+            <p class="gp_textAlert"><big><strong>The project is still very alpha. But there's a <a href="/blocks/navigation/menu/">preview</a> of the menu component.</strong></big></p>
             
             <h2>About this web page</h2>
             <p>This website contains many working code snippets ready to be copy-pasted into your own project.</p>
@@ -90,7 +91,7 @@
                         <li>Google maps</li>
                         <li>Navigation lists
                             <ul>
-                                <li class="graphite_inDevelopment"><a href="/blocks/nav/menu.aspx">Menu</a></li>
+                                <li class="graphite_inDevelopment"><a href="/blocks/navigation/menu/">Menu</a></li>
                                 <li>Sitemap</li>
                             </ul>
                         </li>
