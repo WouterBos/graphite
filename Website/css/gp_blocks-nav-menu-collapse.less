@@ -3,6 +3,11 @@
 @navMenuCollapse_border: 1px;
 
 .gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse {
+	> ul {
+		position: relative;
+		z-index: 100000;	
+	}
+	
 	li {
 		position: relative;
 	}
@@ -33,17 +38,16 @@
 	
 	> ul > li > ul {
 		position: absolute;
-		z-index: 100000;
 		top: @navMenuCollapse_height;
 		left: @navMenuCollapse_border;
 	}
 	> ul > li:first-child > ul {
 		left: 0;
 	}
-	
+
 	li:hover > ul,
 	li.gp_hover > ul {
-		display: block
+		display: block !important;
 	}
 
 	li li:hover > ul,
@@ -51,13 +55,12 @@
 		position: absolute;
 		top: @navMenuCollapse_border;
 		left: 100%;
-		z-index: 100000;
 	}
 	li li:hover:first-child > ul,
 	li li.gp_hover:first-child > ul {
 		top: 0;
 	}
-	
+
 	li li li {
 		border-left: @navMenuCollapse_border solid @gp_colorLow;
 	}

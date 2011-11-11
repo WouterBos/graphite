@@ -13,6 +13,8 @@
                             <msie supports="7+" />
                             <firefox supports="7+" />
 							<chrome supports="15+" />
+							<safari supports="5.1+" />
+							<opera supports="11.50+" />
                         </browsers>
                     </horizontal>
 
@@ -25,6 +27,8 @@
                             <msie supports="7+" />
 							<firefox supports="7+" />
 							<chrome supports="15+" />
+							<safari supports="5.1+" />
+							<opera supports="11.50+" />
                         </browsers>
                     </vertical>
 
@@ -39,6 +43,7 @@
                             <msie supports="7+" />
 							<firefox supports="7+" />
 							<chrome supports="15+" />
+							<safari supports="5.1+" />
                         </browsers>
                     </collapse>
                 </demo>

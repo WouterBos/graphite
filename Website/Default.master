@@ -19,7 +19,7 @@
 		<script src="/internal/javascript/jquery.min.js"></script>
 		<script src="/javascript/graphite.js"></script>
 		<script src="/internal/javascript/graphite.internal.js"></script>
-		<script src="/internal/javascript/live.js#css"></script>
+		<!--<script src="/internal/javascript/live.js#css"></script>-->
 	</head>
 	
 	<body id="MasterPageBody" runat="server">
