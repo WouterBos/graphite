@@ -24,26 +24,42 @@ graphite.internal = {};
  */
 graphite.internal.demo = function(arg_config) {
   var config = {
-    root: arg_config.root,
+    root: arg_config.root
   }
   
   sourceCode = graphite.internal.demo.data.sourceCode;
   
   function setEvents() {
+    var getCodeHtml;
+    var getCodeCss;
+    var getCodeJs;
+    var rootLinks = document.getElementsByTagName('a');
+    for (var i = 0; i < rootLinks.length; i++) {
+      if (rootLinks[i].className.indexOf('graphite_getCodeHtml') != -1) {
+        getCodeHtml = rootLinks[i];
+      }
+      if (rootLinks[i].className.indexOf('graphite_getCodeCss') != -1) {
+        getCodeCss = rootLinks[i];
+      }
+      if (rootLinks[i].className.indexOf('graphite_getCodeJs') != -1) {
+        getCodeJs = rootLinks[i];
+      }
+    }
+    
     setEvent(
-      config.root.querySelector('*.graphite_getCodeHtml'),
+      getCodeHtml,
       sourceCode.html
     );
     
     setEvent(
-      config.root.querySelector('*.graphite_getCodeCss'),
+      getCodeCss,
       sourceCode.css
     );
     
     sourceCode.js = sourceCode.js.replace(/\#\#\#GRAPHITE\#\#\#SCRIPT/g, '<script');
     sourceCode.js = sourceCode.js.replace(/\#\#\#GRAPHITE\#\#\#\/SCRIPT/g, '</script');
     setEvent(
-      config.root.querySelector('*.graphite_getCodeJs'),
+      getCodeJs,
       sourceCode.js
     );
     
@@ -67,9 +83,12 @@ graphite.internal.demo = function(arg_config) {
   		
 	this.extractCode = function() {
 	  // Setup cut 'n paste containers
-	  window.addEventListener('load', function() {
-	    setEvents();
-	  })
+    graphite.events.addEvent(
+      window,
+      setEvents,
+      "load",
+      true
+    );
 	}
 }
 

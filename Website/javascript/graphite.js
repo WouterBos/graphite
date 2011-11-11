@@ -50,7 +50,7 @@ graphite.events = ( function() {
      * @param {Boolean} legacy If this value is false or does not exist,
      *    the event will be created with "addEventHandler".
      * @example
-        graphite.events.addevent(
+        graphite.events.addEvent(
           document.getElementById('elementId'),
           function() {alert('foo')},
           "click",

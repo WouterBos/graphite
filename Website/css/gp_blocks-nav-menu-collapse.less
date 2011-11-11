@@ -9,6 +9,8 @@
 	
 	li li {
 		display: block;
+		float: left;
+		width: 100%;
 	}
 
 	li li a {
@@ -33,7 +35,10 @@
 		position: absolute;
 		z-index: 100000;
 		top: @navMenuCollapse_height;
-		left: inherit;
+		left: @navMenuCollapse_border;
+	}
+	> ul > li:first-child > ul {
+		left: 0;
 	}
 	
 	li:hover > ul,
@@ -51,5 +56,20 @@
 	li li:hover:first-child > ul,
 	li li.gp_hover:first-child > ul {
 		top: 0;
+	}
+	
+	li li li {
+		border-left: @navMenuCollapse_border solid @gp_colorLow;
+	}
+
+	ul ul ul:before {
+		content: "›";
+		position: absolute;
+		top: -1px;
+		left: -10px;
+		z-index: 10000;
+		color: @gp_colorHigh;
+		font-weight: bold;
+		line-height: @navMenuCollapse_height;
 	}
 }
