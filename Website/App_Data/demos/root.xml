@@ -11,7 +11,7 @@
                         </files>
                         <browsers>
                             <msie supports="7+" />
-                            <firefox supports="7+" />
+                            <firefox supports="2+" />
                             <chrome supports="15+" />
                             <safari supports="5.1+" />
                             <opera supports="11.50+" />
@@ -25,7 +25,7 @@
                         </files>
                         <browsers>
                             <msie supports="7+" />
-                            <firefox supports="7+" />
+                            <firefox supports="2+" />
                             <chrome supports="15+" />
                             <safari supports="5.1+" />
                             <opera supports="11.50+" />
@@ -41,7 +41,7 @@
                         </files>
                         <browsers>
                             <msie supports="7+" />
-                            <firefox supports="7+" />
+                            <firefox supports="3.5+" />
                             <chrome supports="15+" />
                             <safari supports="5.1+" />
                         </browsers>
@@ -54,6 +54,10 @@
                             <javascript />
                         </files>
                         <browsers>
+                            <msie supports="7+" />
+                            <firefox supports="3.5+" />
+                            <chrome supports="15+" />
+                            <safari supports="5.1+" />
                         </browsers>
                     </verticalcollapse>
                 </demo>
