@@ -6,46 +6,56 @@
                 <demo>
                     <horizontal cssclass="gp_menu_typeHorizontal">
                         <files>
-							<html use_default_code="true" />
+                            <html use_default_code="true" />
                             <css />
                         </files>
                         <browsers>
                             <msie supports="7+" />
                             <firefox supports="7+" />
-							<chrome supports="15+" />
-							<safari supports="5.1+" />
-							<opera supports="11.50+" />
+                            <chrome supports="15+" />
+                            <safari supports="5.1+" />
+                            <opera supports="11.50+" />
                         </browsers>
                     </horizontal>
 
                     <vertical cssclass="gp_menu_typeVertical">
                         <files>
-							<html use_default_code="true" />
+                            <html use_default_code="true" />
                             <css />
                         </files>
                         <browsers>
                             <msie supports="7+" />
-							<firefox supports="7+" />
-							<chrome supports="15+" />
-							<safari supports="5.1+" />
-							<opera supports="11.50+" />
+                            <firefox supports="7+" />
+                            <chrome supports="15+" />
+                            <safari supports="5.1+" />
+                            <opera supports="11.50+" />
                         </browsers>
                     </vertical>
 
-                    <collapse cssclass="gp_menu_typeHorizontal gp_menu_typeCollapse">
+                    <horizontalcollapse humanname="Horizontal collapse" cssclass="gp_menu_typeHorizontal gp_menu_typeCollapse">
                         <files>
-							<html use_default_code="true" />
+                            <html use_default_code="true" />
                             <css />
                             <javascript />
                             <description />
                         </files>
                         <browsers>
                             <msie supports="7+" />
-							<firefox supports="7+" />
-							<chrome supports="15+" />
-							<safari supports="5.1+" />
+                            <firefox supports="7+" />
+                            <chrome supports="15+" />
+                            <safari supports="5.1+" />
                         </browsers>
-                    </collapse>
+                    </horizontalcollapse>
+
+                    <verticalcollapse humanname="vertical collapse" cssclass="gp_menu_typeVertical gp_menu_typeCollapse">
+                        <files>
+                            <html use_default_code="true" />
+                            <css />
+                            <javascript />
+                        </files>
+                        <browsers>
+                        </browsers>
+                    </verticalcollapse>
                 </demo>
             </menu>
         </navigation>

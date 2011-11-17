@@ -2,7 +2,7 @@
 @navMenuCollapse_width: 200px;
 @navMenuCollapse_border: 1px;
 
-.gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse {
+.gp_menu.gp_menu_typeCollapse {
 	> ul {
 		position: relative;
 		z-index: 100000;	
@@ -38,11 +38,6 @@
 	
 	> ul > li > ul {
 		position: absolute;
-		top: @navMenuCollapse_height;
-		left: @navMenuCollapse_border;
-	}
-	> ul > li:first-child > ul {
-		left: 0;
 	}
 
 	li:hover > ul,
@@ -74,5 +69,55 @@
 		color: @gp_colorHigh;
 		font-weight: bold;
 		line-height: @navMenuCollapse_height;
+	}
+}
+
+
+
+.gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse {
+	> ul > li > ul {
+		top: @navMenuCollapse_height;
+		left: @navMenuCollapse_border;
+	}
+	> ul > li:first-child > ul {
+		left: 0;
+	}
+
+	li li:hover > ul,
+	li li.gp_hover > ul {
+		position: absolute;
+		top: @navMenuCollapse_border;
+		left: 100%;
+	}
+	li li:hover:first-child > ul,
+	li li.gp_hover:first-child > ul {
+		top: 0;
+	}
+}
+
+
+
+.gp_menu.gp_menu_typeVertical.gp_menu_typeCollapse {
+	@gp_menu_width:  200px;
+	
+
+	
+	width: @gp_menu_width;
+
+	ul ul {
+		top: 0;
+		display: none;
+	}
+	
+	> ul > li > ul {
+		margin-left: @gp_menu_width;
+	}
+	
+	li li a {
+		padding-left: @gridFlex_blockSpacing / 2 !important;
+	}
+
+	li.gp_activePage > a:before {
+		display: none;
 	}
 }

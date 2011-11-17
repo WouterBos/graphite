@@ -36,13 +36,21 @@ namespace Graphite
             return index;
         }
         
-        public string[] Types()
+        public string[,] Types()
 	    {
-	        string[] types = new string[demo[0].ChildNodes.Count];
+	        string[,] types = new string[demo[0].ChildNodes.Count,2];
 	        int count = 0;
-            foreach (XmlNode node in demo[0].ChildNodes)
+            foreach (XmlElement node in demo[0].ChildNodes)
             {
-                types[count] = node.Name;
+                types[count,0] = node.Name;
+                if (node.HasAttribute("humanname"))
+                {
+                    types[count,1] = node.Attributes["humanname"].Value;
+                }
+                else
+                {
+                    types[count, 1] = node.Name;
+                }
                 count++;
             }
             return types;

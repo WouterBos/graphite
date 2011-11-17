@@ -36,7 +36,7 @@ graphite.blocks.navigation.menu = ( function() {
      */
     initCollapse: function() {
       // Get the menu root element. We'll use jQuery for brevity
-      var menuListItems = jQuery('.gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse li');
+      var menuListItems = jQuery('.gp_menu.gp_menu_typeCollapse li');
       var cssDelay = new graphite.css.cssDelay(true);
       
       menuListItems.each(function() {
