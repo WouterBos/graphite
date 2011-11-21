@@ -1,37 +1,47 @@
-﻿<%@ Page Title="Grid &amp; Basic Page" Language="C#" MasterPageFile="~/grids/flex/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="blocks_nav_menu" %>
+<%@ Register TagPrefix="Internal" TagName="BlockDemo" Src="~/internal/usercontrols/blockdemo.ascx" %>
+<%@ Register TagPrefix="Internal" TagName="BreadCrumb" Src="~/internal/usercontrols/breadcrumb.ascx" %>
 
-<asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
-    <link rel="stylesheet" media="all" href="/css/gp_all-graphite-demo-grid.less" />
+
+
+<asp:Content ID="Content8" ContentPlaceHolderID="DemoStage" Runat="Server">
+    <Internal:BlockDemo runat="server" ID="BlockDemo" />
+</asp:Content>
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" Runat="Server">
+</asp:Content>
+
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="Title" Runat="Server">
+    <Internal:Breadcrumb runat="server" ID="Breadcrumb" />
+</asp:Content>
+
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="Intro" Runat="Server">
     
-    <style>
-        div.gp_header div.gp_main {
-            background: #C8C7E5;
-        }
- 
-        div.gp_content div.gp_main {
-            background: #C97CE2;
-        }
-
-        div.gp_column1 {
-            background: #eee;
-        }
-        div.gp_column2 {
-            background: #ddd;
-        }
-        div.gp_column3 {
-            background: #ccc;
-        }
-        div.gp_column4 {
-            background: #bbb;
-        }
-        
-        div.gp_footer div.gp_main {
-            background: #BAEAB8;
-        }
-    </style>
 </asp:Content>
 
 
-<asp:Content ID="Title" ContentPlaceHolderID="Title" Runat="Server">
-    <strong runat="server" id="PageTitle"></strong> Graphite
+
+<asp:Content ID="Content4" ContentPlaceHolderID="Column3_1" Runat="Server">
 </asp:Content>
+
+
+
+<asp:Content ID="Content5" ContentPlaceHolderID="Column3_2" Runat="Server">
+</asp:Content>
+
+
+
+<asp:Content ID="Content6" ContentPlaceHolderID="Column3_3" Runat="Server">
+</asp:Content>
+
+
+
+<asp:Content ID="Content7" ContentPlaceHolderID="Header" Runat="Server">
+</asp:Content>
+

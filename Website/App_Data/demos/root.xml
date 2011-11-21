@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <demos>
+    <grids>
+        <flex>
+            <demo>
+                <default>
+                    <files>
+                        <html use_default_code="true" />
+                        <description />
+                    </files>
+                    <browsers>
+                    </browsers>
+                </default>
+            </demo>
+        </flex>
+    </grids>
+    
     <blocks>
         <navigation>
             <menu>
@@ -14,7 +29,7 @@
                             <firefox supports="2+" />
                             <chrome supports="15+" />
                             <safari supports="5.1+" />
-                            <opera supports="11.50+" />
+                            <opera supports="9.27+" />
                         </browsers>
                     </horizontal>
 
@@ -28,7 +43,7 @@
                             <firefox supports="2+" />
                             <chrome supports="15+" />
                             <safari supports="5.1+" />
-                            <opera supports="11.50+" />
+                            <opera supports="9.27+" />
                         </browsers>
                     </vertical>
 
@@ -58,6 +73,7 @@
                             <firefox supports="3.5+" />
                             <chrome supports="15+" />
                             <safari supports="5.1+" />
+                            <opera supports="9.27+" />
                         </browsers>
                     </verticalcollapse>
                 </demo>

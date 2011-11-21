@@ -93,7 +93,13 @@ namespace Graphite
 
         public string CssClass(int index)
         {
-            return demo[0].ChildNodes[index].Attributes["cssclass"].Value;
+            string cssClass = "";
+            XmlElement selectedElement = demo[0].ChildNodes[index] as XmlElement;
+            if (selectedElement.HasAttribute("cssclass") == true)
+            {
+                cssClass = selectedElement.Attributes["cssclass"].Value;
+            }
+            return cssClass;
         }
     }
 }

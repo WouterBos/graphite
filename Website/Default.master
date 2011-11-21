@@ -13,7 +13,7 @@
 		<link href="/favicon.ico" rel="shortcut icon" />
 		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
 		
-		<link href="/css/gp_all-graphite-demo.less" rel="stylesheet" media="all" />
+		<link href="/internal/css/demo.less" rel="stylesheet" media="all" />
 		<asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
         
 		<script src="/internal/javascript/jquery.min.js"></script>

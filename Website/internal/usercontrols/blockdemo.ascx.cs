@@ -70,16 +70,19 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     {
         int menuItemActive = GetActiveIndex();
         string[,] types = config.Types();
-        for (int i = 0; i <= types.GetUpperBound(0); i++)
+        if (types.GetUpperBound(0) > 1)
         {
-            HyperLink link = new HyperLink();
-            link.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(types[i,1]);
-            link.NavigateUrl = Request.ServerVariables["SCRIPT_NAME"] + "?type=" + Server.HtmlEncode(types[i,0]);
-            if (i == menuItemActive)
+            for (int i = 0; i <= types.GetUpperBound(0); i++)
             {
-                link.CssClass = "active";
+                HyperLink link = new HyperLink();
+                link.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(types[i,1]);
+                link.NavigateUrl = Request.ServerVariables["SCRIPT_NAME"] + "?type=" + Server.HtmlEncode(types[i,0]);
+                if (i == menuItemActive)
+                {
+                    link.CssClass = "active";
+                }
+                Types.Controls.Add(link);
             }
-            Types.Controls.Add(link);
         }
     }
 
