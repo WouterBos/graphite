@@ -12,19 +12,6 @@
             background: #C97CE2;
         }
 
-        div.gp_column1 {
-            background: #eee;
-        }
-        div.gp_column2 {
-            background: #ddd;
-        }
-        div.gp_column3 {
-            background: #ccc;
-        }
-        div.gp_column4 {
-            background: #bbb;
-        }
-        
         div.gp_footer div.gp_main {
             background: #BAEAB8;
         }

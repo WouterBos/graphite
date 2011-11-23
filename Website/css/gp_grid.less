@@ -1,0 +1,64 @@
+/*
+ * Base grid
+ * 
+ * Base styling for grid.
+ */
+
+
+/* Main container for web page */
+*.gp_root {
+	position: relative;
+}
+
+/* Wrapper for web content */
+*.gp_main {
+	position: relative;
+	margin: 0 auto 0 auto;
+	width: 960px;
+	min-height: 0;
+}
+*.gp_main:after {
+	.clear;
+}
+
+
+
+/* Logo */
+*.gp_logo {
+	display: block;
+	position: absolute;
+	top: @grid_blockSpacing;
+	left: @grid_blockSpacing;
+	z-index: 10;
+
+	img {
+		float: left;	
+	}
+}
+
+
+
+/* Header */
+*.gp_header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+*.gp_header *.gp_main {
+	height: @grid_headerHeight;
+}
+
+
+
+/* Content block */
+*.gp_content {
+	border-top: @grid_headerHeight solid transparent;
+	padding: @grid_blockSpacing 0;
+	min-height: 0;
+	
+	&:after {
+	    .clear;
+	}
+}

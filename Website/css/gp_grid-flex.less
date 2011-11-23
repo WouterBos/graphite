@@ -1,66 +1,11 @@
-/**
+/*
+ * Flex grid
  * 
+ * Grid system with variable column widths.
  */
 
 
-/* Main container for website */
-*.gp_root {
-	position: relative;
-}
 
-*.gp_main {
-	position: relative;
-	margin: 0 auto 0 auto;
-	width: 960px;
-	min-height: 0;
-}
-*.gp_main:after {
-	content:"";
-	display:block;
-	clear:both;
-}
-
-
-
-/* Logo */
-*.gp_logo {
-	display: block;
-	position: absolute;
-	top: @gridFlex_blockSpacing;
-	left: @gridFlex_blockSpacing;
-	z-index: 10;
-
-	img {
-		float: left;	
-	}
-}
-
-
-
-/* Header */
-*.gp_header {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-}
-
-*.gp_header *.gp_main {
-	height: @gridFlex_headerHeight;
-}
-
-
-
-/* Content block */
-*.gp_content {
-	border-top: @gridFlex_headerHeight solid transparent;
-	padding: @gridFlex_blockSpacing 0;
-	min-height: 0;
-	
-	&:after {
-	    .clear;
-	}
-}
 
 
 
@@ -77,81 +22,75 @@
 		float: left;
 	}
 
-	*.gp_column:first-child {
-		*.gp_block {
-			margin-left: 0;
-		}
-	}
-	
-	*.gp_column.gp_*.bg {
+	*.gp_column.gp_columnBackground {
 		background: #eee;
 		*.gp_block {
-			margin: @gridFlex_blockSpacing;
+			margin: @grid_blockSpacing;
 		}
 	}
 }
-
 *.gp_columns + *.gp_columns {
-	margin-top: @gridFlex_blockSpacing;
+	margin-top: @grid_blockSpacing;
 }
 
 
 
-/* 2 column style */
+/* Columns */
+/* 2 columns */
 *.gp_columns_2 {
 	*.gp_column1 {
-		width: 70%;
+		width: 50%;
 	}
-
 	*.gp_column2 {
-		width: 30%;
-		*.gp_block {
-			margin-right: 0;
-		}
+		width: 50%;
 	}
 }
 
-
-
-/* 3 column style */
+/* 3 columns */
 *.gp_columns_3 {
 	*.gp_column1 {
-		width: 33.3%;
+		width: 33.33%;
 	}
-
 	*.gp_column2 {
-		width: 33.3%;
+		width: 33.33%;
 	}
-
 	*.gp_column3 {
-		width: 33.3%;
-		*.gp_block {
-			margin-right: 0;
-		}
+		width: 33.33%;
 	}
 }
 
-
-
-/* 4 column style */
+/* 4 columns */
 *.gp_columns_4 {
 	*.gp_column1 {
-		width: 30%;
+		width: 25%;
 	}
-
 	*.gp_column2 {
 		width: 25%;
 	}
-
 	*.gp_column3 {
 		width: 25%;
 	}
+	*.gp_column4 {
+		width: 25%;
+	}
+}
 
+/* 5 columns */
+*.gp_columns_5 {
+	*.gp_column1 {
+		width: 20%;
+	}
+	*.gp_column2 {
+		width: 20%;
+	}
+	*.gp_column3 {
+		width: 20%;
+	}
 	*.gp_column4 {
 		width: 20%;
-		*.gp_block {
-			margin-right: 0;
-		}
+	}
+	*.gp_column5 {
+		width: 20%;
 	}
 }
 
@@ -159,11 +98,19 @@
 
 /* Block basic style */
 *.gp_block {
-	margin: 0 @gridFlex_blockSpacing;
+	margin: 0 @grid_blockSpacing;
 }
 
 
-/* Footer */
-*.gp_footer *.gp_main {
-	
+
+/* Alt style for first and last columns */
+*.gp_columns *.gp_column:first-child *.gp_block {
+	margin-left: 0;
+}
+
+*.gp_columns_2 *.gp_column2 *.gp_block,
+*.gp_columns_3 *.gp_column3 *.gp_block,
+*.gp_columns_4 *.gp_column4 *.gp_block,
+*.gp_columns_5 *.gp_column5 *.gp_block {
+	margin-right: 0;
 }

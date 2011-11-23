@@ -53,19 +53,21 @@
     			<!-- Start | Page content -->
 			    <div class="gp_content">
 			        <div class="gp_main">
+			            <div class="gp_text">
+			                <h1>Content block</h1>
+			            </div>
+			            
 			            <!-- Start | 2 Columns -->
+			            <h2 class="gp_heading3">2 columns</h2>
 				        <div class="gp_columns gp_columns_2">
 				            <div class="gp_innerColumns">
 					            <div class="gp_column gp_column1">
 					                    <div class="gp_block gp_text">
-                                            <p><strong>RTE block in 1st of 2 columns</strong></p>
                                             <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam posuere lorem sed libero rutrum aliquam. Ut consequat bibendum urna, id ultrices velit volutpat a. Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit.</p>
                                         </div>
 					            </div>
 					            <div class="gp_column gp_column2">
                                     <div class="gp_block gp_text">
-                                        <p><strong>RTE block in 2nd of 2 columns</strong></p>
-                                        <p>Fusce sagittis eros vel tellus varius adipiscing. Donec at mauris tellus. Quisque varius viverra urna, nec commodo sem lacinia quis. Sed varius luctus massa, quis malesuada ipsum ornare non.</p>
                                         <p>Eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
                                     </div>
 					            </div>
@@ -75,23 +77,21 @@
                         
                         
                         <!-- Start | 3 Columns -->
+			            <h2 class="gp_heading3">3 columns</h2>
 				        <div class="gp_columns gp_columns_3">
 				            <div class="gp_innerColumns">
 					            <div class="gp_column gp_column1 gp_solidbg">
                                     <div class="gp_block gp_text">
-                                        <p><strong>RTE block in 1st of 3 columns</strong></p>
                                         <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
                                     </div>
 					            </div>
 					            <div class="gp_column gp_column2">
                                     <div class="gp_block gp_text">
-                                        <p><strong>RTE block in 2nd of 3 columns</strong></p>
                                         <p>Aliquam posuere lorem sed libero rutrum aliquam. Ut consequat bibendum urna, id ultrices velit volutpat a. Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
                                     </div>
 					            </div>
 					            <div class="gp_column gp_column3">
                                     <div class="gp_block gp_text">
-                                        <p><strong>RTE block in 3rd of 3 columns</strong></p>
                                         <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
                                     </div>
 					            </div>
@@ -101,29 +101,60 @@
                         
                         
                         <!-- Start | 4 Columns -->
+                        <h2 class="gp_heading3">4 columns</h2>
 				        <div class="gp_columns gp_columns_4">
 				            <div class="gp_innerColumns">
 					            <div class="gp_column gp_column1 gp_solidbg">
                                     <div class="gp_block gp_text">
-                                        <p><strong>RTE block in 1st of 4 columns</strong></p>
                                         <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
                                     </div>
 					            </div>
 					            <div class="gp_column gp_column2">
                                     <div class="gp_block gp_text">
-                                        <p><strong>RTE block in 2nd of 4 columns</strong></p>
                                         <p>Aliquam posuere lorem sed libero rutrum aliquam. Ut consequat bibendum urna, id ultrices velit volutpat a. Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
                                     </div>
 					            </div>
 					            <div class="gp_column gp_column3">
                                     <div class="gp_block gp_text">
-                                        <p><strong>RTE block in 3rd of 4 columns</strong></p>
                                         <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
                                     </div>
 					            </div>
 					            <div class="gp_column gp_column4">
                                     <div class="gp_block gp_text">
-                                        <p><strong>RTE block in 4th of 4 columns</strong></p>
+                                        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
+					            </div>
+					        </div>
+					    </div>
+					    <!-- End | 4 Columns -->
+                        
+                        
+                        <!-- Start | 5 Columns -->
+                        <h2 class="gp_heading3">5 columns</h2>
+				        <div class="gp_columns gp_columns_5">
+				            <div class="gp_innerColumns">
+					            <div class="gp_column gp_column1 gp_solidbg">
+                                    <div class="gp_block gp_text">
+                                        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
+					            </div>
+					            <div class="gp_column gp_column2">
+                                    <div class="gp_block gp_text">
+                                        <p>Aliquam posuere lorem sed libero rutrum aliquam. Ut consequat bibendum urna, id ultrices velit volutpat a. Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
+					            </div>
+					            <div class="gp_column gp_column3">
+                                    <div class="gp_block gp_text">
+                                        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
+					            </div>
+					            <div class="gp_column gp_column4">
+                                    <div class="gp_block gp_text">
+                                        <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
+                                    </div>
+					            </div>
+					            <div class="gp_column gp_column5">
+                                    <div class="gp_block gp_text">
                                         <p>Proin pulvinar eros quis nulla vestibulum sit amet mattis velit suscipit. Nullam diam nisl, dignissim quis faucibus eget, dictum non lorem. Vivamus eleifend hendrerit bibendum. </p>
                                     </div>
 					            </div>
