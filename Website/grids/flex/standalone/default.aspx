@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Grid &amp; Basic Page" Language="C#" MasterPageFile="~/grids/flex/standalone/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Flex grid | Graphite" Language="C#" MasterPageFile="~/grids/flex/standalone/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
     <link rel="stylesheet" media="all" href="all.less" />
@@ -16,9 +16,4 @@
             background: #BAEAB8;
         }
     </style>
-</asp:Content>
-
-
-<asp:Content ID="Title" ContentPlaceHolderID="Title" Runat="Server">
-    <strong runat="server" id="PageTitle"></strong> Graphite
 </asp:Content>

@@ -13,7 +13,7 @@
 		<link href="/favicon.ico" rel="shortcut icon" />
 		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
 		
-		<link href="/internal/css/demo.less" rel="stylesheet" media="all" />
+		<link href="/internal/css/all.less" rel="stylesheet" media="all" />
 		<asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
         
 		<script src="/internal/javascript/jquery.min.js"></script>
@@ -33,7 +33,7 @@
 			            <asp:ContentPlaceHolder ID="DemoStage" runat="server"></asp:ContentPlaceHolder>
 			            
                         <!-- Start | 3 Columns -->
-				        <div class="gp_columns gp_columns_2">
+				        <div class="gp_columns gp_columns_2 gp_columns_2Alt1">
 				            <div class="gp_column gp_column1">
 				                <asp:ContentPlaceHolder ID="Intro" runat="server"></asp:ContentPlaceHolder>
 				            </div>

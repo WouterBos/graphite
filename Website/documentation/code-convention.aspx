@@ -35,7 +35,7 @@
 <asp:Content ID="Column3_1" ContentPlaceHolderID="Column3_1" Runat="Server">
     <div class="gp_block gp_text">
         <article>
-            <h1 class="heading2">HTML</h1>
+            <h1 class="gp_textHeading2">HTML</h1>
         </article>
     </div>
 </asp:Content>
@@ -45,11 +45,15 @@
 <asp:Content ID="Column3_2" ContentPlaceHolderID="Column3_2" Runat="Server">
     <div class="gp_block gp_text">
         <article>
-            <h1 class="heading2">CSS</h1>
+            <h1 class="gp_textHeading2">CSS</h1>
             <ul>
                 <li>
                     <strong>All classes are prefixed with <code>gp_</code></strong><br />
                     This will minimize the risk of collission with other CSS code.
+                </li>
+                
+                <li>
+                    <strong>EST_TODO</strong>
                 </li>
             </ul>
         </article>
@@ -61,7 +65,7 @@
 <asp:Content ID="Column3_3" ContentPlaceHolderID="Column3_3" Runat="Server">
     <div class="gp_block gp_text">
         <article>
-            <h1 class="heading2">JavaScript</h1>
+            <h1 class="gp_textHeading2">JavaScript</h1>
         </article>
     </div>
 </asp:Content>

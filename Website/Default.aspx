@@ -36,17 +36,9 @@
         <article>
             <h1 class="heading2">Todo</h1>
             <ul>
-                <li>
-                    Demo
-                    <ul>
-                        <li>Demo code must reside in one ASCX, configuration in ASPX</li>
-                        <li>Better structure for demo config</li>
-                    </ul>
-                </li>
                 <li><strong>Themes</strong> managed with just a few Less variables</li>
                 <li><strong>Generic blocks</strong> multi-purpose elements like for example a list with just title, sub title and a short text</li>
                 <li><strong>Fine-grained spacing</strong> different values for horizontal and vertical spacing</li>
-                <li><strong>5 column option</strong> for flexgrid</li>
                 <li><strong>Export</strong> less import file (and possibly other stuff) by selecting graphite components</li>
                 <li><strong>Locale</strong> How to create multilangual demo website</li>
                 <li><strong>Sections</strong> Graphite must be extendedable so that organisations can create their own modules without "polluting" Graphite with functionality that's too specific for the general user.</li>
@@ -69,7 +61,7 @@
             <ul>
                 <li><a href="/grids">Grids</a>
                     <ul>
-                        <li class="graphite_inDevelopment"><a href="/grids/flex">Flex</a></li>
+                        <li><a href="/grids/flex">Flex</a></li>
                         <li>16 grid system</li>
                     </ul>
                 </li>
@@ -91,7 +83,7 @@
                         <li>Google maps</li>
                         <li>Navigation lists
                             <ul>
-                                <li class="graphite_inDevelopment"><a href="/blocks/navigation/menu/">Menu</a></li>
+                                <li><a href="/blocks/navigation/menu/">Menu</a></li>
                                 <li>Sitemap</li>
                             </ul>
                         </li>

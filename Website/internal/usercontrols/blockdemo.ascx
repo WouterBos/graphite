@@ -15,8 +15,8 @@
         <asp:Literal ID="DemoJavaScriptCodeBlock" runat="server"></asp:Literal>
     </div>
     
-    <div class="codeBox js_codeBox gp_columns gp_columns_3">
-        <ul class="gp_innerColumns">
+    <div class="gp_columns gp_columns_3 gp_columns_3DemoSpecs">
+        <ul>
             <li class="gp_column gp_column1">
                 <div class="gp_block">
                     <section>
