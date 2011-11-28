@@ -59,6 +59,8 @@ namespace Graphite
         public Dictionary<string, Boolean> Files(int index)
         {
             Dictionary<string, Boolean> defaultCode = new Dictionary<string, Boolean>();
+            
+            // Get references to HTML, CSS and JS
             foreach (XmlElement node in demo[0].ChildNodes[index].SelectSingleNode("files"))
             {
                 bool defaultBool = false;
@@ -67,6 +69,17 @@ namespace Graphite
                     defaultBool = true;
                 }
                 defaultCode.Add(node.Name, defaultBool);
+            }
+            
+            // Check if demo is set as an external demo
+            XmlElement RootElement = demo[0].ChildNodes[index].SelectSingleNode("files") as XmlElement;
+            defaultCode.Add("externalDemo", false);
+            if (RootElement.HasAttribute("externalDemo") == true)
+            {
+                if (RootElement.Attributes["externalDemo"].Value == "true")
+                {
+                    defaultCode["externalDemo"] = true;
+                }
             }
             return defaultCode;
         }

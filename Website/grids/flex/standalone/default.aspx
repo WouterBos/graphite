@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Flex grid | Graphite" Language="C#" MasterPageFile="~/grids/flex/standalone/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
-    <link rel="stylesheet" media="all" href="all.less" />
+    <link rel="stylesheet" media="all" href="../default.less" />
     
     <style>
         div.gp_header div.gp_main {
@@ -16,4 +16,9 @@
             background: #BAEAB8;
         }
     </style>
+</asp:Content>
+
+
+<asp:Content ID="Content" ContentPlaceHolderID="Content" Runat="Server">
+    <asp:Literal ID="DemoHtml" runat="server"></asp:Literal>
 </asp:Content>

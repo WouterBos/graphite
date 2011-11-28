@@ -78,6 +78,7 @@
             <ul>
                 <li><a href="/grids">Blocks</a>
                     <ul>
+                        <li class="graphite_inDevelopment"><a href="/blocks/text">Text content</a></li>
                         <li>Div popup</li>
                         <li>Div popup movie</li>
                         <li>Google maps</li>

@@ -4,8 +4,9 @@
         <flex>
             <demo>
                 <default>
-                    <files>
+                    <files externalDemo="true">
                         <html use_default_code="true" />
+                        <css use_default_code="true" />
                         <description />
                     </files>
                     <browsers>
@@ -16,6 +17,20 @@
     </grids>
     
     <blocks>
+        <text>
+            <demo>
+                <default>
+                    <files>
+                        <html use_default_code="true" />
+                        <css use_default_code="true" />
+                        <description />
+                    </files>
+                    <browsers>
+                    </browsers>
+                </default>
+            </demo>
+        </text>
+        
         <navigation>
             <menu>
                 <demo>

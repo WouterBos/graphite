@@ -53,7 +53,8 @@
                 </li>
                 
                 <li>
-                    <strong>EST_TODO</strong>
+                    <strong>Only one level of nested styles</strong><br />
+                    In order to make styling retracable through developer tools like Firebug.
                 </li>
             </ul>
         </article>

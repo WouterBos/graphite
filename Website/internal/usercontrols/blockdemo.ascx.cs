@@ -133,9 +133,21 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     {
         if (dicFiles.ContainsKey("html") == true)
         {
+            // Get demo code
             string HtmlCode = getSourceCode(".html", dicFiles["html"]);
             HtmlCode = HtmlCode.Replace("###GP_BLOCK_TYPE###", config.CssClass(GetActiveIndex())); // Set HTML CSS class
             DemoHTMLCodeBlock.Text = HtmlCode;
+            
+            // Get demo code for copy/paste
+            if (dicFiles["externalDemo"] == true)
+            {
+                HtmlCode = getSourceCode("-external.html", dicFiles["html"]);
+            }
+
+            HtmlCode = HtmlCode.Replace("'", "\\'");
+            HtmlCode = HtmlCode.Replace("\n", "\\n");
+            HtmlCode = HtmlCode.Replace("\r", "\\r");
+            DemoHtml.Text = HtmlCode;
         }
         else
         {
@@ -148,8 +160,11 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         if (dicFiles.ContainsKey("css") == true)
         {
             string CssCode = getSourceCode(".less", dicFiles["css"]);
-            string strCssLink = config.Type(GetActiveIndex()) + ".less";
-            CSSLink.Attributes["href"] = strCssLink;
+            if (dicFiles["externalDemo"] == false)
+            {
+                string strCssLink = config.Type(GetActiveIndex()) + ".less";
+                CSSLink.Attributes["href"] = strCssLink;
+            }
 
             CssCode = CssCode.Replace("'", "\\'");
             CssCode = CssCode.Replace("\n", "\\n");
@@ -171,8 +186,8 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             string JsCodeCopyString = JsCode;
             
             JsCodeCopyString = JsCodeCopyString.Replace("'", "\\'");
-            JsCodeCopyString = JsCodeCopyString.Replace("<script", "###GRAPHITE###SCRIPT");
-            JsCodeCopyString = JsCodeCopyString.Replace("</script", "###GRAPHITE###/SCRIPT");
+            JsCodeCopyString = JsCodeCopyString.Replace("<script", "###GP###SCRIPT");
+            JsCodeCopyString = JsCodeCopyString.Replace("</script", "###GP###/SCRIPT");
             JsCodeCopyString = JsCodeCopyString.Replace("\n", "\\n");
             JsCodeCopyString = JsCodeCopyString.Replace("\r", "\\r");
 

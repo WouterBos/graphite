@@ -64,7 +64,7 @@
 <script>
     (function() {
         graphite.internal.demo.data.sourceCode = {
-            html: document.getElementById('sourcecodeHTML').innerHTML,
+            html: '<asp:Literal ID="DemoHtml" runat="server"></asp:Literal>',
             js: '<asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>',
             css: '<asp:Literal ID="DemoCss" runat="server"></asp:Literal>'
         }

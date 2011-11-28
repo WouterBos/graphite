@@ -56,8 +56,8 @@ graphite.internal.demo = function(arg_config) {
       sourceCode.css
     );
     
-    sourceCode.js = sourceCode.js.replace(/\#\#\#GRAPHITE\#\#\#SCRIPT/g, '<script');
-    sourceCode.js = sourceCode.js.replace(/\#\#\#GRAPHITE\#\#\#\/SCRIPT/g, '</script');
+    sourceCode.js = sourceCode.js.replace(/\#\#\#GP\#\#\#SCRIPT/g, '<script');
+    sourceCode.js = sourceCode.js.replace(/\#\#\#GP\#\#\#\/SCRIPT/g, '</script');
     setEvent(
       getCodeJs,
       sourceCode.js
