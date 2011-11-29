@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="blocks_nav_menu" %>
 <%@ Register TagPrefix="Internal" TagName="BreadCrumb" Src="~/internal/usercontrols/breadcrumb.ascx" %>
+<%@ Register TagPrefix="Internal" TagName="Folders" Src="~/internal/usercontrols/folders.ascx" %>
 
 
 
@@ -15,21 +16,7 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Intro" Runat="Server">
-    <div class="gp_block">
-        <div class="gp_text">
-            <h1>Contents of {BLOCKS}</h1>
-            <div class="gp_sitemap">
-                <ul>
-                    <li>
-                        <a href="navigation">Navigation</a>
-                    </li>
-                    <li>
-                        <a href="text">Text</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <Internal:Folders runat="server" ID="Folders" />
 </asp:Content>
 
 

@@ -17,7 +17,7 @@
 
 
 <asp:Content ID="Intro" ContentPlaceHolderID="Intro" Runat="Server">
-    <div class="gp_block gp_text">
+    <div class="gp_block gp_textBlock">
         <article>
             <h1>Code Conventions in Graphite</h1>
             <p><big>Consistent coding improves readability and the quality of Graphite in general. Here below you can find the code conventions it adheres to.</big></p>
@@ -33,7 +33,7 @@
 
 
 <asp:Content ID="Column3_1" ContentPlaceHolderID="Column3_1" Runat="Server">
-    <div class="gp_block gp_text">
+    <div class="gp_block gp_textBlock">
         <article>
             <h1 class="gp_textHeading2">HTML</h1>
         </article>
@@ -43,7 +43,7 @@
 
 
 <asp:Content ID="Column3_2" ContentPlaceHolderID="Column3_2" Runat="Server">
-    <div class="gp_block gp_text">
+    <div class="gp_block gp_textBlock">
         <article>
             <h1 class="gp_textHeading2">CSS</h1>
             <ul>
@@ -64,7 +64,7 @@
 
 
 <asp:Content ID="Column3_3" ContentPlaceHolderID="Column3_3" Runat="Server">
-    <div class="gp_block gp_text">
+    <div class="gp_block gp_textBlock">
         <article>
             <h1 class="gp_textHeading2">JavaScript</h1>
         </article>

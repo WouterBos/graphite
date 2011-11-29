@@ -20,7 +20,7 @@
             <li class="gp_column gp_column1">
                 <div class="gp_block">
                     <section>
-                        <div class="gp_text">
+                        <div class="gp_textBlock">
                             <h1 class="gp_textHeading3">Copy to clipboard</h1>
                         </div>
                         
@@ -41,7 +41,7 @@
             <li class="gp_column gp_column2">
                 <div class="gp_block">
                     <section>
-                        <div class="gp_text">
+                        <div class="gp_textBlock">
                             <h1 class="gp_textHeading3">Browser compatibility</h1>
                         </div>
                         
@@ -51,7 +51,7 @@
             </li>
             <li class="gp_column gp_column3">
                 <section>
-                    <div class="gp_block gp_text">
+                    <div class="gp_block gp_textBlock">
                         <h1 class="gp_textHeading3">Description</h1>
                         <asp:Literal ID="litDescription" runat="server"></asp:Literal>
                     </div>

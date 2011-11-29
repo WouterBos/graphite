@@ -75,7 +75,7 @@
 				    <footer>
 				        <div class="gp_columns gp_columns_1">
 				            <div class="gp_column gp_column1">
-				                <div class="gp_block gp_text">
+				                <div class="gp_block gp_textBlock">
                                     <p><a href="https://github.com/WouterBos/graphite">Download Graphite</a></p>
                                 </div>
 					        </div>

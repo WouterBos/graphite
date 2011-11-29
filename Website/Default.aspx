@@ -17,7 +17,7 @@
 
 
 <asp:Content ID="Intro" ContentPlaceHolderID="Intro" Runat="Server">
-    <div class="gp_block gp_text">
+    <div class="gp_block gp_textBlock">
         <article>
             <h1>Welcome to Graphite</h1>
             <p><big>Graphite is a codebase for frontend development on the ASP.NET platform. It will help kickstart your web project. It contains code templates with HTML, CSS and JavaScript. It also has some templates for the popular CMS systems Sitefinity and Sitecore.</big></p>
@@ -32,7 +32,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Todo" Runat="Server">
-    <div class="gp_block gp_text">
+    <div class="gp_block gp_textBlock">
         <article>
             <h1 class="heading2">Todo</h1>
             <ul>

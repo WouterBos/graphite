@@ -19,15 +19,15 @@
     <blocks>
         <text>
             <demo>
-                <default>
+                <common>
                     <files>
-                        <html use_default_code="true" />
+                        <html />
                         <css use_default_code="true" />
                         <description />
                     </files>
                     <browsers>
                     </browsers>
-                </default>
+                </common>
             </demo>
         </text>
         
