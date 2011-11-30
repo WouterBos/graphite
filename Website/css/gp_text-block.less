@@ -1,4 +1,4 @@
-﻿*.gp_text {
+﻿*.gp_textBlock {
 	/* Start spacing between blocks */
 	table,
 	p,
@@ -114,15 +114,26 @@
 	 * class is sometimes used in RTE editors.
 	 */
 	img.left {
-		margin: 0 10px 10px 0;
+		margin: 0 (@grid_blockSpacing / 2) (@grid_blockSpacing / 3) 0;
 		float: left;
 	}
 	
 	img.right {
-		margin: 0 0 10px 10px;
+		margin: 0 0 (@grid_blockSpacing / 3) (@grid_blockSpacing / 2);
 		float: right;
 	}
 	/* End basic image styling */
+	
+	
+	/* Start link styling */
+	a:link {
+		text-decoration: underline;
+	}
+	a:hover,
+	a:focus {
+		text-decoration: none;
+	}
+	/* End link styling */
 	
 	
 	/* Start table */

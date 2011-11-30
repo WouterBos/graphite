@@ -162,7 +162,16 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             string CssCode = getSourceCode(".less", dicFiles["css"]);
             if (dicFiles["externalDemo"] == false)
             {
-                string strCssLink = config.Type(GetActiveIndex()) + ".less";
+                string strCssLink;
+                if (dicFiles["css"] == true)
+                {
+                    strCssLink = "default.less";
+                }
+                else
+                {
+                    strCssLink = config.Type(GetActiveIndex()) + ".less";
+                }
+                
                 CSSLink.Attributes["href"] = strCssLink;
             }
 
