@@ -42,8 +42,8 @@
                         <browsers>
                             <msie supports="7+" />
                             <firefox supports="2+" />
-                            <chrome supports="15+" />
-                            <safari supports="5.1+" />
+                            <chrome supports="10+" />
+                            <safari supports="4+" />
                             <opera supports="9.27+" />
                         </browsers>
                     </horizontal>
@@ -56,8 +56,8 @@
                         <browsers>
                             <msie supports="7+" />
                             <firefox supports="2+" />
-                            <chrome supports="15+" />
-                            <safari supports="5.1+" />
+                            <chrome supports="10+" />
+                            <safari supports="4+" />
                             <opera supports="9.27+" />
                         </browsers>
                     </vertical>
@@ -72,8 +72,8 @@
                         <browsers>
                             <msie supports="7+" />
                             <firefox supports="3.5+" />
-                            <chrome supports="15+" />
-                            <safari supports="5.1+" />
+                            <chrome supports="10+" />
+                            <safari supports="4+" />
                         </browsers>
                     </horizontalcollapse>
 
@@ -86,8 +86,8 @@
                         <browsers>
                             <msie supports="7+" />
                             <firefox supports="3.5+" />
-                            <chrome supports="15+" />
-                            <safari supports="5.1+" />
+                            <chrome supports="10+" />
+                            <safari supports="4+" />
                             <opera supports="9.27+" />
                         </browsers>
                     </verticalcollapse>

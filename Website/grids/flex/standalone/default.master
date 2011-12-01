@@ -29,6 +29,9 @@
 		<meta name="robots" content="noodp" />
 		<meta http-equiv="X-UA-Compatible" content="IE=7" />
 
+	    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
+	    <meta name="mobileoptimized" content="0"></meta>
+
 		<link href="/favicon.ico" rel="icon" />
 		<link href="/favicon.ico" rel="shortcut icon" />
 		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
