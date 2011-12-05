@@ -1,0 +1,28 @@
+/*
+ * Flex grid mobile
+ * 
+ * Makes the standard flex grid adapt to small (mobile) screens
+ */
+
+
+
+
+
+
+
+
+/* Columns basic style */
+~"@media screen and (max-width:@{gp_mobileScreenWidth}) {"
+	body { background: #0f0 }
+	
+	*.gp_main {
+		width: 100%;
+	}
+
+	*.gp_columns {
+		*.gp_column {
+			width: auto;
+			float: none;
+		}
+	}
+~"}"

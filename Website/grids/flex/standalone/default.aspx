@@ -2,7 +2,6 @@
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
     <link rel="stylesheet" media="all" href="../default.less" />
-	<link rel="stylesheet" href="../handheld.less" media="only screen and (max-width: 660px)"></link>
     
     <style>
         div.gp_header div.gp_main {
