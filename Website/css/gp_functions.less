@@ -42,10 +42,14 @@
 	border-radius: @topLeft @topRight @bottomRight @bottomLeft;
 }
 
-.gp_clear {
-	display: block;
-	clear: both;
-	content: "";
+.gp_clear(@minHeight: 0) {
+    min-height: @minHeight;
+    
+    &:after {
+        display: block;
+        clear: both;
+        content: "";
+    }
 }
 
 .gp_transition(@type: all, @time: @easing, @easing: ease-out) {
