@@ -1,16 +1,18 @@
+/*
+ * Styling for a horizontal menu
+ */
+
+
+
 .gp_menu.gp_menu_typeHorizontal {
-	min-height: 0;
-	
-	&:after {
-		.clear;
-	}
+	.gp_clear;
 
 	> ul > li {
 		float: left;
 	}
 	
 	a {
-		.transition(all, 0.5s, ease-out);
+		.gp_transition(all, 0.5s, ease-out);
 		color: #ffffff;
 		text-decoration: none;
 		padding: @grid_blockSpacing / 4 @grid_blockSpacing / 2;
@@ -21,7 +23,7 @@
 		border-left: 1px solid #ffffff;
 	}
 	a:hover {
-		.transition(all, 0.1s, ease-out);
+		.gp_transition(all, 0.1s, ease-out);
 		background: @gp_colorLow + #444;
 	}
 	> ul > li:first-child > a {

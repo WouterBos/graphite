@@ -70,16 +70,15 @@ body > form {
 	
 	a {
 		display: inline-block;
+		.gp_rounded_corners_all(3px, 3px, 0, 0);
 		border: 1px solid #aaa;
 		border-bottom-width: 0;
-		.rounded_corners_all();
 		padding: @grid_blockSpacing/5 @grid_blockSpacing/3;
 		color: #333333;
 		font-size: 1.2em;
 		text-decoration: none;
 		background: @gp_colorHigh - #111;
 		.gp_shadow(0, 0, 5px, #999999);
-		.rounded_corners_all(3px, 3px, 0, 0);
 	}
 	a:hover {
 		color: @gp_colorLow;
@@ -102,7 +101,7 @@ body > form {
 		position: relative;
 		display: inline-block;
 		border: 1px solid @gp_colorHigh;
-		.rounded_corners(@radius: 3px);
+		.gp_rounded_corners(@radius: 3px);
 		padding: 2px 4px 2px 2px;
 		color: @gp_colorHigh;
 		text-align: center;

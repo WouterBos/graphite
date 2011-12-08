@@ -4,9 +4,6 @@
 
 
 
-
-
-
 .gp_gradient(@start: #ffffff, @end: #000000) {
 	background-color: @start;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end)); 
@@ -30,28 +27,33 @@
 	filter: ~"alpha(opacity=" @opacity*100 ~")";
 }
 
-.rounded_corners(@radius: 5px) {
-  -moz-border-radius: @radius;
-  -webkit-border-radius: @radius;
-  border-radius: @radius;
+.gp_rounded_corners(@radius: 5px) {
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+	border-radius: @radius;
 }
 
-.rounded_corners_all(@topLeft: 5px, @topRight: 5px, @bottomRight: 5px, @bottomLeft: 5px) {
-  -moz-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
-  -webkit-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
-  border-radius: @topLeft @topRight @bottomRight @bottomLeft;
+.gp_rounded_corners_all(@topLeft: 5px, @topRight: 5px, @bottomRight: 5px, @bottomLeft: 5px) {
+	-moz-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
+	-webkit-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
+	border-radius: @topLeft @topRight @bottomRight @bottomLeft;
 }
 
-.clear {
-	display: block;
-	clear: both;
-	content: "";
-}
-
-.transition(@type: all, @time: @easing, @easing: ease-out) {
+.gp_transition(@type: all, @time: @easing, @easing: ease-out) {
 	-webkit-transition: @type @time @easing;  
 	-moz-transition: @type @time @easing;  
 	-ms-transition: @type @time @easing;  
 	-o-transition: @type @time @easing;  
 	transition: @type @time @easing;  
+}
+
+/* makes sure a box does not collapse when it only holds floating objects */
+.gp_clear(@minHeight: 0) {
+    min-height: @minHeight;
+    
+    &:after {
+        display: block;
+        clear: both;
+        content: "";
+    }
 }

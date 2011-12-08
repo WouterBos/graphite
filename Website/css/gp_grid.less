@@ -6,9 +6,6 @@
 
 
 
-
-
-
 /* Main container for web page */
 *.gp_root {
 	position: relative;
@@ -16,13 +13,10 @@
 
 /* Wrapper for web content */
 *.gp_main {
+    .gp_clear;
 	position: relative;
 	margin: 0 auto 0 auto;
 	width: 960px;
-	min-height: 0;
-}
-*.gp_main:after {
-	.clear;
 }
 
 
@@ -60,9 +54,12 @@
 *.gp_content {
 	border-top: @grid_headerHeight solid transparent;
 	padding: @grid_blockSpacing 0;
-	min-height: 0;
-	
-	&:after {
-	    .clear;
-	}
+	.gp_clear;
+}
+
+
+
+/* Footer block */
+*.gp_footer {
+	padding-bottom: @grid_blockSpacing;
 }
