@@ -4,9 +4,6 @@
 
 
 
-
-
-
 .gp_gradient(@start: #ffffff, @end: #000000) {
 	background-color: @start;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end)); 
@@ -42,6 +39,15 @@
 	border-radius: @topLeft @topRight @bottomRight @bottomLeft;
 }
 
+.gp_transition(@type: all, @time: @easing, @easing: ease-out) {
+	-webkit-transition: @type @time @easing;  
+	-moz-transition: @type @time @easing;  
+	-ms-transition: @type @time @easing;  
+	-o-transition: @type @time @easing;  
+	transition: @type @time @easing;  
+}
+
+/* makes sure a box does not collapse when it only holds floating objects */
 .gp_clear(@minHeight: 0) {
     min-height: @minHeight;
     
@@ -50,12 +56,4 @@
         clear: both;
         content: "";
     }
-}
-
-.gp_transition(@type: all, @time: @easing, @easing: ease-out) {
-	-webkit-transition: @type @time @easing;  
-	-moz-transition: @type @time @easing;  
-	-ms-transition: @type @time @easing;  
-	-o-transition: @type @time @easing;  
-	transition: @type @time @easing;  
 }
