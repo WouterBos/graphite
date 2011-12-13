@@ -10,7 +10,9 @@
     <asp:Panel ID="Types" runat="server" CssClass="graphite_demoStage_menu"></asp:Panel>
     
     <div class="graphite_demoStage">
-        <div class="graphite_demoStage_html" id="sourcecodeHTML"><asp:Literal ID="DemoHTMLCodeBlock" runat="server"></asp:Literal></div>
+        <asp:Panel cssclass="graphite_demoStage_html" ID="pnlDemoHTMLCodeBlock" runat="server">
+            <asp:Literal ID="DemoHTMLCodeBlock" runat="server"></asp:Literal>
+        </asp:Panel>
 
         <asp:Literal ID="DemoJavaScriptCodeBlock" runat="server"></asp:Literal>
     </div>

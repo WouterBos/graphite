@@ -17,6 +17,36 @@
     </grids>
     
     <blocks>
+        <forms>
+            <plain>
+                <demo>
+                    <common>
+                        <files>
+                            <ascx />
+                            <css use_default_code="true" />
+                            <description />
+                        </files>
+                        <browsers>
+                        </browsers>
+                    </common>
+                </demo>
+            </plain>
+            
+            <login>
+                <demo>
+                    <common>
+                        <files>
+                            <ascx />
+                            <css use_default_code="true" />
+                            <description />
+                        </files>
+                        <browsers>
+                        </browsers>
+                    </common>
+                </demo>
+            </login>
+        </forms>
+        
         <text>
             <demo>
                 <common>

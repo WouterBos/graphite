@@ -1,4 +1,9 @@
-div.divPopupBackground {
+/*
+ * Windowless popup styling
+ */
+
+
+*.gp_htmlpopupBackground {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -12,7 +17,7 @@ div.divPopupBackground {
     filter: alpha(opacity=50);
 }
 
-div.divPopupWindow {
+*.gp_htmlpopupViewport {
     display: none;
     position: absolute;
     z-index: 1001;
@@ -26,34 +31,36 @@ div.divPopupWindow {
     -moz-box-shadow: 2px 2px 20px #000000;
     -webkit-box-shadow: 2px 2px 20px #000000;
     box-shadow: 2px 2px 20px #000000;
-}
-div.innerDivPopupWindow {
-    padding: 20px;
-}
 
-div.divPopupWindow div.close {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: 2px;
-    opacity: 0.9;
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-    filter: alpha(opacity=90);
-    padding: 10px;
-    color: #000;
-    font-weight: bold;
-    background: #fff;
-}
-div.divPopupWindow div.close:hover {
-    opacity: 1;
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    filter: alpha(opacity=100);
-}
+	> *.gp_inner {
+		padding: 20px;
+	}
 
-div.divPopupWindow div.divPopupWindowFooter {
-    margin: 20px -20px -20px;
-    padding-top: 2px;
-    height: 2em;
-    line-height: 2em;
-    background: #DFE0E0;
+	*.gp_close {
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		right: 2px;
+		opacity: 0.9;
+		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+		filter: alpha(opacity=90);
+		padding: 10px;
+		color: #000;
+		font-weight: bold;
+		background: #fff;
+	}
+	*.gp_close:hover {
+		opacity: 1;
+		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter: alpha(opacity=100);
+	}
+
+	*.footer {
+		margin: 20px -20px -20px;
+		padding-top: 2px;
+		height: 2em;
+		line-height: 2em;
+		background: #DFE0E0;
+	}
+
 }

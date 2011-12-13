@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
 {
@@ -19,6 +20,9 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     protected void Page_Load(object sender, EventArgs e)
     {
         CreateDemo();
+
+        //Control Test = LoadControl("~\\internal\\usercontrols\\test.ascx");
+        //TestPanel.Controls.Add(Test);
     }
 
     private void CreateDemo()
@@ -131,12 +135,45 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
 
     private void GetDemoHTML()
     {
-        if (dicFiles.ContainsKey("html") == true)
+        string fileName = "default";
+
+        if (dicFiles.ContainsKey("ascx") == true)
         {
-            // Get demo code
+            if (dicFiles["ascx"] == false)
+            {
+                int menuItemActive = GetActiveIndex();
+                fileName = config.Type(menuItemActive);
+            }
+
+            Control ctrlControl = LoadControl(this.Parent.Page.TemplateSourceDirectory + "\\" + fileName + ".ascx");
+            PropertyInfo[] info = ctrlControl.GetType().GetProperties();
+            foreach (PropertyInfo item in info)
+            {
+                if (item.CanWrite)
+                {
+                     switch (item.Name)
+                     {
+                         case "strRootClass":
+                             item.SetValue(ctrlControl, config.CssClass(GetActiveIndex()), null); 
+                         break;
+                     }
+                }
+            }
+            pnlDemoHTMLCodeBlock.Controls.Add(ctrlControl);
+            string HtmlCode = getSourceCode(".ascx", dicFiles["ascx"]);
+
+            HtmlCode = HtmlCode.Replace("'", "\\'");
+            HtmlCode = HtmlCode.Replace("\n", "\\n");
+            HtmlCode = HtmlCode.Replace("\r", "\\r");
+            DemoHtml.Text = HtmlCode;
+        }
+        else if (dicFiles.ContainsKey("html") == true)
+        {
             string HtmlCode = getSourceCode(".html", dicFiles["html"]);
             HtmlCode = HtmlCode.Replace("###GP_BLOCK_TYPE###", config.CssClass(GetActiveIndex())); // Set HTML CSS class
-            DemoHTMLCodeBlock.Text = HtmlCode;
+            Literal litControl = new Literal();
+            litControl.Text = HtmlCode;
+            pnlDemoHTMLCodeBlock.Controls.Add(litControl);
             
             // Get demo code for copy/paste
             if (dicFiles["externalDemo"] == true)
