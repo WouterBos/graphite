@@ -17,7 +17,7 @@ public partial class GraphiteBlocksFormsLogin : System.Web.UI.UserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Login1.CssClass += " " + _strRootClass;
+        pnlRoot.CssClass += " " + _strRootClass;
     }
 
     protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)

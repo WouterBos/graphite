@@ -54,7 +54,7 @@ body > form {
 	margin-bottom: @grid_blockSpacing;
 	border: 1px solid #aaa;
 	padding: @grid_blockSpacing;
-	background: @gp_colorHigh - #111;
+	background: @gp_colorHigh;
 	.gp_shadow(0, 0, 5px, #999999);
 		
 	*.localHeading {
@@ -102,7 +102,7 @@ body > form {
 		display: inline-block;
 		border: 1px solid @gp_colorHigh;
 		.gp_rounded_corners(@radius: 3px);
-		padding: 2px 4px 2px 2px;
+		padding: 2px 4px;
 		color: @gp_colorHigh;
 		text-align: center;
 		font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace;
@@ -111,8 +111,8 @@ body > form {
 		.gp_gradient(@start: @gp_colorLow + #777, @end: @gp_colorLow);
 	}
 
-	a + a {
-		margin-left: 4px;
+	a {
+		margin-right: 4px;
 	}
 	
 	a.hover {

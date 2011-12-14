@@ -7,10 +7,68 @@
 
 
 
-table.gp_login {
-    > tr tr:first-child td {
+*.gp_login {
+	table.gp_loginRoot {
+		margin: 0 auto;
+		width: 245px;
+	}
+	
+	table.gp_loginRoot > tbody > tr > td {
+		border: 1px solid @gp_colorLow + #999;
+		background: @gp_colorHigh - #111;
+		.gp_shadow(0, 0, @grid_blockPadding, (@gp_colorLow + #999));
+		padding: @grid_blockPadding;
+	}
+
+	table table {
+		width: 100%;
+	}
+	
+	table table td {
+		padding-top: @grid_blockPadding / 5;
+		padding-bottom: @grid_blockPadding / 5;
+	}
+	
+    *.gp_loginTitle {
+    	padding-bottom: @grid_blockPadding / 2;
     	font-size: 1.2em;
+    	font-weight: bold;
+    	text-align: left;
+    }
+    
+    *.gp_loginLabel {
+    	padding-right: @grid_blockPadding / 2;
+    	text-align: left;
+    	white-space: nowrap;
+    }
+
+    *.gp_loginLoginButton {
+    	margin-top: @grid_blockPadding / 2;
+    	padding: 0 @grid_blockPadding / 2;
     	font-weight: bold;
     }
     
+    *.gp_loginCheckbox input[type="checkbox"] {
+    	position:relative;
+    	top: 3px;
+    	margin-right: @grid_blockPadding / 2;
+    }
+    
+    *.gp_loginFailure {
+    	.gp_textAlert;
+    }
+    
+    *.gp_loginTextBox {
+    	float: right;
+    	width: 138px;
+    }
+    
+    *.gp_loginValidator {
+    	position: absolute;
+    	float: left;
+    }
 }
+body.ie7 *.gp_login,
+body.ie8 *.gp_login {
+   	position: static;
+ }

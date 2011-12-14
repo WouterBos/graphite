@@ -132,6 +132,19 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             litDescription.Text = "<p>No description available.</p>";
         }
     }
+    
+    private string GetCodeBehind(string ascxSource)
+    {
+        string codeBehindSource = "";
+        int CodeFileStart = ascxSource.IndexOf("CodeFile=", StringComparison.OrdinalIgnoreCase);
+        int StartQuote = ascxSource.IndexOf("\"", CodeFileStart);
+        int EndQuote = ascxSource.IndexOf("\"", (StartQuote + 1));
+        if (StartQuote >= 0)
+        {
+            codeBehindSource =  ascxSource.Substring((StartQuote + 1), (EndQuote - StartQuote - 1));
+        }
+        return codeBehindSource;
+    }
 
     private void GetDemoHTML()
     {
@@ -161,6 +174,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             }
             pnlDemoHTMLCodeBlock.Controls.Add(ctrlControl);
             string HtmlCode = getSourceCode(".ascx", dicFiles["ascx"]);
+            string codeBehind = GetCodeBehind(HtmlCode);
 
             HtmlCode = HtmlCode.Replace("'", "\\'");
             HtmlCode = HtmlCode.Replace("\n", "\\n");

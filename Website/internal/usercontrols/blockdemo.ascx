@@ -30,6 +30,12 @@
                             <asp:PlaceHolder ID="CodeLinksHtml" runat="server">
                                 <a href="#" class="graphite_getCodeHtml">.html</a>
                             </asp:PlaceHolder>
+                            <asp:PlaceHolder ID="CodeLinksAscx" runat="server">
+                                <a href="#" class="graphite_getCodeAscx">.ascx</a>
+                            </asp:PlaceHolder>
+                            <asp:PlaceHolder ID="CodeLinksCodeBehind" runat="server">
+                                <a href="#" class="graphite_getCodeCodeBbehind">codebehind</a>
+                            </asp:PlaceHolder>
                             <asp:PlaceHolder ID="CodeLinksLess" runat="server">
                                 <a href="#" class="graphite_getCodeCss">.css</a>
                             </asp:PlaceHolder>
@@ -67,6 +73,8 @@
     (function() {
         graphite.internal.demo.data.sourceCode = {
             html: '<asp:Literal ID="DemoHtml" runat="server"></asp:Literal>',
+            ascx: '<asp:Literal ID="DemoAscx" runat="server"></asp:Literal>',
+            codebehind: '<asp:Literal ID="DemoCodeBehind" runat="server"></asp:Literal>',
             js: '<asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>',
             css: '<asp:Literal ID="DemoCss" runat="server"></asp:Literal>'
         }
