@@ -30,39 +30,47 @@ graphite.internal.demo = function(arg_config) {
   sourceCode = graphite.internal.demo.data.sourceCode;
   
   function setEvents() {
-    var getCodeHtml;
-    var getCodeCss;
-    var getCodeJs;
     var rootLinks = document.getElementsByTagName('a');
+
     for (var i = 0; i < rootLinks.length; i++) {
+      // ASCX
+      if (rootLinks[i].className.indexOf('graphite_getCodeAscx') != -1) {
+        setEvent(
+          rootLinks[i],
+          sourceCode.ascx
+        );
+      }
+      // Codebehind
+      if (rootLinks[i].className.indexOf('graphite_getCodeCodeBehind') != -1) {
+        setEvent(
+          rootLinks[i],
+          sourceCode.codebehind
+        );
+      }
+      // HTML
       if (rootLinks[i].className.indexOf('graphite_getCodeHtml') != -1) {
-        getCodeHtml = rootLinks[i];
+        setEvent(
+          rootLinks[i],
+          sourceCode.html
+        );
       }
+      // CSS
       if (rootLinks[i].className.indexOf('graphite_getCodeCss') != -1) {
-        getCodeCss = rootLinks[i];
+        setEvent(
+          rootLinks[i],
+          sourceCode.css
+        );
       }
+      // JavaScript
       if (rootLinks[i].className.indexOf('graphite_getCodeJs') != -1) {
-        getCodeJs = rootLinks[i];
+        sourceCode.js = sourceCode.js.replace(/\#\#\#GP\#\#\#SCRIPT/g, '<script');
+        sourceCode.js = sourceCode.js.replace(/\#\#\#GP\#\#\#\/SCRIPT/g, '</script');
+        setEvent(
+          rootLinks[i],
+          sourceCode.js
+        );
       }
     }
-    
-    setEvent(
-      getCodeHtml,
-      sourceCode.html
-    );
-    
-    setEvent(
-      getCodeCss,
-      sourceCode.css
-    );
-    
-    sourceCode.js = sourceCode.js.replace(/\#\#\#GP\#\#\#SCRIPT/g, '<script');
-    sourceCode.js = sourceCode.js.replace(/\#\#\#GP\#\#\#\/SCRIPT/g, '</script');
-    setEvent(
-      getCodeJs,
-      sourceCode.js
-    );
-    
     
     function setEvent(copyLink, source) {
       if (copyLink && source) {

@@ -34,7 +34,7 @@
                                 <a href="#" class="graphite_getCodeAscx">.ascx</a>
                             </asp:PlaceHolder>
                             <asp:PlaceHolder ID="CodeLinksCodeBehind" runat="server">
-                                <a href="#" class="graphite_getCodeCodeBbehind">codebehind</a>
+                                <a href="#" class="graphite_getCodeCodeBehind">codebehind</a>
                             </asp:PlaceHolder>
                             <asp:PlaceHolder ID="CodeLinksLess" runat="server">
                                 <a href="#" class="graphite_getCodeCss">.css</a>

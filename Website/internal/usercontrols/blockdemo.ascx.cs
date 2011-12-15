@@ -133,19 +133,54 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         }
     }
     
-    private string GetCodeBehind(string ascxSource)
+    private string GetCodeBehind(string ascxSource, string cssClass)
     {
-        string codeBehindSource = "";
+        string strCode = "";
+        
+        // Get URL to Codebehind
+        string codeBehindURL = "";
         int CodeFileStart = ascxSource.IndexOf("CodeFile=", StringComparison.OrdinalIgnoreCase);
         int StartQuote = ascxSource.IndexOf("\"", CodeFileStart);
         int EndQuote = ascxSource.IndexOf("\"", (StartQuote + 1));
         if (StartQuote >= 0)
         {
-            codeBehindSource =  ascxSource.Substring((StartQuote + 1), (EndQuote - StartQuote - 1));
+            codeBehindURL =  ascxSource.Substring((StartQuote + 1), (EndQuote - StartQuote - 1));
         }
-        return codeBehindSource;
+
+        string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
+
+        // Get Codebehind code
+        try
+        {
+            StringBuilder sbCode = new StringBuilder();
+            System.IO.StreamReader sr = new System.IO.StreamReader(root + codeBehindURL);
+
+            while (sr.Peek() != -1)
+            {
+                string line = sr.ReadLine();
+                sbCode.AppendLine(line);
+            }
+            strCode = sbCode.ToString();
+            
+            int rootClassStart = strCode.IndexOf("_strRootClass", StringComparison.OrdinalIgnoreCase);
+            int rootClassValueStart = strCode.IndexOf("\"\"", rootClassStart);
+            Response.Write(strCode.Substring(rootClassValueStart, 2));
+        }
+        catch (Exception exp)
+        {
+            // No Codebehind available
+        }
+        return strCode;
     }
 
+    private string WrapInJsString(string str) {
+        string returnStr = str;
+        returnStr = returnStr.Replace("'", "\\'");
+        returnStr = returnStr.Replace("\n", "\\n");
+        returnStr = returnStr.Replace("\r", "\\r");
+        return returnStr;
+    }
+    
     private void GetDemoHTML()
     {
         string fileName = "default";
@@ -174,12 +209,11 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             }
             pnlDemoHTMLCodeBlock.Controls.Add(ctrlControl);
             string HtmlCode = getSourceCode(".ascx", dicFiles["ascx"]);
-            string codeBehind = GetCodeBehind(HtmlCode);
+            string codeBehind = GetCodeBehind(HtmlCode, config.CssClass(GetActiveIndex()));
+            DemoCodeBehind.Text = WrapInJsString(codeBehind);
 
-            HtmlCode = HtmlCode.Replace("'", "\\'");
-            HtmlCode = HtmlCode.Replace("\n", "\\n");
-            HtmlCode = HtmlCode.Replace("\r", "\\r");
-            DemoHtml.Text = HtmlCode;
+            DemoAscx.Text = WrapInJsString(HtmlCode);
+            CodeLinksHtml.Visible = false;
         }
         else if (dicFiles.ContainsKey("html") == true)
         {
@@ -195,14 +229,13 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
                 HtmlCode = getSourceCode("-external.html", dicFiles["html"]);
             }
 
-            HtmlCode = HtmlCode.Replace("'", "\\'");
-            HtmlCode = HtmlCode.Replace("\n", "\\n");
-            HtmlCode = HtmlCode.Replace("\r", "\\r");
-            DemoHtml.Text = HtmlCode;
+            DemoHtml.Text = WrapInJsString(HtmlCode);
+            CodeLinksAscx.Visible = false;
         }
         else
         {
             CodeLinksHtml.Visible = false;
+            CodeLinksAscx.Visible = false;
         }
     }
 
@@ -226,11 +259,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
                 CSSLink.Attributes["href"] = strCssLink;
             }
 
-            CssCode = CssCode.Replace("'", "\\'");
-            CssCode = CssCode.Replace("\n", "\\n");
-            CssCode = CssCode.Replace("\r", "\\r");
-
-            DemoCss.Text = CssCode;
+            DemoCss.Text = WrapInJsString(CssCode);
         }
         else
         {
@@ -244,12 +273,10 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         {
             string JsCode = getSourceCode("-js.html", dicFiles["javascript"]);
             string JsCodeCopyString = JsCode;
-            
-            JsCodeCopyString = JsCodeCopyString.Replace("'", "\\'");
+
+            JsCodeCopyString = WrapInJsString(JsCodeCopyString);
             JsCodeCopyString = JsCodeCopyString.Replace("<script", "###GP###SCRIPT");
             JsCodeCopyString = JsCodeCopyString.Replace("</script", "###GP###/SCRIPT");
-            JsCodeCopyString = JsCodeCopyString.Replace("\n", "\\n");
-            JsCodeCopyString = JsCodeCopyString.Replace("\r", "\\r");
 
             DemoJavaScriptCodeBlock.Text = JsCode;
             DemoJavaScript.Text = JsCodeCopyString;

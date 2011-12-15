@@ -42,22 +42,12 @@
     	white-space: nowrap;
     }
 
-    *.gp_loginLoginButton {
-    	margin-top: @grid_blockPadding / 2;
-    	padding: 0 @grid_blockPadding / 2;
-    	font-weight: bold;
-    }
-    
     *.gp_loginCheckbox input[type="checkbox"] {
     	position:relative;
     	top: 3px;
     	margin-right: @grid_blockPadding / 2;
     }
-    
-    *.gp_loginFailure {
-    	.gp_textAlert;
-    }
-    
+
     *.gp_loginTextBox {
     	float: right;
     	width: 138px;
@@ -66,6 +56,12 @@
     *.gp_loginValidator {
     	position: absolute;
     	float: left;
+    }
+
+    *.gp_loginLoginButton {
+    	margin-top: (@grid_blockPadding / 2);
+    	padding: 0 @grid_blockPadding / 2;
+    	font-weight: bold;
     }
 }
 body.ie7 *.gp_login,
