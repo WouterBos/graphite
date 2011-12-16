@@ -22,7 +22,7 @@ public partial class GraphiteBlocksFormsLogin : System.Web.UI.UserControl
 
     protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
     {
-        if (Login1.UserName == "ferroli" && Login1.Password == "901")
+        if (Login1.UserName == "test" && Login1.Password == "test")
         {
             FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
         }

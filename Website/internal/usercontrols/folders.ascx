@@ -4,7 +4,7 @@
 
 <div class="gp_block">
     <div class="gp_textBlock">
-        <h1>Contents of {BLOCKS}</h1>
+        <h1>Contents of <asp:Literal ID="litFolderName" runat="server"></asp:Literal></h1>
     </div>
 
     <div class="gp_sitemap">

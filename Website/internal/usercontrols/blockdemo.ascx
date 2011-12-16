@@ -72,11 +72,11 @@
 <script>
     (function() {
         graphite.internal.demo.data.sourceCode = {
-            html: '<asp:Literal ID="DemoHtml" runat="server"></asp:Literal>',
-            ascx: '<asp:Literal ID="DemoAscx" runat="server"></asp:Literal>',
-            codebehind: '<asp:Literal ID="DemoCodeBehind" runat="server"></asp:Literal>',
-            js: '<asp:Literal ID="DemoJavaScript" runat="server"></asp:Literal>',
-            css: '<asp:Literal ID="DemoCss" runat="server"></asp:Literal>'
+            html: '<asp:Literal ID="litDemoHtml" runat="server"></asp:Literal>',
+            ascx: '<asp:Literal ID="litDemoAscx" runat="server"></asp:Literal>',
+            codebehind: '<asp:Literal ID="litDemoCodeBehind" runat="server"></asp:Literal>',
+            js: '<asp:Literal ID="litDemoJavaScript" runat="server"></asp:Literal>',
+            css: '<asp:Literal ID="litDemoCss" runat="server"></asp:Literal>'
         }
 
         var demo = new graphite.internal.demo(

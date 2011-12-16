@@ -20,15 +20,12 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     protected void Page_Load(object sender, EventArgs e)
     {
         CreateDemo();
-
-        //Control Test = LoadControl("~\\internal\\usercontrols\\test.ascx");
-        //TestPanel.Controls.Add(Test);
     }
 
     private void CreateDemo()
     {
-        string physicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
-        string xmlPath = "/demos" + physicalPath + "demo";
+        string strPhysicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
+        string xmlPath = "/demos" + strPhysicalPath + "demo";
         //Response.Write(xmlPath);
         config = new Graphite.Config(xmlPath);
         dicFiles = config.Files(GetActiveIndex()); 
@@ -43,22 +40,22 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
 
     private int GetActiveIndex()
     {
-        int menuItemActive = 0;
-        string menuItemName = "";
+        int intMenuItemActive = 0;
+        string strMenuItemName = "";
         
         if (String.IsNullOrEmpty(Request.QueryString["type"]) == false)
         {
-            menuItemName = Request.QueryString["type"].ToString();
-            menuItemActive = config.Index(menuItemName.ToLower());
+            strMenuItemName = Request.QueryString["type"].ToString();
+            intMenuItemActive = config.Index(strMenuItemName.ToLower());
         }
         
-        if (menuItemActive == -1)
+        if (intMenuItemActive == -1)
         {
-            menuItemActive = 0;
-            if (menuItemName.Length > 0)
+            intMenuItemActive = 0;
+            if (strMenuItemName.Length > 0)
             {
             litMessage.Text = @"<div class='gp_text'><span class='gp_textAlert'>" +
-                @"Cannot find a type called  &ldquo;" + menuItemName + @"&rdquo;, showing default type instead." + 
+                @"Cannot find a type called  &ldquo;" + strMenuItemName + @"&rdquo;, showing default type instead." + 
                 @"</span></div>";
             }
         }
@@ -67,44 +64,44 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             litMessage.Text = "";
         }
         
-        return menuItemActive;
+        return intMenuItemActive;
     }
 
     private void CreateMenu()
     {
-        int menuItemActive = GetActiveIndex();
+        int intMenuItemActive = GetActiveIndex();
         string[,] types = config.Types();
         if (types.GetUpperBound(0) > 1)
         {
             for (int i = 0; i <= types.GetUpperBound(0); i++)
             {
-                HyperLink link = new HyperLink();
-                link.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(types[i,1]);
-                link.NavigateUrl = Request.ServerVariables["SCRIPT_NAME"] + "?type=" + Server.HtmlEncode(types[i,0]);
-                if (i == menuItemActive)
+                HyperLink hlMenuLink = new HyperLink();
+                hlMenuLink.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(types[i,1]);
+                hlMenuLink.NavigateUrl = Request.ServerVariables["SCRIPT_NAME"] + "?type=" + Server.HtmlEncode(types[i,0]);
+                if (i == intMenuItemActive)
                 {
-                    link.CssClass = "active";
+                    hlMenuLink.CssClass = "active";
                 }
-                Types.Controls.Add(link);
+                Types.Controls.Add(hlMenuLink);
             }
         }
     }
 
-    private string getSourceCode(string suffix, bool dicFiles)
+    private string GetSourceCode(string suffix, bool dicFiles)
     {
-        string fileName = "default";
+        string strFileName = "default";
         if (dicFiles == false)
         {
-            int menuItemActive = GetActiveIndex();
-            fileName = config.Type(menuItemActive);
+            int intMenuItemActive = GetActiveIndex();
+            strFileName = config.Type(intMenuItemActive);
         }
 
-        string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
+        string strRoot = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
         StringBuilder sbCode = new StringBuilder();
 
         try
         {
-            System.IO.StreamReader sr = new System.IO.StreamReader(root + fileName + suffix);
+            System.IO.StreamReader sr = new System.IO.StreamReader(strRoot + strFileName + suffix);
             string line;
 
             while (sr.Peek() != -1)
@@ -124,8 +121,8 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     {
         if (dicFiles.ContainsKey("description") == true)
         {
-            string Description = getSourceCode("-description.html", dicFiles["description"]);
-            litDescription.Text = Description;
+            string strDescription = GetSourceCode("-description.html", dicFiles["description"]);
+            litDescription.Text = strDescription;
         }
         else
         {
@@ -138,22 +135,22 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         string strCode = "";
         
         // Get URL to Codebehind
-        string codeBehindURL = "";
-        int CodeFileStart = ascxSource.IndexOf("CodeFile=", StringComparison.OrdinalIgnoreCase);
-        int StartQuote = ascxSource.IndexOf("\"", CodeFileStart);
-        int EndQuote = ascxSource.IndexOf("\"", (StartQuote + 1));
-        if (StartQuote >= 0)
+        string strCodeBehindURL = "";
+        int intCodeFileStart = ascxSource.IndexOf("CodeFile=", StringComparison.OrdinalIgnoreCase);
+        int intStartQuote = ascxSource.IndexOf("\"", intCodeFileStart);
+        int intEndQuote = ascxSource.IndexOf("\"", (intStartQuote + 1));
+        if (intStartQuote >= 0)
         {
-            codeBehindURL =  ascxSource.Substring((StartQuote + 1), (EndQuote - StartQuote - 1));
+            strCodeBehindURL =  ascxSource.Substring((intStartQuote + 1), (intEndQuote - intStartQuote - 1));
         }
 
-        string root = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
+        string strRoot = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
 
         // Get Codebehind code
         try
         {
             StringBuilder sbCode = new StringBuilder();
-            System.IO.StreamReader sr = new System.IO.StreamReader(root + codeBehindURL);
+            System.IO.StreamReader sr = new System.IO.StreamReader(strRoot + strCodeBehindURL);
 
             while (sr.Peek() != -1)
             {
@@ -161,10 +158,11 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
                 sbCode.AppendLine(line);
             }
             strCode = sbCode.ToString();
-            
+
+            // Insert class into private variable _strRootClass
             int rootClassStart = strCode.IndexOf("_strRootClass", StringComparison.OrdinalIgnoreCase);
             int rootClassValueStart = strCode.IndexOf("\"\"", rootClassStart);
-            Response.Write(strCode.Substring(rootClassValueStart, 2));
+            strCode = strCode.Insert(rootClassValueStart + 1, config.CssClass(GetActiveIndex()));
         }
         catch (Exception exp)
         {
@@ -174,26 +172,26 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     }
 
     private string WrapInJsString(string str) {
-        string returnStr = str;
-        returnStr = returnStr.Replace("'", "\\'");
-        returnStr = returnStr.Replace("\n", "\\n");
-        returnStr = returnStr.Replace("\r", "\\r");
-        return returnStr;
+        string strReturn = str;
+        strReturn = strReturn.Replace("'", "\\'");
+        strReturn = strReturn.Replace("\n", "\\n");
+        strReturn = strReturn.Replace("\r", "\\r");
+        return strReturn;
     }
     
     private void GetDemoHTML()
     {
-        string fileName = "default";
+        string strFileName = "default";
 
         if (dicFiles.ContainsKey("ascx") == true)
         {
             if (dicFiles["ascx"] == false)
             {
-                int menuItemActive = GetActiveIndex();
-                fileName = config.Type(menuItemActive);
+                int intMenuItemActive = GetActiveIndex();
+                strFileName = config.Type(intMenuItemActive);
             }
 
-            Control ctrlControl = LoadControl(this.Parent.Page.TemplateSourceDirectory + "\\" + fileName + ".ascx");
+            Control ctrlControl = LoadControl(this.Parent.Page.TemplateSourceDirectory + "\\" + strFileName + ".ascx");
             PropertyInfo[] info = ctrlControl.GetType().GetProperties();
             foreach (PropertyInfo item in info)
             {
@@ -208,34 +206,39 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
                 }
             }
             pnlDemoHTMLCodeBlock.Controls.Add(ctrlControl);
-            string HtmlCode = getSourceCode(".ascx", dicFiles["ascx"]);
-            string codeBehind = GetCodeBehind(HtmlCode, config.CssClass(GetActiveIndex()));
-            DemoCodeBehind.Text = WrapInJsString(codeBehind);
+            string strHtmlCode = GetSourceCode(".ascx", dicFiles["ascx"]);
+            string strCodeBehind = GetCodeBehind(strHtmlCode, config.CssClass(GetActiveIndex()));
+            litDemoCodeBehind.Text = WrapInJsString(strCodeBehind);
+            if (strCodeBehind == "") {
+                CodeLinksCodeBehind.Visible = false;
+            }
 
-            DemoAscx.Text = WrapInJsString(HtmlCode);
+            litDemoAscx.Text = WrapInJsString(strHtmlCode);
             CodeLinksHtml.Visible = false;
         }
         else if (dicFiles.ContainsKey("html") == true)
         {
-            string HtmlCode = getSourceCode(".html", dicFiles["html"]);
-            HtmlCode = HtmlCode.Replace("###GP_BLOCK_TYPE###", config.CssClass(GetActiveIndex())); // Set HTML CSS class
+            string strHtmlCode = GetSourceCode(".html", dicFiles["html"]);
+            strHtmlCode = strHtmlCode.Replace("###GP_BLOCK_TYPE###", config.CssClass(GetActiveIndex())); // Set HTML CSS class
             Literal litControl = new Literal();
-            litControl.Text = HtmlCode;
+            litControl.Text = strHtmlCode;
             pnlDemoHTMLCodeBlock.Controls.Add(litControl);
             
             // Get demo code for copy/paste
             if (dicFiles["externalDemo"] == true)
             {
-                HtmlCode = getSourceCode("-external.html", dicFiles["html"]);
+                strHtmlCode = GetSourceCode("-external.html", dicFiles["html"]);
             }
 
-            DemoHtml.Text = WrapInJsString(HtmlCode);
+            litDemoHtml.Text = WrapInJsString(strHtmlCode);
             CodeLinksAscx.Visible = false;
+            CodeLinksCodeBehind.Visible = false;
         }
         else
         {
             CodeLinksHtml.Visible = false;
             CodeLinksAscx.Visible = false;
+            CodeLinksCodeBehind.Visible = false;
         }
     }
 
@@ -243,7 +246,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     {
         if (dicFiles.ContainsKey("css") == true)
         {
-            string CssCode = getSourceCode(".less", dicFiles["css"]);
+            string CssCode = GetSourceCode(".less", dicFiles["css"]);
             if (dicFiles["externalDemo"] == false)
             {
                 string strCssLink;
@@ -259,7 +262,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
                 CSSLink.Attributes["href"] = strCssLink;
             }
 
-            DemoCss.Text = WrapInJsString(CssCode);
+            litDemoCss.Text = WrapInJsString(CssCode);
         }
         else
         {
@@ -271,7 +274,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     {
         if (dicFiles.ContainsKey("javascript") == true)
         {
-            string JsCode = getSourceCode("-js.html", dicFiles["javascript"]);
+            string JsCode = GetSourceCode("-js.html", dicFiles["javascript"]);
             string JsCodeCopyString = JsCode;
 
             JsCodeCopyString = WrapInJsString(JsCodeCopyString);
@@ -279,7 +282,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             JsCodeCopyString = JsCodeCopyString.Replace("</script", "###GP###/SCRIPT");
 
             DemoJavaScriptCodeBlock.Text = JsCode;
-            DemoJavaScript.Text = JsCodeCopyString;
+            litDemoJavaScript.Text = JsCodeCopyString;
         }
         else
         {
@@ -295,6 +298,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             "firefox",
             "chrome",
             "safari",
+            "ipad",
             "opera"
         };
         StringBuilder sbBrowserList = new StringBuilder();

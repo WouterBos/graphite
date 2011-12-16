@@ -18,9 +18,13 @@ public partial class internal_usercontrols_folders : System.Web.UI.UserControl
     
     private void MakeFolderList()
     {
-        DirectoryInfo[] dir = new DirectoryInfo(Server.MapPath(Request.ServerVariables["SCRIPT_PATH"])).GetDirectories();
-        rptFolders.DataSource = dir;
+        string strScriptPath = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]);
+        DirectoryInfo directory = new DirectoryInfo(strScriptPath);
+        DirectoryInfo[] directories = directory.GetDirectories();
+        rptFolders.DataSource = directories;
         rptFolders.DataBind();
+
+        litFolderName.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(directory.Name);
     }
     
     protected void rptFolders_ItemDataBound(object sender, RepeaterItemEventArgs e)

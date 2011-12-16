@@ -34,7 +34,7 @@
             
             <login>
                 <demo>
-                    <common>
+                    <common cssclass="gp_menu_typeVertical">
                         <files>
                             <ascx />
                             <css use_default_code="true" />
@@ -56,6 +56,7 @@
                         <description />
                     </files>
                     <browsers>
+                        <ipad supports="iOS5+" />
                     </browsers>
                 </common>
             </demo>
@@ -74,6 +75,7 @@
                             <firefox supports="2+" />
                             <chrome supports="10+" />
                             <safari supports="4+" />
+                            <ipad supports="iOS5+" />
                             <opera supports="9.27+" />
                         </browsers>
                     </horizontal>
@@ -88,6 +90,7 @@
                             <firefox supports="2+" />
                             <chrome supports="10+" />
                             <safari supports="4+" />
+                            <ipad supports="iOS5+" />
                             <opera supports="9.27+" />
                         </browsers>
                     </vertical>
@@ -103,6 +106,7 @@
                             <msie supports="7+" />
                             <firefox supports="3.5+" />
                             <chrome supports="10+" />
+                            <ipad supports="iOS5+" />
                             <safari supports="4+" />
                         </browsers>
                     </horizontalcollapse>
@@ -118,6 +122,7 @@
                             <firefox supports="3.5+" />
                             <chrome supports="10+" />
                             <safari supports="4+" />
+                            <ipad supports="iOS5+" />
                             <opera supports="9.27+" />
                         </browsers>
                     </verticalcollapse>
