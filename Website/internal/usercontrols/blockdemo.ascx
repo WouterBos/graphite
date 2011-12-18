@@ -27,19 +27,19 @@
                         </div>
                         
                         <div class="graphite_getCode">
-                            <asp:PlaceHolder ID="CodeLinksHtml" runat="server">
+                            <asp:PlaceHolder ID="phCodeLinksHtml" runat="server">
                                 <a href="#" class="graphite_getCodeHtml">.html</a>
                             </asp:PlaceHolder>
-                            <asp:PlaceHolder ID="CodeLinksAscx" runat="server">
+                            <asp:PlaceHolder ID="phCodeLinksAscx" runat="server">
                                 <a href="#" class="graphite_getCodeAscx">.ascx</a>
                             </asp:PlaceHolder>
-                            <asp:PlaceHolder ID="CodeLinksCodeBehind" runat="server">
+                            <asp:PlaceHolder ID="phCodeLinksCodeBehind" runat="server">
                                 <a href="#" class="graphite_getCodeCodeBehind">codebehind</a>
                             </asp:PlaceHolder>
-                            <asp:PlaceHolder ID="CodeLinksLess" runat="server">
+                            <asp:PlaceHolder ID="phCodeLinksLess" runat="server">
                                 <a href="#" class="graphite_getCodeCss">.css</a>
                             </asp:PlaceHolder>
-                            <asp:PlaceHolder ID="CodeLinksJs" runat="server">
+                            <asp:PlaceHolder ID="phCodeLinksJs" runat="server">
                                 <a href="#" id="getJsCode" class="graphite_getCodeJs">.js</a>
                             </asp:PlaceHolder>
                         </div>
@@ -53,7 +53,7 @@
                             <h1 class="gp_textHeading3">Browser compatibility</h1>
                         </div>
                         
-                        <asp:Literal ID="BrowserList" runat="server"></asp:Literal>
+                        <asp:Literal ID="litBrowserList" runat="server"></asp:Literal>
                     </section>
                 </div>
             </li>

@@ -24,12 +24,13 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
 
     private void CreateDemo()
     {
+        // Getting configuration settings from XML
         string strPhysicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
-        string xmlPath = "/demos" + strPhysicalPath + "demo";
-        //Response.Write(xmlPath);
-        config = new Graphite.Config(xmlPath);
+        string strXmlPath = "/demos" + strPhysicalPath + "demo";
+        config = new Graphite.Config(strXmlPath);
         dicFiles = config.Files(GetActiveIndex()); 
         
+        // Run methods
         CreateMenu();
         GetDemoHTML();
         GetDemoCss();
@@ -37,7 +38,8 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         GetDemoDescription();
         CreateSupportedBrowsersList();
     }
-
+    
+    // Finds out which tab in the demo menu is selected. If no menu is visible above the demo, the index is always 0.
     private int GetActiveIndex()
     {
         int intMenuItemActive = 0;
@@ -67,6 +69,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         return intMenuItemActive;
     }
 
+    // Create tabs above demo.
     private void CreateMenu()
     {
         int intMenuItemActive = GetActiveIndex();
@@ -86,7 +89,8 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             }
         }
     }
-
+    
+    // Returns source code of a demo file
     private string GetSourceCode(string suffix, bool dicFiles)
     {
         string strFileName = "default";
@@ -116,7 +120,8 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         }
         return sbCode.ToString();
     }
-
+    
+    // Gets description from file and prints it below demo block.
     private void GetDemoDescription()
     {
         if (dicFiles.ContainsKey("description") == true)
@@ -130,6 +135,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         }
     }
     
+    // Gets codebehind of ASCX if any available.
     private string GetCodeBehind(string ascxSource, string cssClass)
     {
         string strCode = "";
@@ -170,7 +176,8 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         }
         return strCode;
     }
-
+    
+    // Change string in order to store it as a string in JavaScript
     private string WrapInJsString(string str) {
         string strReturn = str;
         strReturn = strReturn.Replace("'", "\\'");
@@ -179,20 +186,25 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         return strReturn;
     }
     
+    // Gets demo HTML which is either an HTML or an ASCX file (depends on config file).
     private void GetDemoHTML()
     {
         string strFileName = "default";
 
         if (dicFiles.ContainsKey("ascx") == true)
         {
+            // File is ASCX
             if (dicFiles["ascx"] == false)
             {
                 int intMenuItemActive = GetActiveIndex();
                 strFileName = config.Type(intMenuItemActive);
             }
-
+            
+            // Load control
             Control ctrlControl = LoadControl(this.Parent.Page.TemplateSourceDirectory + "\\" + strFileName + ".ascx");
             PropertyInfo[] info = ctrlControl.GetType().GetProperties();
+            
+            // Set strRootClass property if available
             foreach (PropertyInfo item in info)
             {
                 if (item.CanWrite)
@@ -205,19 +217,25 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
                      }
                 }
             }
+            
+            // Add ASCX control
             pnlDemoHTMLCodeBlock.Controls.Add(ctrlControl);
+            litDemoAscx.Text = WrapInJsString(strHtmlCode);
+            
+            // Find codebehind
             string strHtmlCode = GetSourceCode(".ascx", dicFiles["ascx"]);
             string strCodeBehind = GetCodeBehind(strHtmlCode, config.CssClass(GetActiveIndex()));
             litDemoCodeBehind.Text = WrapInJsString(strCodeBehind);
             if (strCodeBehind == "") {
-                CodeLinksCodeBehind.Visible = false;
+                phCodeLinksCodeBehind.Visible = false;
             }
 
-            litDemoAscx.Text = WrapInJsString(strHtmlCode);
-            CodeLinksHtml.Visible = false;
+            // Hide HTML placeholder
+            phCodeLinksHtml.Visible = false;
         }
         else if (dicFiles.ContainsKey("html") == true)
         {
+            // File is HTML
             string strHtmlCode = GetSourceCode(".html", dicFiles["html"]);
             strHtmlCode = strHtmlCode.Replace("###GP_BLOCK_TYPE###", config.CssClass(GetActiveIndex())); // Set HTML CSS class
             Literal litControl = new Literal();
@@ -229,24 +247,29 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             {
                 strHtmlCode = GetSourceCode("-external.html", dicFiles["html"]);
             }
-
+            
+            // Add HTML to demo block
             litDemoHtml.Text = WrapInJsString(strHtmlCode);
-            CodeLinksAscx.Visible = false;
-            CodeLinksCodeBehind.Visible = false;
+            
+            // Hide ASCX and Codebehind block
+            phCodeLinksAscx.Visible = false;
+            phCodeLinksCodeBehind.Visible = false;
         }
         else
         {
-            CodeLinksHtml.Visible = false;
-            CodeLinksAscx.Visible = false;
-            CodeLinksCodeBehind.Visible = false;
+            // There's no HTML. Hide all HTML-related blocks
+            phCodeLinksHtml.Visible = false;
+            phCodeLinksAscx.Visible = false;
+            phCodeLinksCodeBehind.Visible = false;
         }
     }
 
+    // Gets CSS code and prints it in demo if available
     private void GetDemoCss()
     {
         if (dicFiles.ContainsKey("css") == true)
         {
-            string CssCode = GetSourceCode(".less", dicFiles["css"]);
+            string strCssCode = GetSourceCode(".less", dicFiles["css"]);
             if (dicFiles["externalDemo"] == false)
             {
                 string strCssLink;
@@ -262,71 +285,77 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
                 CSSLink.Attributes["href"] = strCssLink;
             }
 
-            litDemoCss.Text = WrapInJsString(CssCode);
+            litDemoCss.Text = WrapInJsString(strCssCode);
         }
         else
         {
-            CodeLinksLess.Visible = false;
+            phCodeLinksLess.Visible = false;
         }
     }
 
+    // Gets JavaScript code and prints it in demo if available
     private void GetDemoJavaScript()
     {
         if (dicFiles.ContainsKey("javascript") == true)
         {
-            string JsCode = GetSourceCode("-js.html", dicFiles["javascript"]);
-            string JsCodeCopyString = JsCode;
+            string strJsCode = GetSourceCode("-js.html", dicFiles["javascript"]);
+            string strJsCodeCopyString = strJsCode;
 
-            JsCodeCopyString = WrapInJsString(JsCodeCopyString);
-            JsCodeCopyString = JsCodeCopyString.Replace("<script", "###GP###SCRIPT");
-            JsCodeCopyString = JsCodeCopyString.Replace("</script", "###GP###/SCRIPT");
+            strJsCodeCopyString = WrapInJsString(strJsCodeCopyString);
+            strJsCodeCopyString = strJsCodeCopyString.Replace("<script", "###GP###SCRIPT");
+            strJsCodeCopyString = strJsCodeCopyString.Replace("</script", "###GP###/SCRIPT");
 
-            DemoJavaScriptCodeBlock.Text = JsCode;
-            litDemoJavaScript.Text = JsCodeCopyString;
+            DemoJavaScriptCodeBlock.Text = strJsCode;
+            litDemoJavaScript.Text = strJsCodeCopyString;
         }
         else
         {
-            CodeLinksJs.Visible = false;
+            phCodeLinksJs.Visible = false;
         }
     }
 
+    // Creates list of browsers the block supports
     private void CreateSupportedBrowsersList()
     {
-        Dictionary<string, string> supportedBrowsers = config.SupportedBrowsers(GetActiveIndex()); 
-        string[] allBrowsers = new string[] {
+        Dictionary<string, string> dicSupportedBrowsers = config.SupportedBrowsers(GetActiveIndex()); 
+        string[] strAllBrowsers = new string[] {
             "msie",
             "firefox",
             "chrome",
             "safari",
+            "opera",
             "ipad",
-            "opera"
+            "iphone",
+            "android",
+            "windowsphone",
+            "blackberry"
         };
         StringBuilder sbBrowserList = new StringBuilder();
 
         sbBrowserList.AppendLine("<ul class='graphite_browser'>");
-        for (int i = 0; i <= allBrowsers.GetUpperBound(0); i++)
+        for (int i = 0; i <= strAllBrowsers.GetUpperBound(0); i++)
         {
-            string browserVersion = "";
-            string unsupported = " class='graphite_browserUnsupported'";
+            string strBrowserVersion = "";
+            string strUnsupported = " class='graphite_browserUnsupported'";
             
             // ES_TODO: Remove this ugly "try"
             try
             {
-                browserVersion = supportedBrowsers[allBrowsers[i].ToString()];
-                unsupported = "";
+                strBrowserVersion = dicSupportedBrowsers[strAllBrowsers[i].ToString()];
+                strUnsupported = "";
             }
             catch (Exception exp)
             {
 
             }
-            string browserName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(allBrowsers[i]);
-            sbBrowserList.AppendLine("  <li" + unsupported + ">");
+            string browserName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(strAllBrowsers[i]);
+            sbBrowserList.AppendLine("  <li" + strUnsupported + ">");
             sbBrowserList.AppendLine("      <strong class='graphite_browserIcon graphite_browser" + browserName + "'>" + browserName + "</strong>");
-            sbBrowserList.AppendLine("      <span class='graphite_browserVersion'>" + browserVersion + "</span>");
+            sbBrowserList.AppendLine("      <span class='graphite_browserVersion'>" + strBrowserVersion + "</span>");
             sbBrowserList.AppendLine("  </li>");
         }
         sbBrowserList.AppendLine("</ul>");
 
-        BrowserList.Text = sbBrowserList.ToString();
+        litBrowserList.Text = sbBrowserList.ToString();
     }
 }

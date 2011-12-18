@@ -10,6 +10,7 @@
                         <description />
                     </files>
                     <browsers>
+                        <ipad supports="iOS5+" />
                     </browsers>
                 </default>
             </demo>

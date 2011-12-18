@@ -10,53 +10,53 @@ public partial class internal_usercontrols_breadcrumb : System.Web.UI.UserContro
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        printBreadCrumb();
+        PrintBreadCrumb();
     }
     
-    private void printBreadCrumb()
+    private void PrintBreadCrumb()
     {
-        string physicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
-        char[] splitChar = { '/' };
-        string[] tree = physicalPath.Split(splitChar);
-        tree = tree.Reverse().ToArray();
-        string breadcrumb = "";
-        for (int i = 0; i < tree.Length; i++)
+        string strPhysicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
+        char[] charSplitChar = { '/' };
+        string[] strTree = strPhysicalPath.Split(charSplitChar);
+        strTree = strTree.Reverse().ToArray();
+        string strBreadcrumb = "";
+        for (int i = 0; i < strTree.Length; i++)
         {
-            if (tree[i] != "")
+            if (strTree[i] != "")
             {
-                if (breadcrumb == "")
+                if (strBreadcrumb == "")
                 {
-                    breadcrumb += " <strong>" + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(tree[i]) + "</strong>";
+                    strBreadcrumb += " <strong>" + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(strTree[i]) + "</strong>";
                 }
                 else
                 {
-                    breadcrumb += " ‹ <a href='" + getLink(tree, (tree.Length - i)) + "'>" + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(tree[i]) + "</a>";
+                    strBreadcrumb += " ‹ <a href='" + GetLink(strTree, (strTree.Length - i)) + "'>" + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(strTree[i]) + "</a>";
                 }
             }
         }
-        if (breadcrumb != "")
+        if (strBreadcrumb != "")
         {
-            breadcrumb += " ‹ ";
+            strBreadcrumb += " ‹ ";
         }
-        breadcrumb += "<a href='/'>Graphite</a>";
-        litBreadcrumb.Text = breadcrumb;
+        strBreadcrumb += "<a href='/'>Graphite</a>";
+        litBreadcrumb.Text = strBreadcrumb;
     }
     
-    private string getLink(string[] arg_tree, int index)
+    private string GetLink(string[] arg_tree, int intIndex)
     {
-        string[] tree = arg_tree.Reverse().ToArray();
-        string link = "";
-        for (int i = 0; i < index; i++)
+        string[] strTree = arg_tree.Reverse().ToArray();
+        string strLink = "";
+        for (int i = 0; i < intIndex; i++)
         {
-            if (tree[i] == "")
+            if (strTree[i] == "")
             {
-                link += "/";
+                strLink += "/";
             }
             else
             {
-                link += tree[i] + "/";
+                strLink += strTree[i] + "/";
             }
         }
-        return link;
+        return strLink;
     }
 }
