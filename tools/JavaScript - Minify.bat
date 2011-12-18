@@ -1,16 +1,15 @@
 @echo off
 
 set folder=..\Website\javascript\
-copy/b %folder%\jquery.onopager.core.js %folder%\jquery.onopager.js
-copy/b %folder%\jquery.onopager.js + %folder%\jquery.onopagerswipe.js %folder%\jquery.onopager.js
-copy/b %folder%\jquery.onopager.js + %folder%\jquery.onopager.scroller.js %folder%\jquery.onopager.js
-copy/b %folder%\jquery.onopager.js + %folder%\jquery.onopager.pager.js %folder%\jquery.onopager.js
-copy/b %folder%\jquery.onopager.js + %folder%\jquery.onopager.autopageAnimation.js %folder%\jquery.onopager.js
-copy/b %folder%\jquery.onopager.js + %folder%\jquery.onopager.animation.js %folder%\jquery.onopager.js
-copy/b %folder%\jquery.onopager.js + %folder%\jquery.onopager.tools.js %folder%\jquery.onopager.js
+copy/b %folder%\graphite.js %folder%\all.js
+copy/b %folder%\all.js + %folder%\graphite.blocks.js %folder%\all.js
+copy/b %folder%\all.js + %folder%\graphite.blocks.navigation.js %folder%\all.js
+copy/b %folder%\all.js + %folder%\graphite.blocks.navigation.menu.js %folder%\all.js
 
-java -jar yuicompressor-2.4.2\build\yuicompressor-2.4.2.jar %folder%jquery.onopager.js -o %folder%jquery.onopager.min.js
+java -jar yuicompressor-2.4.2\build\yuicompressor-2.4.2.jar %folder%all.js -o %folder%all.min.js
 
 echo .
-echo Selected Javascript files are minified and combined into '%folder%jquery.onopager.js'.
+echo .
+echo .
+echo Selected Javascript files are minified and combined into '%folder%all.min.js'.
 pause

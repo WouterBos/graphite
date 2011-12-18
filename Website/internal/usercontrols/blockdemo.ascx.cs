@@ -220,10 +220,10 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
             
             // Add ASCX control
             pnlDemoHTMLCodeBlock.Controls.Add(ctrlControl);
+            string strHtmlCode = GetSourceCode(".ascx", dicFiles["ascx"]);
             litDemoAscx.Text = WrapInJsString(strHtmlCode);
             
             // Find codebehind
-            string strHtmlCode = GetSourceCode(".ascx", dicFiles["ascx"]);
             string strCodeBehind = GetCodeBehind(strHtmlCode, config.CssClass(GetActiveIndex()));
             litDemoCodeBehind.Text = WrapInJsString(strCodeBehind);
             if (strCodeBehind == "") {

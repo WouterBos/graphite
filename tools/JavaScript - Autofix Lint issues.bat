@@ -1,6 +1,7 @@
 @echo off
 
-c:\Python27\Scripts\fixjsstyle.exe "..\Website\javaScript\jquery.onopager.core.js" "..\Website\javaScript\jquery.onopagerswipe.js" "..\Website\javaScript\jquery.onopager.scroller.js" "..\Website\javaScript\jquery.onopager.pager.js" "..\Website\javaScript\jquery.onopager.autopageAnimation.js" "..\Website\javaScript\jquery.onopager.animation.js" "..\Website\javaScript\jquery.onopager.tools.js"
+echo Attempting to fix some issues with JavaScript code convention
+c:\Python27\Scripts\fixjsstyle.exe "..\Website\javaScript\jquery.onopager.core.js" "..\Website\javaScript\graphite.js" "..\Website\javaScript\graphite.blocks.js" "..\Website\javaScript\graphite.blocks.navigation.js" "..\Website\javaScript\graphite.blocks.navigation.menu.js" ".Website\internal\javascript\graphite.internal.js"
 
 
 echo .
