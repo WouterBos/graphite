@@ -79,6 +79,12 @@ graphite.blocks.navigation.menu = (function() {
 
 
 
+/**
+ * Container for CSS related functionality
+ *
+ * @since 1.0 - 2010-02-23
+ * @version 1.0 - 2010-02-23
+ */
 graphite.css = {};
 
 
@@ -86,10 +92,35 @@ graphite.css = {};
 
 
 /**
- * @namespace ...
- * @class
+ * Adds and removes classes with a certain delay
+ *
  * @since 1.0 - 2010-02-23
  * @version 1.0 - 2010-02-23
+ * @constructor
+ *
+ * @param {Boolean} arg_singleSibling If true, only one sibling can have the
+ *    supplied class. Default value is false.
+ *
+ * @example
+   var cssDelay = new graphite.css.cssDelay(true);
+   cssDelay.addItem(
+     {
+       element: jQuery(this)[0],
+       cssclass: 'gp_hover',
+       eventType: 'mouseover',
+       action: 'add',
+       time: 0
+     }
+   );
+   cssDelay.addItem(
+     {
+       element: jQuery(this)[0],
+       cssclass: 'gp_hover',
+       eventType: 'mouseout',
+       action: 'remove',
+       time: 1000
+     }
+   );
  */
 graphite.css.cssDelay = function(arg_singleSibling) {
   var _arr = new Array();
@@ -101,11 +132,22 @@ graphite.css.cssDelay = function(arg_singleSibling) {
   /**
    * Adds and removes class with delay
    *
-   * @since 1.0 - 2011-11-03
-   * @version 1.0 - 2011-11-03
+   * @param {Object} classEvent Configuration object with DOM element, class,
+   *    event, etc.
+   * @example
+     var cssDelay = new graphite.css.cssDelay(true);
+     cssDelay.addItem(
+       {
+         element: jQuery(this)[0],
+         cssclass: 'gp_hover',
+         eventType: 'mouseover',
+         action: 'add',
+         time: 0
+       }
+     );
    */
-  this.addItem = function(arrItem) {
-    _arr.push(arrItem);
+  this.addItem = function(classEvent) {
+    _arr.push(classEvent);
   }
 
   this.createEvents = function() {
@@ -113,9 +155,9 @@ graphite.css.cssDelay = function(arg_singleSibling) {
     for (var i = 0; i < _arr.length; i++) {
       graphite.events.addEvent(
         _arr[i].element,
-        (function(arrItem) {
+        (function(classEvent) {
           return function() {
-              toggleClass(arrItem);
+              toggleClass(classEvent);
           }
         })(_arr[i]),
         _arr[i].eventType,
@@ -124,45 +166,52 @@ graphite.css.cssDelay = function(arg_singleSibling) {
     }
 
     // The event handler.
-    function toggleClass(arrItem) {
+    function toggleClass(classEvent) {
+      var timeoutName = classEvent.action + '_' + classEvent.cssclass;
+
       // Create timeout object on element.
-      if (typeof(arrItem.element.gp_timeout) == 'undefined') {
-        arrItem.element.gp_timeout = {};
+      if (typeof(classEvent.element.gp_timeout) == 'undefined') {
+        classEvent.element.gp_timeout = {};
       }
 
       // Clear possible existing timeouts when removing classes.
-      if (typeof(arrItem.element.gp_timeout[arrItem.action + '_' + arrItem.cssclass]) != 'undefined') {
-        if (arrItem.action == 'remove') {
-          clearTimeout(arrItem.element.gp_timeout[arrItem.action + '_' + arrItem.cssclass]);
+      if (typeof(classEvent.element.gp_timeout[timeoutName]) != 'undefined') {
+        if (classEvent.action == 'remove') {
+          clearTimeout(classEvent.element.gp_timeout[timeoutName]);
         }
       }
 
       // The actual adding or removing of classes.
-      arrItem.element.gp_timeout[arrItem.action + '_' + arrItem.cssclass] = setTimeout(
+      classEvent.element.gp_timeout[timeoutName] = setTimeout(
         function() {
           // Add class.
-          if (arrItem.action == 'add') {
-            if (arrItem.element.className.indexOf(arrItem.cssclass) == -1) {
-              arrItem.element.className += ' ' + arrItem.cssclass;
+          if (classEvent.action == 'add') {
+            var className = classEvent.element.className;
+            if (className.indexOf(classEvent.cssclass) == -1) {
+              classEvent.element.className += ' ' + classEvent.cssclass;
             }
             // Make sure only one sibling has that class.
-            if (_singleSibling == true && arrItem.eventType == 'mouseover') {
-              var parent = arrItem.element.parentNode;
+            if (_singleSibling == true && classEvent.eventType == 'mouseover') {
+              var parent = classEvent.element.parentNode;
               for (var i = 0; i < parent.childNodes.length; i++) {
                 if (parent.childNodes[i].nodeType == 1) {
-                  var classNameRegEx = new RegExp(arrItem.cssclass, 'g');
-                  parent.childNodes[i].className = parent.childNodes[i].className.replace(classNameRegEx, '');
+                  var classNameRegEx = new RegExp(classEvent.cssclass, 'g');
+                  var className = parent.childNodes[i].className;
+                  var newClassName = className.replace(classNameRegEx, '');
+                  parent.childNodes[i].className = newClassName;
                 }
               }
             }
           }
           // Remove class.
-          if (arrItem.action == 'remove') {
-            var classNameRegEx = new RegExp(arrItem.cssclass, 'g');
-            arrItem.element.className = arrItem.element.className.replace(classNameRegEx, '');
+          if (classEvent.action == 'remove') {
+            var classNameRegEx = new RegExp(classEvent.cssclass, 'g');
+            var className = classEvent.element.className;
+            var newClassName = className.replace(classNameRegEx, '');
+            classEvent.element.className = newClassName;
           }
         },
-        arrItem.time
+        classEvent.time
       );
     }
   }

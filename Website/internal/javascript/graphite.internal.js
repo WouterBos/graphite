@@ -5,11 +5,11 @@
  * @version 0.1 - 2011-11-05
  */
 
- 
- 
- 
- 
- 
+
+
+
+
+
 /**
  * @namespace Root namespace for graphite
  */
@@ -18,17 +18,22 @@ graphite.internal = {};
 
 
 /**
- * @namespace Extracts code from demo and presents to user.
+ * Extracts code from demo and presents to user.
  *
- * @param {Object} root The demo container.
+ * @since 1.0 - 2010-12-18
+ * @version 1.0 - 2010-12-18
+ *
+ * @constructor
+ * @param {Object} arg_config Config object.
+ *    .root: The demo container.
  */
 graphite.internal.demo = function(arg_config) {
   var config = {
     root: arg_config.root
-  }
-  
+  };
+
   sourceCode = graphite.internal.demo.data.sourceCode;
-  
+
   function setEvents() {
     var rootLinks = document.getElementsByTagName('a');
 
@@ -63,43 +68,48 @@ graphite.internal.demo = function(arg_config) {
       }
       // JavaScript
       if (rootLinks[i].className.indexOf('graphite_getCodeJs') != -1) {
-        sourceCode.js = sourceCode.js.replace(/\#\#\#GP\#\#\#SCRIPT/g, '<script');
-        sourceCode.js = sourceCode.js.replace(/\#\#\#GP\#\#\#\/SCRIPT/g, '</script');
+        sourceCode.js = sourceCode.js.replace(/\#\#\#GP\#\#\#SCRIPT/g,
+                                              '<script');
+        sourceCode.js = sourceCode.js.replace(/\#\#\#GP\#\#\#\/SCRIPT/g,
+                                              '</script');
         setEvent(
           rootLinks[i],
           sourceCode.js
         );
       }
     }
-    
+
     function setEvent(copyLink, source) {
       if (copyLink && source) {
         var clipHtml = new ZeroClipboard.Client();
-        clipHtml.setHandCursor( true );
-        
-        clipHtml.addEventListener('mouseup', function (client) {
+        clipHtml.setHandCursor(true);
+
+        clipHtml.addEventListener('mouseup', function(client) {
           clipHtml.setText(source);
           if (console && console.log) {
             console.log('copied');
           }
         });
-  
+
         clipHtml.glue(copyLink);
       }
     }
   }
-  		
-	this.extractCode = function() {
-	  // Setup cut 'n paste containers
+
+  this.extractCode = function() {
+    // Setup cut 'n paste containers
     graphite.events.addEvent(
       window,
       setEvents,
-      "load",
+      'load',
       true
     );
-	}
-}
+  }
+};
 
 
 
+/**
+ * Namespace branch to attach JSON data for the demo.
+ */
 graphite.internal.demo.data = {};
