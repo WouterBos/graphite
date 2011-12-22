@@ -23,8 +23,11 @@
             <p><big>Graphite is a codebase for frontend development on the ASP.NET platform. It will help kickstart your web project. It contains code templates with HTML, CSS and JavaScript. It also has some templates for the popular CMS systems Sitefinity and Sitecore.</big></p>
             <p class="gp_textAlert"><big><strong>The project is still very alpha. But there's a <a href="/blocks/navigation/menu/">preview</a> of the menu component.</strong></big></p>
             
-            <h2>About this web page</h2>
-            <p>This website contains many working code snippets ready to be copy-pasted into your own project.</p>
+            <h2>What do I do with this website?</h2>
+            <p>Graphite is mostly a website with many UI demos. Most demos are intentionally kept simple to keep them extendable. If you find something you'd like to use, copy the code by pressing the black buttons below the demo.</p>
+            
+            <p><strong>How to use Graphite</strong></p>
+            <p><strong><a href="/documentation/code-convention.aspx">Code conventions</a></strong></p>
         </article>
     </div>
 </asp:Content>
@@ -76,13 +79,13 @@
     <div class="gp_block">
         <div class="gp_sitemap">
             <ul>
-                <li><a href="/grids">Blocks</a>
+                <li><span>Plain HTML and ASP.NET</span>
                     <ul>
                         <li><a href="/blocks/text">Text content</a></li>
                         <li><a href="/blocks/forms">Forms</a>
                             <ul>
-                                <li class="graphite_inDevelopment"><a href="/blocks/forms/login">Login</a></li>
-                                <li class="graphite_inDevelopment"><a href="/blocks/forms/plain">Plain</a></li>
+                                <li><a href="/blocks/forms/login">Login</a></li>
+                                <li><a href="/blocks/forms/plain">Plain</a></li>
                             </ul>
                         </li>
                         <li><span>Div popup</span></li>
@@ -92,14 +95,6 @@
                             <ul>
                                 <li><a href="/blocks/navigation/menu/">Menu</a></li>
                                 <li><span>Sitemap</span></li>
-                            </ul>
-                        </li>
-                        <li><span>Sitefinity</span>
-                            <ul>
-                                <li><span>Pager</span></li>
-                                <li><span>Captcha</span></li>
-                                <li><span>Forms</span></li>
-                                <li><span>CMS edit mode</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -115,9 +110,21 @@
     <div class="gp_block">
         <div class="gp_sitemap">
             <ul>
-                <li><span>Documentation</span>
+                <li><span>CMS related</span>
                     <ul>
-                        <li class="graphite_inDevelopment"><a href="/documentation/code-convention.aspx">Code convention</a></li>
+                        <li><span>Sitefinity</span>
+                            <ul>
+                                <li><span>Pager</span></li>
+                                <li><span>Captcha</span></li>
+                                <li><span>Forms</span></li>
+                                <li><span>CMS edit mode</span></li>
+                            </ul>
+                        </li>
+                        <li><span>Sitecore</span>
+                            <ul>
+                                <li><span>Webforms for marketers</span></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
