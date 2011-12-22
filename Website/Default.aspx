@@ -120,9 +120,9 @@
                                 <li><span>CMS edit mode</span></li>
                             </ul>
                         </li>
-                        <li><span>Sitecore</span>
+                        <li><a href="/sitecore">Sitecore</a>
                             <ul>
-                                <li><span>Webforms for marketers</span></li>
+                                <li><a href="/sitecore/webforms-for-marketers">Webforms for marketers</a></li>
                             </ul>
                         </li>
                     </ul>

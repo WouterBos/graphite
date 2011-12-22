@@ -131,4 +131,20 @@
             </menu>
         </navigation>
     </blocks>
+
+    <sitecore>
+        <webformsformarketers>
+            <demo>
+                <common>
+                    <files>
+                        <html use_default_code="true" />
+                        <css use_default_code="true" />
+                        <description />
+                    </files>
+                    <browsers>
+                    </browsers>
+                </common>
+            </demo>
+        </webformsformarketers>
+    </sitecore>
 </demos>

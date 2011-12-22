@@ -1,0 +1,28 @@
+/*
+ * Basic form
+ */
+
+
+
+
+
+
+*.gp_sc_wfm {
+    @gp_formColumn1: 150px;
+    @gp_formColumnGutter: 10px;
+    @gp_formColumn2: 260px;
+    
+    .gp_clear();
+
+	h1.scfTitleBorder {
+		.gp_heading1;
+	}    
+
+	div.scfIntroBorder {
+		margin: @grid_blockSpacing/2 0;
+	}    
+
+	div.scfIntroBorder p + p {
+		margin-top: @grid_blockSpacing/2;
+	}    
+}

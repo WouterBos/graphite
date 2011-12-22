@@ -26,6 +26,8 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     {
         // Getting configuration settings from XML
         string strPhysicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
+        strPhysicalPath = strPhysicalPath.Replace("-", "");
+        strPhysicalPath = strPhysicalPath.ToLower();
         string strXmlPath = "/demos" + strPhysicalPath + "demo";
         config = new Graphite.Config(strXmlPath);
         dicFiles = config.Files(GetActiveIndex()); 

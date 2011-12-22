@@ -33,7 +33,9 @@ public partial class internal_usercontrols_folders : System.Web.UI.UserControl
         {
             HyperLink hlFolder = e.Item.FindControl("hlFolder") as HyperLink;
             DirectoryInfo dirItem = e.Item.DataItem as DirectoryInfo;
-            hlFolder.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dirItem.Name);
+            string strFolderNameHuman = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(dirItem.Name);
+            strFolderNameHuman = strFolderNameHuman.Replace("-", " ");
+            hlFolder.Text = strFolderNameHuman;
             hlFolder.Attributes["href"] = dirItem.Name;
         }
     }
