@@ -4,20 +4,27 @@
 
 
 
+.gp_boxSizing(@boxType: border-box) {
+    -moz-box-sizing: @boxType;
+    -ms-box-sizing: @boxType;
+    -webkit-box-sizing: @boxType;
+    box-sizing: @boxType;
+}
+
 .gp_gradient(@start: #ffffff, @end: #000000) {
 	background-color: @start;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end)); 
-	background-image: -webkit-linear-gradient(top, @start, @end); 
 	background-image:    -moz-linear-gradient(top, @start, @end); 
 	background-image:     -ms-linear-gradient(top, @start, @end); 
 	background-image:      -o-linear-gradient(top, @start, @end); 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end)); 
+    background-image: -webkit-linear-gradient(top, @start, @end); 
 	background-image:         linear-gradient(top, @start, @end);
 	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorStr='@{start}', EndColorStr='@{end}')";
 }
 
 .gp_shadow(@xOffset: 5px, @yOffset: 5px, @shadowSize: 10px, @shadowColor: #000000) {
-	-webkit-box-shadow: @xOffset @yOffset @shadowSize @shadowColor; 
 	-moz-box-shadow: @xOffset @yOffset @shadowSize @shadowColor; 
+    -webkit-box-shadow: @xOffset @yOffset @shadowSize @shadowColor; 
 	box-shadow: @xOffset @yOffset @shadowSize @shadowColor; 
 }
 
@@ -40,10 +47,10 @@
 }
 
 .gp_transition(@type: all, @time: @easing, @easing: ease-out) {
-	-webkit-transition: @type @time @easing;  
 	-moz-transition: @type @time @easing;  
 	-ms-transition: @type @time @easing;  
 	-o-transition: @type @time @easing;  
+    -webkit-transition: @type @time @easing;  
 	transition: @type @time @easing;  
 }
 
