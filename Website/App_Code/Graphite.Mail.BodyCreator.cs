@@ -111,13 +111,23 @@ namespace Graphite.Mail
         private void GetFormValuesFromPanel(Control control, ref ArrayList arrList)
 		{
 			foreach (Control ControlInForm in control.Controls) {
-				if (ControlInForm is TextBox) {
+				if (ControlInForm is TextBox)
+                {
 					arrList.Add(new UtilityObj(ControlInForm.ID, ((TextBox)ControlInForm).Text));
-				} else if (ControlInForm is RadioButtonList) {
-					arrList.Add(new UtilityObj(ControlInForm.ID, ((RadioButtonList)ControlInForm).SelectedValue));
-				} else if (ControlInForm is CheckBox) {
+				}
+                else if (ControlInForm is DropDownList)
+                {
+                    arrList.Add(new UtilityObj(ControlInForm.ID, ((DropDownList)ControlInForm).SelectedValue));
+                }
+                else if (ControlInForm is RadioButtonList)
+                {
+                    arrList.Add(new UtilityObj(ControlInForm.ID, ((RadioButtonList)ControlInForm).SelectedValue));
+                }
+                else if (ControlInForm is CheckBox)
+                {
 					CheckBox oCheckBox = (CheckBox)ControlInForm;
-					if (oCheckBox.Checked == true) {
+					if (oCheckBox.Checked == true)
+                    {
 						arrList.Add(new UtilityObj(oCheckBox.ID, "Ja"));
 					}
 				}
