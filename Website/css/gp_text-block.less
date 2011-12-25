@@ -13,7 +13,7 @@
 	ul,
 	ol,
 	& + *.gp_text {
-		margin-top: 1em;
+		margin-top: @gp_paragraphSpacing;
 	}
 	
 	ul ul {
@@ -26,7 +26,7 @@
 	* + h4,
 	* + h5,
 	* + h6 {
-		margin-top: 1em;
+		margin-top: @gp_paragraphSpacing;
 	}
 	
 	h1 + *,
@@ -126,12 +126,12 @@
 	 * class is sometimes used in RTE editors.
 	 */
 	img.left {
-		margin: 0 (@grid_blockSpacing / 2) (@grid_blockSpacing / 3) 0;
+		margin: 0 @gp_paragraphSpacing (@gp_paragraphSpacing/2) 0;
 		float: left;
 	}
 	
 	img.right {
-		margin: 0 0 (@grid_blockSpacing / 3) (@grid_blockSpacing / 2);
+		margin: 0 0 (@gp_paragraphSpacing/2) @gp_paragraphSpacing;
 		float: right;
 	}
 	/* End basic image styling */
@@ -151,7 +151,8 @@
 	/* Start table */
 	table {
 		th,
-		thead * {
+		thead th,
+		thead td {
 			font-weight: bold
 		}
 		
@@ -162,15 +163,10 @@
 		
 		tfoot {
 			font-size: 0.9em;
-			font-weight: normal;
 		}
 		
-		tfoot * {
+		tfoot th {
 			font-weight: normal;
-		}
-		
-		tr > * {
-			padding-left: 20px;
 		}
 		
 		tr > *:first-child {
@@ -179,7 +175,7 @@
 		
 		td,
 		th {
-			padding-left: 10px;
+			padding-left: @gp_paragraphSpacing;
 		}
 		td:first-child,
 		th:first-child {

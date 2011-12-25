@@ -8,10 +8,6 @@
 
 
 *.gp_form {
-    @gp_formColumn1: 150px;
-    @gp_formColumnGutter: 10px;
-    @gp_formColumn2: 260px;
-    
     .gp_clear();
     
     fieldset {
@@ -26,7 +22,7 @@
             float: left;
             clear: left;
             margin: 0;
-            padding: 0 0 5px 0;
+            padding: 0 0 @gp_paragraphSpacing/4 0;
             list-style: none;
         }
         
@@ -39,8 +35,8 @@
         > ol > li > label,
         > ol > li *.label {
             float: left;
-            width: @gp_formColumn1;
             margin-right: @gp_formColumnGutter;
+            width: @gp_formColumn1;
             
             > span {
                 position: absolute;
@@ -50,23 +46,17 @@
         
         /* Form fields */
         input[type="text"],
-        input[type="password"] {
+		input[type="email"],
+		input[type="url"],
+		input[type="search"],
+		input[type="password"] {
             width: @gp_formColumn2;
-            padding: 0 3px 0 3px;
         }
     
         input[type="submit"] {
             margin-left: @gp_formColumn1 + @gp_formColumnGutter;
-            padding: 0 3px 0 3px;
         }
 
-        input[type="radio"],
-        input[type="checkbox"] {
-            position: relative;
-            top: 2px;
-            margin: 0 2px 0 0;
-        }
-        
         span > label + input[type="radio"],
         span > label + input[type="checkbox"] {
             margin-left: @gp_formColumnGutter;
@@ -74,8 +64,6 @@
     
         textarea {
             width: @gp_formColumn2;
-            height: 5em;
-            padding: 0 3px 0 3px;
         }
     
         legend {
@@ -85,9 +73,7 @@
 
     *.gp_formCheckFeedback {
         .gp_textAlert;
-        .gp_rounded_corners(7px);
-        margin-top: @grid_blockSpacing;
-        color: @gp_colorHigh !important;
+        color: @gp_colorLow !important;
         font-weight: bold;
         
         ul {
@@ -97,7 +83,7 @@
         li {
             margin-left: 17px;
             list-style-type: disc;
-            color: @gp_colorHigh;
+            color: @gp_colorLow;
             font-weight: normal;
         }
     }

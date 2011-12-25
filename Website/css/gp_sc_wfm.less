@@ -8,21 +8,71 @@
 
 
 *.gp_sc_wfm {
-    @gp_formColumn1: 150px;
-    @gp_formColumnGutter: 10px;
-    @gp_formColumn2: 260px;
-    
     .gp_clear();
 
 	h1.scfTitleBorder {
 		.gp_heading1;
-	}    
-
-	div.scfIntroBorder {
+	}
+	
+	legend {
+		.gp_heading2;
+		padding-top: @gp_paragraphSpacing;
+	}
+	
+	div.scfSectionContent > div,
+	div.scfPasswordConfirmation > div:first-child,
+	div.scfCreditCard > div:first-child {
+		padding: 0 0 @gp_paragraphSpacing/4 0;
+	}
+	
+	table.scfCheckBoxList td + td,
+	table.scfRadioButtonList td + td {
+		padding: 0 0 0 @gp_paragraphSpacing;
+	}
+	
+	/* Simple generic content styling */
+	div.scfIntroBorder,
+	div.scfFooterBorder {
 		margin: @grid_blockSpacing/2 0;
-	}    
 
-	div.scfIntroBorder p + p {
-		margin-top: @grid_blockSpacing/2;
-	}    
+		table,
+		p,
+		ul,
+		ol {
+			margin-top: @gp_paragraphSpacing;
+		}
+
+		> table:first-child,
+		> p:first-child,
+		> ul:first-child,
+		> ol:first-child {
+			margin-top: @gp_paragraphSpacing;
+		}
+	}
+	
+	/* Column 1 */
+	label:first-child,
+	span.scfCheckBoxListLabel,
+	span.scfRadioButtonListLabel,
+	span.scfDateSelectorLabel {
+        float: left;
+        margin-right: @gp_formColumnGutter;
+        width: @gp_formColumn1;
+	}
+	
+	/* Column 2 */
+	input[type="text"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="password"],
+	textarea {
+		width: @gp_formColumn2;
+	}
+	
+	*.scfDateSelectorGeneralPanel label {
+		position: absolute;
+		top: -9999em;
+		left: -9999em;
+	}
 }
