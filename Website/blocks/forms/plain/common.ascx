@@ -1,124 +1,81 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="common.ascx.cs" Inherits="gp_blocks_forms_common" %>
 
 <asp:Panel runat="server" Visible="true" ID="pnlRoot" cssclass="gp_form">
-    <asp:ValidationSummary ID="ValidationSummary2" runat="server" HeaderText="Niet alle verplichte formuliervelden zijn volledig of correct ingevuld" ShowSummary="true" ShowMessageBox="false" CssClass="formCheckFeedback" ValidationGroup="contact" />
+    <asp:ValidationSummary ID="ValidationSummary2" runat="server" HeaderText="Niet alle verplichte formuliervelden zijn volledig of correct ingevuld" ShowSummary="true" ShowMessageBox="false" CssClass="gp_formCheckFeedback" ValidationGroup="contact" />
 
     <span class="mandatory">* = Verplicht veld</span>
     <fieldset>
         <ol>
             <li>
-                <asp:Label ID="Label3" runat="server" AssociatedControlID="Bedrijfsnaam">
-                    Bedrijfsnaam
+                <asp:Label ID="Label3" runat="server" AssociatedControlID="TextBox1">
+                    Textbox without validation
                 </asp:Label>
-                <asp:TextBox ID="Bedrijfsnaam" TextMode="SingleLine" runat="server" CssClass="text" ValidationGroup="contact" />
+                <asp:TextBox ID="TextBox1" TextMode="SingleLine" runat="server" CssClass="text" ValidationGroup="contact" />
             </li>
 
             <li>
-                <asp:Label ID="Label2" runat="server" AssociatedControlID="Regio">Regio</asp:Label>
+                <asp:Label ID="Label4" runat="server" AssociatedControlID="TextBox2">
+                    Textbox with validation
+                    <span>*</span>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox2" ErrorMessage="TextBox2" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
+                </asp:Label>
+                <asp:TextBox ID="TextBox2" TextMode="SingleLine" runat="server" CssClass="text" ValidationGroup="contact" />
+            </li>
+
+            <li>
+                <asp:Label ID="Label2" runat="server" AssociatedControlID="Regio">Dropdown</asp:Label>
                 <asp:DropDownList ID="Regio" runat="server">
-                    <asp:ListItem>Kies uw regio</asp:ListItem>
-                    <asp:ListItem>Regio A</asp:ListItem>
-                    <asp:ListItem>Regio B</asp:ListItem>
-                    <asp:ListItem>Regio C</asp:ListItem>
+                    <asp:ListItem Value="">Choose an option</asp:ListItem>
+                    <asp:ListItem>Option A</asp:ListItem>
+                    <asp:ListItem>Option B</asp:ListItem>
+                    <asp:ListItem>Option C</asp:ListItem>
                 </asp:DropDownList>
             </li>
 
             <li>
-                <asp:Label ID="Label19" runat="server" AssociatedControlID="Aanhef">
-                    <span>*</span>
-                    Aanhef
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="Aanhef" ErrorMessage="Aanhef" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
+                <asp:Label ID="Label1" runat="server" AssociatedControlID="CheckBoxList1">
+                    Checkbox list
                 </asp:Label>
-                <asp:RadioButtonList ID="Aanhef" runat="server" RepeatLayout="Flow" RepeatDirection="Horizontal">
-                    <asp:ListItem Text="Dhr." />
-                    <asp:ListItem Text="Mevr." />
+                <asp:CheckBoxList ID="CheckBoxList1" runat="server">
+                    <asp:ListItem>Option A</asp:ListItem>
+                    <asp:ListItem>Option B</asp:ListItem>
+                    <asp:ListItem>Option C</asp:ListItem>
+                </asp:CheckBoxList>
+            </li>
+
+            <li>
+                <asp:Label ID="Label19" runat="server" AssociatedControlID="RadioButtonList1">
+                    <span>*</span>
+                    Radio button list (horizontal)
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="RadioButtonList1" ErrorMessage="RadioButtonList1" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
+                </asp:Label>
+                <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatLayout="Flow" RepeatDirection="Horizontal">
+                    <asp:ListItem Text="Option A" />
+                    <asp:ListItem Text="Option B" />
                 </asp:RadioButtonList>
             </li>
 
             <li>
-                <asp:Label ID="Label4" runat="server" AssociatedControlID="Naam">
-                    Naam
-                    <span>*</span>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="Naam" ErrorMessage="Naam" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
-                </asp:Label>
-                <asp:TextBox ID="Naam" TextMode="SingleLine" runat="server" CssClass="text" ValidationGroup="contact" />
-            </li>
-
-            <li>
                 <asp:Label ID="Label10" runat="server" AssociatedControlID="Email">
-                    E-mailadres
+                    Email adress
                     <span>*</span>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="Email" ErrorMessage="E-mailadres" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="Email" ErrorMessage="Email adress" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
 	                    ControlToValidate="Email"
 	                    ValidationExpression=".*@.*\..*"
 	                    ValidationGroup="contact"
-	                    ErrorMessage="E-mailadres (niet correct)">*</asp:RegularExpressionValidator>
+	                    ErrorMessage="Email adress (incorrect)">*</asp:RegularExpressionValidator>
                 </asp:Label>
                 <asp:TextBox ID="Email" ToolTip="E-mailadres" TextMode="SingleLine" runat="server" CssClass="text" ValidationGroup="contact" />
             </li>
 
             <li>
-                <asp:RadioButtonList ID="ContactType" runat="server" RepeatLayout="Flow" RepeatDirection="Horizontal">
-                    <asp:ListItem Text="Offerte aanvraag" />
-                    <asp:ListItem Text="Brochure aanvraag" />
-                    <asp:ListItem Text="Neem contact met me op" />
-                </asp:RadioButtonList>
-            </li>
-        </ol>
-        
-        <ol>
-            <li>
-                <asp:Label ID="Label9" runat="server" AssociatedControlID="Telefoon">
-                    Telefoon
-                </asp:Label>
-                <asp:TextBox ID="Telefoon" TextMode="SingleLine" runat="server" CssClass="text" ValidationGroup="contact" />
-            </li>
-        </ol>
-
-        <ol>
-            <li class="custom">
-                <asp:Label ID="Label5" runat="server" AssociatedControlID="Straatnaam">
-                    Straatnaam
+                <asp:Label ID="Label12" runat="server" AssociatedControlID="TextBox3">
+                    Textarea:
                     <span>*</span>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Straatnaam" ErrorMessage="Straatnaam" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TextBox3" ErrorMessage="TextBox3" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
                 </asp:Label>
-                <asp:TextBox ID="Straatnaam" TextMode="SingleLine" runat="server" CssClass="text" ValidationGroup="contact" />
-
-                <asp:Label ID="Label6" runat="server" AssociatedControlID="Huisnummer">
-                    Huisnr.
-                    <span>*</span>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="Huisnummer" ErrorMessage="Huisnr." SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
-                </asp:Label>
-                <asp:TextBox ID="Huisnummer" TextMode="SingleLine" runat="server" CssClass="text" ValidationGroup="contact" />
-            </li>
-
-            <li>
-                <asp:Label ID="Label88" runat="server" AssociatedControlID="Postcode">
-                    Postcode
-                    <span>*</span>
-                    <asp:regularexpressionvalidator id="RegularExpressionValidator1" runat="server" controltovalidate="Postcode" validationexpression="\d{4}\w{2}" validationgroup="contact" errormessage="Postcode (niet correct)">*</asp:regularexpressionvalidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator77" runat="server" ControlToValidate="Postcode" ErrorMessage="Postcode" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
-                </asp:Label>
-                <asp:TextBox ID="Postcode" TextMode="SingleLine" runat="server" CssClass="text" ValidationGroup="contact" />
-            </li>
-
-            <li>
-                <asp:Label ID="Label8" runat="server" AssociatedControlID="Plaats">
-                    Plaats
-                    <span>*</span>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="Plaats" ErrorMessage="Plaats" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
-                </asp:Label>
-                <asp:TextBox ID="Plaats" TextMode="SingleLine" runat="server" CssClass="text" ValidationGroup="contact" />
-            </li>
-
-            <li>
-                <asp:Label ID="Label12" runat="server" AssociatedControlID="Vraag_of_opmerking">
-                    Uw vraag/ opmerking:
-                    <span>*</span>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="Vraag_of_opmerking" ErrorMessage="Vraag of opmerking" SetFocusOnError="True" ValidationGroup="contact">*</asp:RequiredFieldValidator>
-                </asp:Label>
-                <asp:TextBox ID="Vraag_of_opmerking" TextMode="MultiLine" runat="server" CssClass="text" ValidationGroup="contact" />
+                <asp:TextBox ID="TextBox3" TextMode="MultiLine" runat="server" CssClass="text" ValidationGroup="contact" />
             </li>
         </ol>
     </fieldset>
@@ -129,13 +86,13 @@
 </asp:Panel>
 
 <asp:Panel runat="server" ID="SendOkPanel" Visible="false">
-    <strong>Formulier verstuurd</strong>
-    <p>Bedankt voor uw reactie. Mocht het nodig zijn zullen wij zo spoedig mogelijk contact met u opnemen.</p>
-    <p><a href="/Contact.aspx">Terug</a></p>
+    <strong id="FormSentTitle" runat="server" innerhtml="<%$ Resources: FormSentTitle %>"></strong>
+    <p id="FormSentText" runat="server" innerhtml="<%$ Resources: FormSentText %>"></p>
+    <p><a id="FormSentBack" runat="server" innerhtml="<%$ Resources: Graphite, Back %>"></a></p>
 </asp:Panel>
 
 <asp:Panel runat="server" ID="SendFailedPanel" Visible="false">
-    <strong>Foutmelding!</strong>
-    <p>Er is een fout opgetreden bij het versturen van het formulier. Probeert u het opnieuw of neem telefonisch contact met ons op.</p>
-    <p><a href="/Contact.aspx">Terug</a></p>
+    <strong id="FormErrorTitle" runat="server" innerhtml="<%$ Resources: FormErrorTitle %>"></strong>
+    <p id="FormErrorText" runat="server" innerhtml="<%$ Resources: FormErrorText %>"></p>
+    <p><a id="FormErrorBack" runat="server" innerhtml="<%$ Resources: Graphite, Back %>"></a></p>
 </asp:Panel>

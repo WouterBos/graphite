@@ -17,5 +17,8 @@ public partial class gp_blocks_forms_common : System.Web.UI.UserControl
     protected void Page_Load(object sender, EventArgs e)
     {
         pnlRoot.CssClass += " " + _strRootClass;
+        
+        FormSentBack.HRef = Request.ServerVariables["URL"];
+        FormErrorBack.HRef = Request.ServerVariables["URL"];
     }
 }
