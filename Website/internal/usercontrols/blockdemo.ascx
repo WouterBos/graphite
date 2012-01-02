@@ -42,6 +42,8 @@
                             <asp:PlaceHolder ID="phCodeLinksJs" runat="server">
                                 <a href="#" id="getJsCode" class="graphite_getCodeJs">.js</a>
                             </asp:PlaceHolder>
+                            
+                            <span class="graphite_getCodeFeedback"></span>
                         </div>
                     </section>
                 </div>
