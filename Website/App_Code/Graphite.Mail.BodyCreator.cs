@@ -10,6 +10,9 @@ using System.Web.UI.WebControls;
 
 namespace Graphite.Mail
 {
+    /// <summary>
+    /// Creates a HTML or text body for an email.
+    /// </summary>
     public class BodyCreator
     {
         #region "Private Methods"
@@ -147,7 +150,7 @@ namespace Graphite.Mail
         /// <param name="formPanel"></param>
         /// <param name="templateLocation"></param>
         /// <param name="mailSubject"></param>
-        /// <returns></returns>
+        /// <returns>The body of the mail</returns>
         /// <remarks></remarks>
         public string Create(Panel formPanel, string templateLocation, string mailSubject)
         {

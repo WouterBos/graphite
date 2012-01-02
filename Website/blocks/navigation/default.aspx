@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="blocks_nav_menu" %>
+﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/internal/Masterpages/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="blocks_nav_menu" %>
 <%@ Register TagPrefix="Internal" TagName="BreadCrumb" Src="~/internal/usercontrols/breadcrumb.ascx" %>
 <%@ Register TagPrefix="Internal" TagName="Folders" Src="~/internal/usercontrols/folders.ascx" %>
 
