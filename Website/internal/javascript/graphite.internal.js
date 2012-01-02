@@ -86,8 +86,10 @@ graphite.internal.demo = function(arg_config) {
 
         clipHtml.addEventListener('mouseup', function(client) {
           clipHtml.setText(source);
-          if (console && console.log) {
-            console.log('copied');
+          if (document.querySelector) {
+            var feedbackElement = document.querySelector('*.graphite_getCodeFeedback');
+            feedbackElement.className += 'gp_active';
+            feedbackElement.innerHTML = 'copied';
           }
         });
 

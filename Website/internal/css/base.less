@@ -100,6 +100,8 @@ body > form {
 	a {
 		position: relative;
 		display: inline-block;
+		.gp_transition(all, @time: 0.5, @easing: ease-out);
+		margin-right: 4px;
 		border: 1px solid @gp_colorHigh;
 		.gp_rounded_corners(@radius: 3px);
 		padding: 2px 4px;
@@ -112,11 +114,23 @@ body > form {
 	}
 
 	a {
-		margin-right: 4px;
+		
 	}
 	
 	a.hover {
 		border: 1px solid @gp_colorLow;
+	}
+
+	a.active {
+		.gp_gradient(@start: @gp_color1, @end: @gp_colorLow + (@gp_color1 - #555));
+	}
+	
+	*.graphite_getCodeFeedback {
+		display: none;
+		
+		&.gp_active {
+			display: block;
+		}
 	}
 }
 
