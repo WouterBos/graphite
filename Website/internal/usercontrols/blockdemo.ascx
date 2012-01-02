@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="blockdemo.ascx.cs" Inherits="internal_usercontrols_blockdemo" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="BlockDemo.ascx.cs" Inherits="GraphiteInternal_BlockDemo" %>
 
 
 

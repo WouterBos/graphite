@@ -1,17 +1,16 @@
-﻿<%@ Page Title="Start page" Language="C#" MasterPageFile="~/internal/Masterpages/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Start page" Language="C#" MasterPageFile="~/Internal/Masterpages/Default.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
 </asp:Content>
 
 
 <asp:Content ID="Title" ContentPlaceHolderID="Title" Runat="Server">
-    <strong runat="server" id="PageTitle"></strong> Graphite
+    <strong>Graphite</strong>
 </asp:Content>
 
 
 
 <asp:Content ID="Header" ContentPlaceHolderID="Header" Runat="Server">
-    
 </asp:Content>
 
 
@@ -27,7 +26,7 @@
             <p>Graphite is mostly a website with many UI demos. Most demos are intentionally kept simple to keep them extendable. If you find something you'd like to use, copy the code by pressing the black buttons below the demo.</p>
             
             <p><strong>How to use Graphite</strong></p>
-            <p><strong><a href="/documentation/code-convention.aspx">Code conventions</a></strong></p>
+            <p><strong><a href="/Internal/pages/documentation/CodeConventions.aspx">Code conventions</a></strong></p>
         </article>
     </div>
 </asp:Content>
@@ -120,9 +119,9 @@
                                 <li><span>CMS edit mode</span></li>
                             </ul>
                         </li>
-                        <li><a href="/sitecore">Sitecore</a>
+                        <li><a href="/Internal/Pages/Demos/Sitecore">Sitecore</a>
                             <ul>
-                                <li><a href="/sitecore/webforms-for-marketers">Webforms for marketers</a></li>
+                                <li><a href="/Internal/Pages/Demos/Sitecore/Webforms-for-marketers">Webforms for marketers</a></li>
                             </ul>
                         </li>
                     </ul>

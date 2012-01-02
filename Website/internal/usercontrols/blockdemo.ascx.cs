@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using System.Reflection;
 
-public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
+public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
 {
     private Graphite.Config config;
     Dictionary<string, Boolean> dicFiles;
@@ -25,11 +25,7 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
     private void CreateDemo()
     {
         // Getting configuration settings from XML
-        string strPhysicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
-        strPhysicalPath = strPhysicalPath.Replace("-", "");
-        strPhysicalPath = strPhysicalPath.ToLower();
-        string strXmlPath = "/demos" + strPhysicalPath + "demo";
-        config = new Graphite.Config(strXmlPath);
+        config = new Graphite.Config(GetXmlPath());
         dicFiles = config.Files(GetActiveIndex()); 
         
         // Run methods
@@ -39,6 +35,15 @@ public partial class internal_usercontrols_blockdemo : System.Web.UI.UserControl
         GetDemoJavaScript();
         GetDemoDescription();
         CreateSupportedBrowsersList();
+    }
+
+    private string GetXmlPath()
+    {
+        string strPhysicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
+        strPhysicalPath = strPhysicalPath.ToLower();
+        strPhysicalPath = strPhysicalPath.Replace("-", "");
+        strPhysicalPath = strPhysicalPath.Replace("/internal/pages", "");
+        return strPhysicalPath + "demo";
     }
     
     // Finds out which tab in the demo menu is selected. If no menu is visible above the demo, the index is always 0.

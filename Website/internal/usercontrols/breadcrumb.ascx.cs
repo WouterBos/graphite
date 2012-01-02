@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class internal_usercontrols_breadcrumb : System.Web.UI.UserControl
+public partial class GraphiteInternal_BreadCrumb : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,11 +22,14 @@ public partial class internal_usercontrols_breadcrumb : System.Web.UI.UserContro
         string strBreadcrumb = "";
         for (int i = 0; i < strTree.Length; i++)
         {
-            if (strTree[i] != "")
+            if (strTree[i] != "" && strTree[i] != "Internal" && strTree[i] != "Pages")
             {
                 if (strBreadcrumb == "")
                 {
-                    strBreadcrumb += " <strong>" + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(strTree[i]) + "</strong>";
+                    string HumanName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(strTree[i]);
+                    HumanName = HumanName.Replace("-", " ");
+                    HumanName = HumanName.Replace(".Aspx", "");
+                    strBreadcrumb += "<strong>" + HumanName + "</strong>";
                 }
                 else
                 {

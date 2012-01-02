@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="folders.ascx.cs" Inherits="internal_usercontrols_folders" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Folders.ascx.cs" Inherits="GraphiteInternal_Folders" %>
 
 
 
