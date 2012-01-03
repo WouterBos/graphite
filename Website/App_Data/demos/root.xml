@@ -15,6 +15,21 @@
                 </default>
             </demo>
         </flex>
+
+        <fixed>
+            <demo>
+                <default>
+                    <files externalDemo="true">
+                        <html use_default_code="true" />
+                        <css use_default_code="true" />
+                        <description />
+                    </files>
+                    <browsers>
+                        <ipad supports="iOS5+" />
+                    </browsers>
+                </default>
+            </demo>
+        </fixed>
     </grids>
     
     <blocks>

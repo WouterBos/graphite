@@ -1,0 +1,108 @@
+/*
+ * Fixed grid
+ * 
+ * Grid system with fixed pre-specified column widths.
+ */
+ 
+.gp_row {
+    clear:both;
+}
+
+.gp_column .gp_block {
+    margin:@gp_gridBlockPadding;
+    text-align:justify;
+}
+
+.gp_column + .gp_column {
+    margin-top: @gp_gridBlockSpacing;
+}
+
+.gp_column.gp_columnBackground {
+    background: #eee;
+    
+    .gp_block {
+        margin-left:0;
+        margin-right:0;
+        padding:@gp_gridBlockPadding;
+    }
+}
+
+.gp_column.first  {
+    margin-left:0;
+    
+    .gp_block {
+        margin-left:0;
+    }    
+}
+
+.gp_column.last  {
+    margin-right:0;
+    
+    .gp_block {
+        margin-right:0;
+    }    
+}
+
+.gp_column1 {
+    .gp_colWidth(1);
+}
+
+.gp_column2 {
+    .gp_colWidth(2);
+}
+
+.gp_column3 {
+    .gp_colWidth(3);
+}
+
+.gp_column4 {
+    .gp_colWidth(4);
+}
+
+.gp_column5 {
+    .gp_colWidth(5);
+}
+
+.gp_column6 {
+    .gp_colWidth(6);
+}
+
+.gp_column7 {
+    .gp_colWidth(7);
+}
+
+.gp_column8 {
+    .gp_colWidth(8);
+}
+
+.gp_column9 {
+    .gp_colWidth(9);
+}
+
+.gp_column10 {
+    .gp_colWidth(10);
+}
+
+.gp_column11 {
+    .gp_colWidth(11);
+}
+
+.gp_column12 {
+    .gp_colWidth(12);
+}
+
+.gp_column13 {
+    .gp_colWidth(13);
+}
+
+.gp_column14 {
+    .gp_colWidth(14);
+}
+
+.gp_column15 {
+    .gp_colWidth(15);
+}
+
+.gp_column16 {
+    .gp_colWidth(16);
+}
