@@ -5,26 +5,7 @@
 	<head runat="server">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title></title>
-		
-		
-		<!--
-		###################################
 
-			ESTATE INTERNET BV
-			Verwachtingen overtreffen
-
-			Sportweg 30-32
-			Postbus 5091
-			5004 EB  Tilburg
-			+ 31 (0)13 535 04 35
-
-			www.estate.nl
-			info@estate.nl
-
-		###################################
-		-->
-		
-		
 		<meta name="author" content="Estate Internet, www.estate.nl" />
 		<meta name="robots" content="noodp" />
 		<meta http-equiv="X-UA-Compatible" content="IE=7" />

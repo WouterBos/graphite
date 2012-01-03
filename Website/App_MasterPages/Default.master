@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="master.cs" Inherits="Master" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Master.cs" Inherits="Master" %>
 
 <!DOCTYPE html>
 
@@ -6,42 +6,19 @@
 	<head runat="server">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title></title>
-		
-		
-		<!--
-		###################################
 
-			ESTATE INTERNET BV
-			Verwachtingen overtreffen
-
-			Sportweg 30-32
-			Postbus 5091
-			5004 EB  Tilburg
-			+ 31 (0)13 535 04 35
-
-			www.estate.nl
-			info@estate.nl
-
-		###################################
-		-->
-		
-		
-		<meta name="author" content="Estate Internet, www.estate.nl" />
+		<meta name="author" content="GP_TODO" />
 		<meta name="robots" content="noodp" />
-		<asp:PlaceHolder runat="server" id="phForceIEVersion">
-		    <meta http-equiv="X-UA-Compatible" content="IE=7" />
-		</asp:PlaceHolder>
 
 		<link href="/favicon.ico" rel="icon" />
 		<link href="/favicon.ico" rel="shortcut icon" />
-		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
 		
-		<link rel="stylesheet" media="all" href="/Estate/CSS/main.css" />
-		<asp:PlaceHolder runat="server" id="phHideInvalidCss">
-			<link rel="stylesheet" media="all" href="/Estate/CSS/main-W3C-invalid.css" />
-		</asp:PlaceHolder>
+	    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+	    <meta name="mobileoptimized" content="0" />
 
-		<script src="/Estate/scripts/libraries/estate/Estate.js"></script>
+		<link rel="stylesheet" media="all" href="/Estate/CSS/main.css" />
+
 		<!--[if lt IE 9]>
 			<script src="/Estate/scripts/libraries/html5.js"></script>
 		<![endif]-->
