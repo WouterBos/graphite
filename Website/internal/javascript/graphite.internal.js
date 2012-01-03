@@ -89,7 +89,8 @@ graphite.internal.demo = function(arg_config) {
           var feedbackElement = jQuery('*.graphite_getCodeFeedback');
           feedbackElement.html('Code copied')
           feedbackElement.show();
-          feedbackElement.delay(2000).animate(
+          feedbackElement.css('opacity', 1);
+          feedbackElement.delay(1500).animate(
             {
               opacity: 0
             },

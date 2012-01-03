@@ -2,15 +2,21 @@
 
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+<asp:Content ID="Header" ContentPlaceHolderID="Header" Runat="Server">
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="Column1" Runat="Server">
-    test
+<asp:Content ID="ContentColumn1" ContentPlaceHolderID="ContentColumn1" Runat="Server">
+    <div class="gp_block gp_textBlock">
+        <article>
+            <p>Start creating your website by editing this page.</p>
+        </article>
+    </div>
 </asp:Content>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="Column2" Runat="Server">
-</asp:Content>
-
-<asp:Content ID="Content4" ContentPlaceHolderID="Footer" Runat="Server">
+<asp:Content ID="ContentColumn2" ContentPlaceHolderID="ContentColumn2" Runat="Server">
+    <div class="gp_block gp_textBlock">
+        <article>
+            <p>Column 2.</p>
+        </article>
+    </div>
 </asp:Content>

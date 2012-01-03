@@ -17,7 +17,7 @@
 	    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
 	    <meta name="mobileoptimized" content="0" />
 
-		<link rel="stylesheet" media="all" href="/Estate/CSS/main.css" />
+		<link rel="stylesheet" media="all" href="/Css/all.less" />
 
 		<!--[if lt IE 9]>
 			<script src="/Estate/scripts/libraries/html5.js"></script>
@@ -25,73 +25,69 @@
 	</head>
 	
 	<body id="MasterPageBody" runat="server">
-		<telerik:JsFileLink id="jsLink" runat="server" ScriptType="jQuery" />
-
 		<form id="form1" runat="server">
-			<a href="#content" class="skipLink">
-				<asp:Literal ID="Literal1" runat="server" Text="<%$ Resources: default, skipMenus %>"></asp:Literal>
-			</a>
-			
-			<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-			
-			<div id="DesignTester" class="containerMain">
-				<div class="header">
-					<a href="/" title="Terug naar homepage" class="logo"><img src="/Images/logo.png" alt="" /></a>
-					<nav>
-						<asp:ContentPlaceHolder ID="Header" runat="server"></asp:ContentPlaceHolder>
-					</nav>
-				</div>
-				
-				<div class="content" id="content">
-					<div class="column1"><asp:ContentPlaceHolder ID="Column1" runat="server"></asp:ContentPlaceHolder></div>
-					<div class="column2"><asp:ContentPlaceHolder ID="Column2" runat="server"></asp:ContentPlaceHolder></div>
-				</div>
-				
-				<div class="footer">
-					<footer>
-						<asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
-					</footer>
-				</div>
-			</div>
-			
-			<asp:PlaceHolder runat="server" id="DevelopCode">
-				<!-- START DEVELOP CODE - TODO: Remove this block before publication  -->
-				<!--<script src="/Estate/scripts/libraries/live.js.js"></script>-->
-				<script src="/Estate/scripts/libraries/estate/Estate.Develop.js"></script>
-				<script src="/Estate/scripts/libraries/estate/Estate.Develop.DesignTester.js"></script>
-				<script src="/Estate/scripts/libraries/estate/Estate.Develop.FormTester.js"></script>
-				<script>
-					/* <![CDATA[ */
-					Estate.Events.AddEvent(window, Estate.Develop.ToggleVisibility.Init, "onload")
-					Estate.Events.AddEvent(window, Estate.Develop.ReloadCSS.Init, "onload")
-					Estate.Events.AddEvent(window, Estate.Develop.Structure.Init, "onload")
-					Estate.Events.AddEvent(window, function() { Estate.Develop.Validate.Init('validator.w3.org') }, "onload")
-					Estate.Events.AddEvent(window, Estate.Develop.FormTester.Init, "onload")
-					Estate.Events.AddEvent(
-						window,
-						function() {
-							Estate.Develop.DesignTester.Init({
-								designAnchor: document.getElementById('DesignTester'),
-								xOffset: -30,
-								yOffset: 0,
-								getImageUrl: function() {
-									var href = document.location.href.toLowerCase();
-									switch (true) {
-										case (href.indexOf('homepage') > 0):
-											return 'homepage.png';
-										default:
-											return "default.png";
-									}
-									return '';
-								}
-							});
-						},
-						"onload"
-					);
-					/* ]]> */
-				</script>
-				<!-- END DEVELOP CODE -->
-			</asp:PlaceHolder>
+            <div class="gp_root">
+	            <!-- Start | Logo organisation -->
+	            <div id="DesignTester" class="gp_main">
+		            <a href="/" class="gp_logo" title="naar homepage"><img src="/images/logo.png" alt="GP_TODO: name organisation" /></a>
+	            </div>
+	            <!-- End | Logo organisation -->
+            	
+            	
+	            <!-- Start | Page content -->
+	            <div class="gp_content">
+		            <div class="gp_main">
+			            <div class="gp_textBlock">
+				            <h1>Graphite start page</h1>
+			            </div>
+            			
+			            <!-- Start | 2 Columns -->
+			            <div class="gp_columns gp_columns_2">
+				            <div class="gp_column gp_column1">
+				                <asp:ContentPlaceHolder ID="ContentColumn1" runat="server"></asp:ContentPlaceHolder>
+				            </div>
+            				
+				            <div class="gp_column gp_column2">
+				                <asp:ContentPlaceHolder ID="ContentColumn2" runat="server"></asp:ContentPlaceHolder>
+				            </div>
+			            </div>
+			            <!-- End | 2 Columns -->
+		            </div>
+	            </div>
+	            <!-- End | Page content -->
+            	
+            	
+	            <!-- Start | Header -->
+	            <div class="gp_header">
+		            <div class="gp_main">
+			            <nav>
+				            <div class="gp_block gp_textBlock">
+					            <asp:ContentPlaceHolder ID="Header" runat="server"></asp:ContentPlaceHolder>
+				            </div>
+			            </nav>
+		            </div>
+	            </div>
+	            <!-- End | Header -->
+            	
+            	
+	            <!-- Start | Footer -->
+	            <div class="gp_footer">
+		            <footer>
+			            <div class="gp_main">
+				            <div class="gp_columns gp_columns_1">
+					            <div class="gp_column gp_column1">
+						            <div class="gp_block gp_textBlock">
+							            <section>
+								            <h1 class="gp_textHeading2">This is a footer</h1>
+							            </section>
+						            </div>
+					            </div>
+				            </div>
+			            </div>
+		            </footer>
+	            </div>
+	            <!-- End | Header -->
+            </div>
 		</form>
 	</body>
 </html>
