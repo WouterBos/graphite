@@ -16,8 +16,8 @@
 	table.gp_loginRoot > tbody > tr > td {
 		border: 1px solid @gp_colorLow + #999;
 		background: @gp_colorHigh - #111;
-		.gp_shadow(0, 0, @grid_blockPadding, (@gp_colorLow + #999));
-		padding: @grid_blockPadding;
+		.gp_shadow(0, 0, @gp_gridBlockPadding, (@gp_colorLow + #999));
+		padding: @gp_gridBlockPadding;
 	}
 
 	table table {
@@ -25,19 +25,19 @@
 	}
 	
 	table table td {
-		padding-top: @grid_blockPadding / 5;
-		padding-bottom: @grid_blockPadding / 5;
+		padding-top: @gp_gridBlockPadding / 5;
+		padding-bottom: @gp_gridBlockPadding / 5;
 	}
 	
     *.gp_loginTitle {
-    	padding-bottom: @grid_blockPadding / 2;
+    	padding-bottom: @gp_gridBlockPadding / 2;
     	font-size: 1.2em;
     	font-weight: bold;
     	text-align: left;
     }
     
     *.gp_loginLabel {
-    	padding-right: @grid_blockPadding / 2;
+    	padding-right: @gp_gridBlockPadding / 2;
     	text-align: left;
     	white-space: nowrap;
     }
@@ -45,7 +45,7 @@
     *.gp_loginCheckbox input[type="checkbox"] {
     	position:relative;
     	top: 3px;
-    	margin-right: @grid_blockPadding / 2;
+    	margin-right: @gp_gridBlockPadding / 2;
     }
 
     *.gp_loginTextBox {
@@ -59,8 +59,8 @@
     }
 
     *.gp_loginLoginButton {
-    	margin-top: (@grid_blockPadding / 2);
-    	padding: 0 @grid_blockPadding / 2;
+    	margin-top: (@gp_gridBlockPadding / 2);
+    	padding: 0 @gp_gridBlockPadding / 2;
     	font-weight: bold;
     }
 }

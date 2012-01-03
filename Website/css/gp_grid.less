@@ -16,7 +16,7 @@
     .gp_clear;
 	position: relative;
 	margin: 0 auto 0 auto;
-	width: 960px;
+	width: @gp_gridWidth;
 }
 
 
@@ -25,8 +25,8 @@
 *.gp_logo {
 	display: block;
 	position: absolute;
-	top: @grid_blockSpacing;
-	left: @grid_blockSpacing;
+	top: @gp_gridBlockSpacing;
+	left: @gp_gridBlockSpacing;
 	z-index: 10;
 
 	img {
@@ -45,15 +45,15 @@
 }
 
 *.gp_header *.gp_main {
-	height: @grid_headerHeight;
+	height: @gp_gridHeaderHeight;
 }
 
 
 
 /* Content block */
 *.gp_content {
-	border-top: @grid_headerHeight solid transparent;
-	padding: @grid_blockSpacing 0;
+	border-top: @gp_gridHeaderHeight solid transparent;
+	padding: @gp_gridBlockSpacing 0;
 	.gp_clear;
 }
 
@@ -61,5 +61,5 @@
 
 /* Footer block */
 *.gp_footer {
-	padding-bottom: @grid_blockSpacing;
+	padding-bottom: @gp_gridBlockSpacing;
 }

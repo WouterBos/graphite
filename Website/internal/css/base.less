@@ -16,7 +16,7 @@ body > form {
 
 .gp_footer {
 	border-top: 1px solid #dddddd;
-	padding: @grid_blockSpacing / 2;
+	padding: @gp_gridBlockSpacing / 2;
 	.gp_gradient(@gp_colorHigh - #1a1a1a, @gp_colorHigh - #060606);
 }
 
@@ -26,7 +26,7 @@ body > form {
 	.gp_gradient(#f9f9f9, #e5e5e5);
 	clear: both;
 	border-bottom: 1px solid #dddddd;
-	padding: @grid_blockSpacing / 2;
+	padding: @gp_gridBlockSpacing / 2;
 	color: #333333;
 	font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace;
 	font-size: 16px;
@@ -51,9 +51,9 @@ body > form {
 /* Graphite demo */
 .graphite_demoStage {
 	position: relative;
-	margin-bottom: @grid_blockSpacing;
+	margin-bottom: @gp_gridBlockSpacing;
 	border: 1px solid #aaa;
-	padding: @grid_blockSpacing;
+	padding: @gp_gridBlockSpacing;
 	background: @gp_colorHigh;
 	.gp_shadow(0, 0, 5px, #999999);
 		
@@ -73,7 +73,7 @@ body > form {
 		.gp_rounded_corners_all(3px, 3px, 0, 0);
 		border: 1px solid #aaa;
 		border-bottom-width: 0;
-		padding: @grid_blockSpacing/5 @grid_blockSpacing/3;
+		padding: @gp_gridBlockSpacing/5 @gp_gridBlockSpacing/3;
 		color: #333333;
 		font-size: 1.2em;
 		text-decoration: none;
@@ -86,7 +86,7 @@ body > form {
 		.gp_shadow(0, 0, 5px, #333333);
 	}
 	a + a {
-		margin-left: @grid_blockSpacing/10;
+		margin-left: @gp_gridBlockSpacing/10;
 	}
 	
 	a.active {
@@ -141,11 +141,11 @@ body > form {
 
 *.graphite_browser {
 	float: left;
-	margin-left: -@grid_blockSpacing/4;
+	margin-left: -@gp_gridBlockSpacing/4;
 	
 	li {
 		float: left;
-		margin-left: @grid_blockSpacing/4;
+		margin-left: @gp_gridBlockSpacing/4;
 		width: 34px;
 		height: 50px;
 		overflow: hidden;

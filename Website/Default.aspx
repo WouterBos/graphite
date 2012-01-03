@@ -50,6 +50,7 @@
                         <li>dynamic or static css generation</li>
                     </ul>
                 </li>
+                <li><strong>PSD</strong> Set up two PSD templates for the two grids systems.</li>
             </ul>
         </article>
     </div>
@@ -64,7 +65,7 @@
                 <li><a href="/Internal/Pages/Demos/grids">Grids</a>
                     <ul>
                         <li><a href="/Internal/Pages/Demos/grids/flex">Flex</a></li>
-                        <li><span>16 grid system</span></li>
+                        <li><a href="/Internal/Pages/Demos/grids/fixed">Fixed (960)</a></li>
                     </ul>
                 </li>
             </ul>

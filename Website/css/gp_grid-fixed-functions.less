@@ -1,0 +1,11 @@
+/*
+ * Flex grid
+ * 
+ * Grid system with variable column widths.
+ */
+
+
+.gp_colWidth( @colSize ){
+    width        : ((@gp_gridWidth / @gp_gridCols) * @colSize);
+    float        : left;
+}
