@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Beheer_SitefinityDemo" Class="SFEstateDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=POTEMKIN;Initial Catalog=Beheer_SitefinityDemo;Persist Security Info=True;User ID=webbeheer" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Beheer_SitefinityDemoConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.estate_ToolboxControls" Member="estate_ToolboxControls">
+    <Type Name="estate_ToolboxControl">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="parent" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="showControl" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

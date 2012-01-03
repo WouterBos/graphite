@@ -43,7 +43,7 @@
                                 <a href="#" id="getJsCode" class="graphite_getCodeJs">.js</a>
                             </asp:PlaceHolder>
                             
-                            <span class="graphite_getCodeFeedback"></span>
+                            <span class="graphite_getCodeFeedback">Code copied</span>
                         </div>
                     </section>
                 </div>

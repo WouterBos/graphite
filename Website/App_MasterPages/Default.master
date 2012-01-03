@@ -1,0 +1,120 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="master.cs" Inherits="Master" %>
+
+<!DOCTYPE html>
+
+<html lang="nl">
+	<head runat="server">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		
+		
+		<!--
+		###################################
+
+			ESTATE INTERNET BV
+			Verwachtingen overtreffen
+
+			Sportweg 30-32
+			Postbus 5091
+			5004 EB  Tilburg
+			+ 31 (0)13 535 04 35
+
+			www.estate.nl
+			info@estate.nl
+
+		###################################
+		-->
+		
+		
+		<meta name="author" content="Estate Internet, www.estate.nl" />
+		<meta name="robots" content="noodp" />
+		<asp:PlaceHolder runat="server" id="phForceIEVersion">
+		    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+		</asp:PlaceHolder>
+
+		<link href="/favicon.ico" rel="icon" />
+		<link href="/favicon.ico" rel="shortcut icon" />
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
+		
+		<link rel="stylesheet" media="all" href="/Estate/CSS/main.css" />
+		<asp:PlaceHolder runat="server" id="phHideInvalidCss">
+			<link rel="stylesheet" media="all" href="/Estate/CSS/main-W3C-invalid.css" />
+		</asp:PlaceHolder>
+
+		<script src="/Estate/scripts/libraries/estate/Estate.js"></script>
+		<!--[if lt IE 9]>
+			<script src="/Estate/scripts/libraries/html5.js"></script>
+		<![endif]-->
+	</head>
+	
+	<body id="MasterPageBody" runat="server">
+		<telerik:JsFileLink id="jsLink" runat="server" ScriptType="jQuery" />
+
+		<form id="form1" runat="server">
+			<a href="#content" class="skipLink">
+				<asp:Literal ID="Literal1" runat="server" Text="<%$ Resources: default, skipMenus %>"></asp:Literal>
+			</a>
+			
+			<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+			
+			<div id="DesignTester" class="containerMain">
+				<div class="header">
+					<a href="/" title="Terug naar homepage" class="logo"><img src="/Images/logo.png" alt="" /></a>
+					<nav>
+						<asp:ContentPlaceHolder ID="Header" runat="server"></asp:ContentPlaceHolder>
+					</nav>
+				</div>
+				
+				<div class="content" id="content">
+					<div class="column1"><asp:ContentPlaceHolder ID="Column1" runat="server"></asp:ContentPlaceHolder></div>
+					<div class="column2"><asp:ContentPlaceHolder ID="Column2" runat="server"></asp:ContentPlaceHolder></div>
+				</div>
+				
+				<div class="footer">
+					<footer>
+						<asp:ContentPlaceHolder ID="Footer" runat="server"></asp:ContentPlaceHolder>
+					</footer>
+				</div>
+			</div>
+			
+			<asp:PlaceHolder runat="server" id="DevelopCode">
+				<!-- START DEVELOP CODE - TODO: Remove this block before publication  -->
+				<!--<script src="/Estate/scripts/libraries/live.js.js"></script>-->
+				<script src="/Estate/scripts/libraries/estate/Estate.Develop.js"></script>
+				<script src="/Estate/scripts/libraries/estate/Estate.Develop.DesignTester.js"></script>
+				<script src="/Estate/scripts/libraries/estate/Estate.Develop.FormTester.js"></script>
+				<script>
+					/* <![CDATA[ */
+					Estate.Events.AddEvent(window, Estate.Develop.ToggleVisibility.Init, "onload")
+					Estate.Events.AddEvent(window, Estate.Develop.ReloadCSS.Init, "onload")
+					Estate.Events.AddEvent(window, Estate.Develop.Structure.Init, "onload")
+					Estate.Events.AddEvent(window, function() { Estate.Develop.Validate.Init('validator.w3.org') }, "onload")
+					Estate.Events.AddEvent(window, Estate.Develop.FormTester.Init, "onload")
+					Estate.Events.AddEvent(
+						window,
+						function() {
+							Estate.Develop.DesignTester.Init({
+								designAnchor: document.getElementById('DesignTester'),
+								xOffset: -30,
+								yOffset: 0,
+								getImageUrl: function() {
+									var href = document.location.href.toLowerCase();
+									switch (true) {
+										case (href.indexOf('homepage') > 0):
+											return 'homepage.png';
+										default:
+											return "default.png";
+									}
+									return '';
+								}
+							});
+						},
+						"onload"
+					);
+					/* ]]> */
+				</script>
+				<!-- END DEVELOP CODE -->
+			</asp:PlaceHolder>
+		</form>
+	</body>
+</html>

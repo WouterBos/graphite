@@ -126,11 +126,14 @@ body > form {
 	}
 	
 	*.graphite_getCodeFeedback {
-		display: none;
-		
-		&.gp_active {
-			display: block;
-		}
+		display: inline-block;
+		.gp_opacity(0);
+		margin-top: 5px;
+		border: 1px solid @gp_colorLow + #888;
+		.gp_rounded_corners(@radius: 3px);
+		padding: 1px 5px 0 5px;
+		font-size: 0.9em;
+		background: @gp_colorHigh - #111;
 	}
 }
 

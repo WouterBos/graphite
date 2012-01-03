@@ -61,9 +61,9 @@
     <div class="gp_block">
         <div class="gp_sitemap">
             <ul>
-                <li><a href="/grids">Grids</a>
+                <li><a href="/Internal/Pages/Demos/grids">Grids</a>
                     <ul>
-                        <li><a href="/grids/flex">Flex</a></li>
+                        <li><a href="/Internal/Pages/Demos/grids/flex">Flex</a></li>
                         <li><span>16 grid system</span></li>
                     </ul>
                 </li>
@@ -80,11 +80,11 @@
             <ul>
                 <li><span>Plain HTML and ASP.NET</span>
                     <ul>
-                        <li><a href="/blocks/text">Text content</a></li>
-                        <li><a href="/blocks/forms">Forms</a>
+                        <li><a href="/Internal/Pages/Demos/blocks/text">Text content</a></li>
+                        <li><a href="/Internal/Pages/Demos/blocks/forms">Forms</a>
                             <ul>
-                                <li><a href="/blocks/forms/login">Login</a></li>
-                                <li><a href="/blocks/forms/plain">Plain</a></li>
+                                <li><a href="/Internal/Pages/Demos/blocks/forms/login">Login</a></li>
+                                <li><a href="/Internal/Pages/Demos/blocks/forms/plain">Plain</a></li>
                             </ul>
                         </li>
                         <li><span>Div popup</span></li>
@@ -92,7 +92,7 @@
                         <li><span>Google maps</span></li>
                         <li><span>Navigation lists</span>
                             <ul>
-                                <li><a href="/blocks/navigation/menu/">Menu</a></li>
+                                <li><a href="/Internal/Pages/Demos/blocks/navigation/menu/">Menu</a></li>
                                 <li><span>Sitemap</span></li>
                             </ul>
                         </li>
