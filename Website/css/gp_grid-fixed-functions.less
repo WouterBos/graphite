@@ -1,11 +1,12 @@
 /*
- * Flex grid
+ * Fixed grid
  * 
- * Grid system with variable column widths.
+ * Mixins specific to the fixed grid system
  */
 
 
-.gp_colWidth( @colSize ){
-    width        : ((@gp_gridWidth / @gp_gridCols) * @colSize);
-    float        : left;
+
+.gp_colWidth(@colSize) {
+    width: ((@gp_gridWidth / @gp_gridCols) * @colSize);
+    float: left;
 }
