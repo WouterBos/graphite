@@ -5,9 +5,8 @@
  */
 
 
- 
-.gp_row {
-    clear:both;
+.gp_row + .gp_row {
+    margin-top: @gp_gridBlockSpacing;
 }
 
 .gp_column .gp_block {
@@ -15,21 +14,16 @@
     text-align:justify;
 }
 
-.gp_column + .gp_column {
-    margin-top: @gp_gridBlockSpacing;
-}
-
 .gp_column.gp_columnBackground {
     background: #eee;
     
     .gp_block {
-        margin-left:0;
-        margin-right:0;
+        margin:0;
         padding:@gp_gridBlockPadding;
     }
 }
 
-.gp_column.first  {
+.gp_gridFirstColumn  {
     margin-left:0;
     
     .gp_block {
@@ -37,7 +31,7 @@
     }    
 }
 
-.gp_column.last  {
+.gp_gridLastColumn  {
     margin-right:0;
     
     .gp_block {
@@ -108,3 +102,128 @@
 .gp_column16 {
     .gp_colWidth(16);
 }
+
+
+
+/* Prepend and append spacing */
+.gp_gridFixedPrepend1 {
+    #gp_gridSpacing > .prepend(1);
+}
+
+.gp_gridFixedPrepend2 {
+    #gp_gridSpacing > .prepend(2);
+}
+
+.gp_gridFixedPrepend3 {
+    #gp_gridSpacing > .prepend(3);
+}
+
+.gp_gridFixedPrepend4 {
+    #gp_gridSpacing > .prepend(4);
+}
+
+.gp_gridFixedPrepend5 {
+    #gp_gridSpacing > .prepend(5);
+}
+
+.gp_gridFixedPrepend6 {
+    #gp_gridSpacing > .prepend(6);
+}
+
+.gp_gridFixedPrepend7 {
+    #gp_gridSpacing > .prepend(7);
+}
+
+.gp_gridFixedPrepend8 {
+    #gp_gridSpacing > .prepend(8);
+}
+
+.gp_gridFixedPrepend9 {
+    #gp_gridSpacing > .prepend(9);
+}
+
+.gp_gridFixedPrepend10 {
+    #gp_gridSpacing > .prepend(10);
+}
+
+.gp_gridFixedPrepend11 {
+    #gp_gridSpacing > .prepend(11);
+}
+
+.gp_gridFixedPrepend12 {
+    #gp_gridSpacing > .prepend(12);
+}
+
+.gp_gridFixedPrepend13 {
+    #gp_gridSpacing > .prepend(13);
+}
+
+.gp_gridFixedPrepend14 {
+    #gp_gridSpacing > .prepend(14);
+}
+
+.gp_gridFixedPrepend15 {
+    #gp_gridSpacing > .prepend(15);
+}
+
+.gp_gridFixedAppend1 {
+    #gp_gridSpacing > .append(1);
+}
+
+.gp_gridFixedAppend2 {
+    #gp_gridSpacing > .append(2);
+}
+
+.gp_gridFixedAppend3 {
+    #gp_gridSpacing > .append(3);
+}
+
+.gp_gridFixedAppend4 {
+    #gp_gridSpacing > .append(4);
+}
+
+.gp_gridFixedAppend5 {
+    #gp_gridSpacing > .append(5);
+}
+
+.gp_gridFixedAppend6 {
+    #gp_gridSpacing > .append(6);
+}
+
+.gp_gridFixedAppend7 {
+    #gp_gridSpacing > .append(7);
+}
+
+.gp_gridFixedAppend8 {
+    #gp_gridSpacing > .append(8);
+}
+
+.gp_gridFixedAppend9 {
+    #gp_gridSpacing > .append(9);
+}
+
+.gp_gridFixedAppend10 {
+    #gp_gridSpacing > .append(10);
+}
+
+.gp_gridFixedAppend11 {
+    #gp_gridSpacing > .append(11);
+}
+
+.gp_gridFixedAppend12 {
+    #gp_gridSpacing > .append(12);
+}
+
+.gp_gridFixedAppend13 {
+    #gp_gridSpacing > .append(13);
+}
+
+.gp_gridFixedAppend14 {
+    #gp_gridSpacing > .append(14);
+}
+
+.gp_gridFixedAppend15 {
+    #gp_gridSpacing > .append(15);
+}
+
+
