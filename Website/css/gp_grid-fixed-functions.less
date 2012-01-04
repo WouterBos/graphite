@@ -10,3 +10,13 @@
     width: ((@gp_gridWidth / @gp_gridCols) * @colSize);
     float: left;
 }
+
+#gp_gridSpacing {
+    .prepend(@colSize) {
+        margin-left: ((@gp_gridWidth / @gp_gridCols) * @colSize);
+    }
+    
+    .append(@colSize) {
+        margin-right: ((@gp_gridWidth / @gp_gridCols) * @colSize);
+    }
+}
