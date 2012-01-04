@@ -10,12 +10,12 @@ namespace Graphite
     /// <summary>
     /// Summary description for Graphite
     /// </summary>
-    public class Css
+    public static class Css
     {
         /// <summary>
         /// Creates class string with browser name and version
         /// </summary>
-        public string UserAgentClasses()
+        public static string UserAgentClasses()
         {
             string browserName = HttpContext.Current.Request.Browser.Browser;
             string browserNameAndVersion = HttpContext.Current.Request.Browser.Browser + HttpContext.Current.Request.Browser.MajorVersion.ToString();
