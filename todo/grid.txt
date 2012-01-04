@@ -1,0 +1,7 @@
+<div class="gp_gridRow gp_gridRowFixed">
+  <div class="gp_column1"></div>
+</div>
+
+<div class="gp_gridRow gp_gridRowFlex">
+  <div class="gp_column1"></div>
+</div>
