@@ -16,6 +16,7 @@ namespace Graphite
         {
             StringBuilder sbCode = new StringBuilder();
 
+            // GRAPHITE_TODO Check if file exists.
             try
             {
                 System.IO.StreamReader sr = new System.IO.StreamReader(path + file);
