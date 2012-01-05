@@ -6,8 +6,10 @@ Frontend Grid system targeted to ASP.NET platform
 
 FOLDERS
 
-/Website             Demo website
-/tools               Contains the .Less compiler
+/Website    Demo website
+/todo       Stuff that must be rewritten to fit in Graphite
+/tools      Batch files for: - Checking validity of JavaScript
+                             - Generating and minifying JavaScript and CSS
 
 
 LICENSE
