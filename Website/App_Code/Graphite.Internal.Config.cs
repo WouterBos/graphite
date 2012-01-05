@@ -4,7 +4,7 @@ using System.Data;
 using System.Xml;
 using System.Web;
 
-namespace Graphite
+namespace Graphite.Internal
 {
     /// <summary>
     /// Summary description for Graphite

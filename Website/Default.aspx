@@ -19,15 +19,15 @@
     <div class="gp_block gp_textBlock">
         <article>
             <h1>Welcome to Graphite</h1>
-            <p><big>Graphite is a codebase for frontend development on the ASP.NET platform. It will help kickstart your web project. It contains code templates with HTML, CSS and JavaScript. It also has some templates for the popular CMS systems Sitefinity and Sitecore.</big></p>
+            <p><big>Graphite is a frontend development framework for the ASP.NET platform. It will help kickstart your web project.</big></p>
             <p class="gp_textAlert"><big><strong>The project is still very alpha. But there's a <a href="/blocks/navigation/menu/">preview</a> of the menu component.</strong></big></p>
-            
-            <h2>What do I do with this website?</h2>
-            <p>Graphite is mostly a website with many UI demos. Most demos are intentionally kept simple to keep them extendable. If you find something you'd like to use, copy the code by pressing the black buttons below the demo.</p>
-            
-            <p><strong>How to use Graphite</strong></p>
-            <p><strong><a href="/Internal/pages/documentation/CodeConventions.aspx">Code conventions</a></strong></p>
+
+            <p><a href="/Internal/Pages/Documentation/GettingStarted.aspx">Get started</a></p>
         </article>
+        
+        <nav>
+            <asp:Literal ID="DemosList" runat="server"></asp:Literal>
+        </nav>
     </div>
 </asp:Content>
 

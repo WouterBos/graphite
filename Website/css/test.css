@@ -1,0 +1,1141 @@
+/*
+ * Test less
+ *
+ * Test if all files compile. The exported code can then be tested with http://csslint.net
+ *//* BASE *//*
+ * Basic graphite configuration
+ *
+ * The values are used througout the Graphite framework.
+ *//* Values *//* Colors *//* Form *//* Grid configuration *//* aka gutter *//* Fixed grid configuration *//*
+ * Graphite helper functions.
+ *//* makes sure a box does not collapse when it only holds floating objects *//*
+ * CSS reset
+ * 
+ * Eliminating browser differences as much as possible.
+ */body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+select,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+/* Start block elements */html {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+}
+fieldset, img {
+  border: 0;
+}
+ol, ul {
+  list-style: none;
+}
+/* HTML5 */section,
+article,
+header,
+footer,
+nav,
+aside,
+hgroup {
+  display: block;
+}
+/* End block elements *//* Start table */table {
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption, th {
+  text-align: left;
+}
+/* End table *//* Start basic text styling */h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+em, cite {
+  font-style: italic;
+}
+strong {
+  font-weight: bold;
+}
+q:before, q:after {
+  content: '';
+}
+abbr, acronym {
+  border: 0;
+}
+/* End basic text styling *//* Start form */label {
+  cursor: default;
+}
+input, textarea, select {
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input[type="radio"], input[type="checkbox"] {
+  position: relative;
+  top: 2px;
+  margin-right: 3px;
+}
+* + html input[type="radio"], * + html input[type="checkbox"] {
+  position: static;
+  border-top: 4px solid transparent;
+  margin-right: 0;
+}
+/* End form *//* TEXT STYLING *//*
+ * Basic text styling
+ *//* HTML elements */html {
+  color: #000;
+  background: #fff;
+}
+a {
+  color: #0000ff;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  text-decoration: underline;
+}
+body,
+input,
+select,
+textarea {
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+/* Helper classes */.gp_skipLink, div.gp_skipped {
+  position: absolute;
+  left: -9999em;
+}
+.gp_displayNone {
+  display: none;
+}
+.gp_floatLeft {
+  float: left;
+}
+/* Headings */.gp_heading1 {
+  font-size: 2.2em;
+  line-height: 1.3em;
+  font-weight: bold;
+}
+.gp_heading2 {
+  font-size: 1.5em;
+  line-height: 1.35em;
+  font-weight: bold;
+}
+.gp_heading3 {
+  font-size: 1.2em;
+  line-height: 1.45em;
+  font-weight: bold;
+}
+.gp_heading4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+.gp_heading5 {
+  font-size: 1em;
+  font-weight: bold;
+}
+.gp_heading6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+.gp_textAlert {
+  border: 2px solid red;
+  padding: 2px 5px;
+  font-weight: bold;
+  background: #faff97;
+}
+/*
+ * Text block styles
+ *
+ * Especially useful for content that is generated with Rich Text Editors in a CMS.
+ */*.gp_textBlock table,
+*.gp_textBlock p,
+*.gp_textBlock ul,
+*.gp_textBlock ol,
+*.gp_textBlock  + *.gp_text {
+  margin-top: 1em;
+}
+*.gp_textBlock ul ul {
+  margin-top: 0;
+}
+*.gp_textBlock * + h1,
+*.gp_textBlock * + h2,
+*.gp_textBlock * + h3,
+*.gp_textBlock * + h4,
+*.gp_textBlock * + h5,
+*.gp_textBlock * + h6 {
+  margin-top: 1em;
+}
+*.gp_textBlock h1 + *,
+*.gp_textBlock h2 + *,
+*.gp_textBlock h3 + *,
+*.gp_textBlock h4 + *,
+*.gp_textBlock h5 + *,
+*.gp_textBlock h6 + * {
+  margin-top: 0;
+}
+*.gp_textBlock *:first-child {
+  margin-top: 0;
+}
+*.gp_textBlock ul {
+  clear: both;
+  padding-left: 0;
+}
+*.gp_textBlock ul li {
+  margin-left: 17px;
+  list-style-type: disc;
+}
+*.gp_textBlock ol {
+  clear: both;
+}
+*.gp_textBlock ol li {
+  margin-left: 20px;
+  list-style-type: decimal;
+}
+*.gp_textBlock h1 {
+  font-size: 2.2em;
+  line-height: 1.3em;
+  font-weight: bold;
+}
+*.gp_textBlock h2 {
+  font-size: 1.5em;
+  line-height: 1.35em;
+  font-weight: bold;
+}
+*.gp_textBlock h3 {
+  font-size: 1.2em;
+  line-height: 1.45em;
+  font-weight: bold;
+}
+*.gp_textBlock h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+*.gp_textBlock h5 {
+  font-size: 1em;
+  font-weight: bold;
+}
+*.gp_textBlock h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+*.gp_textBlock *.gp_textHeading1 {
+  font-size: 2.2em;
+  line-height: 1.3em;
+  font-weight: bold;
+}
+*.gp_textBlock *.gp_textHeading2 {
+  font-size: 1.5em;
+  line-height: 1.35em;
+  font-weight: bold;
+}
+*.gp_textBlock *.gp_textHeading3 {
+  font-size: 1.2em;
+  line-height: 1.45em;
+  font-weight: bold;
+}
+*.gp_textBlock *.gp_textHeading4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+*.gp_textBlock *.gp_textHeading5 {
+  font-size: 1em;
+  font-weight: bold;
+}
+*.gp_textBlock *.gp_textHeading6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+*.gp_textBlock img.left {
+  margin: 0 1em 0.5em 0;
+  float: left;
+}
+*.gp_textBlock img.right {
+  margin: 0 0 0.5em 1em;
+  float: right;
+}
+*.gp_textBlock a:link {
+  text-decoration: underline;
+}
+*.gp_textBlock a:hover, *.gp_textBlock a:focus {
+  text-decoration: none;
+}
+*.gp_textBlock table th, *.gp_textBlock table thead th, *.gp_textBlock table thead td {
+  font-weight: bold;
+}
+*.gp_textBlock table caption {
+  font-weight: bold;
+  padding-bottom: 0.1em;
+}
+*.gp_textBlock table tfoot {
+  font-size: 0.9em;
+}
+*.gp_textBlock table tfoot th {
+  font-weight: normal;
+}
+*.gp_textBlock table tr > *:first-child {
+  padding-left: 0;
+}
+*.gp_textBlock table td, *.gp_textBlock table th {
+  padding-left: 1em;
+}
+*.gp_textBlock table td:first-child, *.gp_textBlock table th:first-child {
+  padding-left: 0;
+}
+*.gp_textBlock *.gp_textAlert {
+  border: 2px solid red;
+  padding: 2px 5px;
+  font-weight: bold;
+  background: #faff97;
+  display: inline-block;
+}
+/* IE7 hack */* + html *.gp_text ol li {
+  margin-left: 23px;
+}
+/* GRIDS *//*
+ * Base grid
+ * 
+ * Base styling for grid.
+ *//* Main container for web page */*.gp_root {
+  position: relative;
+}
+/* Wrapper for web content */*.gp_main {
+  min-height: 0;
+  position: relative;
+  margin: 0 auto 0 auto;
+  width: 960px;
+}
+*.gp_main:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+/* Logo */*.gp_logo {
+  display: block;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+}
+*.gp_logo img {
+  float: left;
+}
+/* Header */*.gp_header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+*.gp_header *.gp_main {
+  height: 115px;
+}
+/* Content block */*.gp_content {
+  border-top: 115px solid transparent;
+  padding: 12px 0;
+  min-height: 0;
+}
+*.gp_content:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+/* Footer block */*.gp_footer {
+  padding-bottom: 12px;
+}
+/* Column row */.gp_gridRow {
+  clear: both;
+}
+/*
+ * Styling for print
+ *
+ * Makes a page built upon a grid fit for print.
+ */@media print {
+  *.gp_logo {
+    position: static;
+  }
+  
+  *.gp_content {
+    border-top-width: 0;
+  }
+  
+  *.gp_header, *.gp_footer {
+    display: none;
+  }
+}
+/*
+ * Flex grid
+ * 
+ * Grid system with variable column widths.
+ *//* Columns basic style */*.gp_columns {
+  width: 100%;
+  min-height: 0;
+}
+*.gp_columns:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+*.gp_columns *.gp_column {
+  float: left;
+}
+*.gp_columns *.gp_column.gp_columnBackground {
+  background: #eee;
+}
+*.gp_columns *.gp_column.gp_columnBackground *.gp_block {
+  margin: 12px !important;
+}
+*.gp_columns + *.gp_columns {
+  margin-top: 12px;
+}
+/* Columns *//* 1 column */*.gp_columns_1 *.gp_column1 {
+  width: 100%;
+}
+/* 2 columns */*.gp_columns_2 *.gp_column1 {
+  width: 50%;
+}
+*.gp_columns_2 *.gp_column2 {
+  width: 50%;
+}
+/* 3 columns */*.gp_columns_3 *.gp_column1 {
+  width: 33.33%;
+}
+*.gp_columns_3 *.gp_column2 {
+  width: 33.33%;
+}
+*.gp_columns_3 *.gp_column3 {
+  width: 33.33%;
+}
+/* 4 columns */*.gp_columns_4 *.gp_column1 {
+  width: 25%;
+}
+*.gp_columns_4 *.gp_column2 {
+  width: 25%;
+}
+*.gp_columns_4 *.gp_column3 {
+  width: 25%;
+}
+*.gp_columns_4 *.gp_column4 {
+  width: 25%;
+}
+/* 5 columns */*.gp_columns_5 *.gp_column1 {
+  width: 20%;
+}
+*.gp_columns_5 *.gp_column2 {
+  width: 20%;
+}
+*.gp_columns_5 *.gp_column3 {
+  width: 20%;
+}
+*.gp_columns_5 *.gp_column4 {
+  width: 20%;
+}
+*.gp_columns_5 *.gp_column5 {
+  width: 20%;
+}
+/* Block basic style */*.gp_block {
+  margin: 0 12px;
+}
+*.gp_block + *.gp_block {
+  margin-top: 12px;
+}
+/* Alt style for first and last columns */*.gp_columns *.gp_column:first-child *.gp_block {
+  margin-left: 0;
+}
+*.gp_columns_2 *.gp_column2 *.gp_block,
+*.gp_columns_3 *.gp_column3 *.gp_block,
+*.gp_columns_4 *.gp_column4 *.gp_block,
+*.gp_columns_5 *.gp_column5 *.gp_block {
+  margin-right: 0;
+}
+/*
+ * Flex grid mobile
+ * 
+ * Adapts grid to smaller (mobile) screens.
+ *//* Columns basic style */@media screen and (max-width:950px) {
+  *.gp_main {
+    margin-left: 1%;
+    margin-right: 1%;
+    width: auto;
+  }
+  
+  *.gp_columns *.gp_column {
+    width: auto;
+    float: none;
+  }
+  *.gp_columns *.gp_column + *.gp_column {
+    margin-top: 12px;
+  }
+}
+*.gp_block *.gp_blockExtraPadding {
+  padding: 0 0 6px 0;
+}
+/*
+ * Fixed grid
+ * 
+ * Grid system with fixed pre-specified column widths.
+ */.gp_row + .gp_row {
+  margin-top: 12px;
+}
+.gp_column .gp_block {
+  margin: 6px;
+  text-align: justify;
+}
+.gp_column.gp_columnBackground {
+  background: #eee;
+}
+.gp_column.gp_columnBackground .gp_block {
+  margin: 0;
+  padding: 6px;
+}
+.gp_gridFirstColumn {
+  margin-left: 0;
+}
+.gp_gridFirstColumn .gp_block {
+  margin-left: 0;
+}
+.gp_gridLastColumn {
+  margin-right: 0;
+}
+.gp_gridLastColumn .gp_block {
+  margin-right: 0;
+}
+.gp_column1 {
+  width: 60px;
+  float: left;
+}
+.gp_column2 {
+  width: 120px;
+  float: left;
+}
+.gp_column3 {
+  width: 180px;
+  float: left;
+}
+.gp_column4 {
+  width: 240px;
+  float: left;
+}
+.gp_column5 {
+  width: 300px;
+  float: left;
+}
+.gp_column6 {
+  width: 360px;
+  float: left;
+}
+.gp_column7 {
+  width: 420px;
+  float: left;
+}
+.gp_column8 {
+  width: 480px;
+  float: left;
+}
+.gp_column9 {
+  width: 540px;
+  float: left;
+}
+.gp_column10 {
+  width: 600px;
+  float: left;
+}
+.gp_column11 {
+  width: 660px;
+  float: left;
+}
+.gp_column12 {
+  width: 720px;
+  float: left;
+}
+.gp_column13 {
+  width: 780px;
+  float: left;
+}
+.gp_column14 {
+  width: 840px;
+  float: left;
+}
+.gp_column15 {
+  width: 900px;
+  float: left;
+}
+.gp_column16 {
+  width: 960px;
+  float: left;
+}
+/* Prepend and append spacing */.gp_gridFixedPrepend1 {
+  margin-left: 60px;
+}
+.gp_gridFixedPrepend2 {
+  margin-left: 120px;
+}
+.gp_gridFixedPrepend3 {
+  margin-left: 180px;
+}
+.gp_gridFixedPrepend4 {
+  margin-left: 240px;
+}
+.gp_gridFixedPrepend5 {
+  margin-left: 300px;
+}
+.gp_gridFixedPrepend6 {
+  margin-left: 360px;
+}
+.gp_gridFixedPrepend7 {
+  margin-left: 420px;
+}
+.gp_gridFixedPrepend8 {
+  margin-left: 480px;
+}
+.gp_gridFixedPrepend9 {
+  margin-left: 540px;
+}
+.gp_gridFixedPrepend10 {
+  margin-left: 600px;
+}
+.gp_gridFixedPrepend11 {
+  margin-left: 660px;
+}
+.gp_gridFixedPrepend12 {
+  margin-left: 720px;
+}
+.gp_gridFixedPrepend13 {
+  margin-left: 780px;
+}
+.gp_gridFixedPrepend14 {
+  margin-left: 840px;
+}
+.gp_gridFixedPrepend15 {
+  margin-left: 900px;
+}
+.gp_gridFixedAppend1 {
+  margin-right: 60px;
+}
+.gp_gridFixedAppend2 {
+  margin-right: 120px;
+}
+.gp_gridFixedAppend3 {
+  margin-right: 180px;
+}
+.gp_gridFixedAppend4 {
+  margin-right: 240px;
+}
+.gp_gridFixedAppend5 {
+  margin-right: 300px;
+}
+.gp_gridFixedAppend6 {
+  margin-right: 360px;
+}
+.gp_gridFixedAppend7 {
+  margin-right: 420px;
+}
+.gp_gridFixedAppend8 {
+  margin-right: 480px;
+}
+.gp_gridFixedAppend9 {
+  margin-right: 540px;
+}
+.gp_gridFixedAppend10 {
+  margin-right: 600px;
+}
+.gp_gridFixedAppend11 {
+  margin-right: 660px;
+}
+.gp_gridFixedAppend12 {
+  margin-right: 720px;
+}
+.gp_gridFixedAppend13 {
+  margin-right: 780px;
+}
+.gp_gridFixedAppend14 {
+  margin-right: 840px;
+}
+.gp_gridFixedAppend15 {
+  margin-right: 900px;
+}
+/*
+ * Fixed grid
+ * 
+ * Mixins specific to the fixed grid system
+ *//*
+ * Fixed grid mobile
+ * 
+ * Adapts grid to smaller (mobile) screens.
+ *//* Here comes code *//*
+ * Basic form
+ */*.gp_sc_wfm {
+  min-height: 0;
+  /* Simple generic content styling */
+  /* Column 1 */
+  /* Column 2 */
+}
+*.gp_sc_wfm:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+*.gp_sc_wfm h1.scfTitleBorder {
+  font-size: 2.2em;
+  line-height: 1.3em;
+  font-weight: bold;
+}
+*.gp_sc_wfm legend {
+  font-size: 1.5em;
+  line-height: 1.35em;
+  font-weight: bold;
+  padding-top: 1em;
+}
+*.gp_sc_wfm div.scfSectionContent > div, *.gp_sc_wfm div.scfPasswordConfirmation > div:first-child, *.gp_sc_wfm div.scfCreditCard > div:first-child {
+  padding: 0 0 0.25em 0;
+}
+*.gp_sc_wfm table.scfCheckBoxList td + td, *.gp_sc_wfm table.scfRadioButtonList td + td {
+  padding: 0 0 0 1em;
+}
+*.gp_sc_wfm div.scfIntroBorder, *.gp_sc_wfm div.scfFooterBorder {
+  margin: 6px 0;
+}
+*.gp_sc_wfm div.scfIntroBorder table,
+*.gp_sc_wfm div.scfFooterBorder table,
+*.gp_sc_wfm div.scfIntroBorder p,
+*.gp_sc_wfm div.scfFooterBorder p,
+*.gp_sc_wfm div.scfIntroBorder ul,
+*.gp_sc_wfm div.scfFooterBorder ul,
+*.gp_sc_wfm div.scfIntroBorder ol,
+*.gp_sc_wfm div.scfFooterBorder ol {
+  margin-top: 1em;
+}
+*.gp_sc_wfm div.scfIntroBorder > table:first-child,
+*.gp_sc_wfm div.scfFooterBorder > table:first-child,
+*.gp_sc_wfm div.scfIntroBorder > p:first-child,
+*.gp_sc_wfm div.scfFooterBorder > p:first-child,
+*.gp_sc_wfm div.scfIntroBorder > ul:first-child,
+*.gp_sc_wfm div.scfFooterBorder > ul:first-child,
+*.gp_sc_wfm div.scfIntroBorder > ol:first-child,
+*.gp_sc_wfm div.scfFooterBorder > ol:first-child {
+  margin-top: 1em;
+}
+*.gp_sc_wfm label:first-child,
+*.gp_sc_wfm span.scfCheckBoxListLabel,
+*.gp_sc_wfm span.scfRadioButtonListLabel,
+*.gp_sc_wfm span.scfDateSelectorLabel {
+  float: left;
+  margin-right: 10px;
+  width: 150px;
+}
+*.gp_sc_wfm input[type="text"],
+*.gp_sc_wfm input[type="email"],
+*.gp_sc_wfm input[type="url"],
+*.gp_sc_wfm input[type="search"],
+*.gp_sc_wfm input[type="password"],
+*.gp_sc_wfm textarea {
+  width: 260px;
+}
+*.gp_sc_wfm *.scfDateSelectorGeneralPanel label {
+  position: absolute;
+  top: -9999em;
+  left: -9999em;
+}
+*.gp_sc_wfm *.scfSubmitButtonBorder input {
+  margin-left: 160px;
+}
+/*
+ * Base menu styling
+ *
+ * This less file should be used in combination with some other less file.
+ */.gp_menu ul {
+  background: black;
+}
+.gp_menu > ul > li > a {
+  display: inline-block;
+}
+/*
+ * Menu with drop downs
+ *
+ * Styling for a menu with hidden submenus that become visible when the parent
+ * list item is hovered. Works with both horizontal and vertical menus.
+ */.gp_menu.gp_menu_typeCollapse > ul {
+  position: relative;
+  z-index: 100000;
+}
+.gp_menu.gp_menu_typeCollapse li {
+  position: relative;
+}
+.gp_menu.gp_menu_typeCollapse li li {
+  display: block;
+  float: left;
+  width: 100%;
+}
+.gp_menu.gp_menu_typeCollapse li li a {
+  display: block;
+  float: none;
+}
+.gp_menu.gp_menu_typeCollapse li li a {
+  display: block;
+  border-top: 1px solid white;
+}
+.gp_menu.gp_menu_typeCollapse li li:first-child > a {
+  border-top-width: 0;
+}
+.gp_menu.gp_menu_typeCollapse ul ul {
+  width: 200px;
+}
+.gp_menu.gp_menu_typeCollapse > ul > li > ul {
+  position: absolute;
+}
+.gp_menu.gp_menu_typeCollapse li:hover > ul, .gp_menu.gp_menu_typeCollapse li.gp_hover > ul {
+  display: block !important;
+}
+.gp_menu.gp_menu_typeCollapse li li:hover > ul, .gp_menu.gp_menu_typeCollapse li li.gp_hover > ul {
+  position: absolute;
+  top: 1px;
+  left: 100%;
+}
+.gp_menu.gp_menu_typeCollapse li li:hover:first-child > ul, .gp_menu.gp_menu_typeCollapse li li.gp_hover:first-child > ul {
+  top: 0;
+}
+.gp_menu.gp_menu_typeCollapse li li li {
+  border-left: 1px solid black;
+}
+.gp_menu.gp_menu_typeCollapse ul ul ul:before {
+  content: "›";
+  position: absolute;
+  top: -1px;
+  left: -10px;
+  z-index: 10000;
+  color: white;
+  font-weight: bold;
+  line-height: 28px;
+}
+.gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse > ul > li > ul {
+  top: 28px;
+  left: 1px;
+}
+.gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse > ul > li:first-child > ul {
+  left: 0;
+}
+.gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse li li:hover > ul, .gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse li li.gp_hover > ul {
+  position: absolute;
+  top: 1px;
+  left: 100%;
+}
+.gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse li li:hover:first-child > ul, .gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse li li.gp_hover:first-child > ul {
+  top: 0;
+}
+.gp_menu.gp_menu_typeVertical.gp_menu_typeCollapse {
+  width: 200px;
+}
+.gp_menu.gp_menu_typeVertical.gp_menu_typeCollapse ul ul {
+  top: 0;
+  display: none;
+}
+.gp_menu.gp_menu_typeVertical.gp_menu_typeCollapse > ul > li > ul {
+  margin-left: 200px;
+}
+.gp_menu.gp_menu_typeVertical.gp_menu_typeCollapse li li a {
+  padding-left: 6px !important;
+}
+.gp_menu.gp_menu_typeVertical.gp_menu_typeCollapse li.gp_activePage > a:before {
+  display: none;
+}
+/*
+ * Styling for a horizontal menu
+ */.gp_menu_typeFlow ul, .gp_menu_typeFlow li {
+  display: inline;
+}
+.gp_menu_typeFlow a {
+  color: white;
+  text-decoration: none;
+  margin: 0 3px;
+  padding: 6px 0;
+}
+.gp_menu_typeFlow a:hover {
+  text-decoration: underline;
+}
+/*
+ * Styling for a horizontal menu
+ */.gp_menu.gp_menu_typeHorizontal {
+  min-height: 0;
+}
+.gp_menu.gp_menu_typeHorizontal:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.gp_menu.gp_menu_typeHorizontal > ul > li {
+  float: left;
+}
+.gp_menu.gp_menu_typeHorizontal a {
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 3px 6px;
+  background: black;
+}
+.gp_menu.gp_menu_typeHorizontal > ul > li > a {
+  float: left;
+  border-left: 1px solid #ffffff;
+}
+.gp_menu.gp_menu_typeHorizontal a:hover {
+  -moz-transition: all 0.1s ease-out;
+  -ms-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+  background: #444444;
+}
+.gp_menu.gp_menu_typeHorizontal > ul > li:first-child > a {
+  border-left-width: 0;
+}
+.gp_menu.gp_menu_typeHorizontal ul {
+  display: inline;
+}
+.gp_menu.gp_menu_typeHorizontal > li {
+  display: inline-block;
+}
+.gp_menu.gp_menu_typeHorizontal ul ul {
+  display: none;
+}
+/*
+ * Styling for a list of links stacked on top of eachother.
+ *
+ * Normally this would be a menu on the left side of the website
+ */.gp_menu.gp_menu_typeVertical li {
+  border-top: 1px solid white;
+}
+.gp_menu.gp_menu_typeVertical > li:first-child, .gp_menu.gp_menu_typeVertical li li {
+  border-top-width: 0;
+}
+.gp_menu.gp_menu_typeVertical a {
+  display: block;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  color: white;
+  text-decoration: none;
+  padding: 3px 6px;
+}
+.gp_menu.gp_menu_typeVertical a:hover {
+  -moz-transition: all 0.1s ease-out;
+  -ms-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+  background: #444444;
+}
+.gp_menu.gp_menu_typeVertical ul ul {
+  display: none;
+}
+.gp_menu.gp_menu_typeVertical li.gp_active > ul {
+  display: block;
+}
+.gp_menu.gp_menu_typeVertical li.gp_active > a {
+  font-weight: bold;
+}
+.gp_menu.gp_menu_typeVertical li.gp_activePage > a:before {
+  content: "›";
+  position: absolute;
+  margin: -1px 0 0 -10px;
+}
+.gp_menu.gp_menu_typeVertical li li a {
+  padding-left: 12px;
+}
+.gp_menu.gp_menu_typeVertical li li li a {
+  padding-left: 24px;
+}
+.gp_menu.gp_menu_typeVertical li li li li a {
+  padding-left: 36px;
+}
+/*
+ * Styling for a list with links that serves as a sitemap.
+ */div.gp_sitemap > ul > li > a, div.gp_sitemap > ul > li > span {
+  font-size: 1.5em;
+  line-height: 1.35em;
+  font-weight: bold;
+}
+div.gp_sitemap > ul > li > ul > li > a, div.gp_sitemap > ul > li > ul > li > span {
+  font-size: 1.2em;
+  line-height: 1.45em;
+  font-weight: bold;
+}
+div.gp_sitemap > ul > li > ul > li > ul > li > a, div.gp_sitemap > ul > li > ul > li > ul > li > span {
+  font-size: 1em;
+  font-weight: bold;
+}
+div.gp_sitemap li {
+  margin-left: 17px;
+  list-style-type: disc;
+}
+/*
+ * Basic form
+ */*.gp_form {
+  min-height: 0;
+}
+*.gp_form:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+*.gp_form fieldset > ol {
+  min-height: 0;
+  list-style: none;
+}
+*.gp_form fieldset > ol:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+*.gp_form fieldset > ol > li {
+  width: 100%;
+  float: left;
+  clear: left;
+  margin: 0;
+  padding: 0 0 0.25em 0;
+  list-style: none;
+}
+*.gp_form fieldset label {
+  position: relative;
+  top: 1px;
+}
+*.gp_form fieldset > ol > li > label, *.gp_form fieldset > ol > li *.label {
+  float: left;
+  margin-right: 10px;
+  width: 150px;
+}
+*.gp_form fieldset > ol > li > label > span, *.gp_form fieldset > ol > li *.label > span {
+  position: absolute;
+  left: 150px;
+}
+*.gp_form fieldset input[type="text"],
+*.gp_form fieldset input[type="email"],
+*.gp_form fieldset input[type="url"],
+*.gp_form fieldset input[type="search"],
+*.gp_form fieldset input[type="password"] {
+  width: 260px;
+}
+*.gp_form fieldset input[type="submit"] {
+  margin-left: 160px;
+}
+*.gp_form fieldset span > label + input[type="radio"], *.gp_form fieldset span > label + input[type="checkbox"] {
+  margin-left: 10px;
+}
+*.gp_form fieldset textarea {
+  width: 260px;
+}
+*.gp_form fieldset legend {
+  font-weight: bold;
+}
+*.gp_form *.gp_formCheckFeedback {
+  border: 2px solid red;
+  padding: 2px 5px;
+  font-weight: bold;
+  background: #faff97;
+  color: black !important;
+  font-weight: bold;
+}
+*.gp_form *.gp_formCheckFeedback ul {
+  margin-top: 3px;
+}
+*.gp_form *.gp_formCheckFeedback li {
+  margin-left: 17px;
+  list-style-type: disc;
+  color: black;
+  font-weight: normal;
+}
+/*
+ * Basic ASP.NET login form
+ */*.gp_login table.gp_loginRoot {
+  margin: 0 auto;
+  width: 245px;
+}
+*.gp_login table.gp_loginRoot > tbody > tr > td {
+  border: 1px solid #999999;
+  background: #eeeeee;
+  -moz-box-shadow: 0 0 6px #999999;
+  -webkit-box-shadow: 0 0 6px #999999;
+  box-shadow: 0 0 6px #999999;
+  padding: 6px;
+}
+*.gp_login table table {
+  width: 100%;
+}
+*.gp_login table table td {
+  padding-top: 1.2px;
+  padding-bottom: 1.2px;
+}
+*.gp_login *.gp_loginTitle {
+  padding-bottom: 3px;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: left;
+}
+*.gp_login *.gp_loginLabel {
+  padding-right: 3px;
+  text-align: left;
+  white-space: nowrap;
+}
+*.gp_login *.gp_loginCheckbox input[type="checkbox"] {
+  position: relative;
+  top: 3px;
+  margin-right: 3px;
+}
+*.gp_login *.gp_loginTextBox {
+  float: right;
+  width: 138px;
+}
+*.gp_login *.gp_loginValidator {
+  position: absolute;
+  float: left;
+}
+*.gp_login *.gp_loginLoginButton {
+  margin-top: 3px;
+  padding: 0 3px;
+  font-weight: bold;
+}
+body.ie7 *.gp_login, body.ie8 *.gp_login {
+  position: static;
+}

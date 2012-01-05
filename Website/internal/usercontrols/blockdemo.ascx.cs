@@ -12,7 +12,7 @@ using System.Reflection;
 
 public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
 {
-    private Graphite.Config config;
+    private Graphite.Internal.Config config;
     Dictionary<string, Boolean> dicFiles;
 
 
@@ -25,7 +25,7 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
     private void CreateDemo()
     {
         // Getting configuration settings from XML
-        config = new Graphite.Config(GetXmlPath());
+        config = new Graphite.Internal.Config(GetXmlPath());
         dicFiles = config.Files(GetActiveIndex()); 
         
         // Run methods
