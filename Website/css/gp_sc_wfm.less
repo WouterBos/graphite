@@ -7,10 +7,10 @@
 
 
 
-*.gp_sc_wfm {
+.gp_sc_wfm {
     .gp_clear();
 
-	h1.scfTitleBorder {
+	.scfTitleBorder {
 		.gp_heading1;
 	}
 	
@@ -19,20 +19,20 @@
 		padding-top: @gp_paragraphSpacing;
 	}
 	
-	div.scfSectionContent > div,
-	div.scfPasswordConfirmation > div:first-child,
-	div.scfCreditCard > div:first-child {
+	.scfSectionContent > div,
+	.scfPasswordConfirmation > div:first-child,
+	.scfCreditCard > div:first-child {
 		padding: 0 0 @gp_paragraphSpacing/4 0;
 	}
 	
-	table.scfCheckBoxList td + td,
-	table.scfRadioButtonList td + td {
+	.scfCheckBoxList td + td,
+	.scfRadioButtonList td + td {
 		padding: 0 0 0 @gp_paragraphSpacing;
 	}
 	
 	/* Simple generic content styling */
-	div.scfIntroBorder,
-	div.scfFooterBorder {
+	.scfIntroBorder,
+	.scfFooterBorder {
 		margin: @gp_gridBlockSpacing/2 0;
 
 		table,
@@ -52,9 +52,9 @@
 	
 	/* Column 1 */
 	label:first-child,
-	span.scfCheckBoxListLabel,
-	span.scfRadioButtonListLabel,
-	span.scfDateSelectorLabel {
+	.scfCheckBoxListLabel,
+	.scfRadioButtonListLabel,
+	.scfDateSelectorLabel {
         float: left;
         margin-right: @gp_formColumnGutter;
         width: @gp_formColumn1;
@@ -70,13 +70,13 @@
 		width: @gp_formColumn2;
 	}
 	
-	*.scfDateSelectorGeneralPanel label {
+	.scfDateSelectorGeneralPanel label {
 		position: absolute;
 		top: -9999em;
 		left: -9999em;
 	}
 	
-	*.scfSubmitButtonBorder input {
+	.scfSubmitButtonBorder input {
 		margin-left: @gp_formColumn1 + @gp_formColumnGutter;
 	}
 }

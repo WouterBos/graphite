@@ -7,12 +7,12 @@
 
 
 /* Main container for web page */
-*.gp_root {
+.gp_root {
 	position: relative;
 }
 
 /* Wrapper for web content */
-*.gp_main {
+.gp_main {
     .gp_clear;
 	position: relative;
 	margin: 0 auto 0 auto;
@@ -22,7 +22,7 @@
 
 
 /* Logo */
-*.gp_logo {
+.gp_logo {
 	display: block;
 	position: absolute;
 	top: @gp_gridBlockSpacing;
@@ -37,21 +37,21 @@
 
 
 /* Header */
-*.gp_header {
+.gp_header {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 }
 
-*.gp_header *.gp_main {
+.gp_header .gp_main {
 	height: @gp_gridHeaderHeight;
 }
 
 
 
 /* Content block */
-*.gp_content {
+.gp_content {
 	border-top: @gp_gridHeaderHeight solid transparent;
 	padding: @gp_gridBlockSpacing 0;
 	.gp_clear;
@@ -60,7 +60,7 @@
 
 
 /* Footer block */
-*.gp_footer {
+.gp_footer {
 	padding-bottom: @gp_gridBlockSpacing;
 }
 
