@@ -19,7 +19,7 @@
     <div class="gp_block gp_textBlock">
         <article>
             <h1>Welcome to Graphite</h1>
-            <p><big>Graphite is a frontend development framework for the ASP.NET platform. It will help kickstart your web project.</big></p>
+            <p><big>Graphite is a frontend development framework for ASP.NET websites with .Less. It will help kickstart your web project.</big></p>
             <p class="gp_textAlert"><big><strong>The project is still very alpha. But there's a <a href="/blocks/navigation/menu/">preview</a> of the menu component.</strong></big></p>
 
             <p><a href="/Internal/Pages/Documentation/GettingStarted.aspx">Get started</a></p>

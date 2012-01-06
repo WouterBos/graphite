@@ -148,7 +148,7 @@
     </blocks>
 
     <sitecore>
-        <webformsformarketers>
+        <webformsformarketers humanname="Webforms For Marketers">
             <demo>
                 <common>
                     <files>
