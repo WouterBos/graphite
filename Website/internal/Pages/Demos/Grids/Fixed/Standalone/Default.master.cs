@@ -11,7 +11,6 @@ public partial class App_Master_Default : System.Web.UI.MasterPage
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        Css oCss = new Graphite.Css();
-        MasterPageBody.Attributes["class"] += oCss.UserAgentClasses();
+        MasterPageBody.Attributes["class"] += Graphite.Css.UserAgentClasses();
     }
 }
