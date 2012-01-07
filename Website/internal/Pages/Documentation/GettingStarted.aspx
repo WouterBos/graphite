@@ -2,6 +2,10 @@
 <%@ Register TagPrefix="Internal" TagName="BreadCrumb" Src="~/Internal/usercontrols/breadcrumb.ascx" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
+    <script src="/JavaScript/graphite.js" type="text/javascript"></script>
+    <script src="/JavaScript/graphite.blocks.js" type="text/javascript"></script>
+    <script src="/JavaScript/graphite.blocks.widgets.js" type="text/javascript"></script>
+    <script src="/JavaScript/graphite.blocks.widgets.accordion.js" type="text/javascript"></script>
 </asp:Content>
 
 
@@ -32,15 +36,19 @@
                     <dt>2. Install</dt>
                     <dd>Unpack the compressed file. If you open the Graphite folder you'll see a folder called <code>Website</code>. That's the root of your website. Now you can run the website either by opening it with Visual Studio or by creating a new website in IIS and point to the <code>Website</code> directory as the root.</dd>
                     
-                    <dt>2. Select a UI component</dt>
+                    <dt>3. Select a UI component</dt>
                     <dd>Open the Graphite website in the browser and you'll see the introduction page. This page brings you to the demos en documentation in the <code>Internal</code> folder. Look in the &ldquo;Blocks&rdquo; section for the &ldquo;Menu&rdquo; component.</dd>
-                    <dt>3. Use the UI component</dt>
+                    <dt>4. Use the UI component</dt>
                     <dd>
                         Click on the &ldquo;.html&rdquo; button to copy the menu code. Then open <code>/Start.aspx</code> in your editor. This is your basic page. Paste the code in a <code>asp:Content</code>-section and load the page in your browser. You'll see an unstyled list of links.<br />
                         Lets add come style to it. Go back to the menu page and click on the &ldquo;.css&rdquo; button. Now open <code>/Css/all.less</code> and add the code in your clipboard to the bottom of the file, correct the paths by removing the <code>/Css/</code> and remove the <code>@import</code> rules that may already exist (like <code>gp_reset.less</code>). Now open <code>/Start.aspx</code> in your browser. If everything went well you see a styled menu.
                     </dd>
                 </dl>
             </div>
+            <script>
+                var accordion = new graphite.blocks.widgets.accordion();
+                accordion.init('div.gp_accordion');
+            </script>
         </article>
     </div>
 </asp:Content>
