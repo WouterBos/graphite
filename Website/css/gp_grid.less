@@ -69,4 +69,25 @@
 /* Column row */
 .gp_gridRow {
     clear:both;
+    
+	.gp_column {
+		float: left;
+
+		.gp_block {
+		    margin:@gp_gridBlockPadding;
+		}
+		
+		&.gp_columnBackground {
+		    background: #eee;
+		    
+		    .gp_block {
+		        margin:0;
+		        padding:@gp_gridBlockPadding;
+		    }
+		}
+	}
+}
+
+.gp_gridRow + .gp_gridRow {
+    margin-top: @gp_gridBlockSpacing;
 }
