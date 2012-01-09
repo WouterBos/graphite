@@ -44,6 +44,7 @@
         <article>
             <h1 class="heading2">Todo</h1>
             <ul>
+                <li><strong>Standards</strong> Default "form" for designers to define their grid</li>
                 <li><strong>Themes</strong> managed with just a few Less variables</li>
                 <li><strong>Generic blocks</strong> multi-purpose elements like for example a list with just title, sub title and a short text</li>
                 <li><strong>Fine-grained spacing</strong> different values for horizontal and vertical spacing</li>
