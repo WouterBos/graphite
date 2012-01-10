@@ -1,8 +1,8 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="DefaultAlt1.master.cs" Inherits="App_Master_Default" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="default.master.cs" Inherits="App_Master_Default" %>
 
 <!DOCTYPE html>
 <html lang="nl" id="GraphiteDemoSite">
-	<head runat="server">
+	<head id="Head1" runat="server">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title></title>
 		
@@ -32,23 +32,23 @@
 			        <div class="gp_main">
 			            <asp:ContentPlaceHolder ID="DemoStage" runat="server"></asp:ContentPlaceHolder>
 			            
-				        <div class="gp_columns gp_columns_2 gp_columns_2Alt2">
-				            <div class="gp_column gp_column1">
+				        <div class="gp_gridRow gp_gridFlex gp_gridColumns2Alt2">
+				            <div class="gp_gridColumn gp_gridColumn1">
 				                <asp:ContentPlaceHolder ID="Column2_1" runat="server"></asp:ContentPlaceHolder>
 				            </div>
-				            <div class="gp_column gp_column2">
+				            <div class="gp_gridColumn gp_gridColumn2">
 				                <asp:ContentPlaceHolder ID="Column2_2" runat="server"></asp:ContentPlaceHolder>
 				            </div>
 					    </div>
 
-				        <div class="gp_columns gp_columns_3">
-				            <div class="gp_column gp_column1">
+				        <div class="gp_gridRow gp_gridFlex gp_gridColumns3">
+				            <div class="gp_gridColumn gp_gridColumn1">
 				                <asp:ContentPlaceHolder ID="Column3_1" runat="server"></asp:ContentPlaceHolder>
 				            </div>
-				            <div class="gp_column gp_column2">
+				            <div class="gp_gridColumn gp_gridColumn2">
 				                <asp:ContentPlaceHolder ID="Column3_2" runat="server"></asp:ContentPlaceHolder>
 				            </div>
-				            <div class="gp_column gp_column3">
+				            <div class="gp_gridColumn gp_gridColumn3">
 				                <asp:ContentPlaceHolder ID="Column3_3" runat="server"></asp:ContentPlaceHolder>
 				            </div>
 					    </div>
@@ -71,8 +71,8 @@
     			<!-- Start | Footer -->
 			    <div class="gp_footer">
 				    <footer>
-				        <div class="gp_columns gp_columns_1">
-				            <div class="gp_column gp_column1">
+				        <div class="gp_gridRow gp_gridFlex gp_gridColumns1">
+				            <div class="gp_gridColumn gp_gridColumn1">
 				                <div class="gp_block gp_textBlock">
                                     <p><a href="https://github.com/WouterBos/graphite">Download Graphite</a></p>
                                 </div>

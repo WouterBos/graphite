@@ -42,15 +42,14 @@
 			            </div>
             			
 			            <!-- Start | 2 Columns -->
-			            <div class="gp_columns gp_columns_2">
-				            <div class="gp_column gp_column1">
+				        <div class="gp_gridRow gp_gridFlex gp_gridColumns2Alt1">
+				            <div class="gp_gridColumn gp_gridColumn1">
 				                <asp:ContentPlaceHolder ID="ContentColumn1" runat="server"></asp:ContentPlaceHolder>
 				            </div>
-            				
-				            <div class="gp_column gp_column2">
+				            <div class="gp_gridColumn gp_gridColumn2">
 				                <asp:ContentPlaceHolder ID="ContentColumn2" runat="server"></asp:ContentPlaceHolder>
 				            </div>
-			            </div>
+					    </div>
 			            <!-- End | 2 Columns -->
 		            </div>
 	            </div>
@@ -74,8 +73,8 @@
 	            <div class="gp_footer">
 		            <footer>
 			            <div class="gp_main">
-				            <div class="gp_columns gp_columns_1">
-					            <div class="gp_column gp_column1">
+				            <div class="gp_gridRow gp_gridFlex gp_gridColumns1">
+				                <div class="gp_gridColumn gp_gridColumn1">
 						            <div class="gp_block gp_textBlock">
 							            <section>
 								            <h1 class="gp_textHeading2">This is a footer</h1>

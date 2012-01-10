@@ -6,116 +6,90 @@
 
 
 
-/* Columns basic style */
-.gp_columns {
-	width: 100%;
-    .gp_clear;
-	
-	.gp_column {
-		float: left;
+.gp_gridRow.gp_gridFlex {
+	.gp_gridColumn {
 		min-height: 1px;
 	}
 
-	.gp_column.gp_columnBackground {
-		background: #eee;
-		.gp_block {
-			margin: @gp_gridBlockSpacing !important;
+	/* 1 column */
+	&.gp_gridColumns1 {
+	    .gp_gridColumn1 {
+	        width: 100%;
+	    }
+	}
+	
+	/* 2 columns */
+	&.gp_gridColumns2 {
+		.gp_gridColumn1 {
+			width: 50%;
+		}
+		.gp_gridColumn2 {
+			width: 50%;
+		}
+	}
+	
+	/* 3 columns */
+	&.gp_gridColumns3 {
+		.gp_gridColumn1 {
+			width: 33.33%;
+		}
+		.gp_gridColumn2 {
+			width: 33.33%;
+		}
+		.gp_gridColumn3 {
+			width: 33.33%;
+		}
+	}
+	
+	/* 4 columns */
+	&.gp_gridColumns4 {
+		.gp_gridColumn1 {
+			width: 25%;
+		}
+		.gp_gridColumn2 {
+			width: 25%;
+		}
+		.gp_gridColumn3 {
+			width: 25%;
+		}
+		.gp_gridColumn4 {
+			width: 25%;
+		}
+	}
+	
+	/* 5 columns */
+	&.gp_gridColumns5 {
+		.gp_gridColumn1 {
+			width: 20%;
+		}
+		.gp_gridColumn2 {
+			width: 20%;
+		}
+		.gp_gridColumn3 {
+			width: 20%;
+		}
+		.gp_gridColumn4 {
+			width: 20%;
+		}
+		.gp_gridColumn5 {
+			width: 20%;
 		}
 	}
 }
-.gp_columns + .gp_columns {
-	margin-top: @gp_gridBlockSpacing;
-}
 
 
 
-/* Columns */
-/* 1 column */
-.gp_columns_1 {
-    .gp_column1 {
-        width: 100%;
-    }
-}
-
-/* 2 columns */
-.gp_columns_2 {
-	.gp_column1 {
-		width: 50%;
-	}
-	.gp_column2 {
-		width: 50%;
-	}
-}
-
-/* 3 columns */
-.gp_columns_3 {
-	.gp_column1 {
-		width: 33.33%;
-	}
-	.gp_column2 {
-		width: 33.33%;
-	}
-	.gp_column3 {
-		width: 33.33%;
-	}
-}
-
-/* 4 columns */
-.gp_columns_4 {
-	.gp_column1 {
-		width: 25%;
-	}
-	.gp_column2 {
-		width: 25%;
-	}
-	.gp_column3 {
-		width: 25%;
-	}
-	.gp_column4 {
-		width: 25%;
-	}
-}
-
-/* 5 columns */
-.gp_columns_5 {
-	.gp_column1 {
-		width: 20%;
-	}
-	.gp_column2 {
-		width: 20%;
-	}
-	.gp_column3 {
-		width: 20%;
-	}
-	.gp_column4 {
-		width: 20%;
-	}
-	.gp_column5 {
-		width: 20%;
-	}
-}
-
-
-
-/* Block basic style */
-.gp_block {
-	margin: 0 @gp_gridBlockSpacing;
-}
-
-.gp_block + .gp_block {
-	margin-top: @gp_gridBlockSpacing;
-}
 
 
 
 /* Alt style for first and last columns */
-.gp_columns .gp_column:first-child .gp_block {
+.gp_gridColumns .gp_gridColumn:first-child .gp_block {
 	margin-left: 0;
 }
 
-.gp_columns_2 .gp_column2 .gp_block,
-.gp_columns_3 .gp_column3 .gp_block,
-.gp_columns_4 .gp_column4 .gp_block,
-.gp_columns_5 .gp_column5 .gp_block {
+.gp_gridColumns2 .gp_gridColumn2 .gp_block,
+.gp_gridColumns3 .gp_gridColumn3 .gp_block,
+.gp_gridColumns4 .gp_gridColumn4 .gp_block,
+.gp_gridColumns5 .gp_gridColumn5 .gp_block {
 	margin-right: 0;
 }

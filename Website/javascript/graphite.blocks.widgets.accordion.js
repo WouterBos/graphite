@@ -27,7 +27,7 @@ graphite.blocks.widgets.accordion = function() {
     _root.addClass('gp_accordionJavaScript');
     
     _root.find('dt:eq(0)').addClass("gp_active");
-    _root.find('dd').css('width', _root.find('dd').outerWidth() + 'px');
+    _root.find('dd').css('width', _root.find('dd').innerWidth() + 'px');
     _root.find('dd:gt(0)').hide();
     
     _root.find('dt').click(function() {

@@ -17,9 +17,9 @@
         <asp:Literal ID="DemoJavaScriptCodeBlock" runat="server"></asp:Literal>
     </div>
     
-    <div class="gp_columns gp_columns_3 gp_columns_3DemoSpecs">
+    <div class="gp_gridRow gp_gridFlex gp_gridColumns3DemoSpecs">
         <ul>
-            <li class="gp_column gp_column1">
+            <li class="gp_gridColumn gp_gridColumn1">
                 <div class="gp_block">
                     <section>
                         <div class="gp_textBlock">
@@ -48,7 +48,7 @@
                     </section>
                 </div>
             </li>
-            <li class="gp_column gp_column2">
+            <li class="gp_gridColumn gp_gridColumn2">
                 <div class="gp_block">
                     <section>
                         <div class="gp_textBlock">
@@ -59,7 +59,7 @@
                     </section>
                 </div>
             </li>
-            <li class="gp_column gp_column3">
+            <li class="gp_gridColumn gp_gridColumn3">
                 <section>
                     <div class="gp_block gp_textBlock">
                         <h1 class="gp_textHeading3">Description</h1>
