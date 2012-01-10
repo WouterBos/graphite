@@ -37,7 +37,7 @@ namespace Graphite.Internal
                 if (node.Name != "demo")
                 {
                     menuCode.AppendLine("<li>");
-                    menuCode.Append("<a href='/Internal/Pages" + href + "/" + node.Name + "'>");
+                    menuCode.Append("<a href='/Internal/Pages" + href + "/" + node.Name + "/default.aspx'>");
                     if (node.HasAttribute("humanname") == true)
                     {
                         menuCode.Append(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(node.Attributes["humanname"].Value));

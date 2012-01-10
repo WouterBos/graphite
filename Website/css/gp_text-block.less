@@ -6,13 +6,13 @@
 
 
 
-*.gp_textBlock {
+.gp_textBlock {
 	/* Start spacing between blocks */
 	table,
 	p,
 	ul,
 	ol,
-	& + *.gp_text {
+	& + .gp_text {
 		margin-top: @gp_paragraphSpacing;
 	}
 	
@@ -38,7 +38,7 @@
 		margin-top: 0;
 	}
 
-	*:first-child {
+	:first-child {
 		margin-top: 0;
 	}
 	/* End spacing between blocks */
@@ -94,27 +94,27 @@
 	/*
 	 * Use these classes to style something as a header which semantically isn't.
 	 */
-	*.gp_textHeading1 {
+	.gp_textHeading1 {
 		.gp_heading1;
 	}
 	
-	*.gp_textHeading2 {
+	.gp_textHeading2 {
 		.gp_heading2;
 	}
 	
-	*.gp_textHeading3 {
+	.gp_textHeading3 {
 		.gp_heading3;
 	}
 	
-	*.gp_textHeading4 {
+	.gp_textHeading4 {
 		.gp_heading4;
 	}
 	
-	*.gp_textHeading5 {
+	.gp_textHeading5 {
 		.gp_heading5;
 	}
 	
-	*.gp_textHeading6 {
+	.gp_textHeading6 {
 		.gp_heading6;
 	}
 	/* End headings */
@@ -169,7 +169,7 @@
 			font-weight: normal;
 		}
 		
-		tr > *:first-child {
+		tr > :first-child {
 			padding-left: 0;
 		}
 		
@@ -185,7 +185,7 @@
 	/* End table */
 	
 	
-	*.gp_textAlert {
+	.gp_textAlert {
 	    .gp_textAlert();
 	    display: inline-block;
 	}
@@ -194,6 +194,6 @@
 
 
 /* IE7 hack */
-*+html *.gp_text ol li {
+*+html .gp_text ol li {
 	margin-left: 23px;
 }

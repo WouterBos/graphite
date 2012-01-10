@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Code conventions" Language="C#" MasterPageFile="~/Internal/Masterpages/Default.master" AutoEventWireup="true" CodeFile="CodeConventions.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Code conventions" Language="C#" MasterPageFile="~/Internal/Masterpages/DefaultAlt1.master" AutoEventWireup="true" CodeFile="CodeConventions.aspx.cs" Inherits="_Default" %>
 <%@ Register TagPrefix="Internal" TagName="BreadCrumb" Src="~/Internal/usercontrols/breadcrumb.ascx" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
@@ -16,18 +16,18 @@
 
 
 
-<asp:Content ID="Intro" ContentPlaceHolderID="Intro" Runat="Server">
+<asp:Content ID="Intro" ContentPlaceHolderID="Column2_1" Runat="Server">
+</asp:Content>
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Column2_2" Runat="Server">
     <div class="gp_block gp_textBlock">
         <article>
             <h1>Code conventions in Graphite</h1>
             <p><big>Consistent coding improves readability and the quality of Graphite in general. Here below you can find the code conventions it adheres to.</big></p>
         </article>
     </div>
-</asp:Content>
-
-
-
-<asp:Content ID="Content1" ContentPlaceHolderID="Todo" Runat="Server">
 </asp:Content>
 
 

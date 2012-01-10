@@ -140,15 +140,12 @@ textarea {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
 }
-/* Helper classes */.gp_skipLink, div.gp_skipped {
+/* Helper classes */.gp_hideAccessable {
   position: absolute;
   left: -9999em;
 }
-.gp_displayNone {
+.gp_hide {
   display: none;
-}
-.gp_floatLeft {
-  float: left;
 }
 /* Headings */.gp_heading1 {
   font-size: 2.2em;
@@ -187,198 +184,198 @@ textarea {
  * Text block styles
  *
  * Especially useful for content that is generated with Rich Text Editors in a CMS.
- */*.gp_textBlock table,
-*.gp_textBlock p,
-*.gp_textBlock ul,
-*.gp_textBlock ol,
-*.gp_textBlock  + *.gp_text {
+ */.gp_textBlock table,
+.gp_textBlock p,
+.gp_textBlock ul,
+.gp_textBlock ol,
+.gp_textBlock  + .gp_text {
   margin-top: 1em;
 }
-*.gp_textBlock ul ul {
+.gp_textBlock ul ul {
   margin-top: 0;
 }
-*.gp_textBlock * + h1,
-*.gp_textBlock * + h2,
-*.gp_textBlock * + h3,
-*.gp_textBlock * + h4,
-*.gp_textBlock * + h5,
-*.gp_textBlock * + h6 {
+.gp_textBlock * + h1,
+.gp_textBlock * + h2,
+.gp_textBlock * + h3,
+.gp_textBlock * + h4,
+.gp_textBlock * + h5,
+.gp_textBlock * + h6 {
   margin-top: 1em;
 }
-*.gp_textBlock h1 + *,
-*.gp_textBlock h2 + *,
-*.gp_textBlock h3 + *,
-*.gp_textBlock h4 + *,
-*.gp_textBlock h5 + *,
-*.gp_textBlock h6 + * {
+.gp_textBlock h1 + *,
+.gp_textBlock h2 + *,
+.gp_textBlock h3 + *,
+.gp_textBlock h4 + *,
+.gp_textBlock h5 + *,
+.gp_textBlock h6 + * {
   margin-top: 0;
 }
-*.gp_textBlock *:first-child {
+.gp_textBlock :first-child {
   margin-top: 0;
 }
-*.gp_textBlock ul {
+.gp_textBlock ul {
   clear: both;
   padding-left: 0;
 }
-*.gp_textBlock ul li {
+.gp_textBlock ul li {
   margin-left: 17px;
   list-style-type: disc;
 }
-*.gp_textBlock ol {
+.gp_textBlock ol {
   clear: both;
 }
-*.gp_textBlock ol li {
+.gp_textBlock ol li {
   margin-left: 20px;
   list-style-type: decimal;
 }
-*.gp_textBlock h1 {
+.gp_textBlock h1 {
   font-size: 2.2em;
   line-height: 1.3em;
   font-weight: bold;
 }
-*.gp_textBlock h2 {
+.gp_textBlock h2 {
   font-size: 1.5em;
   line-height: 1.35em;
   font-weight: bold;
 }
-*.gp_textBlock h3 {
+.gp_textBlock h3 {
   font-size: 1.2em;
   line-height: 1.45em;
   font-weight: bold;
 }
-*.gp_textBlock h4 {
+.gp_textBlock h4 {
   font-size: 1em;
   font-weight: bold;
 }
-*.gp_textBlock h5 {
+.gp_textBlock h5 {
   font-size: 1em;
   font-weight: bold;
 }
-*.gp_textBlock h6 {
+.gp_textBlock h6 {
   font-size: 1em;
   font-weight: bold;
 }
-*.gp_textBlock *.gp_textHeading1 {
+.gp_textBlock .gp_textHeading1 {
   font-size: 2.2em;
   line-height: 1.3em;
   font-weight: bold;
 }
-*.gp_textBlock *.gp_textHeading2 {
+.gp_textBlock .gp_textHeading2 {
   font-size: 1.5em;
   line-height: 1.35em;
   font-weight: bold;
 }
-*.gp_textBlock *.gp_textHeading3 {
+.gp_textBlock .gp_textHeading3 {
   font-size: 1.2em;
   line-height: 1.45em;
   font-weight: bold;
 }
-*.gp_textBlock *.gp_textHeading4 {
+.gp_textBlock .gp_textHeading4 {
   font-size: 1em;
   font-weight: bold;
 }
-*.gp_textBlock *.gp_textHeading5 {
+.gp_textBlock .gp_textHeading5 {
   font-size: 1em;
   font-weight: bold;
 }
-*.gp_textBlock *.gp_textHeading6 {
+.gp_textBlock .gp_textHeading6 {
   font-size: 1em;
   font-weight: bold;
 }
-*.gp_textBlock img.left {
+.gp_textBlock img.left {
   margin: 0 1em 0.5em 0;
   float: left;
 }
-*.gp_textBlock img.right {
+.gp_textBlock img.right {
   margin: 0 0 0.5em 1em;
   float: right;
 }
-*.gp_textBlock a:link {
+.gp_textBlock a:link {
   text-decoration: underline;
 }
-*.gp_textBlock a:hover, *.gp_textBlock a:focus {
+.gp_textBlock a:hover, .gp_textBlock a:focus {
   text-decoration: none;
 }
-*.gp_textBlock table th, *.gp_textBlock table thead th, *.gp_textBlock table thead td {
+.gp_textBlock table th, .gp_textBlock table thead th, .gp_textBlock table thead td {
   font-weight: bold;
 }
-*.gp_textBlock table caption {
+.gp_textBlock table caption {
   font-weight: bold;
   padding-bottom: 0.1em;
 }
-*.gp_textBlock table tfoot {
+.gp_textBlock table tfoot {
   font-size: 0.9em;
 }
-*.gp_textBlock table tfoot th {
+.gp_textBlock table tfoot th {
   font-weight: normal;
 }
-*.gp_textBlock table tr > *:first-child {
+.gp_textBlock table tr > :first-child {
   padding-left: 0;
 }
-*.gp_textBlock table td, *.gp_textBlock table th {
+.gp_textBlock table td, .gp_textBlock table th {
   padding-left: 1em;
 }
-*.gp_textBlock table td:first-child, *.gp_textBlock table th:first-child {
+.gp_textBlock table td:first-child, .gp_textBlock table th:first-child {
   padding-left: 0;
 }
-*.gp_textBlock *.gp_textAlert {
+.gp_textBlock .gp_textAlert {
   border: 2px solid red;
   padding: 2px 5px;
   font-weight: bold;
   background: #faff97;
   display: inline-block;
 }
-/* IE7 hack */* + html *.gp_text ol li {
+/* IE7 hack */* + html .gp_text ol li {
   margin-left: 23px;
 }
 /* GRIDS *//*
  * Base grid
  * 
  * Base styling for grid.
- *//* Main container for web page */*.gp_root {
+ *//* Main container for web page */.gp_root {
   position: relative;
 }
-/* Wrapper for web content */*.gp_main {
+/* Wrapper for web content */.gp_main {
   min-height: 0;
   position: relative;
   margin: 0 auto 0 auto;
   width: 960px;
 }
-*.gp_main:after {
+.gp_main:after {
   display: block;
   clear: both;
   content: "";
 }
-/* Logo */*.gp_logo {
+/* Logo */.gp_logo {
   display: block;
   position: absolute;
   top: 12px;
   left: 12px;
   z-index: 10;
 }
-*.gp_logo img {
+.gp_logo img {
   float: left;
 }
-/* Header */*.gp_header {
+/* Header */.gp_header {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
 }
-*.gp_header *.gp_main {
+.gp_header .gp_main {
   height: 115px;
 }
-/* Content block */*.gp_content {
+/* Content block */.gp_content {
   border-top: 115px solid transparent;
   padding: 12px 0;
   min-height: 0;
 }
-*.gp_content:after {
+.gp_content:after {
   display: block;
   clear: both;
   content: "";
 }
-/* Footer block */*.gp_footer {
+/* Footer block */.gp_footer {
   padding-bottom: 12px;
 }
 /* Column row */.gp_gridRow {
@@ -389,15 +386,15 @@ textarea {
  *
  * Makes a page built upon a grid fit for print.
  */@media print {
-  *.gp_logo {
+  .gp_logo {
     position: static;
   }
   
-  *.gp_content {
+  .gp_content {
     border-top-width: 0;
   }
   
-  *.gp_header, *.gp_footer {
+  .gp_header, .gp_footer {
     display: none;
   }
 }
@@ -405,85 +402,85 @@ textarea {
  * Flex grid
  * 
  * Grid system with variable column widths.
- *//* Columns basic style */*.gp_columns {
+ *//* Columns basic style */.gp_columns {
   width: 100%;
   min-height: 0;
 }
-*.gp_columns:after {
+.gp_columns:after {
   display: block;
   clear: both;
   content: "";
 }
-*.gp_columns *.gp_column {
+.gp_columns .gp_column {
   float: left;
 }
-*.gp_columns *.gp_column.gp_columnBackground {
+.gp_columns .gp_column.gp_columnBackground {
   background: #eee;
 }
-*.gp_columns *.gp_column.gp_columnBackground *.gp_block {
+.gp_columns .gp_column.gp_columnBackground .gp_block {
   margin: 12px !important;
 }
-*.gp_columns + *.gp_columns {
+.gp_columns + .gp_columns {
   margin-top: 12px;
 }
-/* Columns *//* 1 column */*.gp_columns_1 *.gp_column1 {
+/* Columns *//* 1 column */.gp_columns_1 .gp_column1 {
   width: 100%;
 }
-/* 2 columns */*.gp_columns_2 *.gp_column1 {
+/* 2 columns */.gp_columns_2 .gp_column1 {
   width: 50%;
 }
-*.gp_columns_2 *.gp_column2 {
+.gp_columns_2 .gp_column2 {
   width: 50%;
 }
-/* 3 columns */*.gp_columns_3 *.gp_column1 {
+/* 3 columns */.gp_columns_3 .gp_column1 {
   width: 33.33%;
 }
-*.gp_columns_3 *.gp_column2 {
+.gp_columns_3 .gp_column2 {
   width: 33.33%;
 }
-*.gp_columns_3 *.gp_column3 {
+.gp_columns_3 .gp_column3 {
   width: 33.33%;
 }
-/* 4 columns */*.gp_columns_4 *.gp_column1 {
+/* 4 columns */.gp_columns_4 .gp_column1 {
   width: 25%;
 }
-*.gp_columns_4 *.gp_column2 {
+.gp_columns_4 .gp_column2 {
   width: 25%;
 }
-*.gp_columns_4 *.gp_column3 {
+.gp_columns_4 .gp_column3 {
   width: 25%;
 }
-*.gp_columns_4 *.gp_column4 {
+.gp_columns_4 .gp_column4 {
   width: 25%;
 }
-/* 5 columns */*.gp_columns_5 *.gp_column1 {
+/* 5 columns */.gp_columns_5 .gp_column1 {
   width: 20%;
 }
-*.gp_columns_5 *.gp_column2 {
+.gp_columns_5 .gp_column2 {
   width: 20%;
 }
-*.gp_columns_5 *.gp_column3 {
+.gp_columns_5 .gp_column3 {
   width: 20%;
 }
-*.gp_columns_5 *.gp_column4 {
+.gp_columns_5 .gp_column4 {
   width: 20%;
 }
-*.gp_columns_5 *.gp_column5 {
+.gp_columns_5 .gp_column5 {
   width: 20%;
 }
-/* Block basic style */*.gp_block {
+/* Block basic style */.gp_block {
   margin: 0 12px;
 }
-*.gp_block + *.gp_block {
+.gp_block + .gp_block {
   margin-top: 12px;
 }
-/* Alt style for first and last columns */*.gp_columns *.gp_column:first-child *.gp_block {
+/* Alt style for first and last columns */.gp_columns .gp_column:first-child .gp_block {
   margin-left: 0;
 }
-*.gp_columns_2 *.gp_column2 *.gp_block,
-*.gp_columns_3 *.gp_column3 *.gp_block,
-*.gp_columns_4 *.gp_column4 *.gp_block,
-*.gp_columns_5 *.gp_column5 *.gp_block {
+.gp_columns_2 .gp_column2 .gp_block,
+.gp_columns_3 .gp_column3 .gp_block,
+.gp_columns_4 .gp_column4 .gp_block,
+.gp_columns_5 .gp_column5 .gp_block {
   margin-right: 0;
 }
 /*
@@ -491,21 +488,21 @@ textarea {
  * 
  * Adapts grid to smaller (mobile) screens.
  *//* Columns basic style */@media screen and (max-width:950px) {
-  *.gp_main {
+  .gp_main {
     margin-left: 1%;
     margin-right: 1%;
     width: auto;
   }
   
-  *.gp_columns *.gp_column {
+  .gp_columns .gp_column {
     width: auto;
     float: none;
   }
-  *.gp_columns *.gp_column + *.gp_column {
+  .gp_columns .gp_column + .gp_column {
     margin-top: 12px;
   }
 }
-*.gp_block *.gp_blockExtraPadding {
+.gp_block .gp_blockExtraPadding {
   padding: 0 0 6px 0;
 }
 /*
@@ -702,79 +699,79 @@ textarea {
  * Adapts grid to smaller (mobile) screens.
  *//* Here comes code *//*
  * Basic form
- */*.gp_sc_wfm {
+ */.gp_sc_wfm {
   min-height: 0;
   /* Simple generic content styling */
   /* Column 1 */
   /* Column 2 */
 }
-*.gp_sc_wfm:after {
+.gp_sc_wfm:after {
   display: block;
   clear: both;
   content: "";
 }
-*.gp_sc_wfm h1.scfTitleBorder {
+.gp_sc_wfm .scfTitleBorder {
   font-size: 2.2em;
   line-height: 1.3em;
   font-weight: bold;
 }
-*.gp_sc_wfm legend {
+.gp_sc_wfm legend {
   font-size: 1.5em;
   line-height: 1.35em;
   font-weight: bold;
   padding-top: 1em;
 }
-*.gp_sc_wfm div.scfSectionContent > div, *.gp_sc_wfm div.scfPasswordConfirmation > div:first-child, *.gp_sc_wfm div.scfCreditCard > div:first-child {
+.gp_sc_wfm .scfSectionContent > div, .gp_sc_wfm .scfPasswordConfirmation > div:first-child, .gp_sc_wfm .scfCreditCard > div:first-child {
   padding: 0 0 0.25em 0;
 }
-*.gp_sc_wfm table.scfCheckBoxList td + td, *.gp_sc_wfm table.scfRadioButtonList td + td {
+.gp_sc_wfm .scfCheckBoxList td + td, .gp_sc_wfm .scfRadioButtonList td + td {
   padding: 0 0 0 1em;
 }
-*.gp_sc_wfm div.scfIntroBorder, *.gp_sc_wfm div.scfFooterBorder {
+.gp_sc_wfm .scfIntroBorder, .gp_sc_wfm .scfFooterBorder {
   margin: 6px 0;
 }
-*.gp_sc_wfm div.scfIntroBorder table,
-*.gp_sc_wfm div.scfFooterBorder table,
-*.gp_sc_wfm div.scfIntroBorder p,
-*.gp_sc_wfm div.scfFooterBorder p,
-*.gp_sc_wfm div.scfIntroBorder ul,
-*.gp_sc_wfm div.scfFooterBorder ul,
-*.gp_sc_wfm div.scfIntroBorder ol,
-*.gp_sc_wfm div.scfFooterBorder ol {
+.gp_sc_wfm .scfIntroBorder table,
+.gp_sc_wfm .scfFooterBorder table,
+.gp_sc_wfm .scfIntroBorder p,
+.gp_sc_wfm .scfFooterBorder p,
+.gp_sc_wfm .scfIntroBorder ul,
+.gp_sc_wfm .scfFooterBorder ul,
+.gp_sc_wfm .scfIntroBorder ol,
+.gp_sc_wfm .scfFooterBorder ol {
   margin-top: 1em;
 }
-*.gp_sc_wfm div.scfIntroBorder > table:first-child,
-*.gp_sc_wfm div.scfFooterBorder > table:first-child,
-*.gp_sc_wfm div.scfIntroBorder > p:first-child,
-*.gp_sc_wfm div.scfFooterBorder > p:first-child,
-*.gp_sc_wfm div.scfIntroBorder > ul:first-child,
-*.gp_sc_wfm div.scfFooterBorder > ul:first-child,
-*.gp_sc_wfm div.scfIntroBorder > ol:first-child,
-*.gp_sc_wfm div.scfFooterBorder > ol:first-child {
+.gp_sc_wfm .scfIntroBorder > table:first-child,
+.gp_sc_wfm .scfFooterBorder > table:first-child,
+.gp_sc_wfm .scfIntroBorder > p:first-child,
+.gp_sc_wfm .scfFooterBorder > p:first-child,
+.gp_sc_wfm .scfIntroBorder > ul:first-child,
+.gp_sc_wfm .scfFooterBorder > ul:first-child,
+.gp_sc_wfm .scfIntroBorder > ol:first-child,
+.gp_sc_wfm .scfFooterBorder > ol:first-child {
   margin-top: 1em;
 }
-*.gp_sc_wfm label:first-child,
-*.gp_sc_wfm span.scfCheckBoxListLabel,
-*.gp_sc_wfm span.scfRadioButtonListLabel,
-*.gp_sc_wfm span.scfDateSelectorLabel {
+.gp_sc_wfm label:first-child,
+.gp_sc_wfm .scfCheckBoxListLabel,
+.gp_sc_wfm .scfRadioButtonListLabel,
+.gp_sc_wfm .scfDateSelectorLabel {
   float: left;
   margin-right: 10px;
   width: 150px;
 }
-*.gp_sc_wfm input[type="text"],
-*.gp_sc_wfm input[type="email"],
-*.gp_sc_wfm input[type="url"],
-*.gp_sc_wfm input[type="search"],
-*.gp_sc_wfm input[type="password"],
-*.gp_sc_wfm textarea {
+.gp_sc_wfm input[type="text"],
+.gp_sc_wfm input[type="email"],
+.gp_sc_wfm input[type="url"],
+.gp_sc_wfm input[type="search"],
+.gp_sc_wfm input[type="password"],
+.gp_sc_wfm textarea {
   width: 260px;
 }
-*.gp_sc_wfm *.scfDateSelectorGeneralPanel label {
+.gp_sc_wfm .scfDateSelectorGeneralPanel label {
   position: absolute;
   top: -9999em;
   left: -9999em;
 }
-*.gp_sc_wfm *.scfSubmitButtonBorder input {
+.gp_sc_wfm .scfSubmitButtonBorder input {
   margin-left: 160px;
 }
 /*
@@ -992,44 +989,51 @@ textarea {
 }
 /*
  * Styling for a list with links that serves as a sitemap.
- */div.gp_sitemap > ul > li > a, div.gp_sitemap > ul > li > span {
+ */.gp_sitemap > ul > li > a, .gp_sitemap > ul > li > span {
   font-size: 1.5em;
   line-height: 1.35em;
   font-weight: bold;
 }
-div.gp_sitemap > ul > li > ul > li > a, div.gp_sitemap > ul > li > ul > li > span {
+.gp_sitemap > ul > li > ul > li > a, .gp_sitemap > ul > li > ul > li > span {
   font-size: 1.2em;
   line-height: 1.45em;
   font-weight: bold;
 }
-div.gp_sitemap > ul > li > ul > li > ul > li > a, div.gp_sitemap > ul > li > ul > li > ul > li > span {
+.gp_sitemap > ul > li > ul > li > ul > li > a, .gp_sitemap > ul > li > ul > li > ul > li > span {
   font-size: 1em;
   font-weight: bold;
 }
-div.gp_sitemap li {
+.gp_sitemap li {
   margin-left: 17px;
   list-style-type: disc;
 }
 /*
+ * Accordion
+ *
+ * Accordion widget
+ */.gp_accordion dt {
+  font-weight: bold;
+}
+/*
  * Basic form
- */*.gp_form {
+ */.gp_form {
   min-height: 0;
 }
-*.gp_form:after {
+.gp_form:after {
   display: block;
   clear: both;
   content: "";
 }
-*.gp_form fieldset > ol {
+.gp_form fieldset > ol {
   min-height: 0;
   list-style: none;
 }
-*.gp_form fieldset > ol:after {
+.gp_form fieldset > ol:after {
   display: block;
   clear: both;
   content: "";
 }
-*.gp_form fieldset > ol > li {
+.gp_form fieldset > ol > li {
   width: 100%;
   float: left;
   clear: left;
@@ -1037,39 +1041,39 @@ div.gp_sitemap li {
   padding: 0 0 0.25em 0;
   list-style: none;
 }
-*.gp_form fieldset label {
+.gp_form fieldset label {
   position: relative;
   top: 1px;
 }
-*.gp_form fieldset > ol > li > label, *.gp_form fieldset > ol > li *.label {
+.gp_form fieldset > ol > li > label, .gp_form fieldset > ol > li .label {
   float: left;
   margin-right: 10px;
   width: 150px;
 }
-*.gp_form fieldset > ol > li > label > span, *.gp_form fieldset > ol > li *.label > span {
+.gp_form fieldset > ol > li > label > span, .gp_form fieldset > ol > li .label > span {
   position: absolute;
   left: 150px;
 }
-*.gp_form fieldset input[type="text"],
-*.gp_form fieldset input[type="email"],
-*.gp_form fieldset input[type="url"],
-*.gp_form fieldset input[type="search"],
-*.gp_form fieldset input[type="password"] {
+.gp_form fieldset input[type="text"],
+.gp_form fieldset input[type="email"],
+.gp_form fieldset input[type="url"],
+.gp_form fieldset input[type="search"],
+.gp_form fieldset input[type="password"] {
   width: 260px;
 }
-*.gp_form fieldset input[type="submit"] {
+.gp_form fieldset input[type="submit"] {
   margin-left: 160px;
 }
-*.gp_form fieldset span > label + input[type="radio"], *.gp_form fieldset span > label + input[type="checkbox"] {
+.gp_form fieldset span > label + input[type="radio"], .gp_form fieldset span > label + input[type="checkbox"] {
   margin-left: 10px;
 }
-*.gp_form fieldset textarea {
+.gp_form fieldset textarea {
   width: 260px;
 }
-*.gp_form fieldset legend {
+.gp_form fieldset legend {
   font-weight: bold;
 }
-*.gp_form *.gp_formCheckFeedback {
+.gp_form .gp_formCheckFeedback {
   border: 2px solid red;
   padding: 2px 5px;
   font-weight: bold;
@@ -1077,10 +1081,10 @@ div.gp_sitemap li {
   color: black !important;
   font-weight: bold;
 }
-*.gp_form *.gp_formCheckFeedback ul {
+.gp_form .gp_formCheckFeedback ul {
   margin-top: 3px;
 }
-*.gp_form *.gp_formCheckFeedback li {
+.gp_form .gp_formCheckFeedback li {
   margin-left: 17px;
   list-style-type: disc;
   color: black;
@@ -1088,11 +1092,11 @@ div.gp_sitemap li {
 }
 /*
  * Basic ASP.NET login form
- */*.gp_login table.gp_loginRoot {
+ */.gp_login table.gp_loginRoot {
   margin: 0 auto;
   width: 245px;
 }
-*.gp_login table.gp_loginRoot > tbody > tr > td {
+.gp_login table.gp_loginRoot > tbody > tr > td {
   border: 1px solid #999999;
   background: #eeeeee;
   -moz-box-shadow: 0 0 6px #999999;
@@ -1100,42 +1104,42 @@ div.gp_sitemap li {
   box-shadow: 0 0 6px #999999;
   padding: 6px;
 }
-*.gp_login table table {
+.gp_login table table {
   width: 100%;
 }
-*.gp_login table table td {
+.gp_login table table td {
   padding-top: 1.2px;
   padding-bottom: 1.2px;
 }
-*.gp_login *.gp_loginTitle {
+.gp_login .gp_loginTitle {
   padding-bottom: 3px;
   font-size: 1.2em;
   font-weight: bold;
   text-align: left;
 }
-*.gp_login *.gp_loginLabel {
+.gp_login .gp_loginLabel {
   padding-right: 3px;
   text-align: left;
   white-space: nowrap;
 }
-*.gp_login *.gp_loginCheckbox input[type="checkbox"] {
+.gp_login .gp_loginCheckbox input[type="checkbox"] {
   position: relative;
   top: 3px;
   margin-right: 3px;
 }
-*.gp_login *.gp_loginTextBox {
+.gp_login .gp_loginTextBox {
   float: right;
   width: 138px;
 }
-*.gp_login *.gp_loginValidator {
+.gp_login .gp_loginValidator {
   position: absolute;
   float: left;
 }
-*.gp_login *.gp_loginLoginButton {
+.gp_login .gp_loginLoginButton {
   margin-top: 3px;
   padding: 0 3px;
   font-weight: bold;
 }
-body.ie7 *.gp_login, body.ie8 *.gp_login {
+.ie7 .gp_login, .ie8 .gp_login {
   position: static;
 }

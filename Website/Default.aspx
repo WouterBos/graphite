@@ -19,14 +19,20 @@
     <div class="gp_block gp_textBlock">
         <article>
             <h1>Welcome to Graphite</h1>
-            <p><big>Graphite is a frontend development framework for ASP.NET websites with .Less. It will help kickstart your web project.</big></p>
-            <p class="gp_textAlert"><big><strong>The project is still very alpha. But there's a <a href="/blocks/navigation/menu/">preview</a> of the menu component.</strong></big></p>
-
-            <p><a href="/Internal/Pages/Documentation/GettingStarted.aspx">Get started</a></p>
+            <p><big>Graphite is a frontend development framework for ASP.NET websites with <a href="http://dotless.org">.Less</a>. It will help to kickstart your web project.</big></p>
+            <p><big><strong><a href="/Internal/Pages/Documentation/GettingStarted.aspx">How to use Graphite</a></big></strong></p>
+            <p class="gp_textAlert"><big><strong>The project is still very alpha. But there's a <a href="/Internal/Pages/demos/blocks/navigation/menu/default.aspx">preview</a> of the menu component.</strong></big></p>
         </article>
-        
+    </div>
+    
+    <div class="gp_block">
         <nav>
-            <asp:Literal ID="DemosList" runat="server"></asp:Literal>
+            <div class="gp_textBlock">
+                <h2>Components</h2>
+            </div>
+            <div class="gp_sitemap">
+                <asp:Literal ID="DemosList" runat="server"></asp:Literal>
+            </div>
         </nav>
     </div>
 </asp:Content>
@@ -38,6 +44,7 @@
         <article>
             <h1 class="heading2">Todo</h1>
             <ul>
+                <li><strong>Standards</strong> Default "form" for designers to define their grid</li>
                 <li><strong>Themes</strong> managed with just a few Less variables</li>
                 <li><strong>Generic blocks</strong> multi-purpose elements like for example a list with just title, sub title and a short text</li>
                 <li><strong>Fine-grained spacing</strong> different values for horizontal and vertical spacing</li>
@@ -59,75 +66,14 @@
 
 
 <asp:Content ID="Column3_1" ContentPlaceHolderID="Column3_1" Runat="Server">
-    <div class="gp_block">
-        <div class="gp_sitemap">
-            <ul>
-                <li><a href="/Internal/Pages/Demos/grids">Grids</a>
-                    <ul>
-                        <li><a href="/Internal/Pages/Demos/grids/flex">Flex</a></li>
-                        <li><a href="/Internal/Pages/Demos/grids/fixed">Fixed (960)</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
 </asp:Content>
 
 
 
 <asp:Content ID="Column3_2" ContentPlaceHolderID="Column3_2" Runat="Server">
-    <div class="gp_block">
-        <div class="gp_sitemap">
-            <ul>
-                <li><span>Plain HTML and ASP.NET</span>
-                    <ul>
-                        <li><a href="/Internal/Pages/Demos/blocks/text">Text content</a></li>
-                        <li><a href="/Internal/Pages/Demos/blocks/forms">Forms</a>
-                            <ul>
-                                <li><a href="/Internal/Pages/Demos/blocks/forms/login">Login</a></li>
-                                <li><a href="/Internal/Pages/Demos/blocks/forms/plain">Plain</a></li>
-                            </ul>
-                        </li>
-                        <li><span>Div popup</span></li>
-                        <li><span>Div popup movie</span></li>
-                        <li><span>Google maps</span></li>
-                        <li><span>Navigation lists</span>
-                            <ul>
-                                <li><a href="/Internal/Pages/Demos/blocks/navigation/menu/">Menu</a></li>
-                                <li><span>Sitemap</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
 </asp:Content>
 
 
 
 <asp:Content ID="Column3_3" ContentPlaceHolderID="Column3_3" Runat="Server">
-    <div class="gp_block">
-        <div class="gp_sitemap">
-            <ul>
-                <li><span>CMS related</span>
-                    <ul>
-                        <li><span>Sitefinity</span>
-                            <ul>
-                                <li><span>Pager</span></li>
-                                <li><span>Captcha</span></li>
-                                <li><span>Forms</span></li>
-                                <li><span>CMS edit mode</span></li>
-                            </ul>
-                        </li>
-                        <li><a href="/Internal/Pages/Demos/Sitecore">Sitecore</a>
-                            <ul>
-                                <li><a href="/Internal/Pages/Demos/Sitecore/Webforms-for-marketers">Webforms for marketers</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
 </asp:Content>
