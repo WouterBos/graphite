@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="default.master.cs" Inherits="App_Master_Default" %>
+<%@ Register TagPrefix="Internal" TagName="PagesMenu" Src="~/Internal/usercontrols/PagesMenu.ascx" %>
 
 <!DOCTYPE html>
 <html lang="nl" id="GraphiteDemoSite">
@@ -34,6 +35,7 @@
 			            
 				        <div class="gp_gridRow gp_gridFlex gp_gridColumns2Alt2">
 				            <div class="gp_gridColumn gp_gridColumn1">
+				                <Internal:PagesMenu runat="server" ID="PagesMenu" />
 				                <asp:ContentPlaceHolder ID="Column2_1" runat="server"></asp:ContentPlaceHolder>
 				            </div>
 				            <div class="gp_gridColumn gp_gridColumn2">

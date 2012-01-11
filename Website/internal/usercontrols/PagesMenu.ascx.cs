@@ -7,15 +7,15 @@ using System.Text;
 using System.Xml;
 using System.Web;
 
-public partial class GraphiteInternal_Folders : System.Web.UI.UserControl
+public partial class Internal_Usercontrols_PagesMenu : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         MakeFolderList();
     }
-    
-    
-    
+
+
+
     private void MakeFolderList()
     {
         string strScriptPath = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]);
@@ -23,10 +23,8 @@ public partial class GraphiteInternal_Folders : System.Web.UI.UserControl
         DirectoryInfo[] directories = directory.GetDirectories();
         rptFolders.DataSource = directories;
         rptFolders.DataBind();
-
-        litFolderName.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(directory.Name);
     }
-    
+
     protected void rptFolders_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
         if (e.Item.ItemType.ToString() == "Item" || e.Item.ItemType.ToString() == "AlternatingItem")

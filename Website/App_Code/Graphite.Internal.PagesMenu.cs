@@ -11,15 +11,15 @@ namespace Graphite.Internal
     /// <summary>
     /// Creates Unordered list of links to demos
     /// </summary>
-    public class DemoMenu
+    public class PagesMenu
     {
         private System.Xml.XmlElement demo;
 
-        public DemoMenu()
+        public PagesMenu()
 	    {
             System.Xml.XmlDocument demos = new System.Xml.XmlDocument();
-            demos.Load(HttpContext.Current.Server.MapPath(@"~\App_Data\Graphite\Internal\Sitemaps\demos.xml"));
-            demo = demos.SelectSingleNode("/demos") as XmlElement;
+            demos.Load(HttpContext.Current.Server.MapPath(@"~\App_Data\Graphite\Internal\Sitemaps\pages.xml"));
+            demo = demos.SelectSingleNode("/pages") as XmlElement;
         }
         
         public string GetHTML()
@@ -34,18 +34,11 @@ namespace Graphite.Internal
             string href = GetMenuPath(arg_demo);
             foreach (XmlElement node in arg_demo.ChildNodes)
             {
-                if (node.Name != "demo")
+                if (node.HasAttribute("url") == true)
                 {
                     menuCode.AppendLine("<li>");
-                    menuCode.Append("<a href='/Internal/Pages" + href + "/" + node.Name + "/default.aspx'>");
-                    if (node.HasAttribute("humanname") == true)
-                    {
-                        menuCode.Append(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(node.Attributes["humanname"].Value));
-                    }
-                    else
-                    {
-                        menuCode.Append(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(node.Name));
-                    }
+                    menuCode.Append("<a href='/Internal/Pages" + href + "/" + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(node.Attributes["title"].Value) + "/default.aspx'>");
+                    menuCode.Append(node.Attributes["url"]);
                     menuCode.AppendLine("</a>");
                     if (node.ChildNodes.Count > 0)
                     {

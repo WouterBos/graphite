@@ -19,7 +19,7 @@ namespace Graphite.Mail
         private string _mailBcc = "";
         private string _mailSubject = "";
         private string _mailBody = "";
-        private string _mailBodyTemplatePath = HttpContext.Current.Server.MapPath("~\\App_Data\\Mail\\Template.html");
+        private string _mailBodyTemplatePath = HttpContext.Current.Server.MapPath("~\\App_Data\\Grapite\\Mail\\Template.html");
         private string _Attachment;
         private Panel _FormPanel;
         private Panel _SendOkPanel;

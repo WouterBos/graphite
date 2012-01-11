@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages>
+    <page url="CodeConventions.aspx" title="Code conventions" />
+    <page url="Default.aspx" title="Default" />
+    <page url="GettingStarted.aspx" title="Getting started" />
+</pages>

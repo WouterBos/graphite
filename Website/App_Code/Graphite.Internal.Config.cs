@@ -16,7 +16,7 @@ namespace Graphite.Internal
         public Config(string demosClasses)
 	    {
             System.Xml.XmlDocument demos = new System.Xml.XmlDocument();
-            demos.Load(HttpContext.Current.Server.MapPath(@"~\App_Data\demos\root.xml"));
+            demos.Load(HttpContext.Current.Server.MapPath(@"~\App_Data\Graphite\Internal\Sitemaps\demos.xml"));
             demo = demos.SelectNodes(demosClasses);
         }
 
