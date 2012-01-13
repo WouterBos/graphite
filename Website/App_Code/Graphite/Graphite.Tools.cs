@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Data;
 using System.Text;
 using System.Xml;
@@ -10,9 +11,9 @@ namespace Graphite
     /// <summary>
     /// Summary description for Graphite
     /// </summary>
-    public class Tools
+    public static class Tools
     {
-        public string getSourceCode(string file, string path)
+        public static string GetSourceCode(string file, string path)
         {
             StringBuilder sbCode = new StringBuilder();
 
@@ -35,5 +36,32 @@ namespace Graphite
 
             return sbCode.ToString();
         }
+
+        public static string GetXmlPath(string append)
+        {
+            string strPhysicalPath = HttpContext.Current.Request.ServerVariables["script_name"].Replace("default.aspx", "");
+            strPhysicalPath = strPhysicalPath.ToLower();
+            strPhysicalPath = strPhysicalPath.Replace("-", "");
+            strPhysicalPath = strPhysicalPath.Replace("/internal/pages", "");
+            return strPhysicalPath + append;
+        }
+
+        public static string GetHumanName(string path)
+        {
+            System.Xml.XmlDocument demos = new System.Xml.XmlDocument();
+            demos.Load(HttpContext.Current.Server.MapPath(@"~\App_Data\Graphite\Internal\Sitemaps\demos.xml"));
+            XmlElement node = demos.SelectSingleNode(path) as XmlElement;
+            if (node.HasAttribute("humanname") == true)
+            {
+                return node.Attributes["humanname"].Value;
+            }
+            else
+            {
+                return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(node.Name);
+            }
+            
+        }        
+        
+
     }
 }

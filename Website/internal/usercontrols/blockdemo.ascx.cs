@@ -25,7 +25,7 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
     private void CreateDemo()
     {
         // Getting configuration settings from XML
-        config = new Graphite.Internal.Config(GetXmlPath());
+        config = new Graphite.Internal.Config(Graphite.Tools.GetXmlPath("demo"));
         dicFiles = config.Files(GetActiveIndex()); 
         
         // Run methods
@@ -37,15 +37,6 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
         CreateSupportedBrowsersList();
     }
 
-    private string GetXmlPath()
-    {
-        string strPhysicalPath = Request.ServerVariables["script_name"].Replace("default.aspx", "");
-        strPhysicalPath = strPhysicalPath.ToLower();
-        strPhysicalPath = strPhysicalPath.Replace("-", "");
-        strPhysicalPath = strPhysicalPath.Replace("/internal/pages", "");
-        return strPhysicalPath + "demo";
-    }
-    
     // Finds out which tab in the demo menu is selected. If no menu is visible above the demo, the index is always 0.
     private int GetActiveIndex()
     {
