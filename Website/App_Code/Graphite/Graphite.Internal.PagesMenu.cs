@@ -31,14 +31,20 @@ namespace Graphite.Internal
         {
             StringBuilder menuCode = new StringBuilder();
             menuCode.AppendLine("<ul>");
-            string href = GetMenuPath(arg_demo);
+            string href = "/Internal/Pages/documentation" + GetMenuPath(arg_demo);
             foreach (XmlElement node in arg_demo.ChildNodes)
             {
                 if (node.HasAttribute("url") == true)
                 {
-                    menuCode.AppendLine("<li>");
-                    menuCode.Append("<a href='/Internal/Pages" + href + "/" + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(node.Attributes["title"].Value) + "/default.aspx'>");
-                    menuCode.Append(node.Attributes["url"]);
+                    string nodeUrl = node.Attributes["url"].Value;
+                    string active = "";
+                    if (IsActive(nodeUrl, node.ParentNode.Name, node.Name) == true)
+                    {
+                        active = "gp_active";
+                    }
+                    menuCode.AppendLine("<li class='" + active + "'>");
+                    menuCode.Append("<a href='" + href + "/" + nodeUrl + "'>");
+                    menuCode.Append(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(node.Attributes["title"].Value));
                     menuCode.AppendLine("</a>");
                     if (node.ChildNodes.Count > 0)
                     {
@@ -52,6 +58,25 @@ namespace Graphite.Internal
             return menuCode.ToString();
         }
         
+        private bool IsActive(string nodeUrl, string parentName, string nodeName)
+        {
+            string loadedUrl = HttpContext.Current.Request.ServerVariables["url"].ToLower();
+            string safeNodeUrl = nodeUrl;
+            if (parentName != "pages")
+            {
+                safeNodeUrl = parentName + "/" + nodeUrl;
+            }
+            if (loadedUrl.IndexOf("/documentation/" + safeNodeUrl.ToLower()) > 0)
+            {
+                return true;
+            }
+            if (loadedUrl.IndexOf("/documentation/" + nodeName.ToLower()) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        
         private string GetMenuPath(XmlElement arg_Element)
         {
             string path = "";
@@ -61,7 +86,7 @@ namespace Graphite.Internal
                 path = "/" + Element.Name + path;
                 Element = Element.ParentNode;
             }
-            return path;
+            return path.Replace("/pages", "");
         }
     }
 }
