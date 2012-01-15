@@ -14,20 +14,29 @@ namespace Graphite.Internal
     public class DemoMenu
     {
         private System.Xml.XmlElement demo;
+        private System.Xml.XmlDocument demos;
 
         public DemoMenu()
 	    {
-            System.Xml.XmlDocument demos = new System.Xml.XmlDocument();
+            demos = new System.Xml.XmlDocument();
             demos.Load(HttpContext.Current.Server.MapPath(@"~\App_Data\Graphite\Internal\Sitemaps\demos.xml"));
             demo = demos.SelectSingleNode("/demos") as XmlElement;
         }
         
-        public string GetHTML()
+        public string GetHTML(bool tree)
         {
-            return BuildMenu(demo);
+            if (tree == false)
+            {
+                string selector = HttpContext.Current.Request.ServerVariables["url"];
+                int cutStart = selector.IndexOf("/demos/");
+                int cutEnd = selector.LastIndexOf("/");
+                selector = selector.Substring(cutStart, cutEnd - cutStart);
+                demo = demos.SelectSingleNode(selector) as XmlElement;
+            }
+            return BuildMenu(demo, tree);
         }
-        
-        private string BuildMenu(XmlElement arg_demo)
+
+        private string BuildMenu(XmlElement arg_demo, bool tree)
         {
             StringBuilder menuCode = new StringBuilder();
             menuCode.AppendLine("<ul>");
@@ -47,9 +56,9 @@ namespace Graphite.Internal
                         menuCode.Append(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(node.Name));
                     }
                     menuCode.AppendLine("</a>");
-                    if (node.ChildNodes.Count > 0)
+                    if (tree == true && node.ChildNodes.Count > 0)
                     {
-                        menuCode.AppendLine(BuildMenu(node));
+                        menuCode.AppendLine(BuildMenu(node, tree));
                     }
                     menuCode.AppendLine("</li>");
                 }

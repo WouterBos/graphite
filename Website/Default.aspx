@@ -5,7 +5,7 @@
 
 
 <asp:Content ID="Title" ContentPlaceHolderID="Title" Runat="Server">
-    <strong>Graphite</strong>
+    <strong>Homepage</strong>
 </asp:Content>
 
 

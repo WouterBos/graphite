@@ -10,6 +10,6 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         DemoMenu oDemoMenu = new Graphite.Internal.DemoMenu();
-        DemosList.Text = oDemoMenu.GetHTML();
+        DemosList.Text = oDemoMenu.GetHTML(true);
     }
 }

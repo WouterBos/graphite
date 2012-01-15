@@ -24,6 +24,7 @@
 	
 	<body id="MasterPageBody" runat="server">
 		<form id="form1" runat="server">
+		    <a href="/" class="graphite_logo" title="Back to homepage"><img src="/internal/images/logo.png" alt="Graphite logo" /></a>
     	    <h1 class="graphite_title"><asp:ContentPlaceHolder ID="Title" runat="server"></asp:ContentPlaceHolder></h1>
     	    
     	    <div class="gp_root">

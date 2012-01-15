@@ -41,7 +41,7 @@ public partial class GraphiteInternal_BreadCrumb : System.Web.UI.UserControl
         {
             strBreadcrumb += " ‹ ";
         }
-        strBreadcrumb += "<a href='/'>Graphite</a>";
+        strBreadcrumb += "<a href='/'>Homepage</a>";
         litBreadcrumb.Text = strBreadcrumb;
     }
     
