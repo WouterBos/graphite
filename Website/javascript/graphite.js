@@ -13,16 +13,13 @@
 
 
 
-/**
- * @namespace Root namespace for Graphite
- */
 if (typeof(graphite) == 'undefined') {
-  // Only create Graphite object once
+  /**
+   * @namespace Root namespace for Graphite
+   */
   var graphite = {};
 } else {
-  if (!document.getElementById('GraphiteDemoSite')) {
-    throw Error('Graphite error: root library may only be loaded once.');
-  }
+  throw Error('Graphite error: root library may only be loaded once.');
 }
 
 
@@ -58,12 +55,6 @@ graphite.events = (function() {
         );
      */
     addEvent: function(element, eventFunction, eventType, legacy) {
-      //var error;
-      //error = Estate.Check.VariableType( element, "object" )
-      //if (error != "") throw new Error( error );
-      //error = Estate.Check.VariableType( eventFunction, "function" )
-      //if (error != "") throw new Error( error );
-
       if (legacy && legacy == true) {
         if (element instanceof Array) {
           for (var i = 0; i < element.length; i++) {

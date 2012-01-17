@@ -19,7 +19,7 @@ namespace Graphite.Internal
 	    {
             System.Xml.XmlDocument demos = new System.Xml.XmlDocument();
             demos.Load(HttpContext.Current.Server.MapPath(@"~\App_Data\Graphite\Internal\Sitemaps\pages.xml"));
-            demo = demos.SelectSingleNode("/pages") as XmlElement;
+            demo = demos.SelectSingleNode("/documentation") as XmlElement;
         }
         
         public string GetHTML()
@@ -31,7 +31,7 @@ namespace Graphite.Internal
         {
             StringBuilder menuCode = new StringBuilder();
             menuCode.AppendLine("<ul>");
-            string href = "/Internal/Pages/documentation" + GetMenuPath(arg_demo);
+            string href = "/Internal/Pages" + GetMenuPath(arg_demo);
             foreach (XmlElement node in arg_demo.ChildNodes)
             {
                 if (node.HasAttribute("url") == true)

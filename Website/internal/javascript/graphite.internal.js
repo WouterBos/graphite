@@ -87,7 +87,7 @@ graphite.internal.demo = function(arg_config) {
         clipHtml.addEventListener('mouseup', function(client) {
           clipHtml.setText(source);
           var feedbackElement = jQuery('*.graphite_getCodeFeedback');
-          feedbackElement.html('Code copied')
+          feedbackElement.html('Code copied');
           feedbackElement.show();
           feedbackElement.css('opacity', 1);
           feedbackElement.delay(1500).animate(

@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="default.master.cs" Inherits="App_Master_Default" %>
 
 <!DOCTYPE html>
-<html lang="nl" id="GraphiteDemoSite">
+<html lang="nl">
 	<head runat="server">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title></title>
@@ -24,7 +24,7 @@
 	
 	<body id="MasterPageBody" runat="server">
 		<form id="form1" runat="server">
-		    <a href="/" class="graphite_logo" title="Back to homepage"><img src="/internal/images/logo.png" alt="Graphite logo" /></a>
+		    <a href="/" class="graphite_logo" title="Back to start page"><img src="/internal/images/logo.png" alt="Graphite logo" /></a>
     	    <h1 class="graphite_title"><asp:ContentPlaceHolder ID="Title" runat="server"></asp:ContentPlaceHolder></h1>
     	    
     	    <div class="gp_root">

@@ -2,7 +2,7 @@
 <%@ Register TagPrefix="Internal" TagName="PagesMenu" Src="~/Internal/usercontrols/PagesMenu.ascx" %>
 
 <!DOCTYPE html>
-<html lang="nl" id="GraphiteDemoSite">
+<html lang="nl">
 	<head id="Head1" runat="server">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title></title>

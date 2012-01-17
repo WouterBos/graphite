@@ -39,8 +39,13 @@ namespace Graphite
 
         public static string GetXmlPath(string append)
         {
-            string strPhysicalPath = HttpContext.Current.Request.ServerVariables["script_name"].Replace("default.aspx", "");
+            string strPhysicalPath = HttpContext.Current.Request.ServerVariables["script_name"];
             strPhysicalPath = strPhysicalPath.ToLower();
+            if (strPhysicalPath.IndexOf(".aspx") > 0)
+            {
+                int lastSlash = strPhysicalPath.LastIndexOf("/");
+                strPhysicalPath = strPhysicalPath.Substring(0, lastSlash + 1);
+            }
             strPhysicalPath = strPhysicalPath.Replace("-", "");
             strPhysicalPath = strPhysicalPath.Replace("/internal/pages", "");
             return strPhysicalPath + append;
