@@ -32,8 +32,8 @@
             top: 1px;
         }
         
-        > ol > li > label,
-        > ol > li .label {
+        > ol > li > label:first-child,
+        > ol > li > .label:first-child {
             float: left;
             margin-right: @gp_formColumnGutter;
             width: @gp_formColumn1;
@@ -43,7 +43,11 @@
                 left: @gp_formColumn1;
             }
         }
-        
+
+        > ol > li > input[type="checkbox"]:first-child {
+            margin-left: @gp_formColumn1 + @gp_formColumnGutter;
+        }
+
         /* Form fields */
         input[type="text"],
 		input[type="email"],
