@@ -127,6 +127,6 @@
     <value>Thank your comment. We will contact you as soon as possible.</value>
   </data>
   <data name="FormSentTitle" xml:space="preserve">
-    <value>The form is sent</value>
+    <value>The form has been sent</value>
   </data>
 </root>
