@@ -44,6 +44,10 @@
             </li>
 
             <li>
+                <asp:CheckBox ID="Notifications" runat="server" Text="Lorem ipsum dolor sit amet" TextAlign="Right" />
+            </li>
+
+            <li>
                 <asp:Label ID="Label19" runat="server" AssociatedControlID="RadioButtonList1">
                     <span>*</span>
                     Radio button list (horizontal)
