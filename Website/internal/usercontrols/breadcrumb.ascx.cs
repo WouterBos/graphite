@@ -31,19 +31,19 @@ public partial class GraphiteInternal_BreadCrumb : System.Web.UI.UserControl
         xmlDocument.Load(HttpContext.Current.Server.MapPath(@"~\App_Data\Graphite\Internal\Sitemaps\" + xmlFile));
         xmlPath = xmlPath.Replace("default.aspx", "");
         xmlPath = xmlPath.Substring(0, xmlPath.Length - 1);
-        Response.Write(xmlPath);
-        //xmlElement = xmlDocument.SelectSingleNode(xmlPath) as XmlElement;
-        //StringBuilder sbBreadCrumb = new StringBuilder();
-        //XmlNode xmlNode = xmlElement as XmlNode;
-        //int nodeLevel = 0;
-        //while (xmlNode.Name != "#document")
-        //{
-        //    sbBreadCrumb.AppendLine(getLink(xmlNode, nodeLevel));
-        //    xmlNode = xmlNode.ParentNode as XmlNode;
-        //    nodeLevel++;
-        //}
-        //sbBreadCrumb.AppendLine(" ‹ <a href='/'>Start page</a>");
-        //litBreadcrumb.Text = sbBreadCrumb.ToString();
+        //Response.Write(xmlPath);
+        xmlElement = xmlDocument.SelectSingleNode(xmlPath) as XmlElement;
+        StringBuilder sbBreadCrumb = new StringBuilder();
+        XmlNode xmlNode = xmlElement as XmlNode;
+        int nodeLevel = 0;
+        while (xmlNode.Name != "#document")
+        {
+            sbBreadCrumb.AppendLine(getLink(xmlNode, nodeLevel));
+            xmlNode = xmlNode.ParentNode as XmlNode;
+            nodeLevel++;
+        }
+        sbBreadCrumb.AppendLine(" ‹ <a href='/'>Start page</a>");
+        litBreadcrumb.Text = sbBreadCrumb.ToString();
     }
 
     private string getLink(XmlNode xmlNode, int nodeLevel)
@@ -54,6 +54,10 @@ public partial class GraphiteInternal_BreadCrumb : System.Web.UI.UserControl
         if (xmlElement.HasAttribute("humanname"))
         {
             linkName = xmlElement.Attributes["humanname"].Value;
+        }
+        else if (xmlElement.HasAttribute("title"))
+        {
+            linkName = xmlElement.Attributes["title"].Value;
         }
         else
         {

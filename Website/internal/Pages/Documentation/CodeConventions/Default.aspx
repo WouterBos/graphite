@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="Code conventions" Language="C#" MasterPageFile="~/Internal/Masterpages/DefaultAlt1.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 <%@ Register TagPrefix="Internal" TagName="BreadCrumb" Src="~/Internal/usercontrols/breadcrumb.ascx" %>
 
+
+
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
 </asp:Content>
 

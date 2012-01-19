@@ -7,4 +7,7 @@
         <page url="JavaScript.aspx" title="JavaScript" />
     </codeconventions>
     <page url="JavaScript/index.html" title="JavaScript reference" target="_blank" />
+    <page url="Contribute.aspx" title="Contribute" />
+    <page url="NewDemo.aspx" title="Making a new demo" />
+    <page url="Todo.aspx" title="Todo" />
 </documentation>
