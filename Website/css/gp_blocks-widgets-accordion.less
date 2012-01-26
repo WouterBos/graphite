@@ -7,15 +7,12 @@
 
 
 .gp_accordion {
-	dl {
-		.gp_rounded_corners(@radius: 3px);
-		.gp_gradient((@gp_colorHigh - #111), (@gp_colorHigh - #222));
-		border: 1px solid @gp_colorHigh - #444;
-	}
-	
 	dt {
-		padding: @gp_gridBlockPadding;
 		font-weight: bold;
+	}
+
+	dd + dt {
+		padding-top: @gp_gridBlockPadding;
 	}
 }
 
@@ -24,15 +21,19 @@
 .gp_accordion.gp_accordionJavaScript {
 	dt {
 		cursor: pointer;
+		padding: @gp_gridBlockPadding;
+		.gp_gradient(darken(@gp_colorHigh, 5%), darken(@gp_colorHigh, 15%));
+
+	    &:hover {
+		    .gp_gradient(darken(@gp_colorHigh, 10%), darken(@gp_colorHigh, 30%));
+		}
+
+	    &.gp_active {
+		    .gp_gradient(lighten(@gp_color1, 20%), darken(@gp_color1, 10%));
+	    }
 	}
-	dt:hover {
-		text-decoration: underline;
-	}
-	dt.gp_active {
-		color: @gp_colorHigh;
-		@gp_colorActive1: lighten(@gp_color1, 30%);
-		@gp_colorActive2: lighten(@gp_color1, 10%);
-		.gp_gradient(@gp_colorActive1, @gp_colorActive2);
-		.gp_shadow(0, 2px, 2px, darken(@gp_color1, 10%));
+	
+	dd {
+	    padding: @gp_gridBlockPadding;
 	}
 }

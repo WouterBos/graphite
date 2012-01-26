@@ -145,6 +145,23 @@
                 </demo>
             </menu>
         </navigation>
+
+        <widgets>
+            <accordion>
+                <demo>
+                <common>
+                    <files>
+                        <html use_default_code="true" />
+                        <css use_default_code="true" />
+                        <javascript use_default_code="true" />
+                    </files>
+                    <browsers>
+                        <firefox supports="9+" />
+                    </browsers>
+                </common>
+            </demo>
+            </accordion>
+        </widgets>
     </blocks>
 
     <sitecore>

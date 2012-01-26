@@ -34,12 +34,15 @@
             <p>The Graphite repository is hosted on Github. To get started you first need to create an account on Github.</p>
             
             <h2>Install stuff</h2>
-            <p>Github requires the following software:</p>
+            <p>Github requires the following software to be installed:</p>
             <ul>
-                <li>TortoiseGIT</li>
-                <li>PuTTY</li>
-                <li></li>
+                <li><a href="http://code.google.com/p/tortoisegit/downloads/list" target="_blank">TortoiseGIT</a></li>
+                <li><a href="http://the.earth.li/~sgtatham/putty/latest/x86/" target="_blank">PuTTY</a></li>
+                <li><a href="http://code.google.com/p/msysgit/downloads/list" target="_blank">msysgit</a></li>
             </ul>
+            
+            <h2>Create SSH key</h2>
+            <p>Open Pageant (comes with PuTTY) and create a public key and then save it. If you want to have TortoiseGIT to communicate with Github, you'll need to have Pageant running and have the SSH loaded.</p>
             
             <h2>Get your own working copy</h2>
             <p>Making your own working copy is called &ldquo;forking&rdquo;. You can do anything with your fork.</p>
