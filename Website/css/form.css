@@ -1,0 +1,119 @@
+.gp_textAlert {
+  border: 2px solid red;
+  padding: 2px 5px;
+  font-weight: bold;
+  background: #faff97;
+}
+
+
+
+.gp_form {
+  min-height: 0;
+}
+
+    .gp_form input,
+    .gp_form textarea,
+    .gp_form select {
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    
+    .gp_form input[type="radio"],
+    .gp_form input[type="checkbox"] {
+      position: relative;
+      top: 2px;
+      margin-right: 3px;
+    }
+    * + html .gp_form input[type="radio"],
+    * + html .gp_form input[type="checkbox"] {
+      position: static;
+      border-top: 4px solid transparent;
+      margin-right: 0;
+    }
+
+    .gp_form:after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+    
+    .gp_form fieldset > ol {
+      min-height: 0;
+      list-style: none;
+    }
+    .gp_form fieldset > ol:after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+    
+    .gp_form fieldset > ol > li {
+      width: 100%;
+      float: left;
+      clear: left;
+      margin: 0;
+      padding: 0 0 0.25em 0;
+      list-style: none;
+    }
+    
+    .gp_form fieldset label {
+      position: relative;
+      top: 1px;
+    }
+    
+    .gp_form fieldset > ol > li > label, .gp_form fieldset > ol > li .label {
+      float: left;
+      margin-right: 10px;
+      width: 150px;
+    }
+    
+    .gp_form fieldset > ol > li > label > span, .gp_form fieldset > ol > li .label > span {
+      position: absolute;
+      left: 150px;
+    }
+    
+    .gp_form fieldset input[type="text"],
+    .gp_form fieldset input[type="email"],
+    .gp_form fieldset input[type="url"],
+    .gp_form fieldset input[type="search"],
+    .gp_form fieldset input[type="password"] {
+      width: 260px;
+    }
+    
+    .gp_form fieldset input[type="submit"] {
+      margin-left: 160px;
+    }
+    
+    .gp_form fieldset span > label + input[type="radio"], .gp_form fieldset span > label + input[type="checkbox"] {
+      margin-left: 10px;
+    }
+    
+    .gp_form fieldset textarea {
+      width: 260px;
+    }
+    
+    .gp_form fieldset legend {
+      font-weight: bold;
+    }
+    
+    .gp_form .gp_formCheckFeedback {
+      border: 2px solid red;
+      padding: 2px 5px;
+      font-weight: bold;
+      background: #faff97;
+      color: black !important;
+      font-weight: bold;
+    }
+    
+    .gp_form .gp_formCheckFeedback ul {
+      margin-top: 3px;
+    }
+    
+    .gp_form .gp_formCheckFeedback li {
+      margin-left: 17px;
+      list-style-type: disc;
+      color: black;
+      font-weight: normal;
+    }
