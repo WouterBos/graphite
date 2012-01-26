@@ -12,7 +12,7 @@
 	}
 
 	dd + dt {
-		padding-top: @gp_gridBlockPadding;
+		padding-top: @gp_paragraphSpacing;
 	}
 }
 
@@ -29,6 +29,7 @@
 		}
 
 	    &.gp_active {
+			cursor: default;
 		    .gp_gradient(lighten(@gp_color1, 20%), darken(@gp_color1, 10%));
 	    }
 	}
