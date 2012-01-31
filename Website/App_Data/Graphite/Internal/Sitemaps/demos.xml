@@ -178,5 +178,16 @@
                 </common>
             </demo>
         </webformsformarketers>
+
+        <detecteditmode humanname="Detect edit mode">
+            <demo>
+                <common>
+                    <files>
+                        <javascript use_default_code="true" />
+                        <description />
+                    </files>
+                </common>
+            </demo>
+        </detecteditmode>
     </sitecore>
 </demos>
