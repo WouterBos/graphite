@@ -149,18 +149,33 @@
         <widgets>
             <accordion>
                 <demo>
-                <common>
-                    <files>
-                        <html use_default_code="true" />
-                        <css use_default_code="true" />
-                        <javascript use_default_code="true" />
-                    </files>
-                    <browsers>
-                        <firefox supports="9+" />
-                    </browsers>
-                </common>
-            </demo>
+                    <common>
+                        <files>
+                            <html use_default_code="true" />
+                            <css use_default_code="true" />
+                            <javascript use_default_code="true" />
+                        </files>
+                        <browsers>
+                            <firefox supports="9+" />
+                        </browsers>
+                    </common>
+                </demo>
             </accordion>
+
+            <googlemaps humanname="Google Maps">
+                <demo>
+                    <common>
+                        <files>
+                            <html use_default_code="true" />
+                            <css use_default_code="true" />
+                            <javascript use_default_code="true" />
+                        </files>
+                        <browsers>
+                            <firefox supports="9+" />
+                        </browsers>
+                    </common>
+                </demo>
+            </googlemaps>
         </widgets>
     </blocks>
 
