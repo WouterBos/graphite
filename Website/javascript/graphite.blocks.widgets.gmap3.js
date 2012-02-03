@@ -228,7 +228,7 @@ graphite.blocks.widgets.gmap3.prototype._addPolygons = function(polygons) {
       bounds.extend(points[ii]);
     }
 
-    Estate.Check.UpdateLiteral(polygonConfig, polygons[i].options, true);
+    graphite.check.updateLiteral(polygonConfig, polygons[i].options, true);
     polygonConfig.paths = points;
     polygonConfig.map = this._map;
 
@@ -274,7 +274,7 @@ graphite.blocks.widgets.gmap3.prototype._addPoints = function(points) {
     };
     // Add default configuration
     if (this._config.pointsOptions) {
-      Estate.Check.UpdateLiteral(
+      graphite.check.updateLiteral(
         markerConfig,
         this._config.pointsOptions,
         true
@@ -282,7 +282,7 @@ graphite.blocks.widgets.gmap3.prototype._addPoints = function(points) {
     }
     // Add marker specific configuration
     if (points[i].markerOptions) {
-      Estate.Check.UpdateLiteral(
+      graphite.check.updateLiteral(
         markerConfig,
         points[i].markerOptions,
         true);
@@ -340,7 +340,7 @@ graphite.blocks.widgets.gmap3.prototype._addPoints = function(points) {
  */
 graphite.blocks.widgets.gmap3.prototype.init = function(mapBox, config, data, directionsConfig) {
   if (typeof (config) != 'undefined') {
-    Estate.Check.UpdateLiteral(this._config, config, true);
+    graphite.check.updateLiteral(this._config, config, true);
   }
 
   this._map = this._createMap(mapBox);
@@ -408,7 +408,7 @@ graphite.blocks.widgets.gmap3.prototype.addItems = function(data, clearMap) {
     )
  */
 graphite.blocks.widgets.gmap3.prototype.updateConfig = function(config) {
-    Estate.Check.UpdateLiteral(this._config, config);
+    graphite.check.updateLiteral(this._config, config);
 };
 
 
@@ -426,7 +426,7 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
     submit: null
   };
   
-  Estate.Check.UpdateLiteral(config, newConfig, true);
+  graphite.check.updateLiteral(config, newConfig, true);
   
   if (config.directionsPanel) {
     showRouteInPage();
@@ -520,11 +520,11 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
     
     if (typeof(geo_position_js) != "undefined") {
   	  if (geo_position_js.init()) {
-  		geo_position_js.getCurrentPosition(
-  		  _setPosition,
-  		  _handleError,
-  		  { enableHighAccuracy: true }
-  		);
+    		geo_position_js.getCurrentPosition(
+    		  _setPosition,
+    		  _handleError,
+    		  { enableHighAccuracy: true }
+    		);
   	  }
     }
   }
