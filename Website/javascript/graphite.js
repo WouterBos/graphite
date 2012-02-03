@@ -270,7 +270,8 @@ graphite.events = (function() {
      *
      * @since 1.0 - 2011-11-03
      * @version 1.0 - 2011-11-03
-     * @param {Object} element The element on which the event is placed.
+     * @param {Object|Array} element The element or array of elements on which
+     *    the event is placed.
      * @param {Function} eventFunction The function that has to be linked to
      *    the event.
      * @param {String} eventType Name of the event.
@@ -294,7 +295,22 @@ graphite.events = (function() {
           addLegacyEvent(element);
         }
       } else {
-        element.addEventListener(eventType, eventFunction);
+        if (element instanceof Array) {
+          for (var i = 0; i < element.length; i++) {
+            addEvent(element[i]);
+          }
+        } else {
+          addEvent(element);
+        }
+      }
+
+      function addEvent(element) {
+        try{
+          element.addEventListener(eventType, eventFunction);
+        }
+        catch(e) {
+          console.log(element, eventType, eventFunction, e);
+        }
       }
 
       function addLegacyEvent(element) {

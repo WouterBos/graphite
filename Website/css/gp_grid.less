@@ -72,6 +72,7 @@
     
 	.gp_gridColumn {
 		float: left;
+		min-height: 1px; /* This will make empty columns still float next to each other instead of collapsing */
 
 		.gp_block {
 		    margin:@gp_gridBlockPadding;

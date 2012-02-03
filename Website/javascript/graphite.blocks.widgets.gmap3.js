@@ -44,8 +44,7 @@ graphite.blocks.widgets.gmap3 = function() {
   // Configuration object
   this._config = {
     mapOptions: {
-      center: new google.maps.LatLng(58.99036, 6.00952),
-      zoom: 10,
+      zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     },
     autoWrapMarkers: true,
@@ -233,7 +232,9 @@ graphite.blocks.widgets.gmap3.prototype._addPolygons = function(polygons) {
     polygonConfig.map = this._map;
 
     var polygon = new google.maps.Polygon(polygonConfig);
+    polygon.gp_markerOptions = polygons[i].gp_markerOptions;
     this._overlays.polygons.push(polygon);
+    this._handleMarkerOptions(polygon);
 
     // Add info window event
     if (polygons[i].infoWindow && polygons[i].infoWindow.popupText) {
@@ -289,7 +290,9 @@ graphite.blocks.widgets.gmap3.prototype._addPoints = function(points) {
     }
     // Add marker to map and store in array
     var newMarker = new google.maps.Marker(markerConfig);
+    newMarker.gp_markerOptions = points[i].gp_markerOptions;
     this._overlays.markers.push(newMarker);
+    this._handleMarkerOptions(newMarker);
 
     // Add info window event
     if (points[i].infoWindow && points[i].infoWindow.popupText) {
@@ -304,7 +307,24 @@ graphite.blocks.widgets.gmap3.prototype._addPoints = function(points) {
   }
 };
 
-;
+/**
+ * Handles extra, non-gmap marker options.
+ *
+ * @ignore
+ * @param {Object} marker A point or polygon
+ * @return {Null}
+ */
+graphite.blocks.widgets.gmap3.prototype._handleMarkerOptions = function(marker) {
+  if (marker.gp_markerOptions) {
+    if (marker.gp_markerOptions.openOnClick) {
+      // Opens URL
+      google.maps.event.addListener(marker, 'click', function() {
+        document.location.href = marker.gp_markerOptions.openOnClick;
+        }
+      );
+    }
+  }
+};
 
 /**
  * Initiates creation map
@@ -444,7 +464,7 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
           event.stopPropagation();
         }
       },
-      "onkeydown"
+      "keydown"
     );
 
     graphite.events.addEvent(
@@ -456,7 +476,7 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
           openPopup();
         }
       },
-      "onkeyup"
+      "keyup"
     );
 
     if (config.submit) {
@@ -466,7 +486,7 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
           event.preventDefault();
           event.stopPropagation();
         },
-        "onclick"
+        "click"
       );
     }
 
@@ -478,7 +498,7 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
           event.stopPropagation();
           openPopup();
         },
-        "onmousedown"
+        "mousedown"
       );
     }
     
@@ -504,7 +524,7 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
           event.stopPropagation();
           _calcRoute();
         },
-        "onclick"
+        "click"
       );
     }
     
@@ -515,7 +535,7 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
         event.stopPropagation();
         _calcRoute();
       },
-      "onsubmit"
+      "submit"
     );
     
     if (typeof(geo_position_js) != "undefined") {

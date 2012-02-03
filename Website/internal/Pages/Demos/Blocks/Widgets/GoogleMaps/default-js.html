@@ -11,7 +11,7 @@
     graphite.events.addEvent(
       window,
       runMap,
-      "onload",
+      "load",
       true
     );
 
@@ -22,26 +22,28 @@
         {
           mapOptions:
           {
-            zoom: 9
+            center: new google.maps.LatLng(58.99036, 6.00952),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
           },
           autoWrapMarkers: true
         },
         {
           points:
           [
-            { lat: 58.96913, lng: 5.73486, markerOptions: { icon: 'http://gmaps-samples.googlecode.com/svn/trunk/markers/blue/blank.png' }, infoWindow: { popupText: "Lorem"} },
-            { lat: 59.06598, lng: 5.92163, markerOptions: {}, infoWindow: { popupText: "Amet"} },
-            { lat: 59.02501, lng: 6.02463, markerOptions: {}, infoWindow: {} }
+            {lat: 58.96913, lng: 5.73486, markerOptions: {icon: 'http://gmaps-samples.googlecode.com/svn/trunk/markers/blue/blank.png'}, gp_markerOptions: { openOnClick: 'http://www.google.nl' }, infoWindow: { popupText: "Lorem"}},
+            {lat: 59.06598, lng: 5.92163, markerOptions: {}, infoWindow: {popupText: "Amet"}},
+            {lat: 59.02501, lng: 6.02463, markerOptions: {}, infoWindow: {}}
           ],
           polygons:
           [
             {
               points:
               [
-                { lat: 59.27430, lng: 5.92438 },
-                { lat: 59.29815, lng: 6.05072 },
-                { lat: 59.25465, lng: 6.10291 },
-                { lat: 59.22234, lng: 5.92987 }
+                {lat: 59.27430, lng: 5.92438},
+                {lat: 59.29815, lng: 6.05072},
+                {lat: 59.25465, lng: 6.10291},
+                {lat: 59.22234, lng: 5.92987}
               ],
               options: {
                 strokeColor: '#0000ff',
@@ -52,15 +54,18 @@
               },
               infoWindow: {
                 popupText: "Dolor"
+              },
+              gp_markerOptions: {
+                openOnClick: 'http://www.google.nl'
               }
             },
             {
               points:
               [
-                { lat: 58.85709, lng: 5.75272 },
-                { lat: 58.96134, lng: 5.82138 },
-                { lat: 58.91103, lng: 5.96970 },
-                { lat: 58.87555, lng: 5.85159 }
+                {lat: 58.85709, lng: 5.75272},
+                {lat: 58.96134, lng: 5.82138},
+                {lat: 58.91103, lng: 5.96970},
+                {lat: 58.87555, lng: 5.85159}
               ],
               options: {}
             }
