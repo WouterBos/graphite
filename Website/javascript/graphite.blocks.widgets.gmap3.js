@@ -316,10 +316,53 @@ graphite.blocks.widgets.gmap3.prototype._addPoints = function(points) {
  */
 graphite.blocks.widgets.gmap3.prototype._handleMarkerOptions = function(marker) {
   if (marker.gp_markerOptions) {
+    var map = this._map;
+
     if (marker.gp_markerOptions.openOnClick) {
       // Opens URL
-      google.maps.event.addListener(marker, 'click', function() {
-        document.location.href = marker.gp_markerOptions.openOnClick;
+      google.maps.event.addListener(
+        marker,
+        'click',
+        function() {
+          document.location.href = marker.gp_markerOptions.openOnClick;
+        }
+      );
+    }
+    if (marker.gp_markerOptions.customTooltip && InfoBox) {
+      var tooltip
+      
+      // Shows custom tooltip
+      google.maps.event.addListener(
+        marker,
+        'mouseover',
+        function() {
+          var options = {
+            content: marker.gp_markerOptions.customTooltip,
+            boxStyle: {
+              border: "1px solid black",
+              textAlign: "center",
+              fontSize: "12px",
+              width: "50px",
+              background: "#FFFFE3"
+            },
+            disableAutoPan: true,
+            pixelOffset: new google.maps.Size(-25, 0),
+            position: marker.getPosition(),
+            closeBoxURL: "",
+            isHidden: false,
+            pane: "mapPane",
+            enableEventPropagation: true
+          };
+
+          tooltip = new InfoBox(options);
+          tooltip.open(map);
+        }
+      );
+      google.maps.event.addListener(
+        marker,
+        'mouseout',
+        function() {
+          tooltip.close();
         }
       );
     }
