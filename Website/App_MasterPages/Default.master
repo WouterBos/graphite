@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html lang="nl">
+<html id="MasterPageHtml" runat="server">
 	<head runat="server">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title></title>

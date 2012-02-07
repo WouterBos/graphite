@@ -11,6 +11,7 @@ public partial class Master : System.Web.UI.MasterPage
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        MasterPageBody.Attributes["class"] += Graphite.Css.UserAgentClasses();
+        MasterPageHtml.Attributes["class"] += Graphite.Css.UserAgentClasses();
+		MasterPageHtml.Attributes["lang"] = System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToString();
     }
 }
