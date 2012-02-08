@@ -1,0 +1,71 @@
+<style>
+    .newLineFloat {
+        clear: left;
+        margin-left: 0;
+    }
+    
+    ul.demobox {
+        min-height: 0;
+    }
+    ul.demobox:after {
+        clear: both;
+        display: block;
+        content: "";
+    }
+    
+    ul.demobox li {
+        float: left;
+        margin: 0 0 10px 10px;
+        border: 1px solid #999;
+    }
+
+    ul.demobox li.box1 {
+        width: 150px;
+        height: 50px;
+        background: #eee;
+    }
+    ul.demobox li.box2 {
+        width: 235px;
+        height: 100px;
+        background: #ddd;
+    }
+    ul.demobox li.box3 {
+        width: 83px;
+        height: 30px;
+        background: #ccc;
+    }
+    ul.demobox li.box4 {
+        width: 400px;
+        height: 20px;
+        background: #bbb;
+    }
+</style>
+
+<ul class="demobox">
+    <li class="box1"></li>
+    <li class="box2"></li>
+    <li class="box4"></li>
+    <li class="box3"></li>
+    <li class="box2"></li>
+    <li class="box4"></li>
+    <li class="box3"></li>
+    <li class="box1"></li>
+    <li class="box2"></li>
+    <li class="box1"></li>
+    <li class="box4"></li>
+    <li class="box3"></li>
+    <li class="box1"></li>
+    <li class="box2"></li>
+    <li class="box3"></li>
+    <li class="box4"></li>
+    <li class="box1"></li>
+    <li class="box1"></li>
+    <li class="box3"></li>
+    <li class="box4"></li>
+    <li class="box2"></li>
+    <li class="box3"></li>
+    <li class="box2"></li>
+    <li class="box3"></li>
+    <li class="box4"></li>
+    <li class="box1"></li>
+</ul>

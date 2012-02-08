@@ -205,4 +205,22 @@
             </demo>
         </detecteditmode>
     </sitecore>
+
+    <estate>
+        <tools>
+            <floatboxfixer humanname="Float Box Fixer">
+                <demo>
+                    <default>
+                        <files externalDemo="true">
+                            <html use_default_code="true" />
+                            <javascript />
+                            <description />
+                        </files>
+                        <browsers>
+                        </browsers>
+                    </default>
+                </demo>
+            </floatboxfixer>
+        </tools>
+    </estate>
 </demos>
