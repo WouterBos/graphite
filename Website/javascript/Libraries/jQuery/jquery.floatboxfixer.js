@@ -1,5 +1,7 @@
 /**
- * @author wbos
+ * @fileOverview Float Box Fixer. Adds a CSS class to each floating element
+ *    that starts a new line.
+ * @since 1 - 2012-2-8
  */
 
 
