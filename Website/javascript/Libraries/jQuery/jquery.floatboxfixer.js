@@ -20,7 +20,7 @@
     
     return this.each(function() {
       var item = $(this);
-      if (typeof(currentOffset) != 'undefined' &&
+      if (typeof(currentOffset) == 'undefined' ||
           currentOffset < item.offset().top) {
         item.addClass(config.fixClass);
       }
