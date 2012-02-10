@@ -13,6 +13,11 @@
 	.scfTitleBorder {
 		.gp_heading1;
 	}
+
+	.scfFooterBorder {
+		clear: both;
+		padding: @gp_paragraphSpacing 0 @gp_paragraphSpacing (@gp_formColumn1 + @gp_formColumnGutter);
+	}
 	
 	legend {
 		.gp_heading2;
@@ -22,6 +27,8 @@
 	.scfSectionContent > div,
 	.scfPasswordConfirmation > div:first-child,
 	.scfCreditCard > div:first-child {
+		position: relative;
+		.gp_clear();
 		padding: 0 0 @gp_paragraphSpacing/4 0;
 	}
 	
@@ -60,6 +67,12 @@
         width: @gp_formColumn1;
 	}
 	
+	.scfValidatorRequired,
+	.scfRequired {
+		position: absolute;
+		left: @gp_formColumn1;
+	}
+	
 	/* Column 2 */
 	input[type="text"],
 	input[type="email"],
@@ -69,11 +82,30 @@
 	textarea {
 		width: @gp_formColumn2;
 	}
+
+	[class*="GeneralPanel"] {
+		float: left;
+		width: @gp_formColumn2;
+	}
+	
+	.scfListBox,
+	.scfDropList {
+		width: auto;
+		max-width: @gp_formColumn2;
+	}
+	
+	[class*="scfDateSelector"] select {
+		width: @gp_formColumn2 / 3;
+	}
 	
 	.scfDateSelectorGeneralPanel label {
 		position: absolute;
 		top: -9999em;
 		left: -9999em;
+	}
+	
+	[class*="UsefulInfo"] {
+		font-size: 0.9em;
 	}
 	
 	.scfSubmitButtonBorder input {
