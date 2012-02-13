@@ -481,6 +481,8 @@ graphite.blocks.widgets.gmap3.prototype.updateConfig = function(config) {
 var directionDisplay;
 var geocoder = null;
 graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
+  var directionsService;
+  var directionsDisplay;
   var config = {
     directionsPanel: null,
     origin: "",
@@ -501,10 +503,14 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
   function openRoutePopup() {
     graphite.events.addEvent(
       [config.origin,config.destination],
-      function(event) {
+      function(e) {
+        var event = window.event ? window.event : e;
         if (event.keyCode == 13) {
-          event.preventDefault();
-          event.stopPropagation();
+          if (window.event) {
+            window.event.returnValue = false;
+          } else {
+            event.preventDefault();
+          }
         }
       },
       "keydown"
@@ -512,10 +518,14 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
 
     graphite.events.addEvent(
       [config.origin,config.destination],
-      function(event) {
+      function(e) {
+        var event = window.event ? window.event : e;
         if (event.keyCode == 13) {
-          event.preventDefault();
-          event.stopPropagation();
+          if (window.event) {
+            window.event.returnValue = false;
+          } else {
+            event.preventDefault();
+          }
           openPopup();
         }
       },
@@ -526,35 +536,27 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
       graphite.events.addEvent(
         config.submit,
         function(event) {
-          event.preventDefault();
-          event.stopPropagation();
+          if (window.event) {
+            window.event.returnValue = false;
+          } else {
+            event.preventDefault();
+          }
+		  openPopup();
         },
         "click"
-      );
-    }
-
-    if (config.submit) {
-      graphite.events.addEvent(
-        config.submit,
-        function(event) {
-          event.preventDefault();
-          event.stopPropagation();
-          openPopup();
-        },
-        "mousedown"
       );
     }
     
     function openPopup() {
       window.open("http://maps.google.nl/maps?"+
-                  "saddr="+ config.origin.value +
-                  "&daddr="+ config.destination.value +
+                  "saddr="+ encodeURIComponent(config.origin.value) +
+                  "&daddr="+ encodeURIComponent(config.destination.value) +
                   "&hl=nl");
     }
   }
   
   function showRouteInPage() {
-    var directionsService = new google.maps.DirectionsService();
+    directionsService = new google.maps.DirectionsService();
     directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(config.directionsPanel);
@@ -594,6 +596,7 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
 
   function _setPosition(position){
     if (geocoder == null) {
+      config.origin.placeholder = 'Uw locatie opzoeken...'
       geocoder = new google.maps.Geocoder();
     }
     
@@ -624,10 +627,11 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
   }  
 
   function _handleError() {
-    //
+    alert('Er kan geen route worden berekenen.');
   }  
   
   function _calcRoute() {
+    var directionsPanel = config.directionsPanel;
     var request = {
       origin: config.origin.value,
       destination: config.destination.value,
@@ -636,6 +640,12 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
     directionsService.route(request, function(response, status){
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
+        setTimeout(
+          function() {
+            document.getElementById('directions_result').scrollIntoView(true);
+          },
+          50
+        );
       }
     });
   }
