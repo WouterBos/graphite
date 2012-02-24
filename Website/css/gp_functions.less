@@ -11,7 +11,7 @@
     box-sizing: @boxType;
 }
 
-.gp_gradient(@start: #ffffff, @end: #000000) {
+.gp_linearGradient(@start: #ffffff, @end: #000000) {
 	background-color: @start;
 	background-image:    -moz-linear-gradient(top, @start, @end); 
 	background-image:     -ms-linear-gradient(top, @start, @end); 
@@ -22,7 +22,7 @@
 	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorStr='@{start}', EndColorStr='@{end}')";
 }
 
-.gp_shadow(@xOffset: 5px, @yOffset: 5px, @shadowSize: 10px, @shadowColor: #000000) {
+.gp_boxShadow(@xOffset: 5px, @yOffset: 5px, @shadowSize: 10px, @shadowColor: #000000) {
 	-moz-box-shadow: @xOffset @yOffset @shadowSize @shadowColor; 
     -webkit-box-shadow: @xOffset @yOffset @shadowSize @shadowColor; 
 	box-shadow: @xOffset @yOffset @shadowSize @shadowColor; 
@@ -34,13 +34,7 @@
 	filter: ~"alpha(opacity=" @opacity*100 ~")";
 }
 
-.gp_rounded_corners(@radius: 5px) {
-	-moz-border-radius: @radius;
-	-webkit-border-radius: @radius;
-	border-radius: @radius;
-}
-
-.gp_rounded_corners_all(@topLeft: 5px, @topRight: 5px, @bottomRight: 5px, @bottomLeft: 5px) {
+.gp_borderRadius(@topLeft: 5px, @topRight: 5px, @bottomRight: 5px, @bottomLeft: 5px) {
 	-moz-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
 	-webkit-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
 	border-radius: @topLeft @topRight @bottomRight @bottomLeft;

@@ -22,15 +22,15 @@
 	dt {
 		cursor: pointer;
 		padding: @gp_gridBlockPadding;
-		.gp_gradient(darken(@gp_colorHigh, 5%), darken(@gp_colorHigh, 15%));
+		.gp_linearGradient(darken(@gp_colorHigh, 5%), darken(@gp_colorHigh, 15%));
 
 	    &:hover {
-		    .gp_gradient(darken(@gp_colorHigh, 10%), darken(@gp_colorHigh, 30%));
+		    .gp_linearGradient(darken(@gp_colorHigh, 10%), darken(@gp_colorHigh, 30%));
 		}
 
 	    &.gp_active {
 			cursor: default;
-		    .gp_gradient(lighten(@gp_color1, 20%), darken(@gp_color1, 10%));
+		    .gp_linearGradient(lighten(@gp_color1, 20%), darken(@gp_color1, 10%));
 	    }
 	}
 	

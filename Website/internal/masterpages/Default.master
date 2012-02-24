@@ -75,7 +75,12 @@
 				        <div class="gp_gridRow gp_gridFlex gp_gridColumns1">
 				            <div class="gp_gridColumn gp_gridColumn1">
 				                <div class="gp_block gp_textBlock">
-                                    <p><a href="https://github.com/WouterBos/graphite">Download Graphite</a></p>
+                                    <p>
+                                        <strong>Graphite</strong>
+                                        <a href="https://github.com/WouterBos/graphite/downloads">Download</a>
+                                        <a href="https://github.com/WouterBos/graphite">Repository</a>
+                                        <a href="http://graphite.estate.nl">Preview on graphite.estate.nl</a>
+                                    </p>
                                 </div>
 					        </div>
 				        </div>
