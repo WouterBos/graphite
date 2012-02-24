@@ -7,16 +7,16 @@
 
 
 .gp_colWidth(@colSize) {
-    width: ((@gp_gridWidth / @gp_gridCols) * @colSize);
+    width: ((@gp_gridWidth / @gp_gridFixedCols) * @colSize);
     float: left;
 }
 
 #gp_gridSpacing {
     .prepend(@colSize) {
-        margin-left: ((@gp_gridWidth / @gp_gridCols) * @colSize);
+        margin-left: ((@gp_gridWidth / @gp_gridFixedCols) * @colSize);
     }
     
     .append(@colSize) {
-        margin-right: ((@gp_gridWidth / @gp_gridCols) * @colSize);
+        margin-right: ((@gp_gridWidth / @gp_gridFixedCols) * @colSize);
     }
 }
