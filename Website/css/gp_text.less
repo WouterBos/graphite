@@ -10,7 +10,7 @@ html {
 }
 
 a {
-	color: #0000ff;
+	color: @gp_colorLink;
 	text-decoration: none;
 }
 a:hover,
@@ -82,5 +82,13 @@ textarea {
 	border: 2px solid @gp_colorAlert;
 	padding: 2px 5px;
 	font-weight: bold;
-	background: @gp_colorAttention;
+	background: mix(lighten(@gp_colorAlert, 20%), #fff);
 }
+
+.gp_textAttention {
+	border: 2px solid darken(@gp_colorAttention, 30%);
+	padding: 2px 5px;
+	font-weight: bold;
+	background: darken(@gp_colorAttention, 30%);
+}
+
