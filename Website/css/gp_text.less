@@ -79,16 +79,25 @@ textarea {
 
 
 .gp_textAlert {
-	border: 2px solid @gp_colorAlert;
+	border: 2px solid darken(@gp_colorAlert, 10%);
 	padding: 2px 5px;
 	font-weight: bold;
-	background: mix(lighten(@gp_colorAlert, 20%), #fff);
+	background: desaturate(lighten(@gp_colorAlert, 25%), 20%);
 }
 
 .gp_textAttention {
-	border: 2px solid darken(@gp_colorAttention, 30%);
+	border: 2px solid darken(@gp_colorAttention, 10%);
 	padding: 2px 5px;
 	font-weight: bold;
-	background: darken(@gp_colorAttention, 30%);
+	background: desaturate(lighten(@gp_colorAttention, 30%), 40%);
+}
+
+.gp_textAlert,
+.gp_textAttention {
+	color: @gp_colorLow;
+	
+	a {
+		color: @gp_colorLow;
+	}
 }
 

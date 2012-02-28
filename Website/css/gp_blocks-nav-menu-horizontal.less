@@ -9,25 +9,14 @@
 
 	> ul > li {
 		float: left;
+		padding-left: 1px;
+	}
+	> ul > li:first-child {
+		padding-left: 0;
 	}
 	
-	a {
-		.gp_transition(all, 0.5s, ease-out);
-		color: #ffffff;
-		text-decoration: none;
-		padding: @gp_gridBlockSpacing / 4 @gp_gridBlockSpacing / 2;
-		background: @gp_colorLow;
-	}
 	> ul > li > a {
 		float: left;
-		border-left: 1px solid #ffffff;
-	}
-	a:hover {
-		.gp_transition(all, 0.1s, ease-out);
-		background: @gp_colorLow + #444;
-	}
-	> ul > li:first-child > a {
-		border-left-width: 0;
 	}
 	
 	ul {

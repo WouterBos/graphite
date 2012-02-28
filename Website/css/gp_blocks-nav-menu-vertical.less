@@ -8,23 +8,15 @@
 
 .gp_menu.gp_menu_typeVertical {
 	li {
-		border-top: 1px solid @gp_colorHigh;
+		padding-top: 1px;
 	}
 	> li:first-child,
 	li li {
-		border-top-width: 0;
+		padding-top: 0;
 	}
 
 	a {
 		display: block;
-		.gp_transition(all, 0.5s, ease-out);
-		color: @gp_colorHigh;
-		text-decoration: none;
-		padding: @gp_gridBlockSpacing / 4 @gp_gridBlockSpacing / 2;
-	}
-	a:hover {
-		.gp_transition(all, 0.1s, ease-out);
-		background: @gp_colorLow + #444;
 	}
 	
 	ul ul {

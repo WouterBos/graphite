@@ -42,7 +42,13 @@
 	}
 
 	ul ul {
+		padding-top: @navMenuCollapse_border;
 		width: @navMenuCollapse_width;
+	}
+
+	ul ul ul {
+		padding-top: 0;
+		padding-left: @navMenuCollapse_border;
 	}
 	
 	> ul > li > ul {
@@ -65,17 +71,13 @@
 		top: 0;
 	}
 
-	li li li {
-		border-left: @navMenuCollapse_border solid @gp_colorLow;
-	}
-
 	ul ul ul:before {
 		content: "›";
 		position: absolute;
 		top: -1px;
 		left: -10px;
 		z-index: 10000;
-		color: @gp_colorHigh;
+		color: @gp_colorLow;
 		font-weight: bold;
 		line-height: @navMenuCollapse_height;
 	}
@@ -114,8 +116,9 @@
 	width: @gp_menu_width;
 
 	ul ul {
-		top: 0;
+		top: @navMenuCollapse_border;
 		display: none;
+		border-left: @navMenuCollapse_border solid transparent;
 	}
 	
 	> ul > li > ul {
