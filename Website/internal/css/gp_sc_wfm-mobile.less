@@ -1,0 +1,59 @@
+/*
+ * Basic form
+ */
+
+
+
+
+
+@media screen and (max-width:@gp_mobile) {
+	.gp_sc_wfm {
+		/* Column 1 */
+		label:first-child,
+		.scfCheckBoxListLabel,
+		.scfRadioButtonListLabel,
+		.scfDateSelectorLabel {
+	        float: none;
+	        margin-right: 0;
+	        width: 100%;
+	        font-weight: bold;
+		}
+		
+		.scfCheckbox label {
+			font-weight: bold;
+		}
+		
+		.scfValidatorRequired,
+		.scfRequired {
+			position: static;
+		}
+		
+		/* Column 2 */
+		input[type="text"],
+		input[type="email"],
+		input[type="url"],
+		input[type="search"],
+		input[type="password"],
+		textarea {
+			width: 100%;
+		}
+	
+		[class*="GeneralPanel"] {
+			float: none;
+			width: 100%;
+		}
+		
+		.scfListBox,
+		.scfDropList {
+			max-width: auto;
+		}
+		
+		[class*="scfDateSelector"] select {
+			width: @gp_formColumn2 / 3;
+		}
+		
+		.scfSubmitButtonBorder input {
+			margin-left: 0;
+		}
+	}
+}

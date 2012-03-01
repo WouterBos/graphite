@@ -1,0 +1,70 @@
+/*
+ * Basic ASP.NET login form
+ */
+
+
+
+
+
+
+.gp_login {
+	table.gp_loginRoot {
+		margin: 0 auto;
+		width: 245px;
+	}
+	
+	table.gp_loginRoot > tbody > tr > td {
+		border: 1px solid @gp_colorLow + #999;
+		background: @gp_colorHigh - #111;
+		.gp_boxShadow(0, 0, @gp_gridBlockPadding, (@gp_colorLow + #999));
+		padding: @gp_gridBlockPadding;
+	}
+
+	table table {
+		width: 100%;
+	}
+	
+	table table td {
+		padding-top: @gp_gridBlockPadding / 5;
+		padding-bottom: @gp_gridBlockPadding / 5;
+	}
+	
+    .gp_loginTitle {
+    	padding-bottom: @gp_gridBlockPadding / 2;
+    	font-size: 1.2em;
+    	font-weight: bold;
+    	text-align: left;
+    }
+    
+    .gp_loginLabel {
+    	padding-right: @gp_gridBlockPadding / 2;
+    	text-align: left;
+    	white-space: nowrap;
+    }
+
+    .gp_loginCheckbox input[type="checkbox"] {
+    	position:relative;
+    	top: 3px;
+    	margin-right: @gp_gridBlockPadding / 2;
+    }
+
+    .gp_loginTextBox {
+    	float: right;
+    	width: 138px;
+    }
+    
+    .gp_loginValidator {
+    	position: absolute;
+    	float: left;
+    }
+
+    .gp_loginLoginButton {
+    	margin-top: (@gp_gridBlockPadding / 2);
+    	padding: 0 @gp_gridBlockPadding / 2;
+    	font-weight: bold;
+    }
+}
+.ie7 .gp_login,
+.ie8 .gp_login {
+   	position: static;
+ }

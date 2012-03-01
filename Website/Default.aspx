@@ -19,10 +19,25 @@
     <div class="gp_block gp_textBlock">
         <article>
             <h1>Welcome to Graphite</h1>
-            <p><big>Graphite is a frontend development framework for ASP.NET websites with <a href="http://dotlesscss.org">.Less</a>. It will help to kickstart your web project.</big></p>
-            <p><big><strong><a href="/Internal/Pages/Documentation/">How to use Graphite</a></big></strong></p>
-            <p class="gp_textAlert"><big><strong>The project is still very alpha. But there's a <a href="/Internal/Pages/demos/blocks/navigation/menu/default.aspx">preview</a> of the menu component.</strong></big></p>
+            <p class="intro">Graphite is a frontend development framework for ASP.NET websites with <a href="http://dotlesscss.org">.Less</a>. It will help to kickstart your web project. Graphite aims to provide:</p>
+            <ul class="intro">
+                <li>Various templates (some ASP.NET-specific)</li>
+                <li>2 grid systems</li>
+                <li>Sites ready for phones and print</li>
+                <li>Accessible webites</li>
+            </ul>
+            
+            <ul class="intro">
+                <li><strong><a href="/Internal/Pages/Documentation/">How to use Graphite</a></strong></li>
+                <li><strong><a href="/start.aspx">Go edit the start page</a></strong></li>
+            </ul>
         </article>
+    </div>
+    
+    <div class="gp_block">
+        <nav>
+            <p class="gp_textAlert"><big><strong>The project is still very alpha. But there's a <a href="/Internal/Pages/demos/blocks/navigation/menu/default.aspx">preview</a> of the menu component.</strong></big></p>
+        </nav>
     </div>
     
     <div class="gp_block">

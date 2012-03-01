@@ -1,0 +1,114 @@
+/*
+ * Basic form
+ */
+
+
+
+
+
+
+.gp_sc_wfm {
+    .gp_clear();
+
+	.scfTitleBorder {
+		.gp_heading1;
+	}
+
+	.scfFooterBorder {
+		clear: both;
+		padding: @gp_paragraphSpacing 0 @gp_paragraphSpacing (@gp_formColumn1 + @gp_formColumnGutter);
+	}
+	
+	legend {
+		.gp_heading2;
+		padding-top: @gp_paragraphSpacing;
+	}
+	
+	.scfSectionContent > div,
+	.scfPasswordConfirmation > div:first-child,
+	.scfCreditCard > div:first-child {
+		position: relative;
+		.gp_clear();
+		padding: 0 0 @gp_paragraphSpacing/4 0;
+	}
+	
+	.scfCheckBoxList td + td,
+	.scfRadioButtonList td + td {
+		padding: 0 0 0 @gp_paragraphSpacing;
+	}
+	
+	/* Simple generic content styling */
+	.scfIntroBorder,
+	.scfFooterBorder {
+		margin: @gp_gridBlockSpacing/2 0;
+
+		table,
+		p,
+		ul,
+		ol {
+			margin-top: @gp_paragraphSpacing;
+		}
+
+		> table:first-child,
+		> p:first-child,
+		> ul:first-child,
+		> ol:first-child {
+			margin-top: @gp_paragraphSpacing;
+		}
+	}
+	
+	/* Column 1 */
+	label:first-child,
+	.scfCheckBoxListLabel,
+	.scfRadioButtonListLabel,
+	.scfDateSelectorLabel {
+        float: left;
+        margin-right: @gp_formColumnGutter;
+        width: @gp_formColumn1;
+	}
+	
+	.scfValidatorRequired,
+	.scfRequired {
+		position: absolute;
+		left: @gp_formColumn1;
+	}
+	
+	/* Column 2 */
+	input[type="text"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="password"],
+	textarea {
+		width: @gp_formColumn2;
+	}
+
+	[class*="GeneralPanel"] {
+		float: left;
+		width: @gp_formColumn2;
+	}
+	
+	.scfListBox,
+	.scfDropList {
+		width: auto;
+		max-width: @gp_formColumn2;
+	}
+	
+	[class*="scfDateSelector"] select {
+		width: @gp_formColumn2 / 3;
+	}
+	
+	.scfDateSelectorGeneralPanel label {
+		position: absolute;
+		top: -9999em;
+		left: -9999em;
+	}
+	
+	[class*="UsefulInfo"] {
+		font-size: 0.9em;
+	}
+	
+	.scfSubmitButtonBorder input {
+		margin-left: @gp_formColumn1 + @gp_formColumnGutter;
+	}
+}

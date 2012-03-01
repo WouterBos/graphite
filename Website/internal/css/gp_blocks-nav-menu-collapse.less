@@ -1,0 +1,135 @@
+/*
+ * Menu with drop downs
+ *
+ * Styling for a menu with hidden submenus that become visible when the parent
+ * list item is hovered. Works with both horizontal and vertical menus.
+ */
+
+
+
+@navMenuCollapse_height: 28px;
+@navMenuCollapse_width: 200px;
+@navMenuCollapse_border: 1px;
+
+.gp_menu.gp_menu_typeCollapse {
+	> ul {
+		position: relative;
+		z-index: 100000;	
+	}
+	
+	li {
+		position: relative;
+	}
+	
+	li li {
+		display: block;
+		float: left;
+		width: 100%;
+	}
+
+	li li a {
+		display: block;
+		float: none;
+	}
+	
+	li li a {
+		display: block;
+		border-top: @navMenuCollapse_border solid @gp_colorHigh;
+	}
+
+	li li:first-child > a {
+		border-top-width: 0;
+	}
+
+	ul ul {
+		padding-top: @navMenuCollapse_border;
+		width: @navMenuCollapse_width;
+	}
+
+	ul ul ul {
+		padding-top: 0;
+		padding-left: @navMenuCollapse_border;
+	}
+	
+	> ul > li > ul {
+		position: absolute;
+	}
+
+	li:hover > ul,
+	li.gp_hover > ul {
+		display: block !important;
+	}
+
+	li li:hover > ul,
+	li li.gp_hover > ul {
+		position: absolute;
+		top: @navMenuCollapse_border;
+		left: 100%;
+	}
+	li li:hover:first-child > ul,
+	li li.gp_hover:first-child > ul {
+		top: 0;
+	}
+
+	ul ul ul:before {
+		content: "›";
+		position: absolute;
+		top: -1px;
+		left: -10px;
+		z-index: 10000;
+		color: @gp_colorLow;
+		font-weight: bold;
+		line-height: @navMenuCollapse_height;
+	}
+}
+
+
+
+.gp_menu.gp_menu_typeHorizontal.gp_menu_typeCollapse {
+	> ul > li > ul {
+		top: @navMenuCollapse_height;
+		left: @navMenuCollapse_border;
+	}
+	> ul > li:first-child > ul {
+		left: 0;
+	}
+
+	li li:hover > ul,
+	li li.gp_hover > ul {
+		position: absolute;
+		top: @navMenuCollapse_border;
+		left: 100%;
+	}
+	li li:hover:first-child > ul,
+	li li.gp_hover:first-child > ul {
+		top: 0;
+	}
+}
+
+
+
+.gp_menu.gp_menu_typeVertical.gp_menu_typeCollapse {
+	@gp_menu_width:  200px;
+	
+
+	
+	width: @gp_menu_width;
+
+	ul ul {
+		top: @navMenuCollapse_border;
+		display: none;
+		border-left: @navMenuCollapse_border solid transparent;
+	}
+	
+	> ul > li > ul {
+		margin-left: @gp_menu_width;
+	}
+	
+	li li a {
+		padding-left: @gp_gridBlockSpacing / 2 !important;
+	}
+
+	li.gp_activePage > a:before {
+		display: none;
+	}
+}

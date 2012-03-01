@@ -1,0 +1,73 @@
+/*
+ * Basic form
+ */
+
+
+
+
+
+
+.gp_form {
+    fieldset {
+        /* List */
+        > ol {
+            list-style: none;
+        }
+        
+        > ol > li {
+            width: 100%;
+            float: left;
+            clear: left;
+            margin: 0;
+            padding: 0 0 5px 0;
+            list-style: none;
+        }
+        
+        /* Labels */
+        label {
+            position: relative;
+        }
+        
+        > ol > li > label,
+        > ol > li .label {
+            display: block;
+        }
+        
+        /* Form fields */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            .gp_boxSizing();
+            display: block;
+            text-indent: 3px;
+        }
+    
+        input[type="submit"] {
+            padding: 0 3px 0 3px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            position: relative;
+            top: 2px;
+            margin: 0 2px 0 0;
+        }
+        
+        span > label + input[type="radio"],
+        span > label + input[type="checkbox"] {
+            margin-left: @gp_formColumnGutter;
+        }
+    
+        textarea {
+            display: block;
+            width: 100%;
+            .gp_boxSizing();
+            height: 5em;
+            padding: 0 3px 0 3px;
+        }
+    
+        legend {
+            font-weight: bold;
+        }
+    }
+}
