@@ -50,7 +50,7 @@
             
             <login>
                 <demo>
-                    <common cssclass="gp_menu_typeVertical">
+                    <common cssclass="GP_TODO">
                         <files>
                             <ascx />
                             <css use_default_code="true" />
