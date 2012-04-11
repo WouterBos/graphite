@@ -37,20 +37,7 @@
 	            <!-- Start | Page content -->
 	            <div class="gp_content">
 		            <div class="gp_main">
-			            <div class="gp_textBlock">
-				            <h1>Graphite start page</h1>
-			            </div>
-            			
-			            <!-- Start | 2 Columns -->
-				        <div class="gp_gridRow gp_gridFlex gp_gridColumns2Alt1">
-				            <div class="gp_gridColumn gp_gridColumn1">
-				                <asp:ContentPlaceHolder ID="ContentColumn1" runat="server"></asp:ContentPlaceHolder>
-				            </div>
-				            <div class="gp_gridColumn gp_gridColumn2">
-				                <asp:ContentPlaceHolder ID="ContentColumn2" runat="server"></asp:ContentPlaceHolder>
-				            </div>
-					    </div>
-			            <!-- End | 2 Columns -->
+		                <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
 		            </div>
 	            </div>
 	            <!-- End | Page content -->
