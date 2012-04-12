@@ -72,7 +72,7 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
     {
         int intMenuItemActive = GetActiveIndex();
         string[,] types = config.Types();
-        if (types.GetUpperBound(0) > 1)
+        if (types.GetUpperBound(0) > 0)
         {
             for (int i = 0; i <= types.GetUpperBound(0); i++)
             {
