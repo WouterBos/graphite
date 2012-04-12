@@ -7,17 +7,6 @@
 
 
 .gp_gridRow.gp_gridFlex {
-	.gp_gridColumn {
-		min-height: 1px;
-	}
-
-	/* 1 column */
-	&.gp_gridColumns1 {
-	    .gp_gridColumn1 {
-	        width: 100%;
-	    }
-	}
-	
 	/* 2 columns */
 	&.gp_gridColumns2 {
 		.gp_gridColumn {
@@ -44,6 +33,12 @@
 		.gp_gridColumn {
 			width: 20%;
 		}
+	}
+
+	/* Force 1 column */
+	.gp_gridColumnClear[class][class] {
+		clear: both;
+		width: 100%;
 	}
 }
 
