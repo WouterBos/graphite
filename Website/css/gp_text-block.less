@@ -13,7 +13,7 @@
 	ul,
 	ol,
 	div,
-	& + .gp_textBlock {
+	& + .gp_text {
 		margin-top: @gp_paragraphSpacing;
 	}
 	
@@ -123,12 +123,14 @@
 	
 	/* Start basic image styling */	
 	img.left {
-		margin: 0 @gp_paragraphSpacing (@gp_paragraphSpacing/2) 0;
+		margin-right: @gp_paragraphSpacing;
+        margin-bottom: (@gp_paragraphSpacing/2);
 		float: left;
 	}
 	
 	img.right {
-		margin: 0 0 (@gp_paragraphSpacing/2) @gp_paragraphSpacing;
+        margin-bottom: (@gp_paragraphSpacing/2);
+		margin-left: @gp_paragraphSpacing;
 		float: right;
 	}
 	/* End basic image styling */

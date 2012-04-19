@@ -1,1 +1,1 @@
-- Move JavaScript to internal
+- JavaScript resizer
