@@ -101,6 +101,23 @@ namespace Graphite.Internal
             return supportedBrowsers;
         }
 
+        public Dictionary<string, string> GetStageDimension(int index)
+        {
+            Dictionary<string, string> getStageDimension = new Dictionary<string, string>();
+            getStageDimension.Add("width", "auto");
+            getStageDimension.Add("height", "auto");
+            XmlElement node = demo[0].ChildNodes[index] as XmlElement;
+            if (node.HasAttribute("width") == true && node.Attributes["width"].Value != "")
+            {
+                getStageDimension["width"] = node.Attributes["width"].Value;
+            }
+            if (node.HasAttribute("height") == true && node.Attributes["height"].Value != "")
+            {
+                getStageDimension["height"] = node.Attributes["height"].Value;
+            }
+            return getStageDimension;
+        }
+
         public string Type(int index)
         {
             return demo[0].ChildNodes[index].Name;

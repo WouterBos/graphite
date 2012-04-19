@@ -35,6 +35,14 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
         GetDemoJavaScript();
         GetDemoDescription();
         CreateSupportedBrowsersList();
+        SetStageDimension();
+    }
+
+    private void SetStageDimension()
+    {
+        Dictionary<string, string> stageDimension = config.GetStageDimension(GetActiveIndex());
+        pnlDemoHTMLCodeBlock.Attributes["style"] += "; width: " + stageDimension["width"];
+        pnlDemoHTMLCodeBlock.Attributes["style"] += "; height: " + stageDimension["height"];
     }
 
     // Finds out which tab in the demo menu is selected. If no menu is visible above the demo, the index is always 0.
