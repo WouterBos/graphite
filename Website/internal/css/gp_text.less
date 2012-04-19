@@ -31,9 +31,13 @@ textarea {
 
 
 /* Helper classes */
-.gp_hideAccessable {
+.gp_hideAccessable { // Use this to hide content in browsers, but keep them visible for screen readers
 	position: absolute;
 	left: -9999em;
+	
+	&:focus {
+	    position: static;
+	}
 }
 
 .gp_hide {

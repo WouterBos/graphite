@@ -144,6 +144,20 @@
                     </verticalcollapse>
                 </demo>
             </menu>
+
+            <resultsfilter humanname="Results Filter">
+                <demo>
+                    <standard>
+                        <files>
+                            <ascx use_default_code="true" />
+                            <css use_default_code="true" />
+                            <javascript use_default_code="true" />
+                        </files>
+                        <browsers>
+                        </browsers>
+                    </standard>
+                </demo>
+            </resultsfilter>
         </navigation>
 
         <widgets>

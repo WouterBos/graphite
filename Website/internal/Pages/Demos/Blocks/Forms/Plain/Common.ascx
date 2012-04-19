@@ -6,6 +6,13 @@
     <span class="mandatory">* = Verplicht veld</span>
     <fieldset>
         <ol>
+            <li class="gp_hideAccessable">
+                <asp:Label ID="lblTextBoxHumanCheck" runat="server" AssociatedControlID="TextBoxHumanCheck">
+                    Leave this form field empty
+                </asp:Label>
+                <asp:TextBox ID="TextBoxHumanCheck" TextMode="SingleLine" runat="server" CssClass="text" />
+            </li>
+
             <li>
                 <asp:Label ID="Label3" runat="server" AssociatedControlID="TextBox1">
                     Textbox without validation

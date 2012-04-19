@@ -20,5 +20,10 @@ public partial class gp_blocks_forms_common : System.Web.UI.UserControl
         
         FormSentBack.HRef = Request.ServerVariables["URL"];
         FormErrorBack.HRef = Request.ServerVariables["URL"];
+        
+        if (TextBoxHumanCheck.Text == "")
+        {
+            // SEND FORM
+        }
     }
 }

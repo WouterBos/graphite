@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Xml;
 using System.Web;
+using System.Collections;
 
 namespace Graphite.Internal
 {
@@ -34,23 +35,30 @@ namespace Graphite.Internal
             }
             return index;
         }
-        
-        public string[,] Types()
+
+        public ArrayList Types()
 	    {
-	        string[,] types = new string[demo[0].ChildNodes.Count,2];
+            ArrayList types = new ArrayList();
 	        int count = 0;
-            foreach (XmlElement node in demo[0].ChildNodes)
+            foreach (XmlNode node in demo[0].ChildNodes)
             {
-                types[count,0] = node.Name;
-                if (node.HasAttribute("humanname"))
+                if (node.NodeType == XmlNodeType.Element)
                 {
-                    types[count,1] = node.Attributes["humanname"].Value;
+                    XmlElement element = node as XmlElement;
+                    ArrayList names = new ArrayList();
+                    names.Add(element.Name);
+                    names.Add(element.Name);
+                    if (element.HasAttribute("humanname"))
+                    {
+                        names[1] = element.Attributes["humanname"].Value;
+                    }
+                    types.Add(names);
+                    count++;
                 }
                 else
                 {
-                    types[count, 1] = node.Name;
+                    // GP_TODO types[count].Remove();
                 }
-                count++;
             }
             return types;
 	    }
@@ -60,24 +68,27 @@ namespace Graphite.Internal
             Dictionary<string, Boolean> defaultCode = new Dictionary<string, Boolean>();
             
             // Get references to HTML, CSS and JS
-            foreach (XmlElement node in demo[0].ChildNodes[index].SelectSingleNode("files"))
+            if (demo[0].ChildNodes[index].NodeType == XmlNodeType.Element)
             {
-                bool defaultBool = false;
-                if (node.HasAttribute("use_default_code"))
+                foreach (XmlElement node in demo[0].ChildNodes[index].SelectSingleNode("files"))
                 {
-                    defaultBool = true;
+                    bool defaultBool = false;
+                    if (node.HasAttribute("use_default_code"))
+                    {
+                        defaultBool = true;
+                    }
+                    defaultCode.Add(node.Name, defaultBool);
                 }
-                defaultCode.Add(node.Name, defaultBool);
-            }
-            
-            // Check if demo is set as an external demo
-            XmlElement RootElement = demo[0].ChildNodes[index].SelectSingleNode("files") as XmlElement;
-            defaultCode.Add("externalDemo", false);
-            if (RootElement.HasAttribute("externalDemo") == true)
-            {
-                if (RootElement.Attributes["externalDemo"].Value == "true")
+                
+                // Check if demo is set as an external demo
+                XmlElement RootElement = demo[0].ChildNodes[index].SelectSingleNode("files") as XmlElement;
+                defaultCode.Add("externalDemo", false);
+                if (RootElement.HasAttribute("externalDemo") == true)
                 {
-                    defaultCode["externalDemo"] = true;
+                    if (RootElement.Attributes["externalDemo"].Value == "true")
+                    {
+                        defaultCode["externalDemo"] = true;
+                    }
                 }
             }
             return defaultCode;

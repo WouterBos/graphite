@@ -120,4 +120,10 @@
   <data name="Back" xml:space="preserve">
     <value>Terug</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Zoek</value>
+  </data>
 </root>

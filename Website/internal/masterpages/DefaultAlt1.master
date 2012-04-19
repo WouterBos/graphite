@@ -17,10 +17,10 @@
 		<link href="/Internal/css/all.less" rel="stylesheet" media="all" />
 		<asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
         
-		<script src="/Internal/javascript/jquery.min.js"></script>
-		<script src="/javascript/graphite.js"></script>
+		<script src="/Internal/javascript/libraries/jQuery/jquery.min.js"></script>
+		<script src="/internal/javascript/graphite.js"></script>
 		<script src="/Internal/javascript/graphite.internal.js"></script>
-		<!--<script src="/Internal/javascript/live.js#css"></script>-->
+		<!--<script src="/Internal/javascript/libraries/live.js#css"></script>-->
 	</head>
 	
 	<body id="MasterPageBody" runat="server">
@@ -90,7 +90,7 @@
 			    <!-- End | Header -->
 			</div>
 			
-			<script src="/Internal/javascript/zeroclipboard/ZeroClipboard.js"></script>
+			<script src="/Internal/javascript/libraries/zeroclipboard/ZeroClipboard.js"></script>
 		</form>
 	</body>
 </html>

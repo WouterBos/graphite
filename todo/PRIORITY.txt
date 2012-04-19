@@ -1,1 +1,1 @@
-- Hide default includes if user clicks on CSS button
+- Move JS like CSS internal

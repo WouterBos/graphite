@@ -4,10 +4,10 @@
 
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
-    <script src="/JavaScript/graphite.js" type="text/javascript"></script>
-    <script src="/JavaScript/graphite.blocks.js" type="text/javascript"></script>
-    <script src="/JavaScript/graphite.blocks.widgets.js" type="text/javascript"></script>
-    <script src="/JavaScript/graphite.blocks.widgets.accordion.js" type="text/javascript"></script>
+    <script src="/internal/javascript/graphite.js" type="text/javascript"></script>
+    <script src="/internal/javascript/graphite.blocks.js" type="text/javascript"></script>
+    <script src="/internal/javascript/graphite.blocks.widgets.js" type="text/javascript"></script>
+    <script src="/internal/javascript/graphite.blocks.widgets.accordion.js" type="text/javascript"></script>
 </asp:Content>
 
 

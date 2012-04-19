@@ -9,16 +9,19 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using System.Collections;
 
 public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
 {
     private Graphite.Internal.Config config;
     Dictionary<string, Boolean> dicFiles;
+    private string strMenuItemName = "";
 
 
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        strMenuItemName = Request.QueryString["type"].ToString();
         CreateDemo();
     }
 
@@ -41,11 +44,9 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
     private int GetActiveIndex()
     {
         int intMenuItemActive = 0;
-        string strMenuItemName = "";
         
         if (String.IsNullOrEmpty(Request.QueryString["type"]) == false)
         {
-            strMenuItemName = Request.QueryString["type"].ToString();
             intMenuItemActive = config.Index(strMenuItemName.ToLower());
         }
         
@@ -71,15 +72,16 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
     private void CreateMenu()
     {
         int intMenuItemActive = GetActiveIndex();
-        string[,] types = config.Types();
-        if (types.GetUpperBound(0) > 0)
+        ArrayList types = config.Types();
+        if (types.Count > 0)
         {
-            for (int i = 0; i <= types.GetUpperBound(0); i++)
+            for (int i = 0; i < types.Count; i++)
             {
                 HyperLink hlMenuLink = new HyperLink();
-                hlMenuLink.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(types[i,1]);
-                hlMenuLink.NavigateUrl = Request.ServerVariables["SCRIPT_NAME"] + "?type=" + Server.HtmlEncode(types[i,0]);
-                if (i == intMenuItemActive)
+                ArrayList type = types[i] as ArrayList;
+                hlMenuLink.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(type[1].ToString());
+                hlMenuLink.NavigateUrl = Request.ServerVariables["SCRIPT_NAME"] + "?type=" + Server.HtmlEncode(type[0].ToString());
+                if (strMenuItemName.ToLower() == type[0].ToString().ToLower())
                 {
                     hlMenuLink.CssClass = "active";
                 }
@@ -281,6 +283,15 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
                 }
                 
                 CSSLink.Attributes["href"] = strCssLink;
+            }
+            string strStartBaseComment = "/* Start base */";
+            string strEndBaseComment = "/* End base */";
+            
+            int intStartBase = strCssCode.IndexOf(strStartBaseComment);
+            int intEndbase = strCssCode.IndexOf(strEndBaseComment);
+            if (intStartBase >= 0 && intEndbase >= 0)
+            {
+                strCssCode = strCssCode.Substring(intEndbase + strStartBaseComment.Length);
             }
 
             litDemoCss.Text = WrapInJsString(strCssCode);

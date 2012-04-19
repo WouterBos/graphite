@@ -36,7 +36,7 @@
     
     <div class="gp_block">
         <nav>
-            <p class="gp_textAlert"><big><strong>The project is still very alpha. But there's a <a href="/Internal/Pages/demos/blocks/navigation/menu/default.aspx">preview</a> of the menu component.</strong></big></p>
+            <p class="gp_textAlert"><big><strong>The project is still in alpha. But there's a <a href="/Internal/Pages/demos/blocks/navigation/menu/default.aspx">preview</a> of the menu component.</strong></big></p>
         </nav>
     </div>
     
