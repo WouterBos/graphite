@@ -16,17 +16,18 @@
  * @namespace Menu Results Filter
  * @class
  */
-graphite.blocks.resultsFilter.menu = (function() {
+graphite.blocks.navigation.resultsFilter = (function() {
   /* Start public */
   return {
     /**
      * Description
      *
      * @example
-     * graphite.blocks.resultsFilter.menu('')
+     * graphite.blocks.navigation.resultsFilter.init('.gp_searchFilter');
      */
     init: function(selector) {
-      jQuery(selector)
+      alert('GP_TODO');
+      //jQuery(selector)
     }
   };
   /* End public */
