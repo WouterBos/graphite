@@ -21,7 +21,10 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        strMenuItemName = Request.QueryString["type"].ToString();
+        if (String.IsNullOrEmpty(Request.QueryString["type"]) == false)
+        {
+            strMenuItemName = Request.QueryString["type"];
+        }
         CreateDemo();
     }
 
