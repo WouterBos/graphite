@@ -31,16 +31,17 @@ textarea {
 
 
 /* Helper classes */
-.gp_hideAccessable {
+.gp_hideAccessable { // Use this to hide content in browsers, but keep them visible for screen readers
 	position: absolute;
 	left: -9999em;
-}
-.gp_hideAccessable:focus {
-	left: auto;
-	z-index: 10000000;
-	color: @gp_colorLow;
-	font-weight: bold;
-	background: @gp_colorHigh;
+	
+	&:focus {
+		left: auto;
+		z-index: 10000000;
+		color: @gp_colorLow;
+		font-weight: bold;
+		background: @gp_colorHigh;
+	}
 }
 
 .gp_hide {
