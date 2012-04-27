@@ -36,7 +36,11 @@ textarea {
 	left: -9999em;
 	
 	&:focus {
-	    position: static;
+		left: auto;
+		z-index: 10000000;
+		color: @gp_colorLow;
+		font-weight: bold;
+		background: @gp_colorHigh;
 	}
 }
 
