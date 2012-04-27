@@ -126,4 +126,7 @@
   <data name="Search" xml:space="preserve">
     <value>Zoek</value>
   </data>
+  <data name="SkipMenu" xml:space="preserve">
+    <value>Sla menu over</value>
+  </data>
 </root>
