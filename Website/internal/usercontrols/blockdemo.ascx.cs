@@ -154,6 +154,7 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
         // Get URL to Codebehind
         string strCodeBehindURL = "";
         int intCodeFileStart = ascxSource.IndexOf("CodeFile=", StringComparison.OrdinalIgnoreCase);
+        int intIgnoreCodeFile = ascxSource.IndexOf("<!-- Graphite: Ignore Codefile -->", StringComparison.OrdinalIgnoreCase);
         int intStartQuote = ascxSource.IndexOf("\"", intCodeFileStart);
         int intEndQuote = ascxSource.IndexOf("\"", (intStartQuote + 1));
         if (intStartQuote >= 0)
@@ -162,28 +163,31 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
         }
 
         string strRoot = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
-
-        // Get Codebehind code
-        try
+        
+        if (intIgnoreCodeFile >= 0)
         {
-            StringBuilder sbCode = new StringBuilder();
-            System.IO.StreamReader sr = new System.IO.StreamReader(strRoot + strCodeBehindURL);
-
-            while (sr.Peek() != -1)
+            // Get Codebehind code
+            try
             {
-                string line = sr.ReadLine();
-                sbCode.AppendLine(line);
-            }
-            strCode = sbCode.ToString();
+                StringBuilder sbCode = new StringBuilder();
+                System.IO.StreamReader sr = new System.IO.StreamReader(strRoot + strCodeBehindURL);
 
-            // Insert class into private variable _strRootClass
-            int rootClassStart = strCode.IndexOf("_strRootClass", StringComparison.OrdinalIgnoreCase);
-            int rootClassValueStart = strCode.IndexOf("\"\"", rootClassStart);
-            strCode = strCode.Insert(rootClassValueStart + 1, config.CssClass(GetActiveIndex()));
-        }
-        catch (Exception exp)
-        {
-            // No Codebehind available
+                while (sr.Peek() != -1)
+                {
+                    string line = sr.ReadLine();
+                    sbCode.AppendLine(line);
+                }
+                strCode = sbCode.ToString();
+
+                // Insert class into private variable _strRootClass
+                int rootClassStart = strCode.IndexOf("_strRootClass", StringComparison.OrdinalIgnoreCase);
+                int rootClassValueStart = strCode.IndexOf("\"\"", rootClassStart);
+                strCode = strCode.Insert(rootClassValueStart + 1, config.CssClass(GetActiveIndex()));
+            }
+            catch (Exception exp)
+            {
+                // No Codebehind available
+            }
         }
         return strCode;
     }

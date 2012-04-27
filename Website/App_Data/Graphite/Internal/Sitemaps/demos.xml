@@ -83,7 +83,7 @@
                 <demo>
                     <horizontal cssclass="gp_menu_typeHorizontal">
                         <files>
-                            <html use_default_code="true" />
+                            <ascx use_default_code="true" />
                             <css />
                         </files>
                         <browsers>
@@ -98,7 +98,7 @@
 
                     <vertical cssclass="gp_menu_typeVertical">
                         <files>
-                            <html use_default_code="true" />
+                            <ascx use_default_code="true" />
                             <css />
                         </files>
                         <browsers>
@@ -113,7 +113,7 @@
 
                     <horizontalcollapse humanname="Horizontal collapse" cssclass="gp_menu_typeHorizontal gp_menu_typeCollapse">
                         <files>
-                            <html use_default_code="true" />
+                            <ascx use_default_code="true" />
                             <css />
                             <javascript />
                             <description />
@@ -129,7 +129,7 @@
 
                     <verticalcollapse humanname="vertical collapse" cssclass="gp_menu_typeVertical gp_menu_typeCollapse">
                         <files>
-                            <html use_default_code="true" />
+                            <ascx use_default_code="true" />
                             <css />
                             <javascript />
                         </files>

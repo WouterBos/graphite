@@ -36,8 +36,13 @@ textarea {
 	left: -9999em;
 	
 	&:focus {
+		@local_borderWidth: 5px;
+		
 		left: auto;
 		z-index: 10000000;
+		margin: -@local_borderWidth 0 0 -@local_borderWidth;
+		outline: @local_borderWidth solid rgba(255,255,255,0.5);
+		padding: @local_borderWidth;
 		color: @gp_colorLow;
 		font-weight: bold;
 		background: @gp_colorHigh;
