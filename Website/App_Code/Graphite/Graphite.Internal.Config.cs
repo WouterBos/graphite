@@ -99,14 +99,18 @@ namespace Graphite.Internal
             Dictionary<string, string> supportedBrowsers = new Dictionary<string, string>();
             if (demo[0].ChildNodes[index].SelectSingleNode("browsers") != null)
             {
-                foreach (XmlElement node in demo[0].ChildNodes[index].SelectSingleNode("browsers"))
+                foreach (XmlNode node in demo[0].ChildNodes[index].SelectSingleNode("browsers"))
                 {
-                    string browserVersion = "";
-                    if (node.HasAttribute("supports"))
+                    if (node.NodeType == XmlNodeType.Element)
                     {
-                        browserVersion = node.Attributes["supports"].Value;
+                        XmlElement element = node as XmlElement;
+                        string browserVersion = "";
+                        if (element.HasAttribute("supports"))
+                        {
+                            browserVersion = element.Attributes["supports"].Value;
+                        }
+                        supportedBrowsers.Add(element.Name, browserVersion);
                     }
-                    supportedBrowsers.Add(node.Name, browserVersion);
                 }
             }
             return supportedBrowsers;

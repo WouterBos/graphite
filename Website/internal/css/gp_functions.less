@@ -29,9 +29,11 @@
 }
 
 .gp_opacity(@opacity: 0.5) {
+    @msOpacity: @opacity*100;
+
 	opacity: @opacity;
-	-ms-filter: ~"'progid:DXImageTransform.Microsoft.Alpha(Opacity=" @opacity*100 ~")'";
-	filter: ~"alpha(opacity=" @opacity*100 ~")";
+	-ms-filter: ~"'progid:DXImageTransform.Microsoft.Alpha(Opacity=@{msOpacity})'";
+	filter: ~"alpha(opacity=@{msOpacity})";
 }
 
 .gp_borderRadius(@topLeft: 5px, @topRight: 5px, @bottomRight: 5px, @bottomLeft: 5px) {
