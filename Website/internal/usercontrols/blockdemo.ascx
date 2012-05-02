@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="BlockDemo.ascx.cs" Inherits="GraphiteInternal_BlockDemo" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="BlockDemo.ascx.cs" Inherits="GraphiteInternal_BlockDemo" %><!-- Graphite: Ignore Codefile -->
 
 
 

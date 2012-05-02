@@ -1,6 +1,10 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="default.ascx.cs" Inherits="Internal_Pages_Demos_Blocks_Navigation_Menu_default" %>
+
+
+
 <a href="#gp_skipMenu" class="gp_hideAccessable"><%=GetGlobalResourceObject("Graphite", "SkipMenu")%></a>
 
-<div class="gp_menu ###GP_BLOCK_TYPE###">
+<asp:Panel runat="server" Visible="true" ID="pnlRoot" cssclass="gp_menu">
     <ul>
         <li><a href="#">Short words</a>
             <ul>
@@ -54,6 +58,6 @@
         <li><a href="#">Adipiscing</a></li>
         <li><a href="#">Suspendisse</a></li>
     </ul>
-</div>
+</asp:Panel>
 
 <span id="gp_skipMenu"></span>
