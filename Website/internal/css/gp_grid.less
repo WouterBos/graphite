@@ -16,7 +16,7 @@
     .gp_clear;
 	position: relative;
 	margin: 0 auto 0 auto;
-	width: @gp_gridWidth;
+	width: @gp_desktop;
 }
 
 
@@ -26,7 +26,7 @@
 	display: block;
 	position: absolute;
 	top: @gp_gridBlockSpacing;
-	left: @gp_gridBlockPadding;
+	left: 0;
 	z-index: 10;
 
 	img {
@@ -37,22 +37,14 @@
 
 
 /* Header */
-.gp_header {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-}
-
 .gp_header .gp_main {
-	height: @gp_gridHeaderHeight;
+	min-height: @gp_gridHeaderHeight;
 }
 
 
 
 /* Content block */
 .gp_content {
-	border-top: @gp_gridHeaderHeight solid transparent;
 	padding: @gp_gridBlockSpacing 0;
 	.gp_clear;
 }
@@ -73,9 +65,12 @@
 	.gp_gridColumn {
 		float: left;
 		min-height: 1px; /* This will make empty columns still float next to each other instead of collapsing */
+        overflow: hidden;
 
 		.gp_block {
-		    margin:@gp_gridBlockPadding;
+		    & + .gp_block {
+                margin-top:@gp_gridBlockPadding;
+            }
 		}
 		
 		&.gp_gridColumnBackground {

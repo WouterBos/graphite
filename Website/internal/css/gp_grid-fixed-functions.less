@@ -7,7 +7,8 @@
 
 
 .gp_colWidth(@colSize) {
-    width: ((@gp_gridWidth / @gp_gridFixedCols) * @colSize);
+    width: ((@gp_gridWidth / @gp_gridFixedCols) * @colSize) - @gp_gridBlockSpacing + (floor(@gp_gridBlockSpacing / @gp_gridFixedCols) * @colSize);
+    margin-right: @gp_gridBlockSpacing;
     float: left;
 }
 
