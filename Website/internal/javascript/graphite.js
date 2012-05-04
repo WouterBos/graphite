@@ -328,3 +328,60 @@ graphite.events = (function() {
   };
   /* End public */
 })();
+
+
+
+
+
+
+graphite.dataHandler = {};
+
+
+
+
+
+
+/**
+ * @namespace Tools to handle and manipulate URLS
+ * @class
+ * @since 1.0 - 2010-09-29
+ * @version 1.0 - 2012-02-05
+ */
+graphite.dataHandler.url = (function() {
+  /* Start public */
+  return {
+    /**
+     * Connects a function to an event of a single element
+     *
+     * @since 1.0 - 2011-11-03
+     * @version 1.0 - 2011-11-03
+     * @param {String} key The GET key
+     * @param {String} [custom_url] Extract value from supplied url instead of
+     *    the currently loaded page.
+     * @example
+        graphite.dataHandler.url.getQueryString('foo');
+        // or
+        graphite.dataHandler.url.getQueryString(
+          'foo',
+          "http://www.domain.com/index.aspx?foo=bar&foo2=bar2"
+        );
+     */
+    getQueryString: function(key, custom_url) {
+      var query
+      if (typeof(custom_url) == "string") {
+        query = custom_url.substring(custom_url.indexOf('?')+1)
+      } else {
+        query = window.location.search.substring(1)
+      }
+      var vars = query.split("&");
+      
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == key) {
+          return pair[1];
+        }
+      }
+    }
+  };
+  /* End public */
+})();
