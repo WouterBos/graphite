@@ -2,6 +2,7 @@
   - Print styling
   - Header/content placement broken
   - Flex demo: First example does not have a row
+- When copy/pasting code from ASCX menu component, it misses the extra class
 - JavaScript resizer
 - Skip code behind
 - Review grid
