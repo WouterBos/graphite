@@ -63,19 +63,20 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   
   function updateList(queryJSON) {
     var urlQuery = createURLQuery(queryJSON);
+    console.log(urlQuery);
     jQuery.ajax() // GP_TODO: How to get ajax
   }
   
   // Creates GET query with JSON object
   function createURLQuery(queryJSON) {
     var get = '';
-    for (var i = 0; i < queryJSON.length; i++) {
-      if (typeof(queryJSON[i].key) == 'string' && queryJSON[i].key !== '' &&
-          typeof(queryJSON[i].value) == 'string' && queryJSON[i].value !== '') {
+    for (var i = 0; i < queryJSON.fields.length; i++) {
+      if (typeof(queryJSON.fields[i].key) == 'string' && queryJSON.fields[i].key !== '' &&
+          typeof(queryJSON.fields[i].value) == 'string' && queryJSON.fields[i].value !== '') {
         if (i > 0) {
           get += '&';
         }
-        get += queryJSON[i].key + '=' + encodeURIComponent(queryJSON[i].value);
+        get += queryJSON.fields[i].key + '=' + encodeURIComponent(queryJSON.fields[i].value);
       }
     }
     return get;
@@ -111,7 +112,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
       function appendToExistingKey(key, value) {
         for (var i = 0; i < query.fields.length; i++) {
           if (query.fields[i].key == key) {
-            query.fields[i].value += '|' + value;
+            query.fields[i].value += '~' + value;
             return true;
           }
         }
