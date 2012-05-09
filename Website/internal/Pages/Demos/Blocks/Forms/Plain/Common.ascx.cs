@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Graphite.Mail;
 
 public partial class gp_blocks_forms_common : System.Web.UI.UserControl
 {
@@ -25,5 +26,28 @@ public partial class gp_blocks_forms_common : System.Web.UI.UserControl
         {
             // SEND FORM
         }
+    }
+
+
+    protected void SendMail(object sender, EventArgs e)
+    {
+        if (txtBotCheck.Text != "")
+        {
+            SendFailedPanel.Visible = true;
+            pnlRoot.Visible = false;
+            SendOkPanel.Visible = false;
+            return;
+        }
+        HandleForm oMailSend = new Graphite.Mail.HandleForm();
+        oMailSend.From = "wouter@estate.nl";
+        //oMailSend.Cc = Email.Text;
+        //oMailSend.Bcc = "w.bos@estate.nl";
+        oMailSend.Subject = "Resultaat contactformulier op www.____.nl";
+        oMailSend.BodyTemplatePath = "~\\App_Data\\Graphite\\Mail\\Template.html";
+        oMailSend.FormPanel = pnlRoot;
+        oMailSend.SendOkPanel = SendOkPanel;
+        oMailSend.SendFailedPanel = SendFailedPanel;
+        oMailSend.CreateBody();
+        oMailSend.SendMail();
     }
 }
