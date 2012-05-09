@@ -35,7 +35,13 @@
 	h3 + *,
 	h4 + *,
 	h5 + *,
-	h6 + * {
+	h6 + *,
+    h1 + [class*="float"] + *,
+    h2 + [class*="float"] + *,
+    h3 + [class*="float"] + *,
+    h4 + [class*="float"] + *,
+    h5 + [class*="float"] + *,
+    h6 + [class*="float"] + * {
 		margin-top: 0;
 	}
 
@@ -121,19 +127,30 @@
 	/* End headings */
 
 	
-	/* Start basic image styling */	
-	img.left {
+	/* Start float block styling */	
+	.local_floatLeft {
+		margin-top: @gp_paragraphSpacing;
 		margin-right: @gp_paragraphSpacing;
         margin-bottom: (@gp_paragraphSpacing/2);
 		float: left;
 	}
 	
-	img.right {
+	.local_floatRight {
+		margin-top: @gp_paragraphSpacing;
         margin-bottom: (@gp_paragraphSpacing/2);
 		margin-left: @gp_paragraphSpacing;
 		float: right;
 	}
-	/* End basic image styling */
+
+    h1 + [class*="float"],
+    h2 + [class*="float"],
+    h3 + [class*="float"],
+    h4 + [class*="float"],
+    h5 + [class*="float"],
+    h6 + [class*="float"] {
+		margin-top: 0;
+	}
+	/* End float block styling */
 	
 	
 	/* Start link styling */
