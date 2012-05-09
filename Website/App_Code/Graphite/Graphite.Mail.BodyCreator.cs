@@ -131,8 +131,12 @@ namespace Graphite.Mail
 					CheckBox oCheckBox = (CheckBox)ControlInForm;
 					if (oCheckBox.Checked == true)
                     {
-						arrList.Add(new UtilityObj(oCheckBox.ID, "Ja"));
+                        arrList.Add(new UtilityObj(oCheckBox.ID, (string)HttpContext.GetGlobalResourceObject("Graphite", "Yes")));
 					}
+                    else if (oCheckBox.Checked == false)
+                    {
+                        arrList.Add(new UtilityObj(oCheckBox.ID, (string)HttpContext.GetGlobalResourceObject("Graphite", "No")));
+                    }
 				}
 				if (ControlInForm.HasControls()) {
 					GetFormValuesFromPanel(ControlInForm, ref arrList);
