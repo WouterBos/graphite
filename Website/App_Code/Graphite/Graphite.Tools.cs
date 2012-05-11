@@ -28,6 +28,9 @@ namespace Graphite
                     line = sr.ReadLine();
                     sbCode.AppendLine(line);
                 }
+
+                sr.Close();
+                sr.Dispose();
             }
             catch (Exception exp)
             {

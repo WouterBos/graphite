@@ -17,7 +17,14 @@
     );
 
     function runMap() {
+      var icon = new google.maps.MarkerImage(
+        '/internal/images/gmap/pin.png',
+        new google.maps.Size(43, 48),
+        new google.maps.Point(0,0),
+        new google.maps.Point(16, 45)
+      );
       var gmap = new graphite.blocks.widgets.gmap3();
+      
       gmap.init(
         "Map",
         {
@@ -33,7 +40,7 @@
           points:
           [
             {lat: 58.96913, lng: 5.73486, markerOptions: {icon: 'http://gmaps-samples.googlecode.com/svn/trunk/markers/blue/blank.png', title: 'Lorem'}, gp_markerOptions: { openOnClick: 'http://www.google.nl' }, infoWindow: { popupText: "Lorem"}},
-            {lat: 59.06598, lng: 5.92163, markerOptions: {}, gp_markerOptions: {customTooltip: 'Amet'}, infoWindow: {popupText: "Amet"}},
+            {lat: 59.06598, lng: 5.92163, markerOptions: {icon: icon}, gp_markerOptions: {customTooltip: 'Amet'}, infoWindow: {popupText: "Amet"}},
             {lat: 59.02501, lng: 6.02463, markerOptions: {}, infoWindow: {}}
           ],
           polygons:
