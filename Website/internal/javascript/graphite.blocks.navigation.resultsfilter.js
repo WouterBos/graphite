@@ -31,7 +31,7 @@ graphite.blocks.navigation.resultsFilter = (function() {
         var form = root.find('.gp_local_filter');
         var list = root.find('.gp_local_results');
         var url = form.attr('data-ajaxurl');
-        var resultsFilter = new graphite.blocks.navigation.resultsFilter.obj({root: root, form: form, list: list});
+        var resultsFilter = new graphite.blocks.navigation.resultsFilter.obj({root: root, form: form, list: list, url: url});
         resultsFilter.init();
       });
     }
@@ -48,6 +48,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   var _root;
   var _config = {};
   jQuery.extend(_config, config)
+  _config.json = {};
   
   // Set events on all form fields
   function setFilterEvents() {
@@ -61,24 +62,69 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     updateList(queryJSON);
   }
   
+  // Initiates query and sends Ajax request to get new data.
   function updateList(queryJSON) {
     var urlQuery = createURLQuery(queryJSON);
-    console.log(urlQuery);
-    jQuery.ajax() // GP_TODO: How to get ajax
+    jQuery.ajax({
+      url: _config.url,
+      success: handleQueryRequestSuccess,
+      fail: handleQueryRequestFail
+    })
+    
+    function handleQueryRequestSuccess(data) {
+      var orderedArray = createOrderedArray(JSON.parse(_config.json()));
+      console.log(orderedArray);
+    }
+
+    function handleQueryRequestFail(data) {
+      throw Error('Something went wrong with ajax request.');
+    }
+    
+    function createOrderedArray(json) {
+      var arr = new Array();
+      for (var i = 0; json.data.length; i++) {
+        arr.push()
+      }
+    }
+  }
+  
+  function sortMultiDimensionalArray(a, b) {
+    return ((a[1] < b[1]) ? -1 : ((a[1] > b[1]) ? 1 : 0));
+  }
+  
+  // Checks if some item in JSON exists
+  function jsonItemExists(item) {
+    if (typeof(item) == 'string' && item !== '') {
+      return true;
+    }
+    return false;
   }
   
   // Creates GET query with JSON object
   function createURLQuery(queryJSON) {
     var get = '';
+    var filters = '';
+    var filterType
     for (var i = 0; i < queryJSON.fields.length; i++) {
-      if (typeof(queryJSON.fields[i].key) == 'string' && queryJSON.fields[i].key !== '' &&
-          typeof(queryJSON.fields[i].value) == 'string' && queryJSON.fields[i].value !== '') {
-        if (i > 0) {
-          get += '&';
+      if (jsonItemExists(queryJSON.fields[i].key) && jsonItemExists(queryJSON.fields[i].value)) {
+        if (filters.length > 0) {
+          filters += '~';
         }
-        get += queryJSON.fields[i].key + '=' + encodeURIComponent(queryJSON.fields[i].value);
+        filterType = 'or';
+        if (jsonItemExists(queryJSON.fields[i].filterType)) {
+          filterType = queryJSON.fields[i].filterType;
+        }
+        filters += queryJSON.fields[i].key + '=' + filterType;
       }
     }
+    get += 'filterType=' + filters;
+    
+    for (var i = 0; i < queryJSON.fields.length; i++) {
+      if (jsonItemExists(queryJSON.fields[i].key) && jsonItemExists(queryJSON.fields[i].value)) {
+        get += '&' + queryJSON.fields[i].key + '=' + encodeURIComponent(queryJSON.fields[i].value);
+      }
+    }
+    
     return get;
   }
 
@@ -97,9 +143,9 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
       
       if (appended == false) {
         var filterType = 'or';
-        var dynFilterType = _config.form.attr('data-filterType-' + key);
-        if (dynFilterType === 'and' || dynFilterType === 'or') {
-          filterType = dynFilterType;
+        var filterType = _config.form.attr('data-filterType-' + key);
+        if (filterType === 'and' || filterType === 'or') {
+          filterType = filterType;
         }
         query.fields.push({
           key: key,
