@@ -49,6 +49,10 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   var _config = {};
   jQuery.extend(_config, config)
   _config.json = {};
+  _config.log = false;
+  if (_config.root.find('.local_log').size() > 0) {
+    _config.log = true;
+  }
   
   // Set events on all form fields
   function setFilterEvents() {
@@ -65,15 +69,23 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   // Initiates query and sends Ajax request to get new data.
   function updateList(queryJSON) {
     var urlQuery = createURLQuery(queryJSON);
+    console.log('REQUEST: ' + _config.url + '?' + urlQuery + '<br /><br />')
+    if (_config.log == true) {
+      _config.root.find('.local_log').html('REQUEST: ' + _config.url + '?' + urlQuery + '<br /><br />');
+    }
     jQuery.ajax({
-      url: _config.url,
+      url: _config.url + '?' + urlQuery,
       success: handleQueryRequestSuccess,
       fail: handleQueryRequestFail
     })
     
     function handleQueryRequestSuccess(data) {
-      var orderedArray = createOrderedArray(JSON.parse(_config.json()));
-      console.log(orderedArray);
+      if (_config.log == true) {
+        _config.root.find('.local_log').html('REPLY SERVER: ' + data + '<br /><br />' + _config.root.find('.local_log').html());
+      }
+      _config.json = JSON.parse(data);
+      var orderedArray = createOrderedArray(_config.json);
+      //_config.root.find('.local_log').html(orderedArray + '<br />' + _config.root.find('.log').html());
     }
 
     function handleQueryRequestFail(data) {
@@ -82,8 +94,9 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     
     function createOrderedArray(json) {
       var arr = new Array();
-      for (var i = 0; json.data.length; i++) {
-        arr.push()
+      console.log(json);
+      for (var i = 0; json.length; i++) {
+        arr.push([i, json[i].properties.a]);
       }
     }
   }
@@ -104,20 +117,20 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   function createURLQuery(queryJSON) {
     var get = '';
     var filters = '';
-    var filterType
+    var filterType;
+    
+    get += 'keywords=' + queryJSON.keywords;
+    
     for (var i = 0; i < queryJSON.fields.length; i++) {
       if (jsonItemExists(queryJSON.fields[i].key) && jsonItemExists(queryJSON.fields[i].value)) {
-        if (filters.length > 0) {
-          filters += '~';
-        }
         filterType = 'or';
         if (jsonItemExists(queryJSON.fields[i].filterType)) {
           filterType = queryJSON.fields[i].filterType;
         }
-        filters += queryJSON.fields[i].key + '=' + filterType;
+        filters += '&filtertype_' + queryJSON.fields[i].key + '=' + filterType;
       }
     }
-    get += 'filterType=' + filters;
+    get += filters;
     
     for (var i = 0; i < queryJSON.fields.length; i++) {
       if (jsonItemExists(queryJSON.fields[i].key) && jsonItemExists(queryJSON.fields[i].value)) {
@@ -132,6 +145,12 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   function getQueryJSON() {
     var query = {};
     query.fields = [];
+    query.keywords = '';
+    
+    // Get keyword search
+    if (_config.root.find('input[data-keyword]').size() > 0) {
+      query.keywords = _config.root.find('input[data-keyword]').val();
+    }
     
     // Loop through all checked form fields    
     _config.form.find(':checked').each(function() {

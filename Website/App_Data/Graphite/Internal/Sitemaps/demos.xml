@@ -152,6 +152,7 @@
                             <ascx use_default_code="true" />
                             <css use_default_code="true" />
                             <javascript use_default_code="true" />
+                            <description use_default_code="true" />
                         </files>
                         <browsers>
                         </browsers>

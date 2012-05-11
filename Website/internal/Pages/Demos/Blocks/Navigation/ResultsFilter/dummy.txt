@@ -4,7 +4,7 @@
             "values": {
                 "id": "0",
                 "title": "Lorem ipsum dolor sit amet"
-            }
+            },
             "properties": {
                 "a": "Ipsum",
                 "b": "Dolor",
@@ -16,7 +16,7 @@
             "values": {
                 "id": "0",
                 "title": "Lorem ipsum dolor sit amet"
-            }
+            },
             "properties": {
                 "a": "Ipsum",
                 "b": "Dolor",
@@ -28,7 +28,7 @@
             "values": {
                 "id": "0",
                 "title": "Lorem ipsum dolor sit amet"
-            }
+            },
             "properties": {
                 "a": "Ipsum",
                 "b": "Dolor",

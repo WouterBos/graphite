@@ -6,6 +6,9 @@
     <section>
         <div class="gp_local_filter" data-filterType-c="and" data-filterType-d="or" data-ajaxurl="dummy.txt">
             <fieldset>
+                <label>Keyword:</label>
+                <input type="text" data-keyword="true" />
+
                 <legend><%=GetGlobalResourceObject("Graphite", "Category")%> A</legend>
                 <ul>
                     <li><label for="a1">Lorem</label> <input type="checkbox" id="a1" data-field="a" value="Lorem" /></li>
@@ -49,5 +52,7 @@
                 <li>Result #3</li>
             </ul>
         </div>
+
+        <div class="local_log gp_textAttention"></div>
     </section>
 </div>
