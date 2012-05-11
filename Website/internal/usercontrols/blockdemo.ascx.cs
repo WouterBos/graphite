@@ -124,6 +124,9 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
                 line = sr.ReadLine();
                 sbCode.AppendLine(line);
             }
+
+            sr.Close();
+            sr.Dispose();
         }
         catch (Exception exp)
         {
@@ -177,6 +180,9 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
                     string line = sr.ReadLine();
                     sbCode.AppendLine(line);
                 }
+                sr.Close();
+                sr.Dispose();
+                
                 strCode = sbCode.ToString();
 
                 // Insert class into private variable _strRootClass
