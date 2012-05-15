@@ -157,7 +157,7 @@ graphite.blocks.widgets.gmap3.prototype._setInfoWindowEvent = function(overlay,
  */
 graphite.blocks.widgets.gmap3.prototype._wrapMarkers = function() {
   // TODO: this method re-iterates every latlng on the map when one even just
-  // one item is added. It's more efficient to add only new points to the bounds 
+  // one item is added. It's more efficient to add only new points to the bounds
   if (this._config.autoWrapMarkers == true) {
     var bounds = new google.maps.LatLngBounds();
     var path;
@@ -167,7 +167,7 @@ graphite.blocks.widgets.gmap3.prototype._wrapMarkers = function() {
     for (var i = 0; i < this._overlays.markers.length; i++) {
         bounds.extend(this._overlays.markers[i].getPosition());
     }
-    
+
     // Get latlng from polygon
     for (var i = 0; i < this._overlays.polygons.length; i++) {
       aLatLng = this._overlays.polygons[i].getPath();
@@ -311,8 +311,7 @@ graphite.blocks.widgets.gmap3.prototype._addPoints = function(points) {
  * Handles extra, non-gmap marker options.
  *
  * @ignore
- * @param {Object} marker A point or polygon
- * @return {Null}
+ * @param {Object} marker A point or polygon.
  */
 graphite.blocks.widgets.gmap3.prototype._handleMarkerOptions = function(marker) {
   if (marker.gp_markerOptions) {
@@ -329,8 +328,8 @@ graphite.blocks.widgets.gmap3.prototype._handleMarkerOptions = function(marker) 
       );
     }
     if (marker.gp_markerOptions.customTooltip && InfoBox) {
-      var tooltip
-      
+      var tooltip;
+
       // Shows custom tooltip
       google.maps.event.addListener(
         marker,
@@ -338,19 +337,13 @@ graphite.blocks.widgets.gmap3.prototype._handleMarkerOptions = function(marker) 
         function() {
           var options = {
             content: marker.gp_markerOptions.customTooltip,
-            boxStyle: {
-              border: "1px solid black",
-              textAlign: "center",
-              fontSize: "12px",
-              width: "50px",
-              background: "#FFFFE3"
-            },
+            boxStyle: {},
             disableAutoPan: true,
             pixelOffset: new google.maps.Size(-25, 0),
             position: marker.getPosition(),
-            closeBoxURL: "",
+            closeBoxURL: '',
             isHidden: false,
-            pane: "mapPane",
+            pane: 'mapPane',
             enableEventPropagation: true
           };
 
@@ -413,8 +406,8 @@ graphite.blocks.widgets.gmap3.prototype.init = function(mapBox, config, data, di
       this.addItems(data);
     }
   }
-  
-  if (typeof(directionsConfig) == "object") {
+
+  if (typeof(directionsConfig) == 'object') {
     this._directions = new graphite.blocks.widgets.gmap3.directions(
       directionsConfig,
       this._map
@@ -485,24 +478,24 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
   var directionsDisplay;
   var config = {
     directionsPanel: null,
-    origin: "",
-    destination: "",
+    origin: '',
+    destination: '',
     travelMode: google.maps.DirectionsTravelMode.DRIVING,
     submit: null
   };
-  
+
   graphite.check.updateLiteral(config, newConfig, true);
-  
+
   if (config.directionsPanel) {
     showRouteInPage();
   } else {
     openRoutePopup();
   }
-  
-  
+
+
   function openRoutePopup() {
     graphite.events.addEvent(
-      [config.origin,config.destination],
+      [config.origin, config.destination],
       function(e) {
         var event = window.event ? window.event : e;
         if (event.keyCode == 13) {
@@ -513,11 +506,11 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
           }
         }
       },
-      "keydown"
+      'keydown'
     );
 
     graphite.events.addEvent(
-      [config.origin,config.destination],
+      [config.origin, config.destination],
       function(e) {
         var event = window.event ? window.event : e;
         if (event.keyCode == 13) {
@@ -529,7 +522,7 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
           openPopup();
         }
       },
-      "keyup"
+      'keyup'
     );
 
     if (config.submit) {
@@ -541,26 +534,26 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
           } else {
             event.preventDefault();
           }
-		  openPopup();
+          openPopup();
         },
-        "click"
+        'click'
       );
     }
-    
+
     function openPopup() {
-      window.open("http://maps.google.nl/maps?"+
-                  "saddr="+ encodeURIComponent(config.origin.value) +
-                  "&daddr="+ encodeURIComponent(config.destination.value) +
-                  "&hl=nl");
+      window.open('http://maps.google.nl/maps?' +
+                  'saddr=' + encodeURIComponent(config.origin.value) +
+                  '&daddr=' + encodeURIComponent(config.destination.value) +
+                  '&hl=nl');
     }
   }
-  
+
   function showRouteInPage() {
     directionsService = new google.maps.DirectionsService();
     directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(config.directionsPanel);
-  
+
     if (config.submit) {
       graphite.events.addEvent(
         config.submit,
@@ -569,46 +562,46 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
           event.stopPropagation();
           _calcRoute();
         },
-        "click"
+        'click'
       );
     }
-    
+
     graphite.events.addEvent(
-      [config.origin,config.destination],
+      [config.origin, config.destination],
       function(event) {
         event.preventDefault();
         event.stopPropagation();
         _calcRoute();
       },
-      "submit"
+      'submit'
     );
-    
-    if (typeof(geo_position_js) != "undefined") {
-  	  if (geo_position_js.init()) {
-    		geo_position_js.getCurrentPosition(
-    		  _setPosition,
-    		  _handleError,
-    		  { enableHighAccuracy: true }
-    		);
-  	  }
+
+    if (typeof(geo_position_js) != 'undefined') {
+      if (geo_position_js.init()) {
+        geo_position_js.getCurrentPosition(
+          _setPosition,
+          _handleError,
+          { enableHighAccuracy: true }
+        );
+      }
     }
   }
 
-  function _setPosition(position){
+  function _setPosition(position) {
     if (geocoder == null) {
-      config.origin.placeholder = 'Uw locatie opzoeken...'
+      config.origin.placeholder = 'Uw locatie opzoeken...';
       geocoder = new google.maps.Geocoder();
     }
-    
+
     var startlocation = new google.maps.LatLng(parseFloat(position.coords.latitude), parseFloat(position.coords.longitude));
-    
-    config.origin.value = "Bezig met ophalen van adres..."
+
+    config.origin.value = 'Bezig met ophalen van adres...';
     geocoder.geocode(
       {
         'latLng': startlocation,
         'language': 'nl'
       },
-      function(results, status){
+      function(results, status) {
         var content = '';
         if (status == google.maps.GeocoderStatus.OK) {
           if (results.length > 0) {
@@ -617,19 +610,19 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
             }
           }
         } else {
-          content = "Voer een adres in";
+          content = 'Voer een adres in';
         }
-        config.origin.value = content
+        config.origin.value = content;
       }
     );
     //config.origin.value = position.coords.latitude + "," +
       //position.coords.longitude;
-  }  
+  }
 
   function _handleError() {
     alert('Er kan geen route worden berekenen.');
-  }  
-  
+  }
+
   function _calcRoute() {
     var directionsPanel = config.directionsPanel;
     var request = {
@@ -637,7 +630,7 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
       destination: config.destination.value,
       travelMode: google.maps.DirectionsTravelMode.DRIVING
     };
-    directionsService.route(request, function(response, status){
+    directionsService.route(request, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
         setTimeout(
@@ -652,8 +645,8 @@ graphite.blocks.widgets.gmap3.directions = function(newConfig, map) {
 };
 
 
-graphite.blocks.widgets.gmap3.directions.prototype.calcRoute = function(){
-}
+graphite.blocks.widgets.gmap3.directions.prototype.calcRoute = function() {
+};
 
 //graphite.blocks.widgets.gmap3.directions.prototype.getDirectionsDisplay = function(){
 //  return this._directionsDisplay;
