@@ -1,11 +1,14 @@
 ﻿{
-    "data": [
+    "data":
+    [
         {
-            "values": {
+            "values":
+            {
                 "id": "0",
                 "title": "Lorem ipsum dolor sit amet"
             },
-            "properties": {
+            "properties":
+            {
                 "a": "Sit amet",
                 "b": "Un",
                 "c": "If",
@@ -13,11 +16,13 @@
             }
         },
         {
-            "values": {
+            "values":
+            {
                 "id": "0",
                 "title": "Lorem ipsum dolor sit amet"
             },
-            "properties": {
+            "properties":
+            {
                 "a": "Lorem",
                 "b": "Deux",
                 "c": "Inverting",
@@ -25,15 +30,23 @@
             }
         },
         {
-            "values": {
+            "values":
+            {
                 "id": "0",
                 "title": "Lorem ipsum dolor sit amet"
             },
-            "properties": {
+            "properties":
+            {
                 "a": "Lorem",
                 "b": "Trois",
                 "c": "Core"
             }
         }
-    ]
+    ],
+    "disable":
+    {
+        "a": ["Ipsum", "Dolor"],
+        "b": ["Quatre"],
+        "d": ["FooBar", "WillBeIgnored"]
+    }
 }

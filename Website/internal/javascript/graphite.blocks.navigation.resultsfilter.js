@@ -13,7 +13,7 @@
 
 
 /**
- * @namespace Menu Results Filter
+ * @namespace Results Filter
  * @class
  */
 graphite.blocks.navigation.resultsFilter = (function() {
@@ -31,8 +31,10 @@ graphite.blocks.navigation.resultsFilter = (function() {
         var form = root.find('.gp_local_filter');
         var list = root.find('.gp_local_results');
         var url = form.attr('data-ajaxurl');
+        
+        // Creates Results Filter instance
         var resultsFilter = new graphite.blocks.navigation.resultsFilter.obj({root: root, form: form, list: list, url: url});
-        resultsFilter.init();
+        resultsFilter.init(); // Runs filter
       });
     }
   };
@@ -42,7 +44,7 @@ graphite.blocks.navigation.resultsFilter = (function() {
 
 
 /**
- * @namespace Root namespace for Graphite blocks.widgets.accordion
+ * @namespace Results Filter object
  */
 graphite.blocks.navigation.resultsFilter.obj = function(config) {
   var _root;
@@ -53,6 +55,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   if (_config.root.find('.local_log').size() > 0) {
     _config.log = true;
   }
+  var _resultsList = new graphite.blocks.navigation.resultsFilter.list(_config.list);
   
   // Set events on all form fields
   function setFilterEvents() {
@@ -85,31 +88,27 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
         _config.root.find('.local_log').html('REPLY SERVER: ' + data + '<br /><br />' + _config.root.find('.local_log').html());
       }
       _config.json = JSON.parse(data);
-      var orderedArray = createOrderedArray(_config.json);
-      //_config.root.find('.local_log').html(orderedArray + '<br />' + _config.root.find('.log').html());
+      _resultsList.build(_config.json.data);
+      toggleFieldDisabler(_config.json.disable);
     }
     
     // If the server was unable to response correctly
     function handleQueryRequestFail(data) {
       throw Error('Something went wrong with ajax request.');
     }
-    
-    // Creates an ordered representation of the JSON
-    function createOrderedArray(json) {
-      var sortKey = 'a';
-      var arr = new Array();
-      window.json = json;
-      for (var i = 0; i < json.data.length; i++) {
-        arr.push([i, json.data[i]['properties'][sortKey]]);
-      }
-      arr.sort(sortMultiDimensionalArray);
-      console.log(arr);
-      return arr;
-    }
   }
   
-  function sortMultiDimensionalArray(a, b) {
-    return ((a[1] < b[1]) ? -1 : ((a[1] > b[1]) ? 1 : 0));
+  // Enables or disables form fields in filter form
+  function toggleFieldDisabler(disable) {
+    _config.root.find('input').removeAttr('disabled');
+    _config.root.find('label').removeClass('disabled');
+    for (var key in disable) {
+      for (var i = 0; i < disable[key].length; i++) {
+        var field = _config.root.find('input[data-field="' + key + '"][value="' + disable[key][i] + '"]');
+        field.attr('disabled', 'disabled');
+        _config.root.find('label[for="' + field.attr('id') + '"]').addClass('disabled');
+      }
+    }
   }
   
   // Checks if some item in JSON exists
@@ -195,6 +194,8 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     return query;
   }
   
+  
+  
   this.init = function() {
     setFilterEvents();
     
@@ -219,3 +220,54 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
         // Rebuild paging
   }
 };
+
+
+
+
+
+
+/**
+ * @namespace Results Filter list object
+ */
+graphite.blocks.navigation.resultsFilter.list = function(arg_list) {
+  var maxLength = 10;
+  var list = arg_list;
+  var templateList = '';
+  templateList += '{{.values.id}}';
+  
+  // Creates an ordered representation of the JSON
+  function createOrderedArray(json) {
+    var sortKey = 'a';
+    var arr = new Array();
+    window.json = json;
+    for (var i = 0; i < json.length; i++) {
+      arr.push([i, json[i]['properties'][sortKey]]);
+    }
+    arr.sort(sortMultiDimensionalArray);
+    return arr;
+  }
+  
+  function sortMultiDimensionalArray(a, b) {
+    return ((a[1] < b[1]) ? -1 : ((a[1] > b[1]) ? 1 : 0));
+  }
+  
+  function _build(json) {
+    var orderedArray = createOrderedArray(json);
+    orderedArray = orderedArray.slice(0, maxLength);
+    console.log(JSON.stringify(json), templateList);
+    var listHtml = Mustache.render(templateList, json);
+    console.log(listHtml);
+  }
+  
+  
+  
+  this.build = function(json) {
+    _build(json);    
+  }
+};
+
+
+
+
+
+
