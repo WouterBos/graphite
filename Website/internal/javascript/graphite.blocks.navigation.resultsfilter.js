@@ -79,6 +79,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
       fail: handleQueryRequestFail
     })
     
+    // If the response of the server was successful
     function handleQueryRequestSuccess(data) {
       if (_config.log == true) {
         _config.root.find('.local_log').html('REPLY SERVER: ' + data + '<br /><br />' + _config.root.find('.local_log').html());
@@ -87,17 +88,23 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
       var orderedArray = createOrderedArray(_config.json);
       //_config.root.find('.local_log').html(orderedArray + '<br />' + _config.root.find('.log').html());
     }
-
+    
+    // If the server was unable to response correctly
     function handleQueryRequestFail(data) {
       throw Error('Something went wrong with ajax request.');
     }
     
+    // Creates an ordered representation of the JSON
     function createOrderedArray(json) {
+      var sortKey = 'a';
       var arr = new Array();
-      console.log(json);
-      for (var i = 0; json.length; i++) {
-        arr.push([i, json[i].properties.a]);
+      window.json = json;
+      for (var i = 0; i < json.data.length; i++) {
+        arr.push([i, json.data[i]['properties'][sortKey]]);
       }
+      arr.sort(sortMultiDimensionalArray);
+      console.log(arr);
+      return arr;
     }
   }
   
