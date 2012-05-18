@@ -23,17 +23,37 @@ graphite.blocks.navigation.resultsFilter = (function() {
      * Description
      *
      * @example
-     * graphite.blocks.navigation.resultsFilter.init('.gp_searchFilter');
+     * graphite.blocks.navigation.resultsFilter.init(selector: '.gp_searchFilter', listTemplate: '{{#items}} "{{id}}" {{/items}}', queryDataKeys: foobar);
      */
-    init: function(selector) {
-      jQuery(selector).each(function() {
+    init: function(config) {
+      jQuery(config.selector).each(function() {
         var root = jQuery(this);
         var form = root.find('.gp_local_filter');
         var list = root.find('.gp_local_results');
+        var controlOrder = root.find('.gp_local_controlOrder');
+        var controlBatch = root.find('.gp_local_controlBatch');
+        var controlPaging = root.find('.gp_local_controlPaging');
         var url = form.attr('data-ajaxurl');
+        var listTemplate = config.listTemplate;
+        
+
         
         // Creates Results Filter instance
-        var resultsFilter = new graphite.blocks.navigation.resultsFilter.obj({root: root, form: form, list: list, url: url});
+        var resultsFilter = new graphite.blocks.navigation.resultsFilter.obj(
+          jQuery.extend(
+            {},
+            config,
+            {
+              root: root,
+              form: form,
+              list: list,
+              url: url,
+              controlOrder: controlOrder,
+              controlBatch: controlBatch,
+              controlPaging: controlPaging
+            }
+          )
+        );
         resultsFilter.init(); // Runs filter
       });
     }
@@ -55,7 +75,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   if (_config.root.find('.local_log').size() > 0) {
     _config.log = true;
   }
-  var _resultsList = new graphite.blocks.navigation.resultsFilter.list(_config.list);
+  var _resultsList = new graphite.blocks.navigation.resultsFilter.list(_config);
   
   // Set events on all form fields
   function setFilterEvents() {
@@ -72,7 +92,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   // Initiates query and sends Ajax request to get new data.
   function updateList(queryJSON) {
     var urlQuery = createURLQuery(queryJSON);
-    console.log('REQUEST: ' + _config.url + '?' + urlQuery + '<br /><br />')
+    //console.log('REQUEST: ' + _config.url + '?' + urlQuery + '<br /><br />')
     if (_config.log == true) {
       _config.root.find('.local_log').html('REQUEST: ' + _config.url + '?' + urlQuery + '<br /><br />');
     }
@@ -88,6 +108,14 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
         _config.root.find('.local_log').html('REPLY SERVER: ' + data + '<br /><br />' + _config.root.find('.local_log').html());
       }
       _config.json = JSON.parse(data);
+      graphite.blocks.navigation.resultsFilter.list.controls.order(
+        _resultsList,
+        _config
+      );
+      graphite.blocks.navigation.resultsFilter.list.controls.pageSize(
+        _resultsList,
+        _config
+      );
       _resultsList.build(_config.json.data);
       toggleFieldDisabler(_config.json.disable);
     }
@@ -109,6 +137,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
         _config.root.find('label[for="' + field.attr('id') + '"]').addClass('disabled');
       }
     }
+    _config.root.find(':disabled').removeAttr('checked');
   }
   
   // Checks if some item in JSON exists
@@ -190,6 +219,8 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
         return false;
       }
     });
+    
+    //console.log('query', query);
 
     return query;
   }
@@ -197,24 +228,15 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   
   
   this.init = function() {
-    setFilterEvents();
-    
-      
-      // Server: returns JSON
+    setFilterEvents(); // Set form events
+    filterList(); // Create results list
+
       // Builds filtered list with HTML template (moustache?)
       // Handles paging and sorting
     // Event: form field onmouseover (optional)
       // Sifts through all form fields
       // Builds JSON object of query
       // Based on that JSON, items will be greyed out that would be hidden after the user toggles the filter
-    // After list has been built
-      // Event: onclick filter
-        // Click toggles ASC and DESC
-        // Builds JSON object of query
-        // Creates GET query with JSON object
-        // Sends Ajax request
-        // Server: returns JSON
-        // Builds filtered list with HTML template (moustache?)
       // Event: Set paging size
         // Rebuild filtered list
         // Rebuild paging
@@ -228,22 +250,38 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
 
 /**
  * @namespace Results Filter list object
+ * 
+ * @param {Object} config The config object that is provided when calling
+ *    graphite.blocks.navigation.resultsFilter.init.
  */
-graphite.blocks.navigation.resultsFilter.list = function(arg_list) {
-  var maxLength = 10;
-  var list = arg_list;
-  var templateList = '';
-  templateList += '{{.values.id}}';
+graphite.blocks.navigation.resultsFilter.list = function(config) {
+  var _queryData;
+  var _sortKey = '';
+  var _sortOrder = '';
+  var _pageSize = 0;
+  var _listTemplate = config.listTemplate   // The HTML template of the list
+  var _list = config.list;   // The DOM element that will contain the list
+  var _queryDataKeys = config.queryDataKeys   // The data that has to be fetched
+                                             // from the queryData
   
   // Creates an ordered index of the JSON
-  function createOrderedIndex(queryData) {
-    var sortKey = 'a';
+  function createOrderedIndex() {
     var arr = new Array();
-    window.queryData = queryData;
-    for (var i = 0; i < queryData.length; i++) {
-      arr.push([i, queryData[i]['properties'][sortKey]]);
+    var sortKey;
+    for (var i = 0; i < _queryData.length; i++) {
+      if (typeof(_queryData[i]['properties'][_sortKey]) != 'undefined') {
+        sortKey = _queryData[i]['properties'][_sortKey];
+      } else {
+        sortKey = '';
+      }
+      arr.push([i, sortKey]);
     }
-    arr.sort(sortMultiDimensionalArray);
+    if (_sortKey != '') {
+      arr.sort(sortMultiDimensionalArray);
+    }
+    if (_sortOrder == 'desc') {
+      arr.reverse();
+    }
     return arr;
   }
   
@@ -252,37 +290,163 @@ graphite.blocks.navigation.resultsFilter.list = function(arg_list) {
     return ((a[1] < b[1]) ? -1 : ((a[1] > b[1]) ? 1 : 0));
   }
   
-  // Returns an object with search results
-  function getResultsData(orderedIndex, queryData, keys) {
+  // Returns an object with relevant search results, based on the JSON reply
+  // from the server.
+  function getResultsData(orderedIndex) {
     var resultBatch = {};
+    var data;
+    var item;
+    var evalStr;
+    
     resultBatch.items = new Array();
-    //console.log(orderedIndex);
     for (var i = 0; i < orderedIndex.length; i++) {
-      resultBatch.items.push({
-        id: queryData[orderedIndex[i][0]]['values'].id,
-        title: queryData[orderedIndex[i][0]]['values'].title
-      });
+      data = {};
+      item = _queryData[orderedIndex[i][0]];
+      // Set default values
+      data.id = (item.values.id) ? item.values.id : '';
+      data.title = (item.values.title) ? item.values.title : '';
+      for (var ii = 0; ii < _queryDataKeys.length; ii++) {
+        // Search for specific items in the JSON from the server and store
+        // them in the results batch.
+        try {
+          evalStr = 'data.' + getKey(_queryDataKeys[ii]) + ' = item.' + _queryDataKeys[ii];
+          eval(evalStr);
+        }
+        catch(e) {};
+      }
+      resultBatch.items.push(data);
     }
+    
     return resultBatch;
+    
+    function getKey(str) {
+      return str.replace('.', '_');
+    }
   }
   
-  function _build(queryData) {
-    var orderedIndex = createOrderedIndex(queryData);
-    orderedIndex = orderedIndex.slice(0, maxLength);
-    console.log(orderedIndex);
-    var results = getResultsData(orderedIndex, queryData);
-    console.log(results);
-    //console.log(JSON.stringify(queryData), templateList);
-    //var listHtml = Mustache.render(templateList, queryData);
-    //console.log(listHtml);
+  function buildList() {
+    var orderedIndex = createOrderedIndex();
+    orderedIndex = orderedIndex.slice(0, _pageSize);
+    var results = getResultsData(orderedIndex);
+    var listHtml = Mustache.render(_listTemplate, results);
+    _list.html(listHtml);
   }
   
+  function setDefaultVariables() {
+    if (!_sortOrder) {
+      _sortOrder = 'asc';
+    }
+    if (!_sortKey) {
+      _sortKey = graphite.blocks.navigation.resultsFilter.list.controls.orderKeyName(config.listOrderData[0].key);
+    }
+    if (!_pageSize) {
+      _pageSize = config.listBatchSizes[0];
+    }
+  }
+
   
   
-  this.build = function(queryData) {
-    _build(queryData);    
+  
+  /**
+   * Builds new list of search results based on the queryData and stored filter
+   * preferences.
+   * 
+   * @param {Object} queryData A JSON with the search results in raw JSON.
+   * @param {String} sortKey A key name of items in the raw JSON. That key
+   *    is used to sort the list.
+   * @param {String} sortOrder Sets order type: 'asc' or 'desc'.
+   */
+  this.build = function(queryData, sortKey, sortOrder, pageSize) {
+    // Store arguments as local variable
+    if (queryData) {
+      _queryData = queryData;
+    }
+    if (sortOrder) {
+      _sortOrder = sortOrder;
+    }
+    if (sortKey) {
+      _sortKey = sortKey;
+    }
+    if (pageSize) {
+      _pageSize = pageSize;
+    }
+    
+    setDefaultVariables();
+    
+    // Build the results list
+    buildList(_queryData);
   }
 };
+
+
+
+
+
+
+/**
+ * @namespace Results Filter list object
+ * 
+ * @param {Object} resultsList The list object.
+ * @param {Array} config Global config object.
+ */
+graphite.blocks.navigation.resultsFilter.list.controls = (function() {
+  function orderKeyName(str) {
+    var key = str;
+    if (key.lastIndexOf('.') >= 0) {
+      return key.substring(key.lastIndexOf('.') + 1);
+    }
+    return key;
+  }
+  
+  return {
+    order: function(resultsList, config) {
+      config.controlOrder.html(Mustache.render(config.orderTemplate, config));
+      config.controlOrder.find('a').on('click', function() {
+        var selected = jQuery(this);
+        // Deselect all other items
+        config.controlOrder.find('a').not(selected).removeClass('gp_active')
+                                                   .removeAttr('data-sort');
+        // Make selected item active
+        selected.addClass('gp_active');
+        // Set correct data sorting
+        var sort = selected.attr('data-sort');
+        if (sort == undefined || sort == 'desc') {
+          selected.attr('data-sort', 'asc');
+        } else if (sort == 'asc') {
+          selected.attr('data-sort', 'desc');
+        }
+        
+        // Rebuild results list with new filter
+        resultsList.build(
+          false,
+          orderKeyName(jQuery(this).attr('data-key')),
+          selected.attr('data-sort')
+        );
+      });
+    },
+
+    pageSize: function(resultsList, config) {
+      config.controlBatch.html(Mustache.render(config.pageSizeTemplate, config));
+      config.controlBatch.find('a').on('click', function() {
+        var selected = jQuery(this);
+        // Deselect all other items
+        config.controlOrder.find('a').not(selected).removeClass('gp_active');
+        
+        // Make selected item active
+        selected.addClass('gp_active');
+        
+        // Rebuild results list with new filter
+        resultsList.build(false, false, false, selected.attr('data-size'));
+      });
+    },
+    
+    orderKeyName: function(str) {
+      return orderKeyName(str);
+    }
+  }
+})();
+
+
 
 
 

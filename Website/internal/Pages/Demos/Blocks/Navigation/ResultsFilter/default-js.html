@@ -9,5 +9,63 @@
 <script src="/Internal/JavaScript/graphite.blocks.navigation.resultsfilter.js"></script>
 
 <script>
-    graphite.blocks.navigation.resultsFilter.init('.gp_searchFilter');
+    (function() {
+        var listTemplate = '';
+        listTemplate += '<ul>';
+        listTemplate += '{{#items}}';
+        listTemplate += '   <li>';
+        listTemplate += '       <strong><a href="#id={{id}}">{{title}}</a></strong><br />';
+        listTemplate += '       Era: {{properties_era}}<br />';
+        listTemplate += '       Country: {{properties_country}}<br />';
+        listTemplate += '       Members: {{properties_members}}<br />';
+        listTemplate += '       Genre: {{properties_genre}}<br />';
+        listTemplate += '       <br />';
+        listTemplate += '   </li>';
+        listTemplate += '{{/items}}';
+        listTemplate += '</ul>';
+        var queryDataKeys = ['properties.era', 'properties.country', 'properties.members', 'properties.genre']
+
+        var orderTemplate = '';
+        orderTemplate += '<strong>Sort by:</strong>';
+        orderTemplate += '<ul>';
+        orderTemplate += '{{#listOrderData}}';
+        orderTemplate += '<li><a href="javascript:void(0)" data-key="{{key}}">{{name}}</a></li>';
+        orderTemplate += '{{/listOrderData}}';
+        orderTemplate += '</ul>';
+        
+        var pageSizeTemplate = '';
+        pageSizeTemplate += '<strong>Results per page:</strong>';
+        pageSizeTemplate += '<ul>';
+        pageSizeTemplate += '{{#listBatchSizes}}';
+        pageSizeTemplate += '<li><a href="javascript:void(0)" data-size="{{.}}">{{.}}</a></li>';
+        pageSizeTemplate += '{{/listBatchSizes}}';
+        pageSizeTemplate += '</ul>';
+        
+        graphite.blocks.navigation.resultsFilter.init({
+            selector: '.gp_searchFilter',
+            listTemplate: listTemplate,
+            queryDataKeys: queryDataKeys,
+            listOrderData: [
+                {
+                    key: queryDataKeys[0],
+                    name: 'Era'
+                },
+                {
+                    key: queryDataKeys[1],
+                    name: 'Country'
+                },
+                {
+                    key: queryDataKeys[2],
+                    name: 'Members'
+                },
+                {
+                    key: queryDataKeys[3],
+                    name: 'Genre'
+                }
+            ],
+            orderTemplate: orderTemplate,
+            pageSizeTemplate: pageSizeTemplate,
+            listBatchSizes: [2, 4, 8]
+        });
+    })();
 </script>
