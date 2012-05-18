@@ -235,34 +235,52 @@ graphite.blocks.navigation.resultsFilter.list = function(arg_list) {
   var templateList = '';
   templateList += '{{.values.id}}';
   
-  // Creates an ordered representation of the JSON
-  function createOrderedArray(json) {
+  // Creates an ordered index of the JSON
+  function createOrderedIndex(queryData) {
     var sortKey = 'a';
     var arr = new Array();
-    window.json = json;
-    for (var i = 0; i < json.length; i++) {
-      arr.push([i, json[i]['properties'][sortKey]]);
+    window.queryData = queryData;
+    for (var i = 0; i < queryData.length; i++) {
+      arr.push([i, queryData[i]['properties'][sortKey]]);
     }
     arr.sort(sortMultiDimensionalArray);
     return arr;
   }
   
+  // Sort multi-dimensional array by its second item
   function sortMultiDimensionalArray(a, b) {
     return ((a[1] < b[1]) ? -1 : ((a[1] > b[1]) ? 1 : 0));
   }
   
-  function _build(json) {
-    var orderedArray = createOrderedArray(json);
-    orderedArray = orderedArray.slice(0, maxLength);
-    console.log(JSON.stringify(json), templateList);
-    var listHtml = Mustache.render(templateList, json);
-    console.log(listHtml);
+  // Returns an object with search results
+  function getResultsData(orderedIndex, queryData, keys) {
+    var resultBatch = {};
+    resultBatch.items = new Array();
+    //console.log(orderedIndex);
+    for (var i = 0; i < orderedIndex.length; i++) {
+      resultBatch.items.push({
+        id: queryData[orderedIndex[i][0]]['values'].id,
+        title: queryData[orderedIndex[i][0]]['values'].title
+      });
+    }
+    return resultBatch;
+  }
+  
+  function _build(queryData) {
+    var orderedIndex = createOrderedIndex(queryData);
+    orderedIndex = orderedIndex.slice(0, maxLength);
+    console.log(orderedIndex);
+    var results = getResultsData(orderedIndex, queryData);
+    console.log(results);
+    //console.log(JSON.stringify(queryData), templateList);
+    //var listHtml = Mustache.render(templateList, queryData);
+    //console.log(listHtml);
   }
   
   
   
-  this.build = function(json) {
-    _build(json);    
+  this.build = function(queryData) {
+    _build(queryData);    
   }
 };
 
