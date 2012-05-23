@@ -132,7 +132,19 @@ namespace Graphite.Mail
             }
 
             Mail.From = new MailAddress(_mailFrom);
-            Mail.To.Add(_mailTo);
+            if (_mailTo.IndexOf(";") == -1)
+            {
+                Mail.To.Add(_mailTo);
+            }
+            else
+            {
+                char[] separator = new char[] { ';' };
+                string[] addresses = _mailTo.Split(separator);
+                foreach (string address in addresses)
+                {
+                    Mail.To.Add(address);
+                } 
+            }
             Mail.Subject = _mailSubject;
             Mail.Body = _mailBody;
             Mail.IsBodyHtml = true;
