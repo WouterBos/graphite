@@ -22,8 +22,35 @@ graphite.blocks.navigation.resultsFilter = (function() {
     /**
      * Description
      *
+     * @param {Object} config Configuration object.
+     * 
+     * @param {String|Object} config.selector jQuery selector that selects the
+     *    root element of the results filter
+     * 
+     * @param {String} config.listTemplate Mustache template needed for
+     *    rendering the results list.
+     * 
+     * @param {Array} config.queryDataKeys Array of JSON selectors. If a
+     *    server sends a JSON reply, JavaScript will only pick up the data
+     *    that is defined in this array. The selectors are converted to a
+     *    one-level variable. For example: if you supply the query
+     *    ['properties.id'], the Mustache key will be properties_id. 
+     * 
+     * @param {Array} config.listOrderData Data by which a list can be sorted.
+     *    The array is typically built up like this:
+     *    [ {key: 'properties.id', name: 'Era'}, {...} ]
+     * 
+     * @param {Array} config.listOrderTemplate Mustache template to build the
+     *    order links.
+     * 
+     * @param {Array} config.listBatchSizes Array of different options a user
+     *    has set how many items will be shown per page.
+     * 
+     * @param {Array} config.listOrderTemplate Mustache template to build the
+     *    paging links.
+     * 
      * @example
-     * graphite.blocks.navigation.resultsFilter.init(selector: '.gp_searchFilter', listTemplate: '{{#items}} "{{id}}" {{/items}}', queryDataKeys: foobar);
+     * graphite.blocks.navigation.resultsFilter.init({});
      */
     init: function(config) {
       jQuery(config.selector).each(function() {
@@ -94,7 +121,8 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     var urlQuery = createURLQuery(queryJSON);
     //console.log('REQUEST: ' + _config.url + '?' + urlQuery + '<br /><br />')
     if (_config.log == true) {
-      _config.root.find('.local_log').html('REQUEST: ' + _config.url + '?' + urlQuery + '<br /><br />');
+      _config.root.find('.local_log').html('REQUEST: ' + _config.url + '?' +
+        urlQuery + '<br /><br />');
     }
     jQuery.ajax({
       url: _config.url + '?' + urlQuery,
@@ -105,14 +133,16 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     // If the response of the server was successful
     function handleQueryRequestSuccess(data) {
       if (_config.log == true) {
-        _config.root.find('.local_log').html('REPLY SERVER: ' + data + '<br /><br />' + _config.root.find('.local_log').html());
+        _config.root.find('.local_log').html('REPLY SERVER: ' + data +
+          '<br /><br />' + _config.root.find('.local_log').html());
       }
       _config.json = JSON.parse(data);
-      graphite.blocks.navigation.resultsFilter.list.controls.order(
+      var controls = graphite.blocks.navigation.resultsFilter.list.controls;
+      controls.order(
         _resultsList,
         _config
       );
-      graphite.blocks.navigation.resultsFilter.list.controls.pageSize(
+      controls.pageSize(
         _resultsList,
         _config
       );
@@ -132,9 +162,11 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     _config.root.find('label').removeClass('disabled');
     for (var key in disable) {
       for (var i = 0; i < disable[key].length; i++) {
-        var field = _config.root.find('input[data-field="' + key + '"][value="' + disable[key][i] + '"]');
+        var field = _config.root.find('input[data-field="' + key +
+          '"][value="' + disable[key][i] + '"]');
         field.attr('disabled', 'disabled');
-        _config.root.find('label[for="' + field.attr('id') + '"]').addClass('disabled');
+        _config.root.find('label[for="' + field.attr('id') +
+          '"]').addClass('disabled');
       }
     }
     _config.root.find(':disabled').removeAttr('checked');
@@ -259,8 +291,7 @@ graphite.blocks.navigation.resultsFilter.list = function(config) {
   var _sortKey = '';
   var _sortOrder = '';
   var _pageSize = 0;
-  var _listTemplate = config.listTemplate   // The HTML template of the list
-  var _list = config.list;   // The DOM element that will contain the list
+  var _config = config;
   var _queryDataKeys = config.queryDataKeys   // The data that has to be fetched
                                              // from the queryData
   
@@ -309,7 +340,8 @@ graphite.blocks.navigation.resultsFilter.list = function(config) {
         // Search for specific items in the JSON from the server and store
         // them in the results batch.
         try {
-          evalStr = 'data.' + getKey(_queryDataKeys[ii]) + ' = item.' + _queryDataKeys[ii];
+          evalStr = 'data.' + getKey(_queryDataKeys[ii]) + ' = item.' +
+                    _queryDataKeys[ii];
           eval(evalStr);
         }
         catch(e) {};
@@ -328,19 +360,25 @@ graphite.blocks.navigation.resultsFilter.list = function(config) {
     var orderedIndex = createOrderedIndex();
     orderedIndex = orderedIndex.slice(0, _pageSize);
     var results = getResultsData(orderedIndex);
-    var listHtml = Mustache.render(_listTemplate, results);
-    _list.html(listHtml);
+    var listHtml = Mustache.render(_config.listTemplate, results);
+    _config.list.html(listHtml);
   }
   
   function setDefaultVariables() {
+    var controls
     if (!_sortOrder) {
       _sortOrder = 'asc';
     }
     if (!_sortKey) {
-      _sortKey = graphite.blocks.navigation.resultsFilter.list.controls.orderKeyName(config.listOrderData[0].key);
+      _sortKey = graphite.blocks.navigation.resultsFilter.list.controls
+                         .orderKeyName(config.listOrderData[0].key);
+      controls = graphite.blocks.navigation.resultsFilter.list.controls;
+      controls.orderSetActive(0, _config);
     }
     if (!_pageSize) {
       _pageSize = config.listBatchSizes[0];
+      controls = graphite.blocks.navigation.resultsFilter.list.controls;
+      controls.pageSizeSetActive(0, _config);
     }
   }
 
@@ -398,23 +436,35 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
     return key;
   }
   
+  function orderSetActive(selected, config) {
+    // Deselect all other items
+    config.controlOrder.find('a').not(selected).removeClass('gp_active')
+                                               .removeAttr('data-sort');
+    // Make selected item active
+    selected.addClass('gp_active');
+    // Set correct data sorting
+    var sort = selected.attr('data-sort');
+    if (sort == undefined || sort == 'desc') {
+      selected.attr('data-sort', 'asc');
+    } else if (sort == 'asc') {
+      selected.attr('data-sort', 'desc');
+    }
+  }
+  
+  function pageSizeSetActive(selected, config) {
+    // Deselect all other items
+    config.controlBatch.find('a').not(selected).removeClass('gp_active');
+    
+    // Make selected item active
+    selected.addClass('gp_active');
+  }
+  
   return {
     order: function(resultsList, config) {
-      config.controlOrder.html(Mustache.render(config.orderTemplate, config));
+      config.controlOrder.html(Mustache.render(config.listOrderTemplate, config));
       config.controlOrder.find('a').on('click', function() {
         var selected = jQuery(this);
-        // Deselect all other items
-        config.controlOrder.find('a').not(selected).removeClass('gp_active')
-                                                   .removeAttr('data-sort');
-        // Make selected item active
-        selected.addClass('gp_active');
-        // Set correct data sorting
-        var sort = selected.attr('data-sort');
-        if (sort == undefined || sort == 'desc') {
-          selected.attr('data-sort', 'asc');
-        } else if (sort == 'asc') {
-          selected.attr('data-sort', 'desc');
-        }
+        orderSetActive(selected, config);
         
         // Rebuild results list with new filter
         resultsList.build(
@@ -424,20 +474,24 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
         );
       });
     },
+    
+    orderSetActive: function(index, config) {
+      orderSetActive(config.controlOrder.find('a:eq(' + index + ')'), config);
+    },
 
     pageSize: function(resultsList, config) {
-      config.controlBatch.html(Mustache.render(config.pageSizeTemplate, config));
+      config.controlBatch.html(Mustache.render(config.listBatchTemplate, config));
       config.controlBatch.find('a').on('click', function() {
         var selected = jQuery(this);
-        // Deselect all other items
-        config.controlOrder.find('a').not(selected).removeClass('gp_active');
-        
-        // Make selected item active
-        selected.addClass('gp_active');
-        
+        pageSizeSetActive(selected, config);
+
         // Rebuild results list with new filter
         resultsList.build(false, false, false, selected.attr('data-size'));
       });
+    },
+
+    pageSizeSetActive: function(index, config) {
+      pageSizeSetActive(config.controlBatch.find('a:eq(' + index + ')'), config);
     },
     
     orderKeyName: function(str) {

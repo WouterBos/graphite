@@ -25,21 +25,21 @@
         listTemplate += '</ul>';
         var queryDataKeys = ['properties.era', 'properties.country', 'properties.members', 'properties.genre']
 
-        var orderTemplate = '';
-        orderTemplate += '<strong>Sort by:</strong>';
-        orderTemplate += '<ul>';
-        orderTemplate += '{{#listOrderData}}';
-        orderTemplate += '<li><a href="javascript:void(0)" data-key="{{key}}">{{name}}</a></li>';
-        orderTemplate += '{{/listOrderData}}';
-        orderTemplate += '</ul>';
+        var listOrderTemplate = '';
+        listOrderTemplate += '<strong>Sort by:</strong>';
+        listOrderTemplate += '<ul>';
+        listOrderTemplate += '{{#listOrderData}}';
+        listOrderTemplate += '<li><a href="javascript:void(0)" data-key="{{key}}">{{name}}</a></li>';
+        listOrderTemplate += '{{/listOrderData}}';
+        listOrderTemplate += '</ul>';
         
-        var pageSizeTemplate = '';
-        pageSizeTemplate += '<strong>Results per page:</strong>';
-        pageSizeTemplate += '<ul>';
-        pageSizeTemplate += '{{#listBatchSizes}}';
-        pageSizeTemplate += '<li><a href="javascript:void(0)" data-size="{{.}}">{{.}}</a></li>';
-        pageSizeTemplate += '{{/listBatchSizes}}';
-        pageSizeTemplate += '</ul>';
+        var listBatchTemplate = '';
+        listBatchTemplate += '<strong>Results per page:</strong>';
+        listBatchTemplate += '<ul>';
+        listBatchTemplate += '{{#listBatchSizes}}';
+        listBatchTemplate += '<li><a href="javascript:void(0)" data-size="{{.}}">{{.}}</a></li>';
+        listBatchTemplate += '{{/listBatchSizes}}';
+        listBatchTemplate += '</ul>';
         
         graphite.blocks.navigation.resultsFilter.init({
             selector: '.gp_searchFilter',
@@ -63,9 +63,9 @@
                     name: 'Genre'
                 }
             ],
-            orderTemplate: orderTemplate,
-            pageSizeTemplate: pageSizeTemplate,
-            listBatchSizes: [2, 4, 8]
+            listOrderTemplate: listOrderTemplate,
+            listBatchSizes: [2, 4, 8],
+            listBatchTemplate: listBatchTemplate
         });
     })();
 </script>
