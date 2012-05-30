@@ -134,7 +134,22 @@ namespace Graphite.Mail
                 }
                 else if (ControlInForm is CheckBoxList)
                 {
-                    arrList.Add(new UtilityObj(ControlInForm.ID, ((CheckBoxList)ControlInForm).SelectedValue));
+                    CheckBoxList list = (CheckBoxList)ControlInForm;
+                    String listValues = "";
+                    foreach (ListItem boxItem in list.Items)
+                    {
+                        Console.WriteLine(boxItem.Text + " - " + boxItem.Selected.ToString());
+
+                        if (boxItem.Selected == true)
+                        {
+                            if (listValues != "")
+                            {
+                                listValues += "<br />";
+                            }
+                            listValues += ((string)boxItem.Value);
+                        }
+                    }
+                    arrList.Add(new UtilityObj(ControlInForm.ID, listValues));
                 }
                 else if (ControlInForm is CheckBox)
                 {
