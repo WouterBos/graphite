@@ -114,9 +114,14 @@ namespace Graphite.Mail
         /// <remarks></remarks>
         private void GetFormValuesFromPanel(Control control, ref ArrayList arrList)
 		{
-			foreach (Control ControlInForm in control.Controls) {
+			foreach (Control ControlInForm in control.Controls)
+            {
 				if (ControlInForm is TextBox)
                 {
+                    if (ControlInForm.ID == "txtBotCheck")
+                    {
+                        continue;
+                    }
 					arrList.Add(new UtilityObj(ControlInForm.ID, ((TextBox)ControlInForm).Text));
 				}
                 else if (ControlInForm is DropDownList)
@@ -127,19 +132,35 @@ namespace Graphite.Mail
                 {
                     arrList.Add(new UtilityObj(ControlInForm.ID, ((RadioButtonList)ControlInForm).SelectedValue));
                 }
+                else if (ControlInForm is CheckBoxList)
+                {
+                    CheckBoxList list = (CheckBoxList)ControlInForm;
+                    String listValues = "";
+                    foreach (ListItem boxItem in list.Items)
+                    {
+                        Console.WriteLine(boxItem.Text + " - " + boxItem.Selected.ToString());
+
+                        if (boxItem.Selected == true)
+                        {
+                            if (listValues != "")
+                            {
+                                listValues += "<br />";
+                            }
+                            listValues += ((string)boxItem.Value);
+                        }
+                    }
+                    arrList.Add(new UtilityObj(ControlInForm.ID, listValues));
+                }
                 else if (ControlInForm is CheckBox)
                 {
 					CheckBox oCheckBox = (CheckBox)ControlInForm;
 					if (oCheckBox.Checked == true)
                     {
-                        arrList.Add(new UtilityObj(oCheckBox.ID, (string)HttpContext.GetGlobalResourceObject("Graphite", "Yes")));
+						arrList.Add(new UtilityObj(oCheckBox.ID, "Ja"));
 					}
-                    else if (oCheckBox.Checked == false)
-                    {
-                        arrList.Add(new UtilityObj(oCheckBox.ID, (string)HttpContext.GetGlobalResourceObject("Graphite", "No")));
-                    }
 				}
-				if (ControlInForm.HasControls()) {
+				if (ControlInForm.HasControls())
+                {
 					GetFormValuesFromPanel(ControlInForm, ref arrList);
 				}
 			}
