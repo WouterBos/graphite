@@ -126,7 +126,6 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   // Initiates query and sends Ajax request to get new data.
   function updateList(queryJSON) {
     var urlQuery = createURLQuery(queryJSON);
-    //console.log('REQUEST: ' + _config.url + '?' + urlQuery + '<br /><br />')
     if (_config.log == true) {
       _config.root.find('.local_log').html('REQUEST: ' + _config.url + '?' +
         urlQuery + '<br /><br />');
@@ -259,14 +258,13 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
       }
     });
     
-    //console.log('query', query);
-
     return query;
   }
   
   
   
   this.init = function() {
+    _config.root.addClass('gp_hasJs');
     setFilterEvents(); // Set form events
     filterList(); // Create results list
 
@@ -515,7 +513,7 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
         pageSizeSetActive(selected, config);
 
         // Rebuild results list with new filter
-        resultsList.build(false, false, false, selected.attr('data-size'));
+        resultsList.build(false, false, false, parseInt(selected.attr('data-size')));
       });
     },
 
@@ -574,32 +572,49 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
     var html = '';
     var hrefVoid = 'href="javascript:void(0);"'
     
-    html += '<a ' + hrefVoid + ' class="' + _class.first + '">' + _labels.first + '</a>\n';
-    html += '<a ' + hrefVoid + ' class="' + _class.previous + '">' + _labels.previous + '</a>\n';
+    html += '<ul>';
+    if (_index > 0) {
+      html += '<li class="' + _class.first + '"><a ' + hrefVoid + '>' + _labels.first + '</a>\n';
+      html += '<li class="' + _class.previous + '"><a ' + hrefVoid + '>' + _labels.previous + '</a>\n';
+    }
     html += numbers(hrefVoid);
-    html += '<a ' + hrefVoid + ' class="' + _class.next + '">' + _labels.next + '</a>\n';
-    html += '<a ' + hrefVoid + ' class="' + _class.last + '">' + _labels.last + '</a>\n';
+    if (_index < (maxPage() - 1)) {
+      html += '<li class="' + _class.next + '"><a ' + hrefVoid + '>' + _labels.next + '</a>\n';
+      html += '<li class="' + _class.last + '"><a ' + hrefVoid + '>' + _labels.last + '</a>\n';
+    }
+    html += '</ul>';
     
     _pagerContainer.html(html);
     setEvents();
   }
   
   function setEvents() {
-    _pagerContainer.find('.' + _class.first).click(function() {
+    _pagerContainer.find('.' + _class.first + ' a').click(function() {
       _resultsList.build(false, false, false, false, 0);
+      _pagerContainer.find('.' + _class.first + ' a').focus();
     });
-    _pagerContainer.find('.' + _class.last).click(function() {
+    _pagerContainer.find('.' + _class.last + ' a').click(function() {
       _resultsList.build(false, false, false, false, _total);
+      _pagerContainer.find('.' + _class.last + ' a').focus();
     });
-    _pagerContainer.find('.' + _class.previous).click(function() {
+    _pagerContainer.find('.' + _class.previous + ' a').click(function() {
       _resultsList.build(false, false, false, false, _index - 1);
+      _pagerContainer.find('.' + _class.previous + ' a').focus();
     });
-    _pagerContainer.find('.' + _class.next).click(function() {
+    _pagerContainer.find('.' + _class.next + ' a').click(function() {
       _resultsList.build(false, false, false, false, _index + 1);
+      _pagerContainer.find('.' + _class.next + ' a').focus();
     });
-    _pagerContainer.find('.' + _class.number).click(function() {
-      _resultsList.build(false, false, false, false, jQuery(this).html());
+    _pagerContainer.find('.' + _class.number + ' a').click(function() {
+      var index = parseInt(jQuery(this).html()) - 1;
+      _resultsList.build(false, false, false, false, index);
+      var newLink = _pagerContainer.find('a[data-index="' + index + '"]');
+      newLink.focus();
     });
+  }
+  
+  function maxPage() {
+    return Math.ceil(_total/_pageSize);
   }
   
   function numbers(hrefVoid) {
@@ -609,15 +624,15 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
       start = 0;
     }
     var end = start + (visibleRange * 2)
-    if (end >= _total) {
-      end = _total;
+    if (end > maxPage()) {
+      end = maxPage();
     }
     for (i = start; i < end; i++) {
-      html += '<a ' + hrefVoid;
+      html += '<li class="' + _class.number + '"><a ' + hrefVoid;
       if (i == _index) {
-        html += ' class="gp_active"'
+        html += ' class="gp_active"';
       }
-      html += '>' + (i + 1) + '</a>\n';
+      html += ' data-index="' + i + '">' + (i + 1) + '</a></li>\n';
     }
     return html;
   }

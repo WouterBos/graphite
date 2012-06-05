@@ -45,6 +45,12 @@
     }
     
     .gp_local_controlPaging {
+    	text-align: center;
+
+    	li {
+    		display: inline;
+    	}
+    	
     	.gp_active {
     		font-weight: bold;
     	}
@@ -59,5 +65,11 @@
     .local_log {
         clear: both;
         width: 100%;
+    }
+    
+    &.gp_hasJs {
+    	.gp_local_submit {
+    		display: none;
+    	}
     }
 }

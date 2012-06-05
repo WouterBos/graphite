@@ -55,7 +55,7 @@
                     <li><label for="d12">Alternative</label> <input type="checkbox" id="d12" data-field="genre" value="Alternative" /></li>
                 </ul>
                 
-                <asp:Button ID="Button1" runat="server" Text="<%$ Resources: Graphite, Search %>"></asp:Button>
+                <asp:Button ID="Button1" runat="server" Text="<%$ Resources: Graphite, Search %>" CssClass="gp_local_submit"></asp:Button>
             </fieldset>
         </div>
         
