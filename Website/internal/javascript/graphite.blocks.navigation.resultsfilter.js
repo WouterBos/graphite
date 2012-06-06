@@ -120,7 +120,12 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   // initiate the filtering proces of the existing results list
   function filterList() {
     var queryJSON = getQueryJSON();
+    urlUpdate(queryJSON);
     updateList(queryJSON);
+  }
+  
+  function urlUpdate(queryJSON) {
+    document.location.hash = 'query=' + JSON.stringify(queryJSON);
   }
   
   // Initiates query and sends Ajax request to get new data.
@@ -130,6 +135,9 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
       _config.root.find('.local_log').html('REQUEST: ' + _config.url + '?' +
         urlQuery + '<br /><br />');
     }
+
+    _config.list.stop(true, true).fadeTo(500, 0.1);
+
     jQuery.ajax({
       url: _config.url + '?' + urlQuery,
       success: handleQueryRequestSuccess,
@@ -154,6 +162,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
       );
       _resultsList.build(_config.json.data);
       toggleFieldDisabler(_config.json.disable);
+      _config.list.fadeTo(500, 1);
     }
     
     // If the server was unable to response correctly
@@ -383,13 +392,9 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
     if (!_sortKey) {
       _sortKey = graphite.blocks.navigation.resultsFilter.list.controls
                          .orderKeyName(config.listOrderData[0].key);
-      controls = graphite.blocks.navigation.resultsFilter.list.controls;
-      controls.orderSetActive(0, _config);
     }
     if (!_pageSize) {
       _pageSize = config.listBatchSizes[0];
-      controls = graphite.blocks.navigation.resultsFilter.list.controls;
-      controls.pageSizeSetActive(0, _config);
     }
   }
 
@@ -482,6 +487,13 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
      * Create list order links
      */
     order: function(resultsList, config) {
+      var activeIndex = 0;
+      config.controlOrder.find('a[data-key]').each(function(index) {
+        if  (jQuery(this).hasClass('gp_active') == true) {
+          activeIndex = index;
+        }
+      });
+      
       config.controlOrder.html(Mustache.render(config.listOrderTemplate, config));
       config.controlOrder.find('a').on('click', function() {
         var selected = jQuery(this);
@@ -494,6 +506,8 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
           selected.attr('data-sort')
         );
       });
+      
+      orderSetActive(config.controlOrder.find('a:eq(' + activeIndex + ')'), config);
     },
     
     /**
@@ -507,6 +521,13 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
      * Create page size links
      */
     pageSize: function(resultsList, config) {
+      var activeIndex = 0;
+      config.controlBatch.find('a[data-size]').each(function(index) {
+        if  (jQuery(this).hasClass('gp_active') == true) {
+          activeIndex = index;
+        }
+      });
+
       config.controlBatch.html(Mustache.render(config.listBatchTemplate, config));
       config.controlBatch.find('a').on('click', function() {
         var selected = jQuery(this);
@@ -515,6 +536,8 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
         // Rebuild results list with new filter
         resultsList.build(false, false, false, parseInt(selected.attr('data-size')));
       });
+      
+      pageSizeSetActive(config.controlBatch.find('a:eq(' + activeIndex + ')'), config);
     },
 
     /**

@@ -14,7 +14,7 @@
                 <input type="text" data-keyword="true" />
 
                 <legend><%=GetGlobalResourceObject("Graphite", "Category")%> Era</legend>
-                <ul>
+                <ul class="gp_local_radioCheck">
                     <li><label for="a1">1960s</label> <input type="checkbox" id="a1" data-field="era" value="1960s" /></li>
                     <li><label for="a2">1990s</label> <input type="checkbox" id="a2" data-field="era" value="1990s" /></li>
                     <li><label for="a3">2000s</label> <input type="checkbox" id="a3" data-field="era" value="2000s" /></li>
@@ -22,7 +22,7 @@
                 </ul>
                 
                 <legend><%=GetGlobalResourceObject("Graphite", "Category")%> Country</legend>
-                <ul>
+                <ul class="gp_local_radioCheck">
                     <li><label for="b1">UK</label> <input type="checkbox" id="b1" name="b" data-field="country" value="UK" /></li>
                     <li><label for="b2">Jamaica</label> <input type="checkbox" id="b2" name="b" data-field="country" value="Jamaica" /></li>
                     <li><label for="b3">USA</label> <input type="checkbox" id="b3" name="b" data-field="country" value="USA" /></li>
@@ -32,7 +32,7 @@
                 </ul>
 
                 <legend><%=GetGlobalResourceObject("Graphite", "Category")%> Members</legend>
-                <ul>
+                <ul class="gp_local_radioCheck">
                     <li><label for="c1">1</label> <input type="radio" id="c1" data-field="members" value="1" /></li>
                     <li><label for="c2">2</label> <input type="radio" id="c2" data-field="members" value="2" /></li>
                     <li><label for="c3">3</label> <input type="radio" id="c3" data-field="members" value="3" /></li>
@@ -40,7 +40,7 @@
                 </ul>
 
                 <legend><%=GetGlobalResourceObject("Graphite", "Category")%> Genre</legend>
-                <ul>
+                <ul class="gp_local_radioCheck">
                     <li><label for="d1">Classic rock</label> <input type="checkbox" id="d1" data-field="genre" value="Classic rock" /></li>
                     <li><label for="d2">Britpop</label> <input type="checkbox" id="d2" data-field="genre" value="Britpop" /></li>
                     <li><label for="d3">Ska</label> <input type="checkbox" id="d3" data-field="genre" value="Ska" /></li>

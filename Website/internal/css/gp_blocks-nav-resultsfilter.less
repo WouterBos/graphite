@@ -13,14 +13,22 @@
 
     .gp_local_filter {
         float: left;
-
+        
 		legend {
 			font-weight: bold;
 		}
 		
-		input[type="checkbox"],
-		input[type="radio"] {
-			float: left;
+		.gp_local_radioCheck {
+			li {
+				position: relative;
+				padding-left: 20px;
+
+				input[type="checkbox"],
+				input[type="radio"] {
+					position: absolute;
+					left: 0;
+				}
+			}
 		}
 
         label.disabled {
