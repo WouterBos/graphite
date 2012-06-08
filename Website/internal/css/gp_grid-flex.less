@@ -40,6 +40,21 @@
 		clear: both;
 		width: 100%;
 	}
+
+    .gp_gridColumn {
+        .gp_block {
+            margin-left: @gp_gridBlockPadding;
+            margin-right: @gp_gridBlockPadding;
+        }
+
+        &:first-child .gp_block {
+            margin-left: 0;
+        }
+
+        &:last-child .gp_block {
+            margin-right: 0;
+        }
+    }
 }
 
 .ie7 .gp_gridRow.gp_gridFlex.gp_gridColumns3 {

@@ -70,7 +70,8 @@ public partial class GraphiteInternal_BreadCrumb : System.Web.UI.UserControl
         string link = "<a href='/internal/pages" + GetXPathToNode(xmlNode) + "'>" + linkName + "</a>";
         if (nodeLevel == 0)
         {
-            link = "<strong>" + link + "</strong>";
+            link = "<strong>" + linkName + "</strong>";
+            this.Page.Title = linkName;
         }
         sbReturn.AppendLine(link);
         return sbReturn.ToString();
