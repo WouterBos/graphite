@@ -6,7 +6,7 @@
     <span class="mandatory">* = Verplicht veld</span>
     <fieldset>
         <ol>
-            <li class="gp_hideAccessable">
+            <li class="gp_hideAccessible">
                 <asp:Label ID="lblTextBoxHumanCheck" runat="server" AssociatedControlID="TextBoxHumanCheck">
                     Leave this form field empty
                 </asp:Label>

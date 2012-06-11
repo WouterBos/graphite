@@ -137,6 +137,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     }
 
     _config.list.stop(true, true).fadeTo(500, 0.1);
+    _config.list.html('<strong>Bezig met laden...</strong>' + _config.list.html())
 
     jQuery.ajax({
       url: _config.url + '?' + urlQuery,
@@ -222,6 +223,23 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     
     return get;
   }
+  
+  // Rebuild checked state of search form if data is available
+  function restoreState() {
+    var hash = document.location.hash;
+    console.log(hash.indexOf('query='));
+    if (hash.indexOf('#query=') > -1) {
+      hash = hash.replace('#query=', '');
+      console.log(hash);
+      var query = JSON.parse(hash);
+      console.log(query);
+    }
+    
+    console.log(hash.keywords)
+    if (typeof(hash.keywords) != 'undefined') {
+      _config.root.find('input[data-keyword]').val(hash.keywords);
+    }
+  }
 
   // Sifts through all form fields and builds JSON object of query
   function getQueryJSON() {
@@ -274,18 +292,9 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   
   this.init = function() {
     _config.root.addClass('gp_hasJs');
+    restoreState(); // Rebuild checked state of search form if data is available
     setFilterEvents(); // Set form events
     filterList(); // Create results list
-
-      // Builds filtered list with HTML template (moustache?)
-      // Handles paging and sorting
-    // Event: form field onmouseover (optional)
-      // Sifts through all form fields
-      // Builds JSON object of query
-      // Based on that JSON, items will be greyed out that would be hidden after the user toggles the filter
-      // Event: Set paging size
-        // Rebuild filtered list
-        // Rebuild paging
   }
 };
 
@@ -381,6 +390,7 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
     var results = getResultsData(orderedIndex);
     var listHtml = Mustache.render(_config.listTemplate, results);
     _config.list.html(listHtml);
+    _config.list.attr('aria-live', 'assertive')
     _pager.page(_pageIndex, _queryData.length, _pageSize);
   }
   

@@ -2,7 +2,7 @@
 
 
 
-<a href="#gp_skipMenu" class="gp_hideAccessable"><%=GetGlobalResourceObject("Graphite", "SkipMenu")%></a>
+<a href="#gp_skipMenu" class="gp_hideAccessible"><%=GetGlobalResourceObject("Graphite", "SkipMenu")%></a>
 
 <asp:Panel runat="server" Visible="true" ID="pnlRoot" cssclass="gp_menu">
     <ul>
