@@ -3,7 +3,7 @@
  * @author Wouter Bos, Web developer at Estate Internet (www.estate.nl).
  *
  * @since 0.1 - 2012-04-20
- * @version 0.1 - 2012-04-20
+ * @version 0.8 - 2012-06-11
  */
 
 
@@ -103,7 +103,8 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     _config.log = true;
   }
   var _pager = new graphite.blocks.navigation.resultsFilter.pager(
-    _config.controlPaging
+    _config.controlPaging,
+    _config.labels
   );
   var _resultsList = new graphite.blocks.navigation.resultsFilter.list(
     _config,
@@ -329,6 +330,8 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
     for (var i = 0; i < _queryData.length; i++) {
       if (typeof(_queryData[i]['properties'][_sortKey]) != 'undefined') {
         sortKey = _queryData[i]['properties'][_sortKey];
+      } else if (typeof(_queryData[i]['values'][_sortKey]) != 'undefined') {
+        sortKey = _queryData[i]['values'][_sortKey];
       } else {
         sortKey = '';
       }
@@ -390,7 +393,7 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
     var results = getResultsData(orderedIndex);
     var listHtml = Mustache.render(_config.listTemplate, results);
     _config.list.html(listHtml);
-    _config.list.attr('aria-live', 'assertive')
+    _config.list.attr('aria-live', 'assertive');
     _pager.page(_pageIndex, _queryData.length, _pageSize);
   }
   
@@ -586,11 +589,11 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
   var _pageSize = 2;
   var visibleRange = 2;
   var _class = {
-   first: 'local_first', 
-   last: 'local_last',
-   previous: 'local_previous', 
-   next: 'local_next',
-   number: 'local_number' 
+   first: 'gp_local_first', 
+   last: 'gp_local_last',
+   previous: 'gp_local_previous', 
+   next: 'gp_local_next',
+   number: 'gp_local_number' 
   }
   var _labels = {
     first: 'first',
