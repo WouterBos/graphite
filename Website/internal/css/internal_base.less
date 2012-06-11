@@ -33,9 +33,10 @@ body > form {
 .graphite_title {
 	.gp_linearGradient(#f9f9f9, #e5e5e5);
 	clear: both;
+    margin-top: 16px;
 	border-bottom: 1px solid #dddddd;
-	padding: @gp_gridBlockSpacing / 2;
-	min-height: 29px;
+	padding: (@gp_gridBlockSpacing / 2) 110px (@gp_gridBlockSpacing / 2) 15px;
+	min-height: 30px;
 	color: #333333;
 	font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace;
 	font-size: 16px;
@@ -59,12 +60,15 @@ body > form {
 
 /* Graphite demo */
 .graphite_demoStage {
-	.gp_clear();
+    @padding: 20px;
 
+    .gp_clear();
 	position: relative;
 	margin-bottom: @gp_gridBlockSpacing;
 	border: 1px solid #aaa;
-	padding: @gp_gridBlockSpacing;
+    margin-left: -@padding;
+	padding: (@padding * 2.5) @padding @padding @padding;
+    width: @gp_desktop - (@padding*2);
 	background: @gp_colorHigh;
 	.gp_boxShadow(0, 0, 5px, #999999);
 		
@@ -111,7 +115,7 @@ body > form {
 	a {
 		position: relative;
 		display: inline-block;
-		.gp_transition(all, 0.5, ease-out);
+		.gp_transition(all, @time: 0.5, @easing: ease-out);
 		margin-right: 4px;
 		border: 1px solid @gp_colorHigh;
 		.gp_borderRadius(3px, 3px, 3px, 3px);
@@ -121,7 +125,7 @@ body > form {
 		font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace;
 		text-shadow: 1px 1px 0 @gp_colorLow;
 		text-decoration: none;
-		.gp_linearGradient(@gp_colorLow + #777, @gp_colorLow);
+		.gp_linearGradient(@start: @gp_colorLow + #777, @end: @gp_colorLow);
 	}
 
 	a {
@@ -133,7 +137,7 @@ body > form {
 	}
 
 	a.active {
-		.gp_linearGradient(@gp_color1, @gp_colorLow + (@gp_color1 - #555));
+		.gp_linearGradient(@start: @gp_color1, @end: @gp_colorLow + (@gp_color1 - #555));
 	}
 	
 	*.graphite_getCodeFeedback {
@@ -157,7 +161,7 @@ body > form {
 	li {
 		float: left;
 		margin-left: @gp_gridBlockSpacing/4;
-		width: 34px;
+		width: 38px;
 		height: 50px;
 		overflow: hidden;
 	}
@@ -175,6 +179,8 @@ body > form {
 	*.graphite_browserVersion {
 		display: block;
 		text-align: center;
+        font-size: 0.9em;
+        text-indent: 1px;
 	}
 	
 	*.graphite_browserIcon {
@@ -240,6 +246,6 @@ body > form {
 
 .graphite_logo {
     position: absolute;
-    top: 7px;
-    right: 8px;
+    top: -5px;
+    right: 18px;
 }
