@@ -418,19 +418,27 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
     }
   }
   
+  // Creates the results list HTML and generates the paging.
   function buildList() {
+    // Sort search results and get the right page batch
     var orderedIndex = createOrderedIndex();
     var sliceStart = (_pageIndex * _pageSize);
     orderedIndex = orderedIndex.slice(sliceStart, sliceStart + _pageSize);
+    
+    // Create JSON that will get rendered with Mustache template
     var results = getResultsData(orderedIndex);
-    console.log(results);
     results.total = _queryData.length;
     var listHtml = Mustache.render(_config.listTemplate, results);
     _config.list.html(listHtml);
+    
+    // Make sure screen readers will update users of changes in the DOM
     _config.list.attr('aria-live', 'assertive');
+    
+    // Create pager
     _pager.page(_pageIndex, _queryData.length, _pageSize);
   }
   
+  // Set defaults if not set already
   function setDefaultVariables() {
     var controls
     if (!_sortOrder) {
@@ -532,6 +540,12 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
   return {
     /**
      * Create list order links
+     * 
+     * @param {Object} resultsList Instance of
+     *    graphite.blocks.navigation.resultsFilter.list.
+     * 
+     * @param {Object} config Config object of
+     *    graphite.blocks.navigation.resultsFilter.
      */
     order: function(resultsList, config) {
       var activeIndex = 0;
@@ -559,6 +573,11 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
     
     /**
      * Make one list order link appear selected.
+     * 
+     * @param {Number} index Index of selected link in set of order links
+     * 
+     * @param {Object} config Config object of
+     *    graphite.blocks.navigation.resultsFilter.
      */
     orderSetActive: function(index, config) {
       orderSetActive(config.controlOrder.find('a:eq(' + index + ')'), config);
@@ -566,6 +585,12 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
 
     /**
      * Create page size links
+     * 
+     * @param {Object} resultsList Instance of
+     *    graphite.blocks.navigation.resultsFilter.list.
+     * 
+     * @param {Object} config Config object of
+     *    graphite.blocks.navigation.resultsFilter.
      */
     pageSize: function(resultsList, config) {
       var activeIndex = 0;
@@ -589,6 +614,11 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
 
     /**
      * Make one page size link appear selected.
+     * 
+     * @param {Number} index Index of selected link in set of paging size links.
+     * 
+     * @param {Object} config Config object of
+     *    graphite.blocks.navigation.resultsFilter.
      */
     pageSizeSetActive: function(index, config) {
       pageSizeSetActive(config.controlBatch.find('a:eq(' + index + ')'), config);
@@ -598,6 +628,8 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
      * Return the text after the last dot of a string. That way you get the last
      * key of a JSON selector Example: function('root.trunk.leaf') will return
      * the key 'leaf'.
+     * 
+     * @param {String} str The JSON selector as string.
      */
     orderKeyName: function(str) {
       return orderKeyName(str);
@@ -615,6 +647,13 @@ graphite.blocks.navigation.resultsFilter.list.controls = (function() {
  * 
  * @param {Object} pagerContainer The element (as jQuery object) where the
  *    pager will be created in.
+ * 
+ * @param {Object} labels Object with text labels.
+ * 
+ * @param {String} config.labels.first Pager label.
+ * @param {String} config.labels.last Pager label.
+ * @param {String} config.labels.previous Pager label.
+ * @param {String} config.labels.next Pager label.
  */
 graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels) {
   var _resultsList = {};
@@ -638,6 +677,7 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
   jQuery.extend(_labels, labels);
   var _pagerContainer = pagerContainer;
   
+  // Generate the HTML for the pager and set the events afterwards.
   function buildPager() {
     var html = '';
     var hrefVoid = 'href="javascript:void(0);"'
@@ -657,7 +697,8 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
     _pagerContainer.html(html);
     setEvents();
   }
-  
+
+  // Set events for the pager.  
   function setEvents() {
     _pagerContainer.find('.' + _class.first + ' a').click(function() {
       _resultsList.build(false, false, false, false, 0);
@@ -682,11 +723,14 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
       newLink.focus();
     });
   }
-  
+
+  // Returns the maximum number of pages
   function maxPage() {
     return Math.ceil(_total/_pageSize);
   }
-  
+
+  // Generates the HTML for the numbers in the paging widget. It returns both
+  // the HTML as well as the start and end index.  
   function numbers(hrefVoid) {
     var html = '';
     var start = _index - visibleRange;
@@ -708,7 +752,19 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
   }
   
   
-  
+  /**
+   * The page command
+   * 
+   * @param {Number} index The page index.
+   * 
+   * @param {Number} total Result itmes count.
+   * 
+   * @param {Number} pageSize Sets the size of the batch size for paging.
+   * 
+   * @param {Number} relative Defines if the index value should considered
+   *    absolute (the provided argument is the new index) OR relative (the
+   *    provided argument is a modifier for the current index).
+   */
   this.page = function(index, total, pageSize, relative) {
     if (relative == true) {
       _index += index;
@@ -723,6 +779,10 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
     buildPager();
   }
   
+  /**
+   * The passed list instance (graphite.blocks.navigation.resultsFilter.list)
+   *    will be stored in the pager object.  
+   */
   this.addListBuilder = function(resultsList) {
     if (resultsList) {
       _resultsList = resultsList;
