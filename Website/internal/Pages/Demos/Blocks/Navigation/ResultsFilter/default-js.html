@@ -12,6 +12,8 @@
     (function() {
         var listTemplate = '';
         listTemplate += '<h1 class="gp_hideAccessible">Search results</h1>';
+        listTemplate += '<strong>{{total}} items found</strong><br />';
+        listTemplate += '<br />';
         listTemplate += '<ul>';
         listTemplate += '{{#items}}';
         listTemplate += '   <li>';

@@ -49,6 +49,14 @@ graphite.blocks.navigation.resultsFilter = (function() {
      * @param {Array} config.listOrderTemplate Mustache template to build the
      *    paging links.
      * 
+     * @param {Object} config.labels Object literal with text labels for the
+     *    pager.
+     * 
+     * @param {String} config.labels.first Pager label.
+     * @param {String} config.labels.last Pager label.
+     * @param {String} config.labels.previous Pager label.
+     * @param {String} config.labels.next Pager label.
+     * 
      * @example
      * graphite.blocks.navigation.resultsFilter.init({});
      */
@@ -94,6 +102,7 @@ graphite.blocks.navigation.resultsFilter = (function() {
  * @namespace Results Filter object
  */
 graphite.blocks.navigation.resultsFilter.obj = function(config) {
+  // Local variables, extend config objects, create instances
   var _root;
   var _config = {};
   jQuery.extend(_config, config)
@@ -125,8 +134,10 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     updateList(queryJSON);
   }
   
+  // Store query as hash to address bar of browser
   function urlUpdate(queryJSON) {
-    document.location.hash = 'query=' + JSON.stringify(queryJSON);
+    var JsonString = JSON.stringify(queryJSON);
+    document.location.hash = 'query=' + JsonString;
   }
   
   // Initiates query and sends Ajax request to get new data.
@@ -153,6 +164,8 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
           '<br /><br />' + _config.root.find('.local_log').html());
       }
       _config.json = JSON.parse(data);
+      
+      // Create controls
       var controls = graphite.blocks.navigation.resultsFilter.list.controls;
       controls.order(
         _resultsList,
@@ -162,8 +175,13 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
         _resultsList,
         _config
       );
+      
+      // Create search results list
       _resultsList.build(_config.json.data);
+      
+      // Disable form fields if needed
       toggleFieldDisabler(_config.json.disable);
+      
       _config.list.fadeTo(500, 1);
     }
     
@@ -228,18 +246,31 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
   // Rebuild checked state of search form if data is available
   function restoreState() {
     var hash = document.location.hash;
-    console.log(hash.indexOf('query='));
+    var query = {};
     if (hash.indexOf('#query=') > -1) {
       hash = hash.replace('#query=', '');
-      console.log(hash);
-      var query = JSON.parse(hash);
-      console.log(query);
+      query = JSON.parse(hash);
     }
     
-    console.log(hash.keywords)
-    if (typeof(hash.keywords) != 'undefined') {
-      _config.root.find('input[data-keyword]').val(hash.keywords);
+    if (typeof(query.keywords) != 'undefined') {
+      _config.root.find('input[data-keyword]').val(query.keywords);
     }
+    
+    if (typeof(query.fields) != 'undefined') {
+      for (var i = 0; i < query.fields.length; i++) {
+        var values = query.fields[i].value.split('~');
+        //console.log(values);
+        for (var ii = 0; ii < values.length; ii++) {
+          _config.root.find('input[data-field="' + query.fields[i].key + '"][value="' + values[ii] + '"]').attr('checked', 'checked');
+        }
+      }
+    }
+    
+    //for (var i = 0; query.fields.length; i++) {
+      //var values = query.fields[i].value.split('~');
+      //console.log(query.fields);
+      //_config.root.find('input[data-field="' + query.fields[i].key + '"][value="' + query.fields[i].value + '"]');
+    //}
   }
 
   // Sifts through all form fields and builds JSON object of query
@@ -362,6 +393,7 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
     resultBatch.items = new Array();
     for (var i = 0; i < orderedIndex.length; i++) {
       data = {};
+      //console.log(_queryData);
       item = _queryData[orderedIndex[i][0]];
       // Set default values
       data.id = (item.values.id) ? item.values.id : '';
@@ -391,6 +423,8 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
     var sliceStart = (_pageIndex * _pageSize);
     orderedIndex = orderedIndex.slice(sliceStart, sliceStart + _pageSize);
     var results = getResultsData(orderedIndex);
+    console.log(results);
+    results.total = _queryData.length;
     var listHtml = Mustache.render(_config.listTemplate, results);
     _config.list.html(listHtml);
     _config.list.attr('aria-live', 'assertive');
