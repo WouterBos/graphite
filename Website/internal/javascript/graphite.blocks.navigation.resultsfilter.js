@@ -423,7 +423,7 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
     var sliceStart = (_pageIndex * _pageSize);
     orderedIndex = orderedIndex.slice(sliceStart, sliceStart + _pageSize);
     var results = getResultsData(orderedIndex);
-    console.log(results);
+    //console.log(results);
     results.total = _queryData.length;
     var listHtml = Mustache.render(_config.listTemplate, results);
     _config.list.html(listHtml);
