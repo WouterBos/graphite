@@ -37,17 +37,26 @@
 
 
 /* Header */
+.gp_header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
 .gp_header .gp_main {
-	min-height: @gp_gridHeaderHeight;
+	height: @gp_gridHeaderHeight;
 }
 
 
 
 /* Content block */
 .gp_content {
+	border-top: @gp_gridHeaderHeight solid transparent;
 	padding: @gp_gridBlockSpacing 0;
 	.gp_clear;
 }
+
 
 
 
