@@ -149,7 +149,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     }
 
     _config.list.stop(true, true).fadeTo(500, 0.1);
-    _config.list.html('<strong>Bezig met laden...</strong>' + _config.list.html())
+    _config.list.html('<strong class="gp_local_loading">Bezig met laden...</strong>' + _config.list.html())
 
     jQuery.ajax({
       url: _config.url + '?' + urlQuery,
@@ -259,18 +259,11 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     if (typeof(query.fields) != 'undefined') {
       for (var i = 0; i < query.fields.length; i++) {
         var values = query.fields[i].value.split('~');
-        //console.log(values);
         for (var ii = 0; ii < values.length; ii++) {
           _config.root.find('input[data-field="' + query.fields[i].key + '"][value="' + values[ii] + '"]').attr('checked', 'checked');
         }
       }
     }
-    
-    //for (var i = 0; query.fields.length; i++) {
-      //var values = query.fields[i].value.split('~');
-      //console.log(query.fields);
-      //_config.root.find('input[data-field="' + query.fields[i].key + '"][value="' + query.fields[i].value + '"]');
-    //}
   }
 
   // Sifts through all form fields and builds JSON object of query
@@ -347,7 +340,7 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
   var _queryData;
   var _sortKey = '';
   var _sortOrder = '';
-  var _pageSize = 0;
+  var _pageSize = 10;
   var _pageIndex = 0;
   var _config = config;
   var _pager = pager;
@@ -393,7 +386,6 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
     resultBatch.items = new Array();
     for (var i = 0; i < orderedIndex.length; i++) {
       data = {};
-      //console.log(_queryData);
       item = _queryData[orderedIndex[i][0]];
       // Set default values
       data.id = (item.values.id) ? item.values.id : '';
@@ -428,6 +420,15 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
     // Create JSON that will get rendered with Mustache template
     var results = getResultsData(orderedIndex);
     results.total = _queryData.length;
+    results.totalRender = function() {
+      return function(text) {
+        if (_queryData.length > 1) {
+          return text + " " + _config.labels.totalPlural;
+        } else if (_queryData.length <= 1) {
+         return text + " " + _config.labels.totalSingular;
+        }
+      }
+    }
     var listHtml = Mustache.render(_config.listTemplate, results);
     _config.list.html(listHtml);
     
@@ -445,11 +446,15 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
       _sortOrder = 'asc';
     }
     if (!_sortKey) {
-      _sortKey = graphite.blocks.navigation.resultsFilter.list.controls
-                         .orderKeyName(config.listOrderData[0].key);
+      if (config.listOrderData.length > 0) {
+        _sortKey = graphite.blocks.navigation.resultsFilter.list.controls
+                     .orderKeyName(config.listOrderData[0].key);
+      }
     }
     if (!_pageSize) {
-      _pageSize = config.listBatchSizes[0];
+      if (config.listBatchSizes.length > 0) {
+        _pageSize = config.listBatchSizes[0];
+      }
     }
   }
 
@@ -672,27 +677,45 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
     first: 'first',
     last: 'last',
     previous: 'previous',
-    next: 'next'
+    next: 'next',
+    totalSingular: 'item',
+    totalPlural: 'items'
   };
   jQuery.extend(_labels, labels);
   var _pagerContainer = pagerContainer;
   
   // Generate the HTML for the pager and set the events afterwards.
   function buildPager() {
+    if (maxPage() == 1) {
+      return; 
+    }
+    
     var html = '';
+    var backHtml = '';
+    var forwardHtml = '';
     var hrefVoid = 'href="javascript:void(0);"'
     
-    html += '<ul>';
-    if (_index > 0) {
-      html += '<li class="' + _class.first + '"><a ' + hrefVoid + '>' + _labels.first + '</a>\n';
-      html += '<li class="' + _class.previous + '"><a ' + hrefVoid + '>' + _labels.previous + '</a>\n';
+    var firstClass = '';
+    var lastClass = '';
+    if (_index == 0) {
+      firstClass = ' gp_local_disabled';
     }
-    html += numbers(hrefVoid);
-    if (_index < (maxPage() - 1)) {
-      html += '<li class="' + _class.next + '"><a ' + hrefVoid + '>' + _labels.next + '</a>\n';
-      html += '<li class="' + _class.last + '"><a ' + hrefVoid + '>' + _labels.last + '</a>\n';
+    if (_index >= maxPage() - 1) {
+      lastClass = ' gp_local_disabled';
     }
-    html += '</ul>';
+    var numbersData = numbers(hrefVoid);
+    html = numbersData.html;
+    backHtml += '<li class="' + _class.previous + firstClass + '"><a ' + hrefVoid + '><span></span>' + _labels.previous + '</a>\n';
+    backHtml += '<li class="' + _class.first + firstClass + '"><a ' + hrefVoid + '><span>' + _labels.first + '</span></a>\n';
+    if (numbersData.start > 0) {
+      backHtml += '<li class="fontys_pager_ellipsis">...</li>\n';
+    }
+    if (numbersData.end < maxPage()) {
+      forwardHtml += '<li class="fontys_pager_ellipsis">...</li>\n';
+    }
+    forwardHtml += '<li class="' + _class.last + lastClass + '"><a ' + hrefVoid + '><span>' + _labels.last + '</span></a>\n';
+    forwardHtml += '<li class="' + _class.next + lastClass + '"><a ' + hrefVoid + '>' + _labels.next + '<span></span></a>\n';
+    html = '<ul>' + backHtml + html + forwardHtml + '</ul>';
     
     _pagerContainer.html(html);
     setEvents();
@@ -701,20 +724,28 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
   // Set events for the pager.  
   function setEvents() {
     _pagerContainer.find('.' + _class.first + ' a').click(function() {
-      _resultsList.build(false, false, false, false, 0);
-      _pagerContainer.find('.' + _class.first + ' a').focus();
+      if (jQuery(this).closest('.gp_local_disabled').size() == 0) {
+        _resultsList.build(false, false, false, false, 0);
+        _pagerContainer.find('.' + _class.first + ' a').focus();
+      }
     });
     _pagerContainer.find('.' + _class.last + ' a').click(function() {
-      _resultsList.build(false, false, false, false, _total);
-      _pagerContainer.find('.' + _class.last + ' a').focus();
+      if (jQuery(this).closest('.gp_local_disabled').size() == 0) {
+        _resultsList.build(false, false, false, false, Math.ceil(_total / _pageSize) - 1);
+        _pagerContainer.find('.' + _class.last + ' a').focus();
+      }
     });
     _pagerContainer.find('.' + _class.previous + ' a').click(function() {
-      _resultsList.build(false, false, false, false, _index - 1);
-      _pagerContainer.find('.' + _class.previous + ' a').focus();
+      if (jQuery(this).closest('.gp_local_disabled').size() == 0) {
+        _resultsList.build(false, false, false, false, _index - 1);
+        _pagerContainer.find('.' + _class.previous + ' a').focus();
+      }
     });
     _pagerContainer.find('.' + _class.next + ' a').click(function() {
-      _resultsList.build(false, false, false, false, _index + 1);
-      _pagerContainer.find('.' + _class.next + ' a').focus();
+      if (jQuery(this).closest('.gp_local_disabled').size() == 0) {
+        _resultsList.build(false, false, false, false, _index + 1);
+        _pagerContainer.find('.' + _class.next + ' a').focus();
+      }
     });
     _pagerContainer.find('.' + _class.number + ' a').click(function() {
       var index = parseInt(jQuery(this).html()) - 1;
@@ -737,9 +768,15 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
     if (start < 0) {
       start = 0;
     }
-    var end = start + (visibleRange * 2)
-    if (end > maxPage()) {
+    var end = start + (visibleRange * 2) + 1;
+    if (end >= maxPage()) {
       end = maxPage();
+      if (end - start < (visibleRange * 2) + 1) {
+        start = end - ((visibleRange * 2) + 1);
+      }
+      if (start < 0) {
+        start = 0;
+      }
     }
     for (i = start; i < end; i++) {
       html += '<li class="' + _class.number + '"><a ' + hrefVoid;
@@ -748,7 +785,11 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
       }
       html += ' data-index="' + i + '">' + (i + 1) + '</a></li>\n';
     }
-    return html;
+    return {
+      html: html,
+      start: start,
+      end: end
+    }
   }
   
   
