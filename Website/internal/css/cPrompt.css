@@ -1,4 +1,4 @@
-/* Reset */
+/* Start reset */
 #cPrompt_bar {
 	font-size: 100%;
 	font-weight: normal;
@@ -11,6 +11,7 @@
 	padding: 0;
     line-height: 1.4em;
 }
+/* End reset */
 
 
 
@@ -92,13 +93,24 @@
     #cPrompt_bar .cPrompt_button {
         margin-left: 1em;
     }
-
-
+    
+    #cPrompt_bar .cPrompt_button.cPrompt_buttonSmall {
+        color: #fff;
+        font-weight: normal;
+        background: transparent;
+        -moz-box-shadow: 0 0 0 transparent;
+        -webkit-box-shadow: 0 0 0 transparent;
+	    box-shadow: 0 0 0 transparent;
+    }
+    #cPrompt_bar .cPrompt_button.cPrompt_buttonSmall:hover {
+        text-decoration: underline;
+    }
 
     #cPrompt_bar.ieQuirks {
         height: 40px;
         background: #f0f;
     }
+
 
 
 #cPrompt_barSpacer {
