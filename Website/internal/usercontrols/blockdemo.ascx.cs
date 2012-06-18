@@ -204,6 +204,7 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
         strReturn = strReturn.Replace("'", "\\'");
         strReturn = strReturn.Replace("\n", "\\n");
         strReturn = strReturn.Replace("\r", "\\r");
+        strReturn = strReturn.Replace("/", "\\/");
         return strReturn;
     }
     
@@ -262,15 +263,15 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
             Literal litControl = new Literal();
             litControl.Text = strHtmlCode;
             pnlDemoHTMLCodeBlock.Controls.Add(litControl);
+
+            // Add HTML to demo block
+            litDemoHtml.Text = WrapInJsString(strHtmlCode);
             
             // Get demo code for copy/paste
             if (dicFiles["externalDemo"] == true)
             {
                 strHtmlCode = GetSourceCode("-external.html", dicFiles["html"]);
             }
-            
-            // Add HTML to demo block
-            litDemoHtml.Text = WrapInJsString(strHtmlCode);
             
             // Hide ASCX and Codebehind block
             phCodeLinksAscx.Visible = false;

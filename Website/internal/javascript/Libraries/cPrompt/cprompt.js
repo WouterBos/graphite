@@ -6,7 +6,12 @@ var cPrompt = {
   stylesheet: '/internal/css/cPrompt.css',
   labels: {
     accept: 'Accepteer',
-    decline: 'Weiger'
+    decline: 'Weiger',
+    acceptCookies: 'Accepteer cookies',
+    declineCookies: 'Weiger cookies',
+    alertText: 'Deze website gebruikt cookies voor functionaliteit en statistieken.',
+    cookiesDisabled: 'Cookies zijn op deze website uitgeschakeld.',
+    cookiesAccepted: 'U hebt het gebruik van cookies toegestaan.'
   },
   cookie: false,
   n: 3,
@@ -16,7 +21,10 @@ var cPrompt = {
   bar: null,
   barSpacer: null,
 
-  init: function (labels) {
+  init: function (labels, stylesheet) {
+    if (stylesheet) {
+      this.stylesheet = stylesheet;
+    }
     if (labels) {
       if (labels.accept) {
         this.labels.accept = labels.accept;
@@ -24,24 +32,39 @@ var cPrompt = {
       if (labels.decline) {
         this.labels.decline = labels.decline;
       }
+      if (labels.alertText) {
+        this.labels.alertText = labels.alertText;
+      }
+      if (labels.cookiesDisabled) {
+        this.labels.cookiesDisabled = labels.cookiesDisabled;
+      }
+      if (labels.cookiesAccepted) {
+        this.labels.cookiesAccepted = labels.cookiesAccepted;
+      }
+      if (labels.acceptCookies) {
+        this.labels.acceptCookies = labels.acceptCookies;
+      }
+      if (labels.declineCookies) {
+        this.labels.declineCookies = labels.declineCookies;
+      }
     }
-    var defaultAlert = '<span class="cPrompt_message">Deze website gebruikt cookies voor functionaliteit en statistieken.</span> <span class="cPrompt_buttons"><a class="cPrompt_button" href="javascript:void(0);" onclick="cPrompt.doClick(1);">' + this.labels.accept + '</a> <a class="cPrompt_button cPrompt_buttonSmall" href="javascript:void(0);" onclick="cPrompt.doClick(0)">' + this.labels.decline + '</a></span>';
+    var defaultAlert = '<span class="cPrompt_message">' + this.labels.alertText + '</span> <span class="cPrompt_buttons"><a class="cPrompt_button" href="javascript:void(0);" onclick="cPrompt.doClick(2);">' + this.labels.accept + '</a> <a class="cPrompt_button cPrompt_buttonSmall" href="javascript:void(0);" onclick="cPrompt.doClick(0)">' + this.labels.decline + '</a></span>';
 
     this.prompts = [
       // 0: The user has actively opted out of all cookies on the site
-      ['', '<span class="cPrompt_message">Cookies zijn op deze website uitgeschakeld.</span> <span class="cPrompt_buttons"><a class="cPrompt_button" href="javascript:void(0);" onclick="cPrompt.doClick(1);">' + this.labels.accept + '</a></span>'],
+      ['', '<span class="cPrompt_message">' + this.labels.cookiesDisabled + '</span> <span class="cPrompt_buttons"><a class="cPrompt_button" href="javascript:void(0);" onclick="cPrompt.doClick(2);">' + this.labels.acceptCookies + '</a></span>'],
   
       // 1: The user has seen a warning about cookies, but neither accepted nor declined, this is classed as inferred acception.
       ['', defaultAlert],
   
       // 2: The user has accepted all cookies to the site.
-      ['', '<span class="cPrompt_message">U hebt het gebruik van cookies toegestaan.</span> <span class="cPrompt_buttons"><a class="cPrompt_button cPrompt_buttonSmall" href="javascript: void(0);" onclick="cPrompt.doClick(0);">' + this.labels.decline + '</a></span>'],
+      ['', '<span class="cPrompt_message">' + this.labels.cookiesAccepted + '</span> <span class="cPrompt_buttons"><a class="cPrompt_button cPrompt_buttonSmall" href="javascript: void(0);" onclick="cPrompt.doClick(0);">' + this.labels.declineCookies + '</a></span>'],
   
       // 3: The user's first visit to the site, no cookies accepted or declined.
       ['', defaultAlert]
     ];
     var cookie = this.checkCookie();
-  
+    
     if ((cookie == 2 && !this.hideOnAccept) || ((cookie == 2 || cookie == 0) && document.location.hash.indexOf('cPrompt=set') > 0) || (cookie != 2 && cookie != 0)) {
       this.loadPrompt(cookie);
       this.bar = document.getElementById('cPrompt_bar');
@@ -78,9 +101,6 @@ var cPrompt = {
 
   // Show dialogue
   loadPrompt: function (n) {
-    if (n == 3) {
-      this.saveCookie('useCookies', 1);
-    }
     if (n > 3 || n < 0) {
       if (window.console) {
         console.log('Error: Undefined num (' + n + ')');
@@ -110,8 +130,11 @@ var cPrompt = {
   },
 
   // Store preference
-  saveCookie: function (key, value) {
-    document.cookie = 'cPrompt_' + key + '=' + value + '; path=/; expires=' + (new Date()).toGMTString().replace(/\d{4}/, '2050');
+  saveCookie: function (value) {
+    if (value != 1) {
+      var cookieString = 'cPrompt_useCookies=' + value + ';path=/;expires=' + (new Date()).toGMTString().replace(/\d{4}/, '2050');
+      document.cookie = cookieString;
+    }
   },
 
   // Shows and hides prompt
@@ -131,11 +154,12 @@ var cPrompt = {
   },
 
   doClick: function (type) {
-    this.saveCookie('useCookies', (type == 0 ? 0 : 2));
+    this.saveCookie((type == 0 ? 0 : 2));
     this.bar.style.display = 'none';
+    this.barSpacer.style.display = 'none';
     var href = document.location.href;
     href = href.substr(0, href.indexOf('#'));
-    if (type == 1 || type == 0) {
+    if (type == 2 || type == 0) {
       href += '#cPrompt=set';
     }
     document.location.href = href;
