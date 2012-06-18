@@ -241,7 +241,7 @@
                 <demo>
                     <standard>
                         <files externalDemo="true">
-                            <html use_default_code="true" />
+                            <html />
                             <description use_default_code="true" />
                         </files>
                         <browsers>
@@ -255,6 +255,23 @@
                             <iphone supports="3 GS+" />
                         </browsers>
                     </standard>
+
+                    <international>
+                        <files externalDemo="true">
+                            <html />
+                            <description use_default_code="true" />
+                        </files>
+                        <browsers>
+                            <msie supports="7+" />
+                            <firefox supports="3.6+" />
+                            <chrome supports="15+" />
+                            <safari supports="5.1.7+" />
+                            <opera supports="10.10+" />
+                            <ipad supports="iOS5+" />
+                            <android supports="4+" />
+                            <iphone supports="3 GS+" />
+                        </browsers>
+                    </international>
                 </demo>
             </allowcookies>
         </tools>
