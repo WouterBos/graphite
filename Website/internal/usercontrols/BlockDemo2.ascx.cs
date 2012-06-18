@@ -16,11 +16,13 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
     private Graphite.Internal.Config config;
     Dictionary<string, Boolean> dicFiles;
     private string strMenuItemName = "";
+    private string path = "";
 
 
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        path = Request.ServerVariables["SCRIPT_PATH"];
         if (String.IsNullOrEmpty(Request.QueryString["type"]) == false)
         {
             strMenuItemName = Request.QueryString["type"];
@@ -47,6 +49,10 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
     private void SetStageDimension()
     {
         Dictionary<string, string> stageDimension = config.GetStageDimension(GetActiveIndex());
+        if (stageDimension["width"] == "auto")
+        {
+            stageDimension["width"] = "100%";
+        }
         iframe.Attributes["style"] += "; width: " + stageDimension["width"];
         iframe.Attributes["style"] += "; height: " + stageDimension["height"];
     }
@@ -140,7 +146,7 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
     {
         if (dicFiles.ContainsKey("description") == true)
         {
-            string strDescription = Graphite.Internal.Demo.GetSourceCode("-description.html", dicFiles["description"], GetActiveIndex(), Request.ServerVariables["SCRIPT_PATH"], config);
+            string strDescription = Graphite.Internal.Demo.GetSourceCode("-description.html", dicFiles["description"], GetActiveIndex(), path, config);
             litDescription.Text = strDescription;
         }
         else
@@ -204,6 +210,7 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
         strReturn = strReturn.Replace("'", "\\'");
         strReturn = strReturn.Replace("\n", "\\n");
         strReturn = strReturn.Replace("\r", "\\r");
+        strReturn = strReturn.Replace("/", "\\/");
         return strReturn;
     }
     
@@ -240,12 +247,11 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
             }
             
             // Add ASCX control
-            pnlDemoHTMLCodeBlock.Controls.Add(ctrlControl);
-            string strHtmlCode = GetSourceCode(".ascx", dicFiles["ascx"]);
+            string strHtmlCode = Graphite.Internal.Demo.GetSourceCode(".ascx", dicFiles["ascx"], GetActiveIndex(), path, config);
             litDemoAscx.Text = WrapInJsString(strHtmlCode);
             
             // Find codebehind
-            string strCodeBehind = GetCodeBehind(strHtmlCode, config.CssClass(GetActiveIndex()), Request.ServerVariables["SCRIPT_PATH"], Graphite.Internal.Config config, GetActiveIndex());
+            string strCodeBehind = Graphite.Internal.Demo.GetCodeBehind(strHtmlCode, config.CssClass(GetActiveIndex()), path, config, GetActiveIndex());
             litDemoCodeBehind.Text = WrapInJsString(strCodeBehind);
             if (strCodeBehind == "") {
                 phCodeLinksCodeBehind.Visible = false;
@@ -257,20 +263,19 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
         else if (dicFiles.ContainsKey("html") == true)
         {
             // File is HTML
-            string strHtmlCode = GetSourceCode(".html", dicFiles["html"]);
+            string strHtmlCode = Graphite.Internal.Demo.GetSourceCode(".html", dicFiles["html"], GetActiveIndex(), path, config);
             strHtmlCode = strHtmlCode.Replace("###GP_BLOCK_TYPE###", config.CssClass(GetActiveIndex())); // Set HTML CSS class
             Literal litControl = new Literal();
             litControl.Text = strHtmlCode;
-            pnlDemoHTMLCodeBlock.Controls.Add(litControl);
+
+            // Add HTML to demo block
+            litDemoHtml.Text = WrapInJsString(strHtmlCode);
             
             // Get demo code for copy/paste
             if (dicFiles["externalDemo"] == true)
             {
-                strHtmlCode = GetSourceCode("-external.html", dicFiles["html"]);
+                strHtmlCode = Graphite.Internal.Demo.GetSourceCode("-external.html", dicFiles["html"], GetActiveIndex(), path, config);
             }
-            
-            // Add HTML to demo block
-            litDemoHtml.Text = WrapInJsString(strHtmlCode);
             
             // Hide ASCX and Codebehind block
             phCodeLinksAscx.Visible = false;
@@ -290,7 +295,7 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
     {
         if (dicFiles.ContainsKey("css") == true)
         {
-            string strCssCode = GetSourceCode(".less", dicFiles["css"]);
+            string strCssCode = Graphite.Internal.Demo.GetSourceCode(".less", dicFiles["css"], GetActiveIndex(), path, config);
             if (dicFiles["externalDemo"] == false)
             {
                 string strCssLink;
@@ -328,15 +333,13 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
     {
         if (dicFiles.ContainsKey("javascript") == true)
         {
-            string strJsCode = GetSourceCode("-js.html", dicFiles["javascript"]);
-            string strJsCodeCopyString = strJsCode;
+            string strJsCode = Graphite.Internal.Demo.GetSourceCode("-js.html", dicFiles["javascript"], GetActiveIndex(), path, config);
 
-            strJsCodeCopyString = WrapInJsString(strJsCodeCopyString);
-            strJsCodeCopyString = strJsCodeCopyString.Replace("<script", "###GP###SCRIPT");
-            strJsCodeCopyString = strJsCodeCopyString.Replace("</script", "###GP###/SCRIPT");
+            strJsCode = WrapInJsString(strJsCode);
+            strJsCode = strJsCode.Replace("<script", "###GP###SCRIPT");
+            strJsCode = strJsCode.Replace("</script", "###GP###/SCRIPT");
 
-            DemoJavaScriptCodeBlock.Text = strJsCode;
-            litDemoJavaScript.Text = strJsCodeCopyString;
+            litDemoJavaScript.Text = strJsCode;
         }
         else
         {
