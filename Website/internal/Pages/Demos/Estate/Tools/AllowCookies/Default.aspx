@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Internal/Masterpages/Default.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="blocks_nav_menu" %>
-<%@ Register TagPrefix="Internal" TagName="BlockDemo" Src="~/Internal/usercontrols/blockdemo.ascx" %>
+<%@ Register TagPrefix="Internal" TagName="BlockDemo" Src="~/Internal/usercontrols/blockdemo2.ascx" %>
 <%@ Register TagPrefix="Internal" TagName="BreadCrumb" Src="~/Internal/usercontrols/breadcrumb.ascx" %>
 
 
