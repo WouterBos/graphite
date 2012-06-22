@@ -31,7 +31,7 @@ public partial class gp_blocks_forms_common : System.Web.UI.UserControl
 
     protected void SendMail(object sender, EventArgs e)
     {
-        if (txtBotCheck.Text != "")
+        if (TextBoxHumanCheck.Text != "")
         {
             SendFailedPanel.Visible = true;
             pnlRoot.Visible = false;
