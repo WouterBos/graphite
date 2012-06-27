@@ -249,6 +249,7 @@ graphite.blocks.navigation.resultsFilter.obj = function(config) {
     var query = {};
     if (hash.indexOf('#query=') > -1) {
       hash = hash.replace('#query=', '');
+      hash = decodeURIComponent(hash);
       query = JSON.parse(hash);
     }
     
