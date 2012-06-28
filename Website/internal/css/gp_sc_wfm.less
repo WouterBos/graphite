@@ -1,5 +1,5 @@
 /*
- * Basic form
+ * Styling for sitecore
  */
 
 
@@ -7,7 +7,7 @@
 
 
 
-.gp_sc_wfm {
+.scfForm {
     .gp_clear();
 
 	.scfTitleBorder {
@@ -111,4 +111,23 @@
 	.scfSubmitButtonBorder input {
 		margin-left: @gp_formColumn1 + @gp_formColumnGutter;
 	}
+	
+	.scfFooterBorder {
+	   display: none;   
+	}
+	
+    .scfValidationSummary {
+        .gp_textAlert;
+        margin-left: 0;
+        margin-bottom: @gp_formColumnGutter;
+        color: @gp_colorLow !important;
+        font-weight: bold;
+
+        li {
+            margin-left: 17px;
+            list-style-type: disc;
+            color: @gp_colorLow;
+            font-weight: normal;
+        }
+    }
 }
