@@ -18,6 +18,7 @@
 #cPrompt_bar {
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 1000000000000;
     width: 100%;
     padding: 10px 0;

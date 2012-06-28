@@ -132,8 +132,32 @@ var cPrompt = {
   // Store preference
   saveCookie: function (value) {
     if (value != 1) {
+      if (value == 0) {
+        this.deleteAllCookies();
+      }
       var cookieString = 'cPrompt_useCookies=' + value + ';path=/;expires=' + (new Date()).toGMTString().replace(/\d{4}/, '2050');
       document.cookie = cookieString;
+    }
+  },
+
+  deleteAllCookies: function() {   
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {   
+        var spcook =  cookies[i].split("=");
+        deleteCookie(spcook[0]);
+    }
+    function deleteCookie(cookiename) {
+        var d = new Date();
+        d.setDate(d.getDate() - 1);
+        var expires = ";expires="+d;
+        var domainGlobal = ";domain="+document.location.hostname.replace('www', '');
+        var domain = ";domain="+document.location.hostname;
+        var name=cookiename;
+        var value="";
+        var cookieString = name + "=" + value + expires + domain + "; path=/";
+        document.cookie = cookieString;
+        cookieString = name + "=" + value + expires + domainGlobal + "; path=/";
+        document.cookie = cookieString;
     }
   },
 
