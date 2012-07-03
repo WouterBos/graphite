@@ -1,16 +1,10 @@
 ﻿<%@ Page Title="Menu" Language="C#" MasterPageFile="~/Internal/Masterpages/Default.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="blocks_nav_menu" %>
-<%@ Register TagPrefix="Internal" TagName="BlockDemo" Src="~/Internal/usercontrols/blockdemo2.ascx" %>
 <%@ Register TagPrefix="Internal" TagName="BreadCrumb" Src="~/Internal/usercontrols/breadcrumb.ascx" %>
+<%@ Register TagPrefix="Internal" TagName="Folders" Src="~/Internal/usercontrols/folders.ascx" %>
 
 
 
 <asp:Content ID="Content8" ContentPlaceHolderID="DemoStage" Runat="Server">
-    <Internal:BlockDemo runat="server" ID="BlockDemo" />
-</asp:Content>
-
-
-
-<asp:Content ID="Content1" ContentPlaceHolderID="Head" Runat="Server">
 </asp:Content>
 
 
@@ -22,7 +16,7 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Intro" Runat="Server">
-    
+    <Internal:Folders runat="server" ID="Folders" />
 </asp:Content>
 
 

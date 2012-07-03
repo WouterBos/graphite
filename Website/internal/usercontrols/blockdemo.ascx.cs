@@ -265,7 +265,7 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
             if (dicFiles["externalDemo"] == true)
             {
                 Literal litControl = new Literal();
-                litControl.Text = "<a href='standalone'>Open full page demo</a>";
+                litControl.Text = "<a href='standalone_" + strFileName + "'>Open full page demo</a>";
                 pnlDemoHTMLCodeBlock.Controls.Add(litControl);
             }
             else

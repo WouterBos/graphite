@@ -55,6 +55,7 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
         }
         iframe.Attributes["style"] += "; width: " + stageDimension["width"];
         iframe.Attributes["style"] += "; height: " + stageDimension["height"];
+        iframe.Attributes["src"] = "/Internal/Pages/Demos/IframeDemo.aspx?demopath=" + Request.Url.LocalPath;
     }
 
     // Finds out which tab in the demo menu is selected. If no menu is visible above the demo, the index is always 0.

@@ -15,7 +15,7 @@ public partial class _Default : System.Web.UI.Page
     private void GetDemoCode()
     {
         string path = Server.MapPath(Request.ServerVariables["SCRIPT_PATH"]) + "\\";
-        path = path.Replace("\\standalone", "");
+        path = path.Replace("\\standalone_default", "");
         string DemoHtmlSource = Graphite.Tools.GetSourceCode("default.html", path);
         DemoHtmlSource = DemoHtmlSource.Replace("###GP_TITLE###", this.Title);
         DemoHtml.Text = DemoHtmlSource;

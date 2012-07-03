@@ -6,6 +6,12 @@
 
 
 
+body {
+	padding-bottom: @gp_gridBlockSpacing;
+}
+
+
+
 /* Main container for web page */
 .gp_root {
 	position: relative;
@@ -59,14 +65,6 @@
 
 
 
-
-/* Footer block */
-.gp_footer {
-	padding-bottom: @gp_gridBlockSpacing;
-}
-
-
-
 /* Column row */
 .gp_gridRow {
     .gp_clear();
@@ -99,7 +97,7 @@
 
 
 .gp_gridRow {
-	& + + .gp_gridRow {
+	& + .gp_gridRow {
 		margin-top: @gp_gridBlockSpacing;
 	}
 }

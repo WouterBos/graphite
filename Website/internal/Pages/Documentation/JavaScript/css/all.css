@@ -75,24 +75,6 @@ section,article,header,footer,nav,aside,hgroup {
  * HTML ELEMENTS
  */
 
-@font-face {
-	font-family: 'M1m';
-	src: url('fonts/mplus-1m-regular-webfont.eot');
-	src: local('☺'), url('fonts/mplus-1m-regular-webfont.woff') format('woff'), url('fonts/mplus-1m-regular-webfont.ttf') format('truetype'), url('fonts/mplus-1m-regular-webfont.svg#webfontVd14f4NN') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'M1m';
-	src: url('fonts/mplus-1m-bold-webfont.eot');
-	src: local('☺'), url('fonts/mplus-1m-bold-webfont.woff') format('woff'), url('fonts/mplus-1m-bold-webfont.ttf') format('truetype'), url('fonts/mplus-1m-bold-webfont.svg#webfontIjI5mZqE') format('svg');
-	font-weight: bold;
-	font-style: normal;
-}
-
-
-
 * {
 	line-height: 1.4em;
 }
@@ -165,7 +147,7 @@ div.safeBox:after {
 div.index *.heading1 {
 	margin-bottom: 0.5em;
 	border-bottom: 1px solid #999999;
-	font-family: M1m, Arial, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1.6em;
 	letter-spacing: 1px;
 	line-height: 1.3em;
@@ -265,7 +247,7 @@ div.content div.props {
 
 
 *.sectionTitle {
-	font-family: M1m, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1.6em;
 	letter-spacing: 1px;
 }
