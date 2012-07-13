@@ -77,7 +77,6 @@ graphite.blocks.navigation.resultsFilter = (function() {
         var resultsFilter = new graphite.blocks.navigation.resultsFilter.obj(
           jQuery.extend(
             {},
-            config,
             {
               root: root,
               form: form,
@@ -85,8 +84,15 @@ graphite.blocks.navigation.resultsFilter = (function() {
               url: url,
               controlOrder: controlOrder,
               controlBatch: controlBatch,
-              controlPaging: controlPaging
-            }
+              controlPaging: controlPaging,
+              queryDataKeys: [],
+              listOrderData: [],
+              listBatchSizes: [10, 25, 50],
+              listBatchTemplate: '',
+              listTemplate: '',
+              listOrderTemplate: ''
+            },
+            config
           )
         );
         resultsFilter.init(); // Runs filter
@@ -347,6 +353,9 @@ graphite.blocks.navigation.resultsFilter.list = function(config, pager) {
   var _pager = pager;
   var _queryDataKeys = config.queryDataKeys   // The data that has to be fetched
                                              // from the queryData
+  if (config.listBatchSizes.length > 0) {
+    _pageSize = config.listBatchSizes[0];
+  }
   
   // Creates an ordered index of the JSON
   function createOrderedIndex() {
@@ -688,6 +697,7 @@ graphite.blocks.navigation.resultsFilter.pager = function(pagerContainer, labels
   // Generate the HTML for the pager and set the events afterwards.
   function buildPager() {
     if (maxPage() == 1) {
+      _pagerContainer.html('');
       return; 
     }
     
