@@ -226,7 +226,7 @@
             <floatboxfixer humanname="Float Box Fixer">
                 <demo>
                     <default>
-                        <files externalDemo="true">
+                        <files>
                             <html use_default_code="true" />
                             <javascript />
                             <description />

@@ -60,8 +60,8 @@
 	            <div class="gp_footer">
 		            <footer>
 			            <div class="gp_main">
-				            <div class="gp_gridRow gp_gridFlex gp_gridColumns1">
-				                <div class="gp_gridColumn gp_gridColumn1">
+				            <div class="gp_gridRow">
+				                <div class="gp_gridColumn">
 						            <div class="gp_block gp_textBlock">
 							            <section>
 								            <h1 class="gp_textHeading2">This is a footer</h1>

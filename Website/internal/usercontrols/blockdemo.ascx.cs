@@ -260,18 +260,23 @@ public partial class GraphiteInternal_BlockDemo : System.Web.UI.UserControl
             // File is HTML
             string strHtmlCode = GetSourceCode(".html", dicFiles["html"]);
             strHtmlCode = strHtmlCode.Replace("###GP_BLOCK_TYPE###", config.CssClass(GetActiveIndex())); // Set HTML CSS class
-            Literal litControl = new Literal();
-            litControl.Text = strHtmlCode;
-            pnlDemoHTMLCodeBlock.Controls.Add(litControl);
 
-            // Add HTML to demo block
-            litDemoHtml.Text = WrapInJsString(strHtmlCode);
-            
             // Get demo code for copy/paste
             if (dicFiles["externalDemo"] == true)
             {
-                strHtmlCode = GetSourceCode("-external.html", dicFiles["html"]);
+                Literal litControl = new Literal();
+                litControl.Text = "<a href='standalone_" + strFileName + "'>Open full page demo</a>";
+                pnlDemoHTMLCodeBlock.Controls.Add(litControl);
             }
+            else
+            {
+                Literal litControl = new Literal();
+                litControl.Text = strHtmlCode;
+                pnlDemoHTMLCodeBlock.Controls.Add(litControl);
+            }
+
+            // Add HTML to demo block
+            litDemoHtml.Text = WrapInJsString(strHtmlCode);
             
             // Hide ASCX and Codebehind block
             phCodeLinksAscx.Visible = false;

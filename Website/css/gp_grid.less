@@ -6,6 +6,12 @@
 
 
 
+body {
+	padding-bottom: @gp_gridBlockSpacing;
+}
+
+
+
 /* Main container for web page */
 .gp_root {
 	position: relative;
@@ -59,29 +65,16 @@
 
 
 
-
-/* Footer block */
-.gp_footer {
-	padding-bottom: @gp_gridBlockSpacing;
-}
-
-
-
 /* Column row */
 .gp_gridRow {
     .gp_clear();
     
 	.gp_gridColumn {
 		float: left;
+		width: 100%;
 		min-height: 1px; /* This will make empty columns still float next to each other instead of collapsing */
         overflow: hidden;
 
-		.gp_block {
-		    & + .gp_block {
-                margin-top:@gp_gridBlockPadding;
-            }
-		}
-		
 		&.gp_gridColumnBackground {
 		    background: #eee;
 		    
@@ -93,6 +86,18 @@
 	}
 }
 
-.gp_gridRow + .gp_gridRow {
-    margin-top: @gp_gridBlockSpacing;
+
+
+.gp_block {
+	& + .gp_block {
+        margin-top:@gp_gridBlockPadding;
+    }
+}
+
+
+
+.gp_gridRow {
+	& + .gp_gridRow {
+		margin-top: @gp_gridBlockSpacing;
+	}
 }
