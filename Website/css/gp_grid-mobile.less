@@ -14,22 +14,19 @@
 		width: auto;
 	}
 	
-	.gp_gridRow[class][class][class] { /* [class] used as an alternative !important*/
+	.gp_gridRow[class][class][class] {
+		margin-top: 0;
+		margin-bottom: 0;
+
 		.gp_gridColumn {
+			margin-top: 0;
+			margin-bottom: 0;
 			width: auto;
 			float: none;
 		}
 		
-		.gp_gridColumn + .gp_gridColumn {
-			margin-top: @gp_gridBlockSpacing * 3;
-		}
-		
 		.gp_block {
 			margin: @gp_gridBlockSpacing 0;
-			
-		    .gp_blockExtraPadding {
-		        padding: 0 0 @gp_gridBlockSpacing/2 0;
-		    }
 		}
 	}
 }

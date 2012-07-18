@@ -46,10 +46,11 @@ body {
 .gp_header {
 	position: absolute;
 	top: 0;
-	width: 100%;
+	left: 0;
+	right: 0;
 
 	.gp_main {
-		min-height: @gp_gridHeaderHeight;
+		height: @gp_gridHeaderHeight;
 	}
 }
 
@@ -57,6 +58,7 @@ body {
 
 /* Content block */
 .gp_content {
+	border-top: @gp_gridHeaderHeight solid transparent;
 	padding: @gp_gridBlockSpacing 0;
 	.gp_clear;
 }
@@ -69,6 +71,7 @@ body {
     
 	.gp_gridColumn {
 		float: left;
+		width: 100%;
 		min-height: 1px; /* This will make empty columns still float next to each other instead of collapsing */
         overflow: hidden;
 

@@ -36,17 +36,17 @@ if (typeof(graphite) == 'undefined') {
 graphite.check = (function() {
   function literalsAreCompatible(mainLiteral, updateLiteral) {
     for (prop in updateLiteral) {
-      if (typeof (mainLiteral[prop]) == "undefined") {
+      if (typeof (mainLiteral[prop]) == 'undefined') {
         return "The variable '" + prop + "'in the object literal cannot be merged with the original object literal.";
       }
 
       if (typeof (updateLiteral[prop]) != typeof (mainLiteral[prop])) {
         return "The variable '" + prop + " is of the wrong type. It is '" + typeof (updateLiteral[prop]) + "' but it should be '" + typeof (mainLiteral[prop]) + "'";
       }
-      
-      if ( typeof( updateLiteral[prop] ) == "object" && typeof( updateLiteral[prop].tagName ) != "string" ) {
+
+      if (typeof(updateLiteral[prop]) == 'object' && typeof(updateLiteral[prop].tagName) != 'string') {
         // Descend down the object tree, but only if it's not a DOM element
-        literalsAreCompatible( mainLiteral[prop], updateLiteral[prop] );
+        literalsAreCompatible(mainLiteral[prop], updateLiteral[prop]);
       }
     }
   }
@@ -60,35 +60,35 @@ graphite.check = (function() {
     *
     * @since 1.0 - 2010-02-23
     * @version 1.0 - 2010-03-22
-    * @param {Number} CurrentArgumentsLength The number of arguments that have been supplied
-    * @param {Number|Number[]} CorrectArgumentsLength The number of arguments that are required
+    * @param {Number} CurrentArgumentsLength The number of arguments that have been supplied.
+    * @param {Number|Number[]} CorrectArgumentsLength The number of arguments that are required.
     * @example
     * error = graphite.check.ArgumentsCount( arguments.length, [0, 1] );
     * if ( error != "" ) throw new Error( error );
     */
     ArgumentsCount: function(CurrentArgumentsLength, CorrectArgumentsLength) {
-      var error
-      if (arguments.length != 2) throw new Error("Arguments count must be 2");
-      error = graphite.check.variableType(CurrentArgumentsLength, "number");
-      if (error != "") throw new Error(error);
+      var error;
+      if (arguments.length != 2) throw new Error('Arguments count must be 2');
+      error = graphite.check.variableType(CurrentArgumentsLength, 'number');
+      if (error != '') throw new Error(error);
 
       var CorrectArgumentsCount = false;
-      if (typeof (CorrectArgumentsLength) == "number") {
+      if (typeof (CorrectArgumentsLength) == 'number') {
         if (CurrentArgumentsLength == CorrectArgumentsLength) {
           CorrectArgumentsCount = true;
         }
-      } else if (typeof (CorrectArgumentsLength) == "array" || typeof (CorrectArgumentsLength) == "object") {
+      } else if (typeof (CorrectArgumentsLength) == 'array' || typeof (CorrectArgumentsLength) == 'object') {
         for (var i = 0; i < CorrectArgumentsLength.length; i++) {
           if (CurrentArgumentsLength == CorrectArgumentsLength[i]) {
-            CorrectArgumentsCount = true
+            CorrectArgumentsCount = true;
           }
         }
       }
 
       if (CorrectArgumentsCount == false) {
-        return "Wrong number of arguments. There argument count should be " + CorrectArgumentsLength + ", but it is " + CurrentArgumentsLength;
+        return 'Wrong number of arguments. There argument count should be ' + CorrectArgumentsLength + ', but it is ' + CurrentArgumentsLength;
       } else {
-        return ""
+        return '';
       }
     },
 
@@ -104,18 +104,18 @@ graphite.check = (function() {
     * if ( error != "" ) throw new Error( error );
     */
     ElementById: function(ElementID, RequiredTagName) {
-      if (typeof (ElementID) != "string") {
+      if (typeof (ElementID) != 'string') {
         return "Provided element id is not a string but  '" + typeof (ElementID) + "'.";
       }
       if (!document.getElementById(ElementID)) {
         return "Cannot find HTML element with the id '" + ElementID + "'";
       }
-      if (arguments.length > 1 && typeof (RequiredTagName) == "string") {
-        if (document.getElementById(ElementID).tagName.toLowerCase() != RequiredTagName && RequiredTagName != "") {
+      if (arguments.length > 1 && typeof (RequiredTagName) == 'string') {
+        if (document.getElementById(ElementID).tagName.toLowerCase() != RequiredTagName && RequiredTagName != '') {
           return "HTML element with ID '" + ElementID + "' has the tagname '" + document.getElementById(ElementID).tagName + "' but it should be '" + RequiredTagName + "'";
         }
       }
-      return ""
+      return '';
     },
 
     /**
@@ -129,10 +129,10 @@ graphite.check = (function() {
     * if ( error != "" ) throw new Error( error );
     */
     element: function(element) {
-      if (typeof (element.tagName) == "undefined") {
-        return "HTML element expected. Type of checked variable is " + typeof (element)
+      if (typeof (element.tagName) == 'undefined') {
+        return 'HTML element expected. Type of checked variable is ' + typeof (element);
       }
-      return ""
+      return '';
     },
 
     /**
@@ -140,17 +140,17 @@ graphite.check = (function() {
     *
     * @since 1.0 - 2010-02-23
     * @version 1.0 - 2010-02-23
-    * @param {anything} Variable The variable that will be checked if it has the right type
-    * @param {String} ExpectedVariableType The variable type of the first argument has to be equal to this string
+    * @param {anything} Variable The variable that will be checked if it has the right type.
+    * @param {String} ExpectedVariableType The variable type of the first argument has to be equal to this string.
     * @example
     * error = graphite.check.variableType( id, "string" );
     * if ( error != "" ) throw new Error( error );
     */
     variableType: function(Variable, ExpectedVariableType) {
       if (typeof (Variable) != ExpectedVariableType) {
-        return "Unexpected variable type. There variable type should be " + ExpectedVariableType + ", but it is " + typeof (Variable);
+        return 'Unexpected variable type. There variable type should be ' + ExpectedVariableType + ', but it is ' + typeof (Variable);
       }
-      return ""
+      return '';
     },
 
     /**
@@ -161,19 +161,19 @@ graphite.check = (function() {
     * @version 1.0 - 2010-02-23
     * @param {Object} oldVariable
     * @param {Object} newVariable
-    * @param {String} arrayID Key of the object literal
+    * @param {String} arrayID Key of the object literal.
     * @example
     * oLiteral.foo = graphite.check.setLiteralIfDefined( oLiteral, oNewLiteral, "foo" )
     */
     setLiteralIfDefined: function(oldVariable, newVariable, arrayID) {
-      if (typeof (newVariable) == "undefined") {
-        return oldVariable[arrayID]
+      if (typeof (newVariable) == 'undefined') {
+        return oldVariable[arrayID];
       }
 
-      if (typeof (newVariable[arrayID]) == "undefined") {
-        return oldVariable[arrayID]
+      if (typeof (newVariable[arrayID]) == 'undefined') {
+        return oldVariable[arrayID];
       } else {
-        return newVariable[arrayID]
+        return newVariable[arrayID];
       }
     },
 
@@ -184,19 +184,19 @@ graphite.check = (function() {
     *
     * @since 1.0 - 2010-02-23
     * @version 1.0 - 2011-03-08
-    * @param {Object} obj Main object
-    * @param {Object} newObj Object that will be merged with the main object
+    * @param {Object} obj Main object.
+    * @param {Object} newObj Object that will be merged with the main object.
     * @param [Boolean] recursive If true, the updating will be done recursively.
     * If false, values will be merged and/or updated. Objects will be replaced.
-    * The default value is false. 
+    * The default value is false.
     * @example
     * graphite.check.updateLiteral(obj, newObj, true)
     */
     updateLiteral: function(obj, newObj, recursive) {
-      if (typeof(recursive) == "undefined") {
+      if (typeof(recursive) == 'undefined') {
         for (prop in newObj) {
-          obj[prop] = newObj[prop]
-          if (typeof (newObj[prop]) == "object") {
+          obj[prop] = newObj[prop];
+          if (typeof (newObj[prop]) == 'object') {
             graphite.check.UpdateLiteral(obj[prop], newObj[prop]);
           }
         }
@@ -213,7 +213,7 @@ graphite.check = (function() {
             obj[prop] = newObj[prop];
           }
         }
-        return obj
+        return obj;
       }
     },
 
@@ -231,23 +231,23 @@ graphite.check = (function() {
     * if ( error != "" ) throw new Error( error );
     */
     literalUpdatable: function(mainLiteral, updateLiteral) {
-      if (typeof (mainLiteral) != "object") {
-        return "Cannot check literals: first argument is not an object"
+      if (typeof (mainLiteral) != 'object') {
+        return 'Cannot check literals: first argument is not an object';
       }
-      if (typeof (updateLiteral) != "object") {
-        return "Cannot check literals: second argument is not an object"
+      if (typeof (updateLiteral) != 'object') {
+        return 'Cannot check literals: second argument is not an object';
       }
 
 
-      var isNotUpdatableVariable = literalsAreCompatible(mainLiteral, updateLiteral)
+      var isNotUpdatableVariable = literalsAreCompatible(mainLiteral, updateLiteral);
 
-      if (typeof (isNotUpdatableVariable) == "undefined") {
-        return ''
+      if (typeof (isNotUpdatableVariable) == 'undefined') {
+        return '';
       } else {
         return isNotUpdatableVariable;
       }
     }
-  }
+  };
   /* End public */
 })();
 
@@ -305,10 +305,10 @@ graphite.events = (function() {
       }
 
       function addEvent(element) {
-        try{
+        try {
           element.addEventListener(eventType, eventFunction);
         }
-        catch(e) {
+        catch (e) {
           console.log(element, eventType, eventFunction, e);
         }
       }
@@ -355,7 +355,7 @@ graphite.dataHandler.url = (function() {
      *
      * @since 1.0 - 2011-11-03
      * @version 1.0 - 2011-11-03
-     * @param {String} key The GET key
+     * @param {String} key The GET key.
      * @param {String} [custom_url] Extract value from supplied url instead of
      *    the currently loaded page.
      * @example
@@ -367,16 +367,16 @@ graphite.dataHandler.url = (function() {
         );
      */
     getQueryString: function(key, custom_url) {
-      var query
-      if (typeof(custom_url) == "string") {
-        query = custom_url.substring(custom_url.indexOf('?')+1)
+      var query;
+      if (typeof(custom_url) == 'string') {
+        query = custom_url.substring(custom_url.indexOf('?') + 1);
       } else {
-        query = window.location.search.substring(1)
+        query = window.location.search.substring(1);
       }
-      var vars = query.split("&");
-      
+      var vars = query.split('&');
+
       for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split("=");
+        var pair = vars[i].split('=');
         if (pair[0] == key) {
           return pair[1];
         }

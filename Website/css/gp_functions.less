@@ -29,15 +29,20 @@
 }
 
 .gp_opacity(@opacity: 0.5) {
+    @msOpacity: @opacity*100;
+
 	opacity: @opacity;
-	-ms-filter: ~"'progid:DXImageTransform.Microsoft.Alpha(Opacity=" @opacity*100 ~")'";
-	filter: ~"alpha(opacity=" @opacity*100 ~")";
+	-ms-filter: ~"'progid:DXImageTransform.Microsoft.Alpha(Opacity=@{msOpacity})'";
+	filter: ~"alpha(opacity=@{msOpacity})";
 }
 
 .gp_borderRadius(@topLeft: 5px, @topRight: 5px, @bottomRight: 5px, @bottomLeft: 5px) {
 	-moz-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
 	-webkit-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
 	border-radius: @topLeft @topRight @bottomRight @bottomLeft;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
 }
 
 .gp_transition(@type: all, @time: 0.5s, @easing: ease-out) {

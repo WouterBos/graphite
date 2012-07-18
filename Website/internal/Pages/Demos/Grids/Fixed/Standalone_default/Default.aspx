@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Fixed column size grid | Graphite" Language="C#" MasterPageFile="~/Internal/Pages/Demos/Grids/Flex/Standalone/Default.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Fixed column size grid | Graphite" Language="C#" MasterPageFile="Default.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
     <link rel="stylesheet" media="all" href="../default.less" />

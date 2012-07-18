@@ -1,0 +1,13 @@
+D:\Webdev\Projects\Github\graphite\Graphite\bin\Release\Graphite.dll
+D:\Webdev\Projects\Github\graphite\Graphite\bin\Release\Graphite.pdb
+D:\Webdev\Projects\Github\graphite\Graphite\bin\Release\nl-NL\Graphite.resources.dll
+D:\Webdev\Projects\Github\graphite\Graphite\obj\Release\ResolveAssemblyReference.cache
+D:\Webdev\Projects\Github\graphite\Graphite\obj\Release\Graphite.App_GlobalResources.Graphite.resources
+D:\Webdev\Projects\Github\graphite\Graphite\obj\Release\Graphite.App_GlobalResources.Graphite.nl-NL.resources
+D:\Webdev\Projects\Github\graphite\Graphite\obj\Release\GenerateResource.read.1.tlog
+D:\Webdev\Projects\Github\graphite\Graphite\obj\Release\GenerateResource.write.1.tlog
+D:\Webdev\Projects\Github\graphite\Graphite\obj\Release\nl-NL\Graphite.resources.dll
+D:\Webdev\Projects\Github\graphite\Graphite\obj\Release\Graphite.dll
+D:\Webdev\Projects\Github\graphite\Graphite\obj\Release\Graphite.pdb
+D:\Webdev\Projects\Github\graphite\Graphite\obj\Release\ResGen.read.1.tlog
+D:\Webdev\Projects\Github\graphite\Graphite\obj\Release\ResGen.write.1.tlog

@@ -52,7 +52,7 @@ graphite.internal.demo = function(arg_config) {
           sourceCode.codebehind
         );
       }
-      
+
       // HTML
       if (rootLinks[i].className.indexOf('graphite_getCodeHtml') != -1) {
         setEvent(
