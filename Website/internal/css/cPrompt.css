@@ -2,6 +2,7 @@
 #cPrompt_bar {
 	font-size: 100%;
 	font-weight: normal;
+	height: 18px !important;
 }
 
 #cPrompt_bar,
@@ -10,6 +11,7 @@
 	margin: 0;
 	padding: 0;
     line-height: 1.4em;
+    font-size: 12px;
 }
 /* End reset */
 
@@ -22,7 +24,7 @@
     z-index: 1000000000000;
     width: 100%;
     padding: 10px 0;
-    min-height: 32px !important;
+    min-height: 18px !important;
     color: #fff;
     font-size: 16px;
     background: #000;
@@ -43,12 +45,15 @@
         float: left;
         padding-left: 10px;
         line-height: 30px;
+        margin-top: -5px;
+		color: #fff;
     }
 
     #cPrompt_bar .cPrompt_buttons {
         float: right;
         display: block;
         padding-right: 10px;
+        margin-top: -5px;
     }
 
     #cPrompt_bar .cPrompt_button {
@@ -102,13 +107,15 @@
         -moz-box-shadow: 0 0 0 transparent;
         -webkit-box-shadow: 0 0 0 transparent;
 	    box-shadow: 0 0 0 transparent;
+	    display: none;
     }
     #cPrompt_bar .cPrompt_button.cPrompt_buttonSmall:hover {
         text-decoration: underline;
+        
     }
 
     #cPrompt_bar.ieQuirks {
-        height: 40px;
+        height: 30px;
         background: #f0f;
     }
 
@@ -117,6 +124,6 @@
 #cPrompt_barSpacer {
     position: relative;
     z-index: 10000;
-    min-height: 52px !important;
+    min-height: 32px !important;
     background: rgba(255,255,255,0.1);
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  * Basic graphite configuration
  *
@@ -8,70 +7,31 @@
 
 
 /* Values */
-@gp_paragraphSpacing:    1em;
-@gp_lineHeight:          1.5em;
-@gp_baseFontSize:        12px;
+@gp_paragraphSpacing:    1em;       /* Default size between paragraphs */
+@gp_lineHeight:          1.5em;     
+@gp_baseFontSize:        12px;      /* Default text size */
 
 /* Responsive design */
-@gp_desktop:             960px; /* Values higher than this will be considered traditional desktop screens, lower values will be considered tablets */
-@gp_mobile:              500px; /* Values lower than this will be considered mobile devices */
+@gp_desktop:             960px;     /* Values higher than this will be considered traditional desktop screens, lower values will be considered tablets */
+@gp_mobile:              500px;     /* Values lower than this will be considered mobile devices */
 
 /* Colors */
-@gp_colorHigh:           #fff;
-@gp_colorLow:            #000;
-@gp_color1:              #00CCFF;
-@gp_colorLink:           darken(@gp_color1, 20%);
-@gp_colorAlert:          #f00;
-@gp_colorAttention:      #F9FF04;
+@gp_colorHigh:           #fff;      /* The lightest color in the website */
+@gp_colorLow:            #000;      /* The darkest color in the website */
+@gp_color1:              #00CCFF;   /* The base color for this website */
+@gp_colorLink:           darken(@gp_color1, 20%);   /* Default color link */
+@gp_colorAlert:          #f00;      /* Base color for boxes that contains some sort of alert message */
+@gp_colorAttention:      #F9FF04;   /* Base color for boxes that contains some important information */
 
 /* Form */
-@gp_formColumn1:         150px;
-@gp_formColumnGutter:    10px;
-@gp_formColumn2:         260px;
+@gp_formColumn1:         150px;     /* This is the width of form labels if labels are left from the form fields */
+@gp_formColumnGutter:    10px;      /* The space between labels and form fields if they are next to each other */
+@gp_formColumn2:         260px;     /* This is the width of form fields if labels are left from the form fields */
 
 /* Grid configuration */
-@gp_gridWidth:           @gp_desktop;
-@gp_gridHeaderHeight:    115px;
-@gp_gridBlockSpacing:    12px; /* aka gutter */
-@gp_gridBlockPadding:    @gp_gridBlockSpacing / 2;
-@gp_gridFixedCols:       16;
+@gp_gridWidth:           @gp_desktop;   /* The width of the grid */
+@gp_gridHeaderHeight:    100px;     /* The height of the header (if the header height is not dynamic */
+@gp_gridBlockSpacing:    12px;      /* The gutter between columns in a grid */
+@gp_gridBlockPadding:    @gp_gridBlockSpacing / 2;  /* Spacing between blocks */
+@gp_gridFixedCols:       16;        /* Number of columns the grid is divided in */
 
-=======
-/*
- * Basic graphite configuration
- *
- * The values are used througout the Graphite framework.
- */
-
-
-
-/* Values */
-@gp_paragraphSpacing:    1em;
-@gp_lineHeight:          1.5em;
-@gp_baseFontSize:        12px;
-
-/* Responsive design */
-@gp_desktop:             960px; /* Values higher than this will be considered traditional desktop screens, lower values will be considered tablets */
-@gp_mobile:              500px; /* Values lower than this will be considered mobile devices */
-
-/* Colors */
-@gp_colorHigh:           #fff;
-@gp_colorLow:            #000;
-@gp_color1:              #00CCFF;
-@gp_colorLink:           darken(@gp_color1, 20%);
-@gp_colorAlert:          #f00;
-@gp_colorAttention:      #F9FF04;
-
-/* Form */
-@gp_formColumn1:         150px;
-@gp_formColumnGutter:    10px;
-@gp_formColumn2:         260px;
-
-/* Grid configuration */
-@gp_gridWidth:           @gp_desktop;
-@gp_gridHeaderHeight:    115px;
-@gp_gridBlockSpacing:    12px; /* aka gutter */
-@gp_gridBlockPadding:    @gp_gridBlockSpacing / 2;
-@gp_gridFixedCols:       16;
-
->>>>>>> e547badfc08b10abc67d5255270aa119772c2c86
