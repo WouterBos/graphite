@@ -1,15 +1,18 @@
 /*
  * Fixed grid
  * 
- * Mixins specific to the fixed grid system
+ * Mixins specific to the fixed grid system. Credits to Iain van der Wiel.
  */
 
 
-
 .gp_colWidth(@colSize) {
-    width: ((@gp_gridWidth / @gp_gridFixedCols) * @colSize) - @gp_gridBlockSpacing + (floor(@gp_gridBlockSpacing / @gp_gridFixedCols) * @colSize);
+    @colsWithMargin: (@gp_gridFixedCols - 1);
+    @widthMinusMargin: (@gp_gridWidth - (@colsWithMargin * @gp_gridBlockSpacing));
+    @colWidth: @widthMinusMargin / @gp_gridFixedCols;
+    @innerMargin: (@colSize - 1) * @gp_gridBlockSpacing;
+
+    width:  @colWidth * @colSize + @innerMargin;
     margin-right: @gp_gridBlockSpacing;
-    float: left;
 }
 
 #gp_gridSpacing {
