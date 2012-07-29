@@ -1,0 +1,103 @@
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="http://code.google.com/apis/gears/gears_init.js"></script>
+<script src="/internal/javascript/Libraries/GoogleMaps/geo.js"></script>
+<script src="/internal/javascript/Libraries/GoogleMaps/infobox.js"></script>
+<!--<script src="/internal/javascript/graphite.js"></script>-->
+<script src="/internal/javascript/graphite.blocks.js"></script>
+<script src="/internal/javascript/graphite.blocks.widgets.js"></script>
+<script src="/internal/javascript/graphite.blocks.widgets.gmap3.js"></script>
+
+<script>
+  (function() {
+    graphite.events.addEvent(
+      window,
+      runMap,
+      "load",
+      true
+    );
+
+    function runMap() {
+      var icon = new google.maps.MarkerImage(
+        '/internal/images/gmap/pin.png',
+        new google.maps.Size(43, 48),
+        new google.maps.Point(0,0),
+        new google.maps.Point(16, 45)
+      );
+      var gmap = new graphite.blocks.widgets.gmap3();
+      
+      gmap.init(
+        "Map",
+        {
+          mapOptions:
+          {
+            center: new google.maps.LatLng(58.99036, 6.00952),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          },
+          autoWrapMarkers: true
+        },
+        {
+          points:
+          [
+            {lat: 58.96913, lng: 5.73486, markerOptions: {icon: 'http://gmaps-samples.googlecode.com/svn/trunk/markers/blue/blank.png', title: 'Lorem'}, gp_markerOptions: { openOnClick: 'http://www.google.nl' }, infoWindow: { popupText: "Lorem"}},
+            {lat: 59.06598, lng: 5.92163, markerOptions: {icon: icon}, gp_markerOptions: {customTooltip: 'Amet'}, infoWindow: {popupText: "Amet"}},
+            {lat: 59.02501, lng: 6.02463, markerOptions: {}, infoWindow: {}}
+          ],
+          polygons:
+          [
+            {
+              points:
+              [
+                {lat: 59.27430, lng: 5.92438},
+                {lat: 59.29815, lng: 6.05072},
+                {lat: 59.25465, lng: 6.10291},
+                {lat: 59.22234, lng: 5.92987}
+              ],
+              options: {
+                strokeColor: '#0000ff',
+                strokeOpacity: 0.6,
+                strokeWeight: 1,
+                fillColor: '#0000ff',
+                fillOpacity: 0.35
+              },
+              infoWindow: {
+                popupText: "Dolor"
+              },
+              gp_markerOptions: {
+                openOnClick: 'http://www.google.nl'
+              }
+            },
+            {
+              points:
+              [
+                {lat: 58.85709, lng: 5.75272},
+                {lat: 58.96134, lng: 5.82138},
+                {lat: 58.91103, lng: 5.96970},
+                {lat: 58.87555, lng: 5.85159}
+              ],
+              options: {}
+            }
+          ]
+        },
+        {
+          directionsPaneld: document.getElementById('directions_result'),
+          origin: document.getElementById('direction_origin'),
+          destination: document.getElementById('direction_destination'),
+		  submit: document.getElementById('direction_submit'),
+          travelMode: google.maps.DirectionsTravelMode.DRIVING
+        }
+      );
+  
+      gmap.addItems(
+        {
+          points:
+          [
+            { lat: 59.06386, lng: 5.40733, markerOptions: { icon: 'http://gmaps-samples.googlecode.com/svn/trunk/markers/blue/blank.png' }, infoWindow: { popupText: "Ipsum" } },
+            { lat: 58.82648, lng: 5.50520, markerOptions: {}, infoWindow: {} }
+          ]
+        },
+        false
+      );
+    }
+  })();
+</script>

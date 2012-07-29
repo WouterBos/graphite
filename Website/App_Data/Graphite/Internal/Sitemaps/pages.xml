@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<documentation>
+    <page url="Default.aspx" title="Getting started" />
+    <codeconventions url="CodeConventions/Default.aspx" title="Code Conventions">
+        <page url="Aspnet.aspx" title="ASP.NET" />
+        <page url="Css.aspx" title="CSS" />
+        <page url="JavaScript.aspx" title="JavaScript" />
+    </codeconventions>
+    <page url="JavaScript/index.html" title="JavaScript reference" target="_blank" />
+    <page url="Contribute.aspx" title="Contribute" />
+    <page url="NewDemo.aspx" title="Making a new demo" />
+    <page url="Todo.aspx" title="Todo" />
+</documentation>

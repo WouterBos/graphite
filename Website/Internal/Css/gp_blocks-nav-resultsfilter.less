@@ -1,0 +1,83 @@
+/*
+ * Search filter
+ */
+
+
+
+.gp_searchFilter {
+    .gp_clear();
+
+    .gp_local_filterIntro {
+        margin-bottom: 1em;
+    }
+
+    .gp_local_filter {
+        float: left;
+        
+		legend {
+			font-weight: bold;
+		}
+		
+		.gp_local_radioCheck {
+			li {
+				position: relative;
+				padding-left: 20px;
+
+				input[type="checkbox"],
+				input[type="radio"] {
+					position: absolute;
+					left: 0;
+				}
+			}
+		}
+
+        label.disabled {
+            .gp_opacity(0.7);
+        }
+    }
+
+    .gp_local_resultsContainer,
+    .gp_local_controlOrder,
+    .gp_local_controlBatch,
+    .gp_local_results {
+        margin-left: @gp_gridBlockSpacing;
+        float: left;
+    }
+
+    .gp_local_controlOrder {
+        margin-bottom: 1em;
+
+        .gp_active {
+            font-weight: bold;
+        }
+    }
+    
+    .gp_local_controlPaging {
+    	text-align: center;
+
+    	li {
+    		display: inline;
+    	}
+    	
+    	.gp_active {
+    		font-weight: bold;
+    	}
+    }
+    
+    .gp_local_controlBatch {
+        .gp_active {
+            font-weight: bold;
+        }
+    }
+
+    .local_log {
+        clear: both;
+        width: 100%;
+    }
+    
+    &.gp_hasJs {
+    	.gp_local_submit {
+    		display: none;
+    	}
+    }
+}

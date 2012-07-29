@@ -1,0 +1,135 @@
+/*
+ * Basic SF form
+ */
+
+
+
+
+
+
+.gp_sf_form {
+    color: @ingressus_grey;
+
+    .validationSummary {
+        .gp_form > .gp_formCheckFeedback;
+    }
+    
+    .success,
+    .error {
+        display: block;
+    }
+    
+    .success {
+        display: inline-block;
+        color: @ingressus_blue;
+        border: 2px solid @ingressus_green;
+        padding: 10px;
+        background: lighten(@ingressus_green, 30%) !important;
+    }
+    
+    .error {
+        border: solid 1px red;  
+    }
+
+
+    
+    legend {
+        padding-top: 1em;
+        padding-bottom: 0.5em;
+        color: @ingressus_blue;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    
+    input.inputText,
+    textarea.inputText {
+        float: left;
+        width: @gp_formColumn2;
+    }
+    
+    .RadPicker {
+        width: 9em !important;
+    }
+    
+    ul.inputRadio li[style="display: inline;"] + li[style="display: inline;"] {
+        margin-left: 1em;
+    }
+        
+    table.fieldsContainer {
+        width: 100%;
+        
+        td {
+            vertical-align: top;
+        }
+        
+        td.column1 {
+            padding-right: @gp_formColumnGutter;
+            width: @gp_formColumn1;
+        }
+
+        td.column2 {
+            width: @gp_formColumn2;
+        }
+
+        td.input {
+            padding-bottom: 5px;
+        }
+        
+        td.input.optional > label + div {
+            float: left;
+        }
+
+        td.column1 > label {
+            float: left;
+            margin-right: @gp_formColumnGutter;
+            width: @gp_formColumn1;
+        }
+        
+        td > label span.mandatory {
+            margin-left: 0.3em;
+        }
+        
+        span.inputCheck {
+            .gp_clear();
+            display: block;
+            
+            input[type="checkbox"] {
+                float: left;
+            }
+            
+            label {
+                float: left;
+                width: @gp_formColumn2 - 20;
+            }
+        }
+    }
+    
+    .contextLabel,
+    .contextLabel + br,
+    .contextInformation {
+        display: none;
+    }
+    
+    input[type="submit"] {
+        padding: 0.1em 0.5em;
+        color: @ingressus_blue;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    
+    .gp_heading2 {
+        margin: 0;
+        padding-top: 1em;
+        padding-bottom: 0;
+        font-size: 22px;
+    }
+}
+
+*+html .gp_sf_form input[type="submit"] {
+    padding: 0;
+}
+
+*+html .gp_sf_form legend {
+    position: relative;
+    left: -7px;
+}

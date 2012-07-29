@@ -1,0 +1,129 @@
+/* Start reset */
+#cPrompt_bar {
+	font-size: 100%;
+	font-weight: normal;
+	height: 18px !important;
+}
+
+#cPrompt_bar,
+#cPrompt_bar a,
+#cPrompt_bar span {
+	margin: 0;
+	padding: 0;
+    line-height: 1.4em;
+    font-size: 12px;
+}
+/* End reset */
+
+
+
+#cPrompt_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000000000000;
+    width: 100%;
+    padding: 10px 0;
+    min-height: 18px !important;
+    color: #fff;
+    font-size: 16px;
+    background: #000;
+	background-image:    -moz-linear-gradient(top, #555555, #000000);
+	background-image:     -ms-linear-gradient(top, #555555, #000000); 
+	background-image:      -o-linear-gradient(top, #555555, #000000); 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#555555), to(#000000)); 
+    background-image: -webkit-linear-gradient(top, #555555, #000000); 
+	background-image:         linear-gradient(top, #555555, #000000);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#555555', EndColorStr='#000000');
+}
+#cPrompt_bar:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+    #cPrompt_bar .cPrompt_message {
+        float: left;
+        padding-left: 10px;
+        line-height: 30px;
+        margin-top: -5px;
+		color: #fff;
+    }
+
+    #cPrompt_bar .cPrompt_buttons {
+        float: right;
+        display: block;
+        padding-right: 10px;
+        margin-top: -5px;
+    }
+
+    #cPrompt_bar .cPrompt_button {
+        float: right;
+        display: block;
+	    -moz-transition: all 0.2s ease-out;
+	    -ms-transition: all 0.2s ease-out;
+	    -o-transition: all 0.2s ease-out;
+        -webkit-transition: all 0.2s ease-out;
+	    transition: all 0.2s ease-out;
+	    -moz-border-radius: 5px 5px 5px 5px;
+	    -webkit-border-radius: 5px 5px 5px 5px;
+	    border-radius: 5px 5px 5px 5px;
+        color: #000;
+        font-weight: bold;
+        padding: 5px 10px;
+        text-decoration: none;
+	    background-color: #A8EEFF;
+	    background-image:    -moz-linear-gradient(top, #A8EEFF, #00CDFF);
+	    background-image:     -ms-linear-gradient(top, #A8EEFF, #00CDFF); 
+	    background-image:      -o-linear-gradient(top, #A8EEFF, #00CDFF); 
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#A8EEFF), to(#00CDFF)); 
+        background-image: -webkit-linear-gradient(top, #A8EEFF, #00CDFF); 
+	    background-image:         linear-gradient(top, #A8EEFF, #00CDFF);
+	    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#A8EEFF', EndColorStr='#00CDFF');*/
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+    }
+    #cPrompt_bar .cPrompt_button:hover {
+	    background-color: #00CDFF;
+	    background-image:    -moz-linear-gradient(top, #00CDFF, #A8EEFF);
+	    background-image:     -ms-linear-gradient(top, #00CDFF, #A8EEFF); 
+	    background-image:      -o-linear-gradient(top, #00CDFF, #A8EEFF); 
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#00CDFF), to(#A8EEFF)); 
+        background-image: -webkit-linear-gradient(top, #00CDFF, #A8EEFF); 
+	    background-image:         linear-gradient(top, #00CDFF, #A8EEFF);
+	    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#00CDFF', EndColorStr='#A8EEFF');*/
+        -moz-box-shadow: 0 0 15px rgba(255,255,255,0.7); 
+        -webkit-box-shadow: 0 0 15px rgba(255,255,255,0.7);
+	    box-shadow: 0 0 15px rgba(255,255,255,0.7);
+    }
+    #cPrompt_bar .cPrompt_button {
+        margin-left: 1em;
+    }
+    
+    #cPrompt_bar .cPrompt_button.cPrompt_buttonSmall {
+        color: #fff;
+        font-weight: normal;
+        background: transparent;
+        -moz-box-shadow: 0 0 0 transparent;
+        -webkit-box-shadow: 0 0 0 transparent;
+	    box-shadow: 0 0 0 transparent;
+	    display: none;
+    }
+    #cPrompt_bar .cPrompt_button.cPrompt_buttonSmall:hover {
+        text-decoration: underline;
+        
+    }
+
+    #cPrompt_bar.ieQuirks {
+        height: 30px;
+        background: #f0f;
+    }
+
+
+
+#cPrompt_barSpacer {
+    position: relative;
+    z-index: 10000;
+    min-height: 32px !important;
+    background: rgba(255,255,255,0.1);
+}
