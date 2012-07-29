@@ -1,5 +1,0 @@
-<p>This navigation widget enables users to filter search results. The main navigation is handled by JavaScript, but is built in such a way that a developer can write a server-side fallback solution in case JavaScript is not available. Creating a fallback is advisable to make the website accessible for search engines.</p>
-<p>To build its query, JavaScript needs some extra information. That information is tucked away partly on on the block with the class <code>gp_local_filter</code> and partly in the form fields itself.</p>
-<p>When JavaScript has built its query, it will send a request to the server. The target for the ajax request is defined in the HTML with the attribute <code>data-ajaxurl</code>. The ajax query, contains keywords, categories and how multiple items in a categories are filtered ('and' or 'or'). If there are multiple values, JavaScript will use tildes (~) as a divider.</p>
-<p>When the server replies with a JSON, JavaScript will use that as a data source and will handle sorting and paging by itself.</p>
-<p>If the block contains an element with the class <code>local_log</code>, that element will used as a log.</p>
