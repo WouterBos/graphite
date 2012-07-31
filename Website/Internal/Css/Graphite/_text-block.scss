@@ -1,0 +1,221 @@
+/*
+ * Text block styles
+ *
+ * Especially useful for content that is generated with Rich Text Editors in a CMS.
+ */
+
+
+
+.gp_textBlock {
+	/* Start spacing between blocks */
+	table,
+	p,
+	ul,
+	ol,
+	div,
+	& + .gp_text {
+		margin-top: $gp_paragraphSpacing;
+	}
+	
+	ul ul {
+		margin-top: 0;
+	}
+
+	* + h1,
+	* + h2,
+	* + h3,
+	* + h4,
+	* + h5,
+	* + h6 {
+		margin-top: $gp_paragraphSpacing;
+	}
+	
+	h1 + *,
+	h2 + *,
+	h3 + *,
+	h4 + *,
+	h5 + *,
+	h6 + *,
+    h1 + [class*="float"] + *,
+    h2 + [class*="float"] + *,
+    h3 + [class*="float"] + *,
+    h4 + [class*="float"] + *,
+    h5 + [class*="float"] + *,
+    h6 + [class*="float"] + * {
+		margin-top: 0;
+	}
+
+	:first-child {
+		margin-top: 0;
+	}
+	/* End spacing between blocks */
+
+	
+	/* Start lists */
+	ul {
+		clear: both;
+		padding-left: 0;
+	}
+	
+	ul li {
+		margin-left: 17px;
+		list-style-type: disc;
+	}
+	
+	ol {
+		clear: both;
+	}
+	
+	ol li {
+		margin-left: 20px;
+		list-style-type: decimal;
+	}
+	/* End lists */
+	
+	
+	/* Start headings */
+	h1 {
+		@include gp_heading1;
+	}
+	
+	h2 {
+		@include gp_heading2;
+	}
+	
+	h3 {
+		@include gp_heading3;
+	}
+	
+	h4 {
+		@include gp_heading4;
+	}
+	
+	h5 {
+		@include gp_heading5;
+	}
+	
+	h6 {
+		@include gp_heading6;
+	}
+	
+	/*
+	 * Use these classes to style something as a header which semantically isn't.
+	 */
+	.gp_textHeading1 {
+		@include gp_heading1;
+	}
+	
+	.gp_textHeading2 {
+		@include gp_heading2;
+	}
+	
+	.gp_textHeading3 {
+		@include gp_heading3;
+	}
+	
+	.gp_textHeading4 {
+		@include gp_heading4;
+	}
+	
+	.gp_textHeading5 {
+		@include gp_heading5;
+	}
+	
+	.gp_textHeading6 {
+		@include gp_heading6;
+	}
+	/* End headings */
+
+	
+	/* Start float block styling */	
+	.local_floatLeft {
+		margin-top: $gp_paragraphSpacing;
+		margin-right: $gp_paragraphSpacing;
+        margin-bottom: ($gp_paragraphSpacing/2);
+		float: left;
+	}
+	
+	.local_floatRight {
+		margin-top: $gp_paragraphSpacing;
+        margin-bottom: ($gp_paragraphSpacing/2);
+		margin-left: $gp_paragraphSpacing;
+		float: right;
+	}
+
+    h1 + [class*="float"],
+    h2 + [class*="float"],
+    h3 + [class*="float"],
+    h4 + [class*="float"],
+    h5 + [class*="float"],
+    h6 + [class*="float"] {
+		margin-top: 0;
+	}
+	/* End float block styling */
+	
+	
+	/* Start link styling */
+	a,
+	a:link {
+		text-decoration: underline;
+	}
+	a:hover,
+	a:focus {
+		text-decoration: none;
+	}
+	/* End link styling */
+
+	
+	.intro {
+		font-size: 1.25em;
+	}
+
+	
+	/* Start table */
+	table {
+		th,
+		thead th,
+		thead td {
+			font-weight: bold
+		}
+		
+		caption {
+			font-weight: bold;
+			padding-bottom: 0.1em;
+		}
+		
+		tfoot {
+			font-size: 0.9em;
+		}
+		
+		tfoot th {
+			font-weight: normal;
+		}
+		
+		tr > :first-child {
+			padding-left: 0;
+		}
+		
+		td,
+		th {
+			padding-left: $gp_paragraphSpacing;
+		}
+		td:first-child,
+		th:first-child {
+			padding-left: 0;
+		}
+	}
+	/* End table */
+	
+	
+	.gp_textAlert {
+	    @include gp_textAlert;
+	    display: inline-block;
+	}
+}
+
+
+
+/* IE7 hack */
+*+html .gp_textBlock ol li {
+	margin-left: 23px;
+}

@@ -1,14 +1,14 @@
 /* BASE */
-@import "graphite/_values";
-@import "graphite-internal/_values";
-@import "graphite/_functions";
-//@import "gp_reset.less";
+@import "Graphite/_values";
+@import "Graphite-internal/_values";
+@import "Graphite/_functions";
+@import "Graphite/_reset";
 
 
 
 /* TEXT STYLING */
-//@import "gp_text.less";
-//@import "gp_text-block.less";
+@import "Graphite/_text";
+@import "Graphite/_text-block";
 
 
 
