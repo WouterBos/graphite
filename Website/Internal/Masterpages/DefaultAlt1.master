@@ -14,7 +14,7 @@
 		<link href="/favicon.ico" rel="shortcut icon" />
 		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
 		
-		<link href="/Internal/css/all.less" rel="stylesheet" media="all" />
+		<link href="/Internal/css/all.min.css" rel="stylesheet" media="all" />
 		<asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
         
 		<script src="/Internal/javascript/libraries/jQuery/jquery.min.js"></script>

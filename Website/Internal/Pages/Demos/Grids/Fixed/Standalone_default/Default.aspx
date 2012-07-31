@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Fixed column size grid | Graphite" Language="C#" MasterPageFile="Default.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Head" ContentPlaceHolderID="Head" Runat="Server">
-    <link rel="stylesheet" media="all" href="../default.less" />
+    <link rel="stylesheet" media="all" href="../default.css" />
     
     <style>
         div.gp_header div.gp_main {

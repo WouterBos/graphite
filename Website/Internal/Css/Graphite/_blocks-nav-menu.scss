@@ -1,0 +1,26 @@
+/*
+ * Base menu styling
+ *
+ * This less file should be used in combination with some other less file.
+ */
+
+
+
+.gp_menu {
+	a {
+		display: block;
+		@include gp_transition(all, 0.5s, ease-out);
+		color: $gp_colorLow;
+		text-decoration: none;
+		padding: $gp_gridBlockSpacing / 4 $gp_gridBlockSpacing / 2;
+		background: lighten($gp_color1, 30%);
+	}
+	a:hover {
+		@include gp_transition(all, 0.1s, ease-out);
+		background: $gp_color1;
+	}
+
+	> ul > li > a {
+		display: inline-block;
+	}
+}

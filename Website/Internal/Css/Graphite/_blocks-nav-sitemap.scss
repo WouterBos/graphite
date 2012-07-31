@@ -1,0 +1,25 @@
+/*
+ * Styling for a list with links that serves as a sitemap.
+ */
+
+
+
+.gp_sitemap > ul > li > a,
+.gp_sitemap > ul > li > span {
+	@include gp_heading2;
+}
+
+.gp_sitemap > ul > li > ul > li > a,
+.gp_sitemap > ul > li > ul > li > span {
+	@include gp_heading3;
+}
+
+.gp_sitemap > ul > li > ul > li > ul > li > a,
+.gp_sitemap > ul > li > ul > li > ul > li > span {
+	@include gp_heading4;
+}
+
+.gp_sitemap li {
+	margin-left: 17px;
+	list-style-type: disc;
+}

@@ -302,7 +302,7 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
                 string strCssLink;
                 if (dicFiles["css"] == true)
                 {
-                    strCssLink = "default.less";
+                    strCssLink = "default.css";
                 }
                 else
                 {

@@ -24,3 +24,13 @@ D:\Websites\!Resources\Graphite\Graphite\obj\Release\ResGen.write.1.tlog
 D:\Websites\!Resources\Graphite\Graphite\obj\Release\nl-NL\Graphite.resources.dll
 D:\Websites\!Resources\Graphite\Graphite\obj\Release\Graphite.dll
 D:\Websites\!Resources\Graphite\Graphite\obj\Release\Graphite.pdb
+D:\Websites\!Resources\Graphite\Graphite\bin\Release\IronRuby.dll
+D:\Websites\!Resources\Graphite\Graphite\bin\Release\IronRuby.Libraries.dll
+D:\Websites\!Resources\Graphite\Graphite\bin\Release\IronRuby.Libraries.Yaml.dll
+D:\Websites\!Resources\Graphite\Graphite\bin\Release\Microsoft.Dynamic.dll
+D:\Websites\!Resources\Graphite\Graphite\bin\Release\Microsoft.Scripting.dll
+D:\Websites\!Resources\Graphite\Graphite\bin\Release\Microsoft.Scripting.Metadata.dll
+D:\Websites\!Resources\Graphite\Graphite\bin\Release\SassAndCoffee.AspNet.dll
+D:\Websites\!Resources\Graphite\Graphite\bin\Release\SassAndCoffee.Core.dll
+D:\Websites\!Resources\Graphite\Graphite\bin\Release\SassAndCoffee.JavaScript.dll
+D:\Websites\!Resources\Graphite\Graphite\bin\Release\SassAndCoffee.Ruby.dll

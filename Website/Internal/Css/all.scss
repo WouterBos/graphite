@@ -1,6 +1,6 @@
 /* BASE */
 @import "Graphite/_values";
-@import "Graphite-internal/_values";
+@import "Graphite/Internal/_values";
 @import "Graphite/_functions";
 @import "Graphite/_reset";
 
@@ -15,39 +15,22 @@
 /* GRIDS */
 
 /* Flexible (column width can be set) */
-//@import "gp_grid.less";
-//@import "gp_grid-print.less";
-//@import "gp_grid-mobile.less";
-//@import "gp_grid-flex.less";
-//@import "internal_grid-flex.less";
+@import "Graphite/_grid";
+@import "Graphite/_grid-print";
+//@import "Graphite/_grid-mobile"; // Disabled, code only works in Sass 3.2+
+@import "Graphite/_grid-flex";
+@import "Graphite/Internal/_grid-flex";
 
 
 
 /* BLOCKS */
-//@import "gp_blocks-nav-sitemap.less";
-//@import "gp_blocks-widgets-accordion.less";
+@import "Graphite/_blocks-nav-sitemap";
+@import "Graphite/_blocks-widgets-accordion";
 
-//@import "gp_blocks-nav-menu.less";
-//@import "gp_blocks-nav-menu-vertical.less";
+@import "Graphite/_blocks-nav-menu";
+@import "Graphite/_blocks-nav-menu-vertical";
 
 
 
 /* GRAPHITE */
-//@import "internal_base.less";
-
-
-
-
-
-
-
-
-
-$blue: #3bbfce;
-
-body {
-  background: $blue;
-}
-
-
-
+@import "Graphite/Internal/_base";
