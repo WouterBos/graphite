@@ -296,7 +296,7 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
     {
         if (dicFiles.ContainsKey("css") == true)
         {
-            string strCssCode = Graphite.Internal.Demo.GetSourceCode(".less", dicFiles["css"], GetActiveIndex(), path, config);
+            string strCssCode = Graphite.Internal.Demo.GetSourceCode(".scss", dicFiles["css"], GetActiveIndex(), path, config);
             if (dicFiles["externalDemo"] == false)
             {
                 string strCssLink;
@@ -306,7 +306,7 @@ public partial class GraphiteInternal_BlockDemo2 : System.Web.UI.UserControl
                 }
                 else
                 {
-                    strCssLink = config.Type(GetActiveIndex()) + ".less";
+                    strCssLink = config.Type(GetActiveIndex()) + ".scss";
                 }
                 
                 CSSLink.Attributes["href"] = strCssLink;
