@@ -1,0 +1,95 @@
+/*
+ * Basic custom form
+ */
+
+
+
+
+
+
+.gp_form {
+    @include gp_clear();
+    
+    fieldset {
+        /* List */
+        > ol {
+            @include gp_clear();
+            list-style: none;
+        }
+        
+        > ol > li {
+            width: 100%;
+            float: left;
+            clear: left;
+            margin: 0;
+            padding: 0 0 $gp_paragraphSpacing/4 0;
+            list-style: none;
+        }
+        
+        /* List */
+        label {
+            position: relative;
+            top: 1px;
+        }
+        
+        > ol > li > label:first-child,
+        > ol > li > .label {
+            float: left;
+            margin-right: $gp_formColumnGutter;
+            width: $gp_formColumn1;
+            
+            > span {
+                position: absolute;
+                left: $gp_formColumn1;
+            }
+        }
+
+        > ol > li > input[type="checkbox"]:first-child {
+            margin-left: $gp_formColumn1 + $gp_formColumnGutter;
+        }
+
+        /* Form fields */
+        input[type="text"],
+		input[type="email"],
+		input[type="url"],
+		input[type="search"],
+		input[type="password"] {
+            width: $gp_formColumn2;
+        }
+    
+        input[type="submit"] {
+            margin-left: $gp_formColumn1 + $gp_formColumnGutter;
+        }
+
+        span > label + input[type="radio"],
+        span > label + input[type="checkbox"] {
+            margin-left: $gp_formColumnGutter;
+        }
+    
+        textarea {
+            width: $gp_formColumn2;
+        }
+    
+        legend {
+            font-weight: bold;
+        }
+    }
+
+    .gp_formCheckFeedback {
+        @include gp_textAlert;
+        margin-bottom: $gp_formColumnGutter;
+        color: $gp_colorLow !important;
+        font-weight: bold;
+
+        ul {
+            margin-top: $gp_gridBlockSpacing/4;
+        }
+        
+        li {
+            margin-left: 17px;
+            list-style-type: disc;
+            color: $gp_colorLow;
+            font-weight: normal;
+        }
+    }
+}

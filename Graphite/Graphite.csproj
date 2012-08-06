@@ -114,23 +114,27 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\all.css" />
     <Content Include="images\gp_todo-800x600.jpg" />
     <Content Include="images\gp_todo.jpg" />
     <Content Include="images\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="css\all.less" />
-    <None Include="css\gp_functions.less" />
-    <None Include="css\gp_grid-flex.less" />
-    <None Include="css\gp_grid-mobile.less" />
-    <None Include="css\gp_grid-print.less" />
-    <None Include="css\gp_grid.less" />
-    <None Include="css\gp_reset.less" />
-    <None Include="css\gp_text-block.less" />
-    <None Include="css\gp_text.less" />
-    <None Include="css\gp_values.less" />
-    <None Include="css\PROJECTNAME.less" />
+    <None Include="css\all.scss" />
+    <None Include="css\Graphite\_form-plain.scss" />
+    <None Include="css\Graphite\_form.scss" />
+    <None Include="css\Graphite\_functions.scss" />
+    <None Include="css\Graphite\_grid-fixed-functions.scss" />
+    <None Include="css\Graphite\_grid-fixed.scss" />
+    <None Include="css\Graphite\_grid-flex.scss" />
+    <None Include="css\Graphite\_grid-mobile.scss" />
+    <None Include="css\Graphite\_grid-print.scss" />
+    <None Include="css\Graphite\_grid.scss" />
+    <None Include="css\Graphite\_reset.scss" />
+    <None Include="css\Graphite\_text-block.scss" />
+    <None Include="css\Graphite\_text.scss" />
+    <None Include="css\Graphite\_values.scss" />
+    <None Include="css\Project\_project.scss" />
+    <None Include="css\Project\_project_values.scss" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

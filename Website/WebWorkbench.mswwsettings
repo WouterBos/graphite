@@ -1,1 +1,73 @@
-<web-workbench />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<web-workbench>
+  <file name="all.scss">
+    <setting name="Compile">False</setting>
+    <setting name="Minify">True</setting>
+    <setting name="OutputFolder"></setting>
+    <setting name="CompileStyle">Nested</setting>
+    <setting name="DebugInfo">False</setting>
+  </file>
+  <file name="project_values.scss">
+    <setting name="Compile">True</setting>
+    <setting name="Minify">True</setting>
+    <setting name="OutputFolder" />
+    <setting name="CompileStyle">Nested</setting>
+    <setting name="DebugInfo">False</setting>
+  </file>
+  <file name="project.scss">
+    <setting name="Compile">True</setting>
+    <setting name="Minify">True</setting>
+    <setting name="OutputFolder" />
+    <setting name="CompileStyle">Nested</setting>
+    <setting name="DebugInfo">False</setting>
+  </file>
+  <file name="compile_test.scss">
+    <setting name="Compile">False</setting>
+    <setting name="Minify">True</setting>
+    <setting name="OutputFolder"></setting>
+    <setting name="CompileStyle">Nested</setting>
+    <setting name="DebugInfo">True</setting>
+  </file>
+  <file name="default.scss">
+    <setting name="Compile">False</setting>
+    <setting name="Minify">True</setting>
+    <setting name="OutputFolder"></setting>
+    <setting name="CompileStyle">Nested</setting>
+    <setting name="DebugInfo">False</setting>
+  </file>
+  <file name="horizontal.scss">
+    <setting name="Compile">False</setting>
+    <setting name="Minify">True</setting>
+    <setting name="OutputFolder"></setting>
+    <setting name="CompileStyle">Nested</setting>
+    <setting name="DebugInfo">False</setting>
+  </file>
+  <file name="horizontalcollapse.scss">
+    <setting name="Compile">False</setting>
+    <setting name="Minify">True</setting>
+    <setting name="OutputFolder"></setting>
+    <setting name="CompileStyle">Nested</setting>
+    <setting name="DebugInfo">False</setting>
+  </file>
+  <file name="vertical.scss">
+    <setting name="Compile">False</setting>
+    <setting name="Minify">True</setting>
+    <setting name="OutputFolder"></setting>
+    <setting name="CompileStyle">Nested</setting>
+    <setting name="DebugInfo">False</setting>
+  </file>
+  <file name="verticalcollapse.scss">
+    <setting name="Compile">False</setting>
+    <setting name="Minify">True</setting>
+    <setting name="OutputFolder"></setting>
+    <setting name="CompileStyle">Nested</setting>
+    <setting name="DebugInfo">False</setting>
+  </file>
+  <file name="_project.scss">
+    <setting name="Compile">False</setting>
+    <setting name="Minify">True</setting>
+    <setting name="OutputFolder" />
+    <setting name="CompileStyle">Nested</setting>
+    <setting name="DebugInfo">True</setting>
+  </file>
+</web-workbench>

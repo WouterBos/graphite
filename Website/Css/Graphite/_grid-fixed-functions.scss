@@ -1,0 +1,24 @@
+/*
+ * Fixed grid
+ * 
+ * Mixins specific to the fixed grid system. Written by Iain van der Wiel.
+ */
+
+
+@mixin gp_colWidth($colSize) {
+    $colsWithMargin: ($gp_gridFixedCols - 1);
+    $widthMinusMargin: ($gp_gridWidth - ($colsWithMargin * $gp_gridBlockSpacing));
+    $colWidth: $widthMinusMargin / $gp_gridFixedCols;
+    $innerMargin: ($colSize - 1) * $gp_gridBlockSpacing;
+
+    width:  $colWidth * $colSize + $innerMargin;
+    margin-left: $gp_gridBlockSpacing;
+}
+
+@mixin gp_colPrepend($colSize) {
+    margin-left: (($gp_gridWidth / $gp_gridFixedCols) * $colSize);
+}
+    
+@mixin gp_colAppend($colSize) {
+    margin-right: (($gp_gridWidth / $gp_gridFixedCols) * $colSize);
+}

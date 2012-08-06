@@ -1,0 +1,32 @@
+/*
+ * Grid mobile
+ * 
+ * Adapts grid to smaller (mobile) screens.
+ */
+
+
+
+/* Columns basic style */
+@media screen and (max-width: $gp_desktop) {
+	.gp_main {
+		margin-left: 1%;
+		margin-right: 1%;
+		width: auto;
+	}
+	
+	.gp_gridRow[class][class][class] {
+		margin-top: 0;
+		margin-bottom: 0;
+
+		.gp_gridColumn {
+			margin-top: 0;
+			margin-bottom: 0;
+			width: auto; 
+			float: none;
+		}
+		
+		.gp_block {
+			margin: $gp_gridBlockSpacing 0;
+		}
+	}
+}

@@ -1,0 +1,55 @@
+/*
+ * Basic custom form
+ */
+
+
+
+
+
+@media screen and (max-width:$gp_mobile) {
+	.gp_form {
+	    fieldset {
+	        label {
+	            position: static;
+	        }
+
+	        > ol > li {
+	            padding-bottom: $gp_paragraphSpacing;
+	        }
+	        
+	        > ol > li > label:first-child,
+	        > ol > li > .label:first-child {
+	        	display: block;
+	            float: none;
+	            margin-right: 0;
+	        	width: 100%;
+	        	font-weight: bold;
+	            
+	            > span {
+	                position: static;
+	            }
+	        }
+
+	        > ol > li > input[type="checkbox"]:first-child {
+	            margin-left: 0;
+	        }
+	
+	        /* Form fields */
+	        input[type="text"],
+			input[type="email"],
+			input[type="url"],
+			input[type="search"],
+			input[type="password"] {
+	            width: 100% ;
+	        }
+	    
+	        input[type="submit"] {
+	            margin-left: 0;
+	        }
+	
+	        textarea {
+	            width: 100%;
+	        }
+		}
+	}
+}
