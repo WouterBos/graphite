@@ -1,0 +1,119 @@
+/*
+ * Basic text styling
+ */
+
+
+
+/* HTML elements */
+html {
+	background: $gp_colorHigh;
+}
+
+a {
+	color: $gp_colorLink;
+	text-decoration: none;
+}
+a:hover,
+a:focus {
+	text-decoration: underline;
+}
+
+body,
+input,
+select,
+textarea {
+	color: $gp_colorLow;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: $gp_baseFontSize;
+    line-height: $gp_lineHeight;
+}
+
+
+
+/* Helper classes */
+.gp_hideAccessible { // Use this to hide content in browsers, but keep them visible for screen readers
+	position: absolute;
+	left: -9999em;
+	
+	&:focus {
+		$local_borderWidth: 5px;
+		
+		left: auto;
+		z-index: 10000000;
+		margin: -$local_borderWidth 0 0 -$local_borderWidth;
+		outline: $local_borderWidth solid rgba(255,255,255,0.5);
+		padding: $local_borderWidth;
+		color: $gp_colorLow;
+		font-weight: bold;
+		background: $gp_colorHigh;
+	}
+}
+
+.gp_hide {
+	display: none;
+}
+
+
+
+/* Headings */
+@mixin gp_heading1 {
+	font-size: 2.2em;
+	line-height: 1.3em;
+	font-weight: bold;
+}
+
+@mixin gp_heading2 {
+	font-size: 1.5em;
+	line-height: 1.35em;
+	font-weight: bold;
+}
+
+@mixin gp_heading3 {
+	font-size: 1.2em;
+	line-height: 1.45em;
+	font-weight: bold;
+}
+
+@mixin gp_heading4 {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+@mixin gp_heading5 {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+@mixin gp_heading6 {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+
+
+@mixin gp_textAlert {
+	border: 2px solid darken($gp_colorAlert, 10%);
+	padding: 2px 5px;
+	font-weight: bold;
+	background: desaturate(lighten($gp_colorAlert, 25%), 20%);
+}
+
+.gp_textAlert {
+	@include gp_textAlert;
+}
+
+.gp_textAttention {
+	border: 2px solid darken($gp_colorAttention, 10%);
+	padding: 2px 5px;
+	font-weight: bold;
+	background: desaturate(lighten($gp_colorAttention, 30%), 40%);
+}
+
+.gp_textAlert,
+.gp_textAttention {
+	color: $gp_colorLow;
+	
+	a {
+		color: $gp_colorLow;
+	}
+}

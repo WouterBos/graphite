@@ -1,0 +1,51 @@
+/*
+ * Basic graphite configuration
+ *
+ * The values are used througout the Graphite framework.
+ */
+
+
+
+/*
+ * Values
+ */
+$gp_paragraphSpacing:    1em;       /* Space between paragraphs */
+$gp_lineHeight:          1.5em;     
+$gp_baseFontSize:        12px;
+
+
+/*
+ * Responsive design
+ */
+$gp_desktop:             960px;     /* Values higher than this are considered desktop screens */
+$gp_mobile:              500px;     /* Values lower than this are considered mobile devices */
+									/* Width lower than desktop and higher than mobile is considered tablet */
+
+/*
+ * Colors
+ */
+$gp_colorHigh:           #fff;      /* Lightest color in the website */
+$gp_colorLow:            #000;      /* Darkest color in the website */
+$gp_color1:              #00CCFF;   /* Base color for this website */
+$gp_colorLink:           darken($gp_color1, 20%);   /* Default color link */
+$gp_colorAlert:          #f00;      /* Base color for alert boxes */
+$gp_colorAttention:      #F9FF04;   /* Base color for boxes with important information */
+
+
+/*
+ * Form
+ */
+$gp_formColumn1:         150px;     /* Width of form labels if labels are left from the form fields */
+$gp_formColumnGutter:    10px;      /* Space between labels and form fields if they are next to each other */
+$gp_formColumn2:         260px;     /* Width of form fields if labels are left from the form fields */
+
+
+/*
+ * Grid configuration
+ */
+$gp_gridWidth:           $gp_desktop;   /* Width of the grid */
+$gp_gridHeaderHeight:    100px;     /* Height of the header (if the header height is not dynamic */
+$gp_gridBlockSpacing:    12px;      /* Gutter between columns */
+$gp_gridBlockPadding:    $gp_gridBlockSpacing / 2;  /* Spacing between blocks in a column */
+$gp_gridFixedCols:       16;        /* Total number of columns */
+

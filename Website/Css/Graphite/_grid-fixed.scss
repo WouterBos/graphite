@@ -1,0 +1,200 @@
+/*
+ * Fixed grid
+ * 
+ * Grid system with fixed pre-specified column widths.
+ */
+
+
+
+.gp_gridRow.gp_gridFixed {
+	.gp_gridColumn:first-child  {
+	    margin-left: 0;
+	}
+	
+	.gp_gridColumn1 {
+	    @include gp_colWidth(1);
+	}
+	
+	.gp_gridColumn2 {
+	    @include gp_colWidth(2);
+	}
+	
+	.gp_gridColumn3 {
+	    @include gp_colWidth(3);
+	}
+	
+	.gp_gridColumn4 {
+	    @include gp_colWidth(4);
+	}
+	
+	.gp_gridColumn5 {
+	    @include gp_colWidth(5);
+	}
+	
+	.gp_gridColumn6 {
+	    @include gp_colWidth(6);
+	}
+	
+	.gp_gridColumn7 {
+	    @include gp_colWidth(7);
+	}
+	
+	.gp_gridColumn8 {
+	    @include gp_colWidth(8);
+	}
+	
+	.gp_gridColumn9 {
+	    @include gp_colWidth(9);
+	}
+	
+	.gp_gridColumn10 {
+	    @include gp_colWidth(10);
+	}
+	
+	.gp_gridColumn11 {
+	    @include gp_colWidth(11);
+	}
+	
+	.gp_gridColumn12 {
+	    @include gp_colWidth(12);
+	}
+	
+	.gp_gridColumn13 {
+	    @include gp_colWidth(13);
+	}
+	
+	.gp_gridColumn14 {
+	    @include gp_colWidth(14);
+	}
+	
+	.gp_gridColumn15 {
+	    @include gp_colWidth(15);
+	}
+	
+	.gp_gridColumn16 {
+	    @include gp_colWidth(16);
+	}
+	
+	
+	
+	/* Prepend and append spacing */
+	.gp_gridFixedPrepend1 {
+	    @include gp_colPrepend(1);
+	}
+	
+	.gp_gridFixedPrepend2 {
+	    @include gp_colPrepend(2);
+	}
+	
+	.gp_gridFixedPrepend3 {
+	    @include gp_colPrepend(3);
+	}
+	
+	.gp_gridFixedPrepend4 {
+	    @include gp_colPrepend(4);
+	}
+	
+	.gp_gridFixedPrepend5 {
+	    @include gp_colPrepend(5);
+	}
+	
+	.gp_gridFixedPrepend6 {
+	    @include gp_colPrepend(6);
+	}
+	
+	.gp_gridFixedPrepend7 {
+	    @include gp_colPrepend(7);
+	}
+	
+	.gp_gridFixedPrepend8 {
+	    @include gp_colPrepend(8);
+	}
+	
+	.gp_gridFixedPrepend9 {
+	    @include gp_colPrepend(9);
+	}
+	
+	.gp_gridFixedPrepend10 {
+	    @include gp_colPrepend(10);
+	}
+	
+	.gp_gridFixedPrepend11 {
+	    @include gp_colPrepend(11);
+	}
+	
+	.gp_gridFixedPrepend12 {
+	    @include gp_colPrepend(12);
+	}
+	
+	.gp_gridFixedPrepend13 {
+	    @include gp_colPrepend(13);
+	}
+	
+	.gp_gridFixedPrepend14 {
+	    @include gp_colPrepend(14);
+	}
+	
+	.gp_gridFixedPrepend15 {
+	    @include gp_colPrepend(15);
+	}
+	
+	.gp_gridFixedAppend1 {
+	    @include gp_colAppend(1);
+	}
+	
+	.gp_gridFixedAppend2 {
+	    @include gp_colAppend(2);
+	}
+	
+	.gp_gridFixedAppend3 {
+	    @include gp_colAppend(3);
+	}
+	
+	.gp_gridFixedAppend4 {
+	    @include gp_colAppend(4);
+	}
+	
+	.gp_gridFixedAppend5 {
+	    @include gp_colAppend(5);
+	}
+	
+	.gp_gridFixedAppend6 {
+	    @include gp_colAppend(6);
+	}
+	
+	.gp_gridFixedAppend7 {
+	    @include gp_colAppend(7);
+	}
+	
+	.gp_gridFixedAppend8 {
+	    @include gp_colAppend(8);
+	}
+	
+	.gp_gridFixedAppend9 {
+	    @include gp_colAppend(9);
+	}
+	
+	.gp_gridFixedAppend10 {
+	    @include gp_colAppend(10);
+	}
+	
+	.gp_gridFixedAppend11 {
+	    @include gp_colAppend(11);
+	}
+	
+	.gp_gridFixedAppend12 {
+	    @include gp_colAppend(12);
+	}
+	
+	.gp_gridFixedAppend13 {
+	    @include gp_colAppend(13);
+	}
+	
+	.gp_gridFixedAppend14 {
+	    @include gp_colAppend(14);
+	}
+	
+	.gp_gridFixedAppend15 {
+	    @include gp_colAppend(15);
+	}
+}

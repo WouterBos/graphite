@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* BASE */
 @import "Graphite/_values";
 @import "Graphite/Internal/_values";
@@ -17,7 +19,8 @@
 /* Flexible (column width can be set) */
 @import "Graphite/_grid";
 @import "Graphite/_grid-print";
-//@import "Graphite/_grid-mobile"; // Disabled, code only works in Sass 3.2+
+// Disabled, variables in media queries only work in Sass 3.2+
+//@import "Graphite/_grid-mobile"; 
 @import "Graphite/_grid-flex";
 @import "Graphite/Internal/_grid-flex";
 
@@ -26,9 +29,10 @@
 /* BLOCKS */
 @import "Graphite/_blocks-nav-sitemap";
 @import "Graphite/_blocks-widgets-accordion";
-
 @import "Graphite/_blocks-nav-menu";
+@import "Graphite/_blocks-nav-menu-horizontal";
 @import "Graphite/_blocks-nav-menu-vertical";
+@import "Graphite/_blocks-nav-menu-collapse";
 
 
 

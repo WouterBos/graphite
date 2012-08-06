@@ -1,0 +1,101 @@
+/*
+ * Base grid
+ * 
+ * Base styling for grid.
+ */
+
+
+
+body {
+	padding-bottom: $gp_gridBlockSpacing;
+}
+
+
+
+/* Main container for web page */
+.gp_root {
+	position: relative;
+}
+
+/* Wrapper for web content */
+.gp_main {
+    @include gp_clear;
+
+	position: relative;
+	margin: 0 auto 0 auto;
+	width: $gp_desktop;
+}
+
+
+
+/* Logo */
+.gp_logo {
+	display: block;
+	position: absolute;
+	top: $gp_gridBlockSpacing;
+	left: 0;
+	z-index: 10;
+
+	img {
+		float: left;
+	}
+}
+
+
+
+/* Header */
+.gp_header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	.gp_main {
+		height: $gp_gridHeaderHeight;
+	}
+}
+
+
+
+/* Content block */
+.gp_content {
+    @include gp_clear;
+
+	border-top: $gp_gridHeaderHeight solid transparent;
+	padding: $gp_gridBlockSpacing 0;
+}
+
+
+
+/* Column row */
+.gp_gridRow {
+    @include gp_clear;
+    
+	.gp_gridColumn {
+		float: left;
+		width: 100%;
+		min-height: 1px; /* This will make empty columns still float next to each other instead of collapsing */
+        overflow: hidden;
+
+		&.gp_gridColumnBackground {
+		    background: #eee;
+		    
+		    .gp_block {
+		        margin: 0;
+		        padding: $gp_gridBlockPadding;
+		    }
+		}
+	}
+
+	& + .gp_gridRow {
+		margin-top: $gp_gridBlockSpacing;
+	}
+}
+
+
+
+.gp_block {
+	& + .gp_block {
+        margin-top: $gp_gridBlockPadding;
+    }
+}

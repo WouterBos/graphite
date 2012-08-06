@@ -1,0 +1,18 @@
+/*
+ * Captcha styling
+ */
+
+
+
+.RadCaptcha {
+	@include gp_clear();
+
+    p {
+	    margin: 5px 0 1em 0;
+    }
+
+    .inputText {
+	    width: 180px;
+	    margin: 0 10px 0 0;
+    }
+}

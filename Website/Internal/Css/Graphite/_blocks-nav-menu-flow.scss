@@ -1,0 +1,22 @@
+/*
+ * Styling for a horizontal menu
+ */
+
+
+
+.gp_menu_typeFlow {
+    ul,
+    li {
+        display: inline;
+    }
+	
+	a {
+		color: $gp_colorHigh;
+		text-decoration: none;
+		margin: 0 $gp_gridBlockSpacing/4;
+		padding: $gp_gridBlockSpacing/2 0;
+	}
+	a:hover {
+        text-decoration: underline;
+	}
+}

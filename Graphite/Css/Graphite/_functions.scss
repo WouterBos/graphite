@@ -1,0 +1,65 @@
+/*
+ * Graphite helper functions.
+ */
+
+
+
+@mixin gp_boxSizing($boxType: border-box) {
+    -moz-box-sizing: $boxType;
+    -ms-box-sizing: $boxType;
+    -webkit-box-sizing: $boxType;
+    box-sizing: $boxType;
+}
+
+@mixin gp_linearGradient($start: #ffffff, $end: #000000) {
+	background-color: $start;
+	background-image:    -moz-linear-gradient(top, $start, $end); 
+	background-image:     -ms-linear-gradient(top, $start, $end); 
+	background-image:      -o-linear-gradient(top, $start, $end); 
+    background-image: -webkit-gradient(linear, left top, left bottom, from($start), to($end)); 
+    background-image: -webkit-linear-gradient(top, $start, $end); 
+	background-image:         linear-gradient(top, $start, $end);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{start}', EndColorStr='#{end}');
+}
+
+@mixin gp_boxShadow($xOffset: 5px, $yOffset: 5px, $shadowSize: 10px, $shadowColor: #000000) {
+	-moz-box-shadow: $xOffset $yOffset $shadowSize $shadowColor; 
+    -webkit-box-shadow: $xOffset $yOffset $shadowSize $shadowColor; 
+	box-shadow: $xOffset $yOffset $shadowSize $shadowColor; 
+}
+
+@mixin gp_opacity($opacity: 0.5) {
+    $msOpacity: $opacity*100;
+
+	opacity: $opacity;
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=#{msOpacity})';
+	filter: alpha(opacity=#{msOpacity});
+}
+
+@mixin gp_borderRadius($topLeft: 5px, $topRight: 5px, $bottomRight: 5px, $bottomLeft: 5px) {
+	-moz-border-radius: $topLeft $topRight $bottomRight $bottomLeft;
+	-webkit-border-radius: $topLeft $topRight $bottomRight $bottomLeft;
+	border-radius: $topLeft $topRight $bottomRight $bottomLeft;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+@mixin gp_transition($type: all, $time: 0.5s, $easing: ease-out) {
+	-moz-transition: $type $time $easing;  
+	-ms-transition: $type $time $easing;  
+	-o-transition: $type $time $easing;  
+    -webkit-transition: $type $time $easing;  
+	transition: $type $time $easing;  
+}
+
+/* makes sure a box does not collapse when it only holds floating objects */
+@mixin gp_clear($minHeight: 0) {
+    min-height: $minHeight;
+    
+    &:after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
